@@ -23,6 +23,14 @@
 		5B024CE1148FC1DA00ED3B6D /* SKDeviceDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CE0148FC1DA00ED3B6D /* SKDeviceDataReceiver.m */; };
 		5B2C42C714938F660020A2CD /* EntityStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C42C614938F660020A2CD /* EntityStore.m */; };
 		5B2C42CE149390710020A2CD /* SKEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C42CD149390710020A2CD /* SKEntity.m */; };
+		5B639CA614964A1B002D7F8F /* Tab_ComingUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */; };
+		5B639CA714964A1B002D7F8F /* Tab_ComingUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */; };
+		5B639CA814964A1B002D7F8F /* Tab_DataSources.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA214964A1B002D7F8F /* Tab_DataSources.png */; };
+		5B639CA914964A1B002D7F8F /* Tab_DataSources@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA314964A1B002D7F8F /* Tab_DataSources@2x.png */; };
+		5B639CAA14964A1B002D7F8F /* Tab_Devices.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA414964A1B002D7F8F /* Tab_Devices.png */; };
+		5B639CAB14964A1B002D7F8F /* Tab_Devices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA514964A1B002D7F8F /* Tab_Devices@2x.png */; };
+		5B639CB214964E2A002D7F8F /* DeviceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B639CB114964E2A002D7F8F /* DeviceListViewController.m */; };
+		5BA69E5F149B43DA00D663BA /* SKDeviceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +67,16 @@
 		5B2C42CB1493903D0020A2CD /* SKDeviceStoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceStoreDelegate.h; sourceTree = "<group>"; };
 		5B2C42CC149390710020A2CD /* SKEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEntity.h; sourceTree = "<group>"; };
 		5B2C42CD149390710020A2CD /* SKEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEntity.m; sourceTree = "<group>"; };
+		5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_ComingUp.png; sourceTree = "<group>"; };
+		5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_ComingUp@2x.png"; sourceTree = "<group>"; };
+		5B639CA214964A1B002D7F8F /* Tab_DataSources.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_DataSources.png; sourceTree = "<group>"; };
+		5B639CA314964A1B002D7F8F /* Tab_DataSources@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_DataSources@2x.png"; sourceTree = "<group>"; };
+		5B639CA414964A1B002D7F8F /* Tab_Devices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Devices.png; sourceTree = "<group>"; };
+		5B639CA514964A1B002D7F8F /* Tab_Devices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Devices@2x.png"; sourceTree = "<group>"; };
+		5B639CB014964E2A002D7F8F /* DeviceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceListViewController.h; sourceTree = "<group>"; };
+		5B639CB114964E2A002D7F8F /* DeviceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceListViewController.m; sourceTree = "<group>"; };
+		5BA69E5D149B43DA00D663BA /* SKDeviceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceGroup.h; sourceTree = "<group>"; };
+		5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +123,8 @@
 		5B024CAF148FA6B300ED3B6D /* SK Codebase */ = {
 			isa = PBXGroup;
 			children = (
+				5B639CAC14964A99002D7F8F /* ViewControllers */,
+				5B639C9314963B12002D7F8F /* Resources */,
 				5B2C42C414938F480020A2CD /* Stores */,
 				5B2C42C21493876B0020A2CD /* Communication */,
 				5B024CE2148FC5A800ED3B6D /* Protocols */,
@@ -142,6 +162,8 @@
 				5B024CCE148FAC7600ED3B6D /* SKDevice.m */,
 				5B2C42CC149390710020A2CD /* SKEntity.h */,
 				5B2C42CD149390710020A2CD /* SKEntity.m */,
+				5BA69E5D149B43DA00D663BA /* SKDeviceGroup.h */,
+				5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */,
 			);
 			name = ServerEntities;
 			sourceTree = "<group>";
@@ -210,6 +232,28 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		5B639C9314963B12002D7F8F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */,
+				5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */,
+				5B639CA214964A1B002D7F8F /* Tab_DataSources.png */,
+				5B639CA314964A1B002D7F8F /* Tab_DataSources@2x.png */,
+				5B639CA414964A1B002D7F8F /* Tab_Devices.png */,
+				5B639CA514964A1B002D7F8F /* Tab_Devices@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5B639CAC14964A99002D7F8F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5B639CB014964E2A002D7F8F /* DeviceListViewController.h */,
+				5B639CB114964E2A002D7F8F /* DeviceListViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -263,6 +307,12 @@
 				5B024CB4148FA6B300ED3B6D /* InfoPlist.strings in Resources */,
 				5B024CBD148FA6B300ED3B6D /* MainStoryboard_iPhone.storyboard in Resources */,
 				5B024CC0148FA6B300ED3B6D /* MainStoryboard_iPad.storyboard in Resources */,
+				5B639CA614964A1B002D7F8F /* Tab_ComingUp.png in Resources */,
+				5B639CA714964A1B002D7F8F /* Tab_ComingUp@2x.png in Resources */,
+				5B639CA814964A1B002D7F8F /* Tab_DataSources.png in Resources */,
+				5B639CA914964A1B002D7F8F /* Tab_DataSources@2x.png in Resources */,
+				5B639CAA14964A1B002D7F8F /* Tab_Devices.png in Resources */,
+				5B639CAB14964A1B002D7F8F /* Tab_Devices@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +333,8 @@
 				5B024CE1148FC1DA00ED3B6D /* SKDeviceDataReceiver.m in Sources */,
 				5B2C42C714938F660020A2CD /* EntityStore.m in Sources */,
 				5B2C42CE149390710020A2CD /* SKEntity.m in Sources */,
+				5B639CB214964E2A002D7F8F /* DeviceListViewController.m in Sources */,
+				5BA69E5F149B43DA00D663BA /* SKDeviceGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
