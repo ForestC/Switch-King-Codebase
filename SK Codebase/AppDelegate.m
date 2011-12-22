@@ -7,13 +7,84 @@
 //
 
 #import "AppDelegate.h"
+#import "CommunicationBase.h"
+#import "SKDeviceDataReceiver.h"
+#import "DeviceListViewController.h"
+#import "CommunicationMgr.h"
+#import "SettingsMgr.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize entityStore;
+@synthesize communicationMgr;
+
+// Configures the entity view controllers
+- (void)configureEntityViewControllers
+{
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
+
+    // The device list view controller...
+    DeviceListViewController *deviceListViewController = (DeviceListViewController *)navigationController;
+    
+    // Connect the device list view controller to the entity stores notification
+    [entityStore setDeviceListViewController:deviceListViewController];
+}
+
+// Called when an entity action request has been fired
+- (void)entityActionRequestFired:(NSObject *) src : (EntityActionRequest *) req {
+    [communicationMgr requestEntityAction:req]; 
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    
+    auth = [AuthenticationDataContainer alloc];
+    
+    //auth.user = @"user";
+    //auth.pass = @"pass";
+    
+    auth.user = @"sogeti";
+    auth.pass = @"malaysia";
+    
+    [SettingsMgr setAuthenticationData:auth];
+        [SettingsMgr setTargetAddress:@"http://192.168.0.220"];
+        [SettingsMgr setTargetPort:8800];
+    
+    // Create the entity store...
+    entityStore = [EntityStore alloc];
+    // Create the communication manager...
+    communicationMgr = [CommunicationMgr alloc];
+    // Request update of all entities...
+    [communicationMgr requestUpdateOfAllEntities];
+    
+    
+    
+    
+    //CommunicationBase * communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    //SKDeviceDataReceiver * receiver = [SKDeviceDataReceiver alloc];
+    
+   // [receiver setEntityStore:entityStore];
+ //   [communicationBase setReceiverDelegate:receiver];
+//    [communicationBase sendRequest:@"http://www.switchking.se:10800/devices"];
+//    
+//    AuthenticationDataContainer * auth = [AuthenticationDataContainer alloc];
+//    
+//    [auth setUser:@"user"];
+//    [auth setPass:@"pass"];
+//    
+//    CommunicationBase * b = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+//    SKDeviceDataReceiver * r = [SKDeviceDataReceiver alloc];
+//    
+//    
+//    [r setEntityStore:entityStore];
+//    [b setReceiverDelegate:r];
+//    [b sendRequest:@"http://www.switchking.se:10800/devices"];
+//
+    
     // Override point for customization after application launch.
     return YES;
 }

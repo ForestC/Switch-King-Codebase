@@ -1,0 +1,127 @@
+//
+//  CommunicationBase.m
+//  switchkingclient
+//
+//  Created by Martin Videfors on 2011-12-07.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import "CommunicationBase.h"
+#import "AuthenticationDataContainer.h"
+#import "XMLSKDeviceParser.h"
+#import <UIKit/UIKit.h>
+#import "DataReceivedDelegate.h"
+#import "SettingsMgr.h"
+
+@implementation CommunicationBase
+
+@synthesize receiverDelegate;
+
+-(CommunicationBase *)initWithAuthenticationData:(AuthenticationDataContainer *)auth {
+    self = [super init];
+    authData = auth;
+    
+    return self;
+}
+
+-(void)sendRequest:(NSString *) url{
+    // Setup NSURLConnection
+    NSURL *URL = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL
+                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                         timeoutInterval:30.0];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    if (connection) {
+        // Create the NSMutableData to hold the received data.
+        // receivedData is an instance variable declared elsewhere.
+        receivedData = [NSMutableData alloc];
+    } else {
+        // Inform the user that the connection failed.
+    }
+    
+   // [connection start];
+}
+
+- (NSURLCredential*)credentialWithAuthData {
+    NSURLCredential *newCredential = [NSURLCredential credentialWithUser:authData.user
+                                                                password:authData.pass
+                                                             persistence:NSURLCredentialPersistenceForSession];
+    return newCredential;
+}
+
+// NSURLConnection Delegates
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    if ([challenge previousFailureCount] == 0) {
+        NSLog(@"received authentication challenge");
+        NSURLCredential *newCredential = [self credentialWithAuthData];
+
+        NSLog(@"credential created");
+        [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
+        NSLog(@"responded to authentication challenge");    
+    }
+    else {
+        NSLog(@"previous authentication failure");
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // This method is called when the server has determined that it
+    // has enough information to create the NSURLResponse.
+    
+    // It can be called multiple times, for example in the case of a
+    // redirect, so each time we reset the data.
+    // receivedData is an instance variable declared elsewhere.
+    [receivedData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    // Append the new data to receivedData.
+    // receivedData is an instance variable declared elsewhere.
+    [receivedData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
+    
+    [receiverDelegate dataReceived:self :receivedData];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // inform the user
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+}
+
+// Gets the base url
+- (NSString *)getBaseUrl {
+    NSString * address = [SettingsMgr getTargetAddress];
+    NSInteger port = [SettingsMgr getTargetPort];
+    NSString * portString = [NSString stringWithFormat:@":%d", port];
+    
+    NSString * lastChar = [address substringFromIndex:([address length] - 1)];
+    
+    if(lastChar == @"/")
+        return [[address substringToIndex:([address length] - 1)] stringByAppendingString:portString];
+    else
+        
+        return [address stringByAppendingString:portString];
+}
+
+// Gets the complete url to the device list
+- (NSString *)getDeviceListUrl {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:@"/devices"];
+}
+
+// Gets the complete url to the data source list
+- (NSString *)getDataSourceListUrl {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:@"/datasources"];    
+}
+
+@end
