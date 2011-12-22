@@ -30,7 +30,35 @@
 		5B639CAA14964A1B002D7F8F /* Tab_Devices.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA414964A1B002D7F8F /* Tab_Devices.png */; };
 		5B639CAB14964A1B002D7F8F /* Tab_Devices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA514964A1B002D7F8F /* Tab_Devices@2x.png */; };
 		5B639CB214964E2A002D7F8F /* DeviceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B639CB114964E2A002D7F8F /* DeviceListViewController.m */; };
+		5B8027EB149BAC3800F3909E /* SKDeviceStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */; };
+		5B80280014A219DD00F3909E /* DataSourceList_StatusError.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027ED14A219DD00F3909E /* DataSourceList_StatusError.png */; };
+		5B80280114A219DD00F3909E /* DataSourceList_StatusOK.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027EE14A219DD00F3909E /* DataSourceList_StatusOK.png */; };
+		5B80280214A219DD00F3909E /* DataSourceList_StatusWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027EF14A219DD00F3909E /* DataSourceList_StatusWarning.png */; };
+		5B80280314A219DD00F3909E /* DeviceList_Dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F014A219DD00F3909E /* DeviceList_Dim.png */; };
+		5B80280414A219DD00F3909E /* DeviceList_DimFrozen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F114A219DD00F3909E /* DeviceList_DimFrozen.png */; };
+		5B80280514A219DD00F3909E /* DeviceList_DimRule.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F214A219DD00F3909E /* DeviceList_DimRule.png */; };
+		5B80280614A219DD00F3909E /* DeviceList_DimScenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F314A219DD00F3909E /* DeviceList_DimScenario.png */; };
+		5B80280714A219DD00F3909E /* DeviceList_DimSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F414A219DD00F3909E /* DeviceList_DimSemiAuto.png */; };
+		5B80280814A219DD00F3909E /* DeviceList_Group.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F514A219DD00F3909E /* DeviceList_Group.png */; };
+		5B80280914A219DD00F3909E /* DeviceList_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F614A219DD00F3909E /* DeviceList_Off.png */; };
+		5B80280A14A219DD00F3909E /* DeviceList_OffFrozen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F714A219DD00F3909E /* DeviceList_OffFrozen.png */; };
+		5B80280B14A219DD00F3909E /* DeviceList_OffRule.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F814A219DD00F3909E /* DeviceList_OffRule.png */; };
+		5B80280C14A219DD00F3909E /* DeviceList_OffScenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027F914A219DD00F3909E /* DeviceList_OffScenario.png */; };
+		5B80280D14A219DD00F3909E /* DeviceList_OffSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FA14A219DD00F3909E /* DeviceList_OffSemiAuto.png */; };
+		5B80280E14A219DD00F3909E /* DeviceList_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FB14A219DD00F3909E /* DeviceList_On.png */; };
+		5B80280F14A219DD00F3909E /* DeviceList_OnFrozen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FC14A219DD00F3909E /* DeviceList_OnFrozen.png */; };
+		5B80281014A219DD00F3909E /* DeviceList_OnRule.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FD14A219DD00F3909E /* DeviceList_OnRule.png */; };
+		5B80281114A219DD00F3909E /* DeviceList_OnScenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FE14A219DD00F3909E /* DeviceList_OnScenario.png */; };
+		5B80281214A219DD00F3909E /* DeviceList_OnSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FF14A219DD00F3909E /* DeviceList_OnSemiAuto.png */; };
 		5BA69E5F149B43DA00D663BA /* SKDeviceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */; };
+		5BA69E65149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */; };
+		5BFC370914A31C600062F6E7 /* CommunicationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370814A31C600062F6E7 /* CommunicationMgr.m */; };
+		5BFC370C14A324F30062F6E7 /* SettingsMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370B14A324F30062F6E7 /* SettingsMgr.m */; };
+		5BFC371014A333D10062F6E7 /* SKDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370F14A333D10062F6E7 /* SKDataSource.m */; };
+		5BFC371314A334BC0062F6E7 /* XMLSKDataSourceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC371214A334BC0062F6E7 /* XMLSKDataSourceParser.m */; };
+		5BFC371714A342D60062F6E7 /* SKDataSourceDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC371614A342D60062F6E7 /* SKDataSourceDataReceiver.m */; };
+		5BFC371E14A360090062F6E7 /* EntityRequestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC371D14A360090062F6E7 /* EntityRequestGenerator.m */; };
+		5BFC372214A363760062F6E7 /* EntityActionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC372114A363760062F6E7 /* EntityActionRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,8 +103,47 @@
 		5B639CA514964A1B002D7F8F /* Tab_Devices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Devices@2x.png"; sourceTree = "<group>"; };
 		5B639CB014964E2A002D7F8F /* DeviceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceListViewController.h; sourceTree = "<group>"; };
 		5B639CB114964E2A002D7F8F /* DeviceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceListViewController.m; sourceTree = "<group>"; };
+		5B8027E9149BAC3800F3909E /* SKDeviceStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceStdTableViewCell.h; sourceTree = "<group>"; };
+		5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceStdTableViewCell.m; sourceTree = "<group>"; };
+		5B8027ED14A219DD00F3909E /* DataSourceList_StatusError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DataSourceList_StatusError.png; sourceTree = "<group>"; };
+		5B8027EE14A219DD00F3909E /* DataSourceList_StatusOK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DataSourceList_StatusOK.png; sourceTree = "<group>"; };
+		5B8027EF14A219DD00F3909E /* DataSourceList_StatusWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DataSourceList_StatusWarning.png; sourceTree = "<group>"; };
+		5B8027F014A219DD00F3909E /* DeviceList_Dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_Dim.png; sourceTree = "<group>"; };
+		5B8027F114A219DD00F3909E /* DeviceList_DimFrozen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_DimFrozen.png; sourceTree = "<group>"; };
+		5B8027F214A219DD00F3909E /* DeviceList_DimRule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_DimRule.png; sourceTree = "<group>"; };
+		5B8027F314A219DD00F3909E /* DeviceList_DimScenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_DimScenario.png; sourceTree = "<group>"; };
+		5B8027F414A219DD00F3909E /* DeviceList_DimSemiAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_DimSemiAuto.png; sourceTree = "<group>"; };
+		5B8027F514A219DD00F3909E /* DeviceList_Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_Group.png; sourceTree = "<group>"; };
+		5B8027F614A219DD00F3909E /* DeviceList_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_Off.png; sourceTree = "<group>"; };
+		5B8027F714A219DD00F3909E /* DeviceList_OffFrozen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OffFrozen.png; sourceTree = "<group>"; };
+		5B8027F814A219DD00F3909E /* DeviceList_OffRule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OffRule.png; sourceTree = "<group>"; };
+		5B8027F914A219DD00F3909E /* DeviceList_OffScenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OffScenario.png; sourceTree = "<group>"; };
+		5B8027FA14A219DD00F3909E /* DeviceList_OffSemiAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OffSemiAuto.png; sourceTree = "<group>"; };
+		5B8027FB14A219DD00F3909E /* DeviceList_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_On.png; sourceTree = "<group>"; };
+		5B8027FC14A219DD00F3909E /* DeviceList_OnFrozen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OnFrozen.png; sourceTree = "<group>"; };
+		5B8027FD14A219DD00F3909E /* DeviceList_OnRule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OnRule.png; sourceTree = "<group>"; };
+		5B8027FE14A219DD00F3909E /* DeviceList_OnScenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OnScenario.png; sourceTree = "<group>"; };
+		5B8027FF14A219DD00F3909E /* DeviceList_OnSemiAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OnSemiAuto.png; sourceTree = "<group>"; };
 		5BA69E5D149B43DA00D663BA /* SKDeviceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceGroup.h; sourceTree = "<group>"; };
 		5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroup.m; sourceTree = "<group>"; };
+		5BA69E63149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceGroupStdTableViewCell.h; sourceTree = "<group>"; };
+		5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroupStdTableViewCell.m; sourceTree = "<group>"; };
+		5BFC370714A31C600062F6E7 /* CommunicationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationMgr.h; sourceTree = "<group>"; };
+		5BFC370814A31C600062F6E7 /* CommunicationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationMgr.m; sourceTree = "<group>"; };
+		5BFC370A14A324F30062F6E7 /* SettingsMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsMgr.h; sourceTree = "<group>"; };
+		5BFC370B14A324F30062F6E7 /* SettingsMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsMgr.m; sourceTree = "<group>"; };
+		5BFC370E14A333D10062F6E7 /* SKDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataSource.h; sourceTree = "<group>"; };
+		5BFC370F14A333D10062F6E7 /* SKDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataSource.m; sourceTree = "<group>"; };
+		5BFC371114A334BC0062F6E7 /* XMLSKDataSourceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSKDataSourceParser.h; sourceTree = "<group>"; };
+		5BFC371214A334BC0062F6E7 /* XMLSKDataSourceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLSKDataSourceParser.m; sourceTree = "<group>"; };
+		5BFC371414A335980062F6E7 /* SKDataSourceStoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataSourceStoreDelegate.h; sourceTree = "<group>"; };
+		5BFC371514A342D60062F6E7 /* SKDataSourceDataReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataSourceDataReceiver.h; sourceTree = "<group>"; };
+		5BFC371614A342D60062F6E7 /* SKDataSourceDataReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataSourceDataReceiver.m; sourceTree = "<group>"; };
+		5BFC371C14A360090062F6E7 /* EntityRequestGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityRequestGenerator.h; sourceTree = "<group>"; };
+		5BFC371D14A360090062F6E7 /* EntityRequestGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityRequestGenerator.m; sourceTree = "<group>"; };
+		5BFC372014A363760062F6E7 /* EntityActionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityActionRequest.h; sourceTree = "<group>"; };
+		5BFC372114A363760062F6E7 /* EntityActionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityActionRequest.m; sourceTree = "<group>"; };
+		5BFC372314A3696D0062F6E7 /* EntityActionRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityActionRequestDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,12 +190,12 @@
 		5B024CAF148FA6B300ED3B6D /* SK Codebase */ = {
 			isa = PBXGroup;
 			children = (
+				5BA69E61149B69EA00D663BA /* Classes */,
 				5B639CAC14964A99002D7F8F /* ViewControllers */,
 				5B639C9314963B12002D7F8F /* Resources */,
 				5B2C42C414938F480020A2CD /* Stores */,
 				5B2C42C21493876B0020A2CD /* Communication */,
 				5B024CE2148FC5A800ED3B6D /* Protocols */,
-				5B024CD3148FB4F300ED3B6D /* Parsers */,
 				5B024CCC148FAC5E00ED3B6D /* ServerEntities */,
 				5B024CB8148FA6B300ED3B6D /* AppDelegate.h */,
 				5B024CB9148FA6B300ED3B6D /* AppDelegate.m */,
@@ -158,12 +225,6 @@
 		5B024CCC148FAC5E00ED3B6D /* ServerEntities */ = {
 			isa = PBXGroup;
 			children = (
-				5B024CCD148FAC7600ED3B6D /* SKDevice.h */,
-				5B024CCE148FAC7600ED3B6D /* SKDevice.m */,
-				5B2C42CC149390710020A2CD /* SKEntity.h */,
-				5B2C42CD149390710020A2CD /* SKEntity.m */,
-				5BA69E5D149B43DA00D663BA /* SKDeviceGroup.h */,
-				5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */,
 			);
 			name = ServerEntities;
 			sourceTree = "<group>";
@@ -181,6 +242,8 @@
 			children = (
 				5B024CD5148FB54200ED3B6D /* XMLSKDeviceParser.h */,
 				5B024CD6148FB54200ED3B6D /* XMLSKDeviceParser.m */,
+				5BFC371114A334BC0062F6E7 /* XMLSKDataSourceParser.h */,
+				5BFC371214A334BC0062F6E7 /* XMLSKDataSourceParser.m */,
 			);
 			name = Xml;
 			sourceTree = "<group>";
@@ -198,9 +261,9 @@
 			children = (
 				5B024CDF148FC1DA00ED3B6D /* SKDeviceDataReceiver.h */,
 				5B024CE0148FC1DA00ED3B6D /* SKDeviceDataReceiver.m */,
-				5B024CC9148FA6F100ED3B6D /* CommunicationBase.h */,
-				5B024CCA148FA6F100ED3B6D /* CommunicationBase.m */,
 				5B2C42C3149387830020A2CD /* Protocols */,
+				5BFC371514A342D60062F6E7 /* SKDataSourceDataReceiver.h */,
+				5BFC371614A342D60062F6E7 /* SKDataSourceDataReceiver.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -228,6 +291,8 @@
 			children = (
 				5B2C42CA149390150020A2CD /* EntityStoreDelegate.h */,
 				5B2C42CB1493903D0020A2CD /* SKDeviceStoreDelegate.h */,
+				5BFC371414A335980062F6E7 /* SKDataSourceStoreDelegate.h */,
+				5BFC372314A3696D0062F6E7 /* EntityActionRequestDelegate.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -235,6 +300,25 @@
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B8027ED14A219DD00F3909E /* DataSourceList_StatusError.png */,
+				5B8027EE14A219DD00F3909E /* DataSourceList_StatusOK.png */,
+				5B8027EF14A219DD00F3909E /* DataSourceList_StatusWarning.png */,
+				5B8027F014A219DD00F3909E /* DeviceList_Dim.png */,
+				5B8027F114A219DD00F3909E /* DeviceList_DimFrozen.png */,
+				5B8027F214A219DD00F3909E /* DeviceList_DimRule.png */,
+				5B8027F314A219DD00F3909E /* DeviceList_DimScenario.png */,
+				5B8027F414A219DD00F3909E /* DeviceList_DimSemiAuto.png */,
+				5B8027F514A219DD00F3909E /* DeviceList_Group.png */,
+				5B8027F614A219DD00F3909E /* DeviceList_Off.png */,
+				5B8027F714A219DD00F3909E /* DeviceList_OffFrozen.png */,
+				5B8027F814A219DD00F3909E /* DeviceList_OffRule.png */,
+				5B8027F914A219DD00F3909E /* DeviceList_OffScenario.png */,
+				5B8027FA14A219DD00F3909E /* DeviceList_OffSemiAuto.png */,
+				5B8027FB14A219DD00F3909E /* DeviceList_On.png */,
+				5B8027FC14A219DD00F3909E /* DeviceList_OnFrozen.png */,
+				5B8027FD14A219DD00F3909E /* DeviceList_OnRule.png */,
+				5B8027FE14A219DD00F3909E /* DeviceList_OnScenario.png */,
+				5B8027FF14A219DD00F3909E /* DeviceList_OnSemiAuto.png */,
 				5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */,
 				5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */,
 				5B639CA214964A1B002D7F8F /* Tab_DataSources.png */,
@@ -252,6 +336,68 @@
 				5B639CB114964E2A002D7F8F /* DeviceListViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5BA69E61149B69EA00D663BA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5BFC371F14A363560062F6E7 /* Requests */,
+				5BFC371B14A35FF00062F6E7 /* RequestGenerators */,
+				5B024CC9148FA6F100ED3B6D /* CommunicationBase.h */,
+				5B024CCA148FA6F100ED3B6D /* CommunicationBase.m */,
+				5B024CD3148FB4F300ED3B6D /* Parsers */,
+				5BFC370D14A3339E0062F6E7 /* Models */,
+				5BA69E62149B6A0600D663BA /* TableCells */,
+				5BFC370714A31C600062F6E7 /* CommunicationMgr.h */,
+				5BFC370814A31C600062F6E7 /* CommunicationMgr.m */,
+				5BFC370A14A324F30062F6E7 /* SettingsMgr.h */,
+				5BFC370B14A324F30062F6E7 /* SettingsMgr.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		5BA69E62149B6A0600D663BA /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				5BA69E63149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.h */,
+				5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */,
+				5B8027E9149BAC3800F3909E /* SKDeviceStdTableViewCell.h */,
+				5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */,
+			);
+			name = TableCells;
+			sourceTree = "<group>";
+		};
+		5BFC370D14A3339E0062F6E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B024CCD148FAC7600ED3B6D /* SKDevice.h */,
+				5B024CCE148FAC7600ED3B6D /* SKDevice.m */,
+				5B2C42CC149390710020A2CD /* SKEntity.h */,
+				5B2C42CD149390710020A2CD /* SKEntity.m */,
+				5BA69E5D149B43DA00D663BA /* SKDeviceGroup.h */,
+				5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */,
+				5BFC370E14A333D10062F6E7 /* SKDataSource.h */,
+				5BFC370F14A333D10062F6E7 /* SKDataSource.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5BFC371B14A35FF00062F6E7 /* RequestGenerators */ = {
+			isa = PBXGroup;
+			children = (
+				5BFC371C14A360090062F6E7 /* EntityRequestGenerator.h */,
+				5BFC371D14A360090062F6E7 /* EntityRequestGenerator.m */,
+			);
+			name = RequestGenerators;
+			sourceTree = "<group>";
+		};
+		5BFC371F14A363560062F6E7 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				5BFC372014A363760062F6E7 /* EntityActionRequest.h */,
+				5BFC372114A363760062F6E7 /* EntityActionRequest.m */,
+			);
+			name = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +459,25 @@
 				5B639CA914964A1B002D7F8F /* Tab_DataSources@2x.png in Resources */,
 				5B639CAA14964A1B002D7F8F /* Tab_Devices.png in Resources */,
 				5B639CAB14964A1B002D7F8F /* Tab_Devices@2x.png in Resources */,
+				5B80280014A219DD00F3909E /* DataSourceList_StatusError.png in Resources */,
+				5B80280114A219DD00F3909E /* DataSourceList_StatusOK.png in Resources */,
+				5B80280214A219DD00F3909E /* DataSourceList_StatusWarning.png in Resources */,
+				5B80280314A219DD00F3909E /* DeviceList_Dim.png in Resources */,
+				5B80280414A219DD00F3909E /* DeviceList_DimFrozen.png in Resources */,
+				5B80280514A219DD00F3909E /* DeviceList_DimRule.png in Resources */,
+				5B80280614A219DD00F3909E /* DeviceList_DimScenario.png in Resources */,
+				5B80280714A219DD00F3909E /* DeviceList_DimSemiAuto.png in Resources */,
+				5B80280814A219DD00F3909E /* DeviceList_Group.png in Resources */,
+				5B80280914A219DD00F3909E /* DeviceList_Off.png in Resources */,
+				5B80280A14A219DD00F3909E /* DeviceList_OffFrozen.png in Resources */,
+				5B80280B14A219DD00F3909E /* DeviceList_OffRule.png in Resources */,
+				5B80280C14A219DD00F3909E /* DeviceList_OffScenario.png in Resources */,
+				5B80280D14A219DD00F3909E /* DeviceList_OffSemiAuto.png in Resources */,
+				5B80280E14A219DD00F3909E /* DeviceList_On.png in Resources */,
+				5B80280F14A219DD00F3909E /* DeviceList_OnFrozen.png in Resources */,
+				5B80281014A219DD00F3909E /* DeviceList_OnRule.png in Resources */,
+				5B80281114A219DD00F3909E /* DeviceList_OnScenario.png in Resources */,
+				5B80281214A219DD00F3909E /* DeviceList_OnSemiAuto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +500,15 @@
 				5B2C42CE149390710020A2CD /* SKEntity.m in Sources */,
 				5B639CB214964E2A002D7F8F /* DeviceListViewController.m in Sources */,
 				5BA69E5F149B43DA00D663BA /* SKDeviceGroup.m in Sources */,
+				5BA69E65149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m in Sources */,
+				5B8027EB149BAC3800F3909E /* SKDeviceStdTableViewCell.m in Sources */,
+				5BFC370914A31C600062F6E7 /* CommunicationMgr.m in Sources */,
+				5BFC370C14A324F30062F6E7 /* SettingsMgr.m in Sources */,
+				5BFC371014A333D10062F6E7 /* SKDataSource.m in Sources */,
+				5BFC371314A334BC0062F6E7 /* XMLSKDataSourceParser.m in Sources */,
+				5BFC371714A342D60062F6E7 /* SKDataSourceDataReceiver.m in Sources */,
+				5BFC371E14A360090062F6E7 /* EntityRequestGenerator.m in Sources */,
+				5BFC372214A363760062F6E7 /* EntityActionRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
