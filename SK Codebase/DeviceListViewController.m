@@ -53,8 +53,8 @@
 
 // Called when entity data has been updated
 - (void) entityDataUpdated:(NSNotification *) notification
-{
-    if ([[notification name] isEqualToString:@"DevicesUpdated"]) {
+{    
+    if ([[notification name] isEqualToString:NOTIFICATION_NAME__DEVICES_UPDATED]) {
         // Log
         NSLog (@"DeviceListViewController received info that devices are updated");
         
@@ -65,6 +65,9 @@
         [self handleUpdatedDevices:[dict valueForKey:@"Devices"]]; 
     } else if ([[notification name] isEqualToString:@"DeviceUpdated"]) {
         NSLog (@"DeviceListViewController received info that a device is updated");
+    } else if ([[notification name] isEqualToString:NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED]) {
+        NSLog (@"DeviceListViewController received info that a dirtification has been updated");
+        [[self tableView] reloadData];
     }  
 }
 
@@ -140,12 +143,17 @@
 - (void) addEntityObservers {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(entityDataUpdated:)
-                                                 name:@"DevicesUpdated"
+                                                 name:NOTIFICATION_NAME__DEVICES_UPDATED
                                                object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(entityDataUpdated:)
                                                  name:@"DeviceUpdated"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(entityDataUpdated:)
+                                                 name:NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED
                                                object:nil];
 }
 
@@ -154,25 +162,37 @@
 *******************************************************************************/
 
 - (UITableViewCell *) dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)entity {
-    UITableViewCell * cell;
+    UITableViewCell *cell;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    EntityStore *entityStore = appDelegate.entityStore;
     
     if([entity isKindOfClass:[SKDevice class]]) {
-        static NSString * cellIdentifier = @"DeviceCellStd";
-
-        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if([entityStore deviceIsDirty:entity.ID]) {
+            static NSString *cellIdentifier = @"DeviceCellStdDirty";
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        } else {
+            static NSString *cellIdentifier = @"DeviceCellStd";
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        }
+        
         if (cell == nil) {
             cell = [[SKDeviceGroupStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
 
     } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
-        static NSString * cellIdentifier = @"DeviceGroupCellStd";
-        
-        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if([entityStore deviceIsDirty:entity.ID]) {
+            static NSString *cellIdentifier = @"DeviceGroupCellStdDirty";            
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        } else {
+            static NSString *cellIdentifier = @"DeviceGroupCellStd";            
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        }
+
         if (cell == nil) {
             cell = [[SKDeviceStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
     } else {
-        static NSString * cellIdentifier = @"Cell";
+        static NSString *cellIdentifier = @"Cell";
         
         cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil) {
@@ -236,27 +256,27 @@
 - (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)entity {
     if([cell isKindOfClass:[SKDeviceStdTableViewCell class]]) {
         SKDeviceStdTableViewCell * deviceCell = (SKDeviceStdTableViewCell *)cell;
-        SKDevice * device = (SKDevice *)entity;
+        SKDevice *device = (SKDevice *)entity;
         
         [deviceCell.deviceName setText:device.Name];
     } else if([cell isKindOfClass:[SKDeviceGroupStdTableViewCell class]]) {
         SKDeviceGroupStdTableViewCell * deviceGroupCell = (SKDeviceGroupStdTableViewCell *)cell;
-        SKDeviceGroup * deviceGroup = (SKDeviceGroup *)entity;
+        SKDeviceGroup *deviceGroup = (SKDeviceGroup *)entity;
 
         [deviceGroupCell.deviceGroupName setText:deviceGroup.Name];
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-//	CGFloat height;
-    
-    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-        return 44.0;
-    } else {
-        return 88.0;
-    }
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+////	CGFloat height;
+//    
+//    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+//        return 44.0;
+//    } else {
+//        return 88.0;
+//    }
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];

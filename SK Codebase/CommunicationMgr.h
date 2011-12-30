@@ -11,12 +11,17 @@
 #import "CommunicationBase.h"
 #import "DataReceivedDelegate.h"
 #import "EntityActionRequest.h"
+#import "EntityReqNotificationData.h"
 
 @interface CommunicationMgr : NSObject {
     AuthenticationDataContainer *authData;
     //CommunicationBase *communicationBase;
     //SKDeviceDataReceiver *deviceDataReceiver;
 }
+
+- (void)addEntityObservers;
+
+- (void)interpretAndHandleNotificationData:(EntityReqNotificationData *) reqNotData;
 
 - (void)requestEntityAction:(EntityActionRequest *)req;
 
@@ -25,6 +30,10 @@
 - (void)updateAllEntities;
 
 - (void)updateDevices;
+
+- (void)updateDevice:(NSInteger)deviceId;
+
+- (void)updateDeviceGroup:(NSInteger)deviceGroupId;
 
 - (void)updateDataSources;
 

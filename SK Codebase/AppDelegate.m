@@ -55,9 +55,9 @@
         [SettingsMgr setTargetPort:8800];
     
     // Create the entity store...
-    entityStore = [EntityStore alloc];
+    entityStore = [[EntityStore alloc] init];
     // Create the communication manager...
-    communicationMgr = [CommunicationMgr alloc];
+    communicationMgr = [[CommunicationMgr alloc] init];
     // Request update of all entities...
     [communicationMgr requestUpdateOfAllEntities];
     

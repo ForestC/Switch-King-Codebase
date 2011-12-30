@@ -9,6 +9,7 @@
 #import "XMLSKDeviceParser.h"
 #import "SKDevice.h"
 #include "Constants.h"
+#import "NSString+HTML.h"
 
 @implementation XMLSKDeviceParser
 
@@ -68,7 +69,8 @@
     }
     else {
         @try {
-            [device setValue:currentElementValue forKey:elementName];
+            NSString *unescaped = [currentElementValue stringByDecodingHTMLEntities];
+            [device setValue:unescaped forKey:elementName];
         }
         @catch (NSException * e) {
             //NSLog(@"Invalid key");

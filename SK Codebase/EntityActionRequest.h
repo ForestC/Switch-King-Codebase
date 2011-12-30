@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "SKEntity.h"
+#import "EntityReqNotificationData.h"
 
 @interface EntityActionRequest : NSObject
+
+- (EntityReqNotificationData *)toNotificationData;
 
 @property (retain) SKEntity * entity;
 @property (assign) NSInteger actionId;

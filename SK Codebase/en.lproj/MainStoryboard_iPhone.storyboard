@@ -47,7 +47,7 @@
                                     <outlet property="deviceGroupName" destination="5u3-Ya-WlO" id="AKF-tg-6GC"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStd2" id="G0W-pa-S9u" customClass="SKDeviceStdTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStd" id="G0W-pa-S9u" customClass="SKDeviceStdTableViewCell">
                                 <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -79,7 +79,7 @@
                                     <outlet property="deviceName" destination="Ese-Jn-hun" id="Z1E-9Q-2Wg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStd" rowHeight="88" id="usP-P1-tyk" customClass="SKDeviceStdTableViewCell">
+                            <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStdHight" rowHeight="88" id="usP-P1-tyk" customClass="SKDeviceStdTableViewCell">
                                 <rect key="frame" x="0.0" y="135" width="320" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

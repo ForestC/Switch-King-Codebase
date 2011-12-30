@@ -23,6 +23,9 @@
 		5B024CE1148FC1DA00ED3B6D /* SKDeviceDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CE0148FC1DA00ED3B6D /* SKDeviceDataReceiver.m */; };
 		5B2C42C714938F660020A2CD /* EntityStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C42C614938F660020A2CD /* EntityStore.m */; };
 		5B2C42CE149390710020A2CD /* SKEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C42CD149390710020A2CD /* SKEntity.m */; };
+		5B33272414ADB575002A263A /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272114ADB575002A263A /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5B33272514ADB575002A263A /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272314ADB575002A263A /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5B33272914ADD02A002A263A /* EntityReqNotificationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272814ADD02A002A263A /* EntityReqNotificationData.m */; };
 		5B639CA614964A1B002D7F8F /* Tab_ComingUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */; };
 		5B639CA714964A1B002D7F8F /* Tab_ComingUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */; };
 		5B639CA814964A1B002D7F8F /* Tab_DataSources.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA214964A1B002D7F8F /* Tab_DataSources.png */; };
@@ -95,6 +98,12 @@
 		5B2C42CB1493903D0020A2CD /* SKDeviceStoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceStoreDelegate.h; sourceTree = "<group>"; };
 		5B2C42CC149390710020A2CD /* SKEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEntity.h; sourceTree = "<group>"; };
 		5B2C42CD149390710020A2CD /* SKEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEntity.m; sourceTree = "<group>"; };
+		5B33272014ADB575002A263A /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		5B33272114ADB575002A263A /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		5B33272214ADB575002A263A /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		5B33272314ADB575002A263A /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		5B33272714ADD02A002A263A /* EntityReqNotificationData.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EntityReqNotificationData.h; sourceTree = "<group>"; };
+		5B33272814ADD02A002A263A /* EntityReqNotificationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityReqNotificationData.m; sourceTree = "<group>"; };
 		5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_ComingUp.png; sourceTree = "<group>"; };
 		5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_ComingUp@2x.png"; sourceTree = "<group>"; };
 		5B639CA214964A1B002D7F8F /* Tab_DataSources.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_DataSources.png; sourceTree = "<group>"; };
@@ -297,6 +306,15 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		5B33272614ADD004002A263A /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				5B33272714ADD02A002A263A /* EntityReqNotificationData.h */,
+				5B33272814ADD02A002A263A /* EntityReqNotificationData.m */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +359,11 @@
 		5BA69E61149B69EA00D663BA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5B33272614ADD004002A263A /* Notifications */,
+				5B33272014ADB575002A263A /* GTMNSString+HTML.h */,
+				5B33272114ADB575002A263A /* GTMNSString+HTML.m */,
+				5B33272214ADB575002A263A /* NSString+HTML.h */,
+				5B33272314ADB575002A263A /* NSString+HTML.m */,
 				5BFC371F14A363560062F6E7 /* Requests */,
 				5BFC371B14A35FF00062F6E7 /* RequestGenerators */,
 				5B024CC9148FA6F100ED3B6D /* CommunicationBase.h */,
@@ -509,6 +532,9 @@
 				5BFC371714A342D60062F6E7 /* SKDataSourceDataReceiver.m in Sources */,
 				5BFC371E14A360090062F6E7 /* EntityRequestGenerator.m in Sources */,
 				5BFC372214A363760062F6E7 /* EntityActionRequest.m in Sources */,
+				5B33272414ADB575002A263A /* GTMNSString+HTML.m in Sources */,
+				5B33272514ADB575002A263A /* NSString+HTML.m in Sources */,
+				5B33272914ADD02A002A263A /* EntityReqNotificationData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,11 +15,130 @@
 #import "SettingsMgr.h"
 #import "AppDelegate.h"
 #import "EntityRequestGenerator.h"
+#import "EntityReqNotificationData.h"
+#include "Constants.h"
 
 @implementation CommunicationMgr
 
 // The main update thread
 NSThread * mainUpdateThread;
+
+/*******************************************************************************
+ Init methods
+ *******************************************************************************/
+
+// Initializes the manager, adding entity observers to be able to listen to
+// notifications.
+- (CommunicationMgr*)init {
+    self = [super init];
+
+    [self addEntityObservers];
+    
+    return self;
+}
+
+/*******************************************************************************
+ Notification methods
+ *******************************************************************************/
+
+// Adds entity observers to be able to listen to notifications
+- (void)addEntityObservers {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(entityDataUpdateRequested:)
+                                                 name:NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(entityDataUpdateCancellationRequested:)
+                                                 name:NOTIFICATION_NAME__ENTITY_UPDATE_REQUEST_CANCELLED
+                                               object:nil];
+}
+
+// Called when timer ticks
+- (void)entityDataUpdateRequestedOnTick:(NSTimer *)timer {
+    // Log
+    NSLog (@"EntityDataUpdate onTick");
+    
+    NSDictionary *dict = [timer userInfo];
+    // Get the request data
+    EntityReqNotificationData *reqData = [dict valueForKey:@"EntityReqData"];
+
+    // Interpret and handle...
+    [self interpretAndHandleNotificationData:reqData];
+}
+
+// Called when a request has been made to update a specific entity
+- (void)entityDataUpdateRequested:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED]) {
+        // Log
+        NSLog (@"CommunicationMgr received an entity update request");
+        // Get the dictionary
+        NSDictionary *dict = [notification userInfo];
+              
+        // Get the request data
+        EntityReqNotificationData *reqData = (EntityReqNotificationData *)[dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        
+        if(reqData != nil) {
+            if(reqData.reqDelay > 0) {
+                // Delay...
+                [self performSelector:@selector(entityDataUpdateRequestedOnTick:) 
+                           withObject:nil
+                           afterDelay:reqData.reqDelay];
+            } else {
+                // Interpret and handle ASAP...
+                [self interpretAndHandleNotificationData:reqData];
+  
+            }
+            // Pass the device data to the method
+            //[self handleUpdatedDevices:[dict valueForKey:@"Devices"]]; 
+        } else {
+            NSLog(@"Empty request.");
+        }
+    }
+}
+
+// Called when a request for update has been cancelled
+- (void)entityDataUpdateCancellationRequested:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:NOTIFICATION_NAME__ENTITY_UPDATE_REQUEST_CANCELLED]) {
+        // Log
+        NSLog (@"CommunicationMgr received an entity update cancellation request");
+        // Get the dictionary
+        NSDictionary *dict = [notification userInfo];
+        // Get the request data
+        EntityReqNotificationData *reqData = [dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        
+        if(reqData == nil) {
+            // Pass the device data to the method
+            //[self handleUpdatedDevices:[dict valueForKey:@"Devices"]]; 
+        } else {
+            NSLog(@"Empty cancellation request.");
+        }
+    }  
+}
+
+- (void)interpretAndHandleNotificationData:(EntityReqNotificationData *) reqNotData {
+    switch (reqNotData.entityType) {
+        case ENTITY_TYPE__DEVICE:
+            NSLog(@"%@", @"Interpreted entity req notification as Device");
+            [self updateDevice:reqNotData.entityId];
+            break;
+            
+        case ENTITY_TYPE__DEVICE_GROUP:
+            NSLog(@"%@", @"Interpreted entity req notification as Device");
+            [self updateDeviceGroup:reqNotData.entityId];
+            break;
+            
+        default:
+            NSLog(@"%@", @"Missing or invalid entity type while interpreting entity req notification");
+            break;
+    }
+}
+
+/*******************************************************************************
+ Request methods
+ *******************************************************************************/
 
 - (void)requestEntityAction:(EntityActionRequest *)req {
     // Get the authentication data container
@@ -28,15 +147,26 @@ NSThread * mainUpdateThread;
     // Create a communication base    
     CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
     
-    COMMUNICATIONBASE måste prenumerera på en notification som tar hand om begäran om uppdatering av en en het
-    
     NSString *reqPath = [EntityRequestGenerator getDeviceActionRequestPath:req.entity 
                                                                           :req.actionId 
                                                                           :req.dimLevel];
 
     NSString *url = [[communicationBase getBaseUrl] stringByAppendingString:reqPath];
+
+    EntityReqNotificationData *reqNotificationData = [req toNotificationData];
+    NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
+                                                         forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
     
     [communicationBase sendRequest:url];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED
+                                      object:nil
+                                    userInfo:notificationData];
+    
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                      object:nil
+                                    userInfo:notificationData];
 }
 
 // Requests all entities to be updated
@@ -72,6 +202,19 @@ NSThread * mainUpdateThread;
     
     NSLog(@"Device request sent");
 }
+
+- (void)updateDevice:(NSInteger)deviceId {
+    NSString *log = [NSString stringWithFormat:@"Updating device with id %i", deviceId];
+    NSLog(@"%@", log);
+    
+    
+}
+
+- (void)updateDeviceGroup:(NSInteger)deviceGroupId {
+    NSString *log = [NSString stringWithFormat:@"Updating device group with id %i", deviceGroupId];
+    NSLog(@"%@", log);
+}
+
 
 - (void)updateDataSources {
     NSLog(@"Updating datasources");
