@@ -293,6 +293,8 @@
             r.dimLevel = 20;
             r.entity = device;
             
+            FÖLJ SPÅRET HÄR OCH LÄGG TILL DELAY PÅ UPPDATERING AV ENHET NÄR SIGNAL VÄL HAR SKICKATS
+            
             // Get the app delegte
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 

@@ -19,7 +19,7 @@
 @implementation EntityStore
 {
     NSMutableArray *deviceList;
-    NSMutableArray *deviceDirtyList;    
+    NSMutableDictionary *deviceDirtyList;    
 }
 
 @synthesize deviceListViewController;
@@ -27,7 +27,7 @@
 - (EntityStore *)init {
     self = [super init];
     
-    deviceDirtyList = [[NSMutableArray alloc] initWithCapacity:50];
+    deviceDirtyList = [[NSMutableDictionary alloc] initWithCapacity:50];
     
     [self addEntityObservers];
     
@@ -127,13 +127,7 @@
 
 // Flags a device as dirty or clean
 - (void)flagDeviceAsDirtyOrClean:(NSInteger)deviceId :(Boolean)isDirty {
-    NSNumber *number = [NSNumber numberWithInt:deviceId];
-    
-    [deviceDirtyList removeObjectIdenticalTo:number];
-
-    if(isDirty) {
-        [deviceDirtyList addObject:number];
-    }
+    [deviceDirtyList setObject:[NSNumber numberWithBool:isDirty] forKey:[NSNumber numberWithInt:deviceId]];
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter postNotificationName:NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED
@@ -162,17 +156,12 @@
     if([deviceDirtyList count] == 0)
         return false;
     
-    NSNumber *number = [NSNumber numberWithInt:deviceId];
+    NSNumber *number = [deviceDirtyList objectForKey:[NSNumber numberWithInt:deviceId]];
     
-    NSInteger f = [deviceDirtyList indexOfObjectIdenticalTo:number];
-    
-    if(f < 10) {
-        return true;
-    }
-    
-    Boolean notFound = ([deviceDirtyList indexOfObjectIdenticalTo:number] == NSNotFound);
-
-    return [deviceDirtyList indexOfObjectIdenticalTo:number] != NSNotFound;
+    if(number == nil)
+        return false;
+    else
+        return [number boolValue];
 }
 
 // Indicates whether a device group is dirty or not
