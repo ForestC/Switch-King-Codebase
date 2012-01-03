@@ -44,7 +44,9 @@
                                 </view>
                                 <color key="backgroundColor" red="0.90285326086956519" green="0.90285326086956519" blue="0.90285326086956519" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="deviceGroupInfo" destination="aJf-so-qLa" id="de5-CE-Zk1"/>
                                     <outlet property="deviceGroupName" destination="5u3-Ya-WlO" id="AKF-tg-6GC"/>
+                                    <outlet property="stateImage" destination="nAd-ER-Vky" id="98k-Ft-Sfn"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStd" id="G0W-pa-S9u" customClass="SKDeviceStdTableViewCell">
@@ -75,6 +77,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="deviceInfo" destination="Gl3-w0-Emr" id="oHK-AX-yMi"/>
+                                    <outlet property="deviceName" destination="Sq8-8o-oDd" id="AcH-6D-qDC"/>
+                                    <outlet property="stateImage" destination="3Uh-oa-cxU" id="z0x-7q-HZv"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStdDirty" id="Yu7-mo-agb" customClass="SKDeviceStdTableViewCell">
                                 <rect key="frame" x="0.0" y="135" width="320" height="44"/>
@@ -104,6 +111,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="deviceInfo" destination="Ok3-1c-DcF" id="tlB-Rp-FfI"/>
+                                    <outlet property="deviceName" destination="gVk-Ix-hPA" id="i1t-bY-lbH"/>
+                                    <outlet property="stateImage" destination="OYw-wJ-AMT" id="uLZ-0C-VP2"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStdHight" rowHeight="88" id="usP-P1-tyk" customClass="SKDeviceStdTableViewCell">
                                 <rect key="frame" x="0.0" y="179" width="320" height="88"/>
@@ -215,13 +227,17 @@
         <class className="SKDeviceGroupStdTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceGroupStdTableViewCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="deviceGroupInfo" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="deviceGroupName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stateImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="SKDeviceStdTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceStdTableViewCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="deviceInfo" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="deviceName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stateImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
     </classes>

@@ -51,8 +51,15 @@
     auth.pass = @"malaysia";
     
     [SettingsMgr setAuthenticationData:auth];
-        [SettingsMgr setTargetAddress:@"http://192.168.0.220"];
-        [SettingsMgr setTargetPort:8800];
+    [SettingsMgr setTargetAddress:@"http://192.168.0.220"];
+    [SettingsMgr setTargetPort:8800];
+    
+    auth.user = @"user";
+    auth.pass = @"pass";
+    
+    [SettingsMgr setAuthenticationData:auth];
+    [SettingsMgr setTargetAddress:@"http://www.switchking.se"];
+    [SettingsMgr setTargetPort:10800];
     
     // Create the entity store...
     entityStore = [[EntityStore alloc] init];
