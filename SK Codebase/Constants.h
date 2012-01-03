@@ -15,8 +15,29 @@
 #define XML_ELEMENT_NAME__DATASOURCE_ARRAY @"ArrayOfRESTDataSource"
 #define XML_ELEMENT_NAME__DATASOURCE @"RESTDataSource"
 
+/*******************************************************************************
+ Server IDs
+*******************************************************************************/
 #define ACTION_ID__TURN_ON 2
 #define ACTION_ID__TURN_OFF 1
+
+#define DEVICE_STATE_ID__ON 2
+#define DEVICE_STATE_ID__OFF 1
+
+#define DEVICE_MODE_ID__AUTO 2
+#define DEVICE_MODE_ID__MANUAL 1
+#define DEVICE_MODE_ID__SEMI_AUTO 3
+
+#define SCENARIO_ID__AUTO 1
+#define SCENARIO_ID__FROZEN 2
+
+#define DEVICE_MODE_TYPE__SCHEDULE_AND_RULE_DRIVEN @"ScheduleAndRuleDriven"
+#define DEVICE_MODE_TYPE__SCENARIO_DRIVEN @"ScenarioDriven"
+
+
+/*******************************************************************************
+ Server IDs
+ *******************************************************************************/
 
 #define ENTITY_TYPE__DEVICE 1
 #define ENTITY_TYPE__DEVICE_GROUP 2
