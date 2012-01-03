@@ -111,6 +111,10 @@
     
 }
 
+/*******************************************************************************
+ Dirtification
+ *******************************************************************************/
+
 // Flags an entity as dirty or clean
 - (void)flagEntityAsDirtyOrClean:(SKEntity *)entity :(Boolean)isDirty {
     if([entity isKindOfClass:[SKDevice class]]) {
@@ -168,5 +172,15 @@
 - (Boolean)deviceGroupIsDirty:(NSInteger)deviceGroupId {
     return true;
 }
+
+/*******************************************************************************
+ ???????
+ *******************************************************************************/
+
+// Gets the id of the active scenario
+- (NSInteger)getActiveScenarioId {
+    return -1;
+}
+
 
 @end

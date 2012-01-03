@@ -14,6 +14,8 @@
 #import "EntityRequestGenerator.h"
 #import "Constants.h"
 #import "AppDelegate.h"
+#import "ImagePathHelper.h"
+#import "TextHelper.h"
 
 @implementation DeviceListViewController
 
@@ -176,7 +178,7 @@
         }
         
         if (cell == nil) {
-            cell = [[SKDeviceGroupStdTableViewCell alloc] initWithFrame:CGRectZero];
+            cell = [[SKDeviceStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
 
     } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
@@ -189,7 +191,7 @@
         }
 
         if (cell == nil) {
-            cell = [[SKDeviceStdTableViewCell alloc] initWithFrame:CGRectZero];
+            cell = [[SKDeviceGroupStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
     } else {
         static NSString *cellIdentifier = @"Cell";
@@ -217,7 +219,7 @@
     SKEntity * entity = (SKEntity *)[groupsAndDevices objectAtIndex:indexPath.row];
     
     // Dequeue or create
-    UITableViewCell * cell = [self dequeueOrCreateTableViewCell:tableView :entity];
+    UITableViewCell *cell = [self dequeueOrCreateTableViewCell:tableView :entity];
     
     if(
        [entity isKindOfClass:[SKDevice class]] ||
@@ -259,11 +261,14 @@
         SKDevice *device = (SKDevice *)entity;
         
         [deviceCell.deviceName setText:device.Name];
+        [deviceCell.deviceInfo setText:[TextHelper getDeviceInfoText:device]];
+        deviceCell.stateImage.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDevice: device:@"DeviceList_"]];
     } else if([cell isKindOfClass:[SKDeviceGroupStdTableViewCell class]]) {
         SKDeviceGroupStdTableViewCell * deviceGroupCell = (SKDeviceGroupStdTableViewCell *)cell;
         SKDeviceGroup *deviceGroup = (SKDeviceGroup *)entity;
 
         [deviceGroupCell.deviceGroupName setText:deviceGroup.Name];
+        deviceGroupCell.stateImage.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDeviceGroup: deviceGroup:@"DeviceList_"]];
     }
 }
 

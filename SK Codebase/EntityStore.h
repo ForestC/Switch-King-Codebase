@@ -39,4 +39,7 @@
 // Indicates whether a device group is dirty or not
 - (Boolean)deviceGroupIsDirty:(NSInteger)deviceGroupId;
 
+// Gets the id of the active scenario
+- (NSInteger)getActiveScenarioId;
+
 @end
