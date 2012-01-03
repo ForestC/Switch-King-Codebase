@@ -11,6 +11,8 @@
 @implementation SKDeviceGroupStdTableViewCell
 
 @synthesize deviceGroupName;
+@synthesize deviceGroupInfo;
+@synthesize stateImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -10,6 +10,8 @@
 
 @interface SKDeviceStdTableViewCell : UITableViewCell
 
-@property(nonatomic,strong) IBOutlet UILabel * deviceName;
+@property(nonatomic,strong) IBOutlet UILabel *deviceName;
+@property(nonatomic,strong) IBOutlet UILabel *deviceInfo;
+@property(nonatomic,strong) IBOutlet UIImageView *stateImage;
 
 @end

@@ -10,6 +10,8 @@
 
 @interface SKDeviceGroupStdTableViewCell : UITableViewCell
 
-@property(nonatomic,strong) IBOutlet UILabel * deviceGroupName;
+@property(nonatomic,strong) IBOutlet UILabel *deviceGroupName;
+@property(nonatomic,strong) IBOutlet UILabel *deviceGroupInfo;
+@property(nonatomic,strong) IBOutlet UIImageView *stateImage;
 
 @end
