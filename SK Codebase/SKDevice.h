@@ -11,10 +11,20 @@
 
 @interface SKDevice : SKEntity {
     NSInteger GroupID;
-    NSString * GroupName;
+    NSString *GroupName;
+    NSInteger CurrentStateID;
+    NSInteger ModeID;
+    NSString *ModeType;
+    NSInteger CurrentDimLevel;
+    Boolean InSemiAutoMode;
 }
 
 @property (atomic, assign) NSInteger GroupID;
-@property (atomic, retain) NSString * GroupName;
+@property (atomic, retain) NSString *GroupName;
+@property (atomic, assign) NSInteger CurrentStateID;
+@property (atomic, assign) NSInteger ModeID;
+@property (atomic, retain) NSString *ModeType;
+@property (atomic, assign) NSInteger CurrentDimLevel;
+@property (atomic, assign) Boolean InSemiAutoMode;
 
 @end

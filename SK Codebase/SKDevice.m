@@ -12,5 +12,10 @@
 
 @synthesize GroupID;
 @synthesize GroupName;
+@synthesize CurrentStateID;
+@synthesize ModeID;
+@synthesize ModeType;
+@synthesize CurrentDimLevel;
+@synthesize InSemiAutoMode;
 
 @end
