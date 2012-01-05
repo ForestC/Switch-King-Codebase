@@ -27,6 +27,9 @@
 // Gets the complete url to the device list
 - (NSString *)getDeviceListUrl;
 
+// Gets the complete url to a single device
+- (NSString *)getDeviceUrl:(NSInteger)deviceId;
+
 // Gets the complete url to the data source list
 - (NSString *)getDataSourceListUrl;
 

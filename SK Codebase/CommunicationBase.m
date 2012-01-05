@@ -31,6 +31,8 @@
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:30.0];
     
+    NSLog(@"Sending request to %@", URL);
+    
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     if (connection) {
@@ -116,6 +118,12 @@
 - (NSString *)getDeviceListUrl {
     NSString * url = [self getBaseUrl];
     return [url stringByAppendingString:@"/devices"];
+}
+
+// Gets the complete url to a single device
+- (NSString *)getDeviceUrl:(NSInteger)deviceId {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:[NSString stringWithFormat:@"/devices/%d", deviceId]];
 }
 
 // Gets the complete url to the data source list

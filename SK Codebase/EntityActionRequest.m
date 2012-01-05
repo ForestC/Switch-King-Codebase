@@ -14,11 +14,29 @@
 
 @implementation EntityActionRequest
 
+@synthesize dimLevel;
+@synthesize entity;
+@synthesize actionId;
+@synthesize reqActionDelay;
 
-- (EntityReqNotificationData *)toNotificationData {
-    EntityReqNotificationData *data = [[EntityReqNotificationData alloc] init];
+// Creates a device action request for a device by using the supplied params
++ (EntityActionRequest *)createByDeviceAction:(SKDevice *)device:(NSInteger) actionId:(NSInteger) dimLevel:(NSTimeInterval) delay {
+    
+    EntityActionRequest *r = [EntityActionRequest alloc];
+    
+    r.actionId = actionId;
+    r.dimLevel = dimLevel;
+    r.entity = device;
+    r.reqActionDelay = delay;
+    
+    return r;
+}
+
+- (EntityHttpReqNotificationData *)toNotificationData {
+    EntityHttpReqNotificationData *data = [[EntityHttpReqNotificationData alloc] init];
     
     data.entityId = self.entity.ID;
+    data.reqDelay = self.reqActionDelay;
     
     if([self.entity isKindOfClass:[SKDevice class]]) {
         data.entityType = ENTITY_TYPE__DEVICE;
@@ -30,9 +48,5 @@
     
     return data;
 }    
-
-@synthesize dimLevel;
-@synthesize entity;
-@synthesize actionId;
 
 @end
