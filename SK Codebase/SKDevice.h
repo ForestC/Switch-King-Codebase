@@ -16,7 +16,22 @@
     NSInteger ModeID;
     NSString *ModeType;
     NSInteger CurrentDimLevel;
-    Boolean InSemiAutoMode;
+    NSString *InSemiAutoMode;
+    NSString *Enabled;
+    
+    NSString * AutoSynchronizeAllowed;
+    NSString *Description;
+    NSString *DeviceCode;
+    NSString *DisabledByServer;
+    NSInteger ManualTargetDimLevel;
+    NSInteger ManualTargetStateID;
+    NSString *NativeID;
+    NSString *SupportsAbsoluteDimLvl;
+    NSString *TypeCategory;
+    NSInteger TypeID;
+    NSString *TypeModel;
+    NSString *TypeName;
+    NSString *TypeProtocol;
 }
 
 @property (atomic, assign) NSInteger GroupID;
@@ -25,6 +40,21 @@
 @property (atomic, assign) NSInteger ModeID;
 @property (atomic, retain) NSString *ModeType;
 @property (atomic, assign) NSInteger CurrentDimLevel;
-@property (atomic, assign) Boolean InSemiAutoMode;
+@property (atomic, retain) NSString *InSemiAutoMode;
+@property (atomic, retain) NSString *Enabled;
+
+@property (atomic, retain) NSString *AutoSynchronizeAllowed;
+@property (atomic, retain) NSString *Description;
+@property (atomic, retain) NSString *DeviceCode;
+@property (atomic, retain) NSString *DisabledByServer;
+@property (atomic, assign) NSInteger ManualTargetDimLevel;
+@property (atomic, assign) NSInteger ManualTargetStateID;
+@property (atomic, retain) NSString *NativeID;
+@property (atomic, retain) NSString *SupportsAbsoluteDimLvl;
+@property (atomic, retain) NSString *TypeCategory;
+@property (atomic, assign) NSInteger TypeID;
+@property (atomic, retain) NSString *TypeModel;
+@property (atomic, retain) NSString *TypeName;
+@property (atomic, retain) NSString *TypeProtocol;
 
 @end

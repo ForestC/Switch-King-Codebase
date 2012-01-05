@@ -13,7 +13,7 @@
 #import "SKDeviceGroup.h"
 #import "SKDataSource.h"
 #import "DeviceListViewController.h"
-#import "EntityReqNotificationData.h"
+#import "EntityHttpReqNotificationData.h"
 #include "Constants.h"
 
 @implementation EntityStore
@@ -58,7 +58,7 @@
         if([dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY] != nil) {
             
             // Get the request data
-            EntityReqNotificationData *reqData = (EntityReqNotificationData *)[dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+            EntityHttpReqNotificationData *reqData = (EntityHttpReqNotificationData *)[dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
             
             switch (reqData.entityType) {
                 case ENTITY_TYPE__DEVICE:
@@ -82,7 +82,7 @@
 
 - (void)entityUpdated:(NSObject *) src : (SKEntity *) entity {
     if([entity isKindOfClass:[SKDevice class]]) {
-        
+        [self deviceUpdated:(SKDevice *)entity];
     }
     
     NSLog(@"Updated id value :%i", entity.ID);
@@ -92,6 +92,37 @@
     if([entityClass class] == [SKDevice class]){
         [self devicesUpdated:collection];
     }    
+}
+
+- (void)deviceUpdated:(SKDevice *)device {
+    if(deviceList.count == 0) {
+        // If the device list is empty, create a new device...
+        [self devicesUpdated:[NSMutableArray arrayWithObject:device]];
+    } else {
+        NSUInteger idx = [deviceList indexOfObjectPassingTest:
+                          ^ BOOL (SKDevice* dev, NSUInteger idx, BOOL *stop)
+                          {
+                              return dev.ID == device.ID;
+                          }];
+        
+        if(idx == NSNotFound) {
+            NSLog(@"%@", @"Device not found");
+        } else {
+            [deviceList replaceObjectAtIndex:idx withObject:device];
+            NSLog(@"%@", @"FOUND");
+            
+            // Indicate that this device is now clean
+            [self flagDeviceAsDirtyOrClean:device.ID :false];
+            
+            // Send a dictionary with devices to the receivers...
+            NSDictionary *notificationData = [NSDictionary dictionaryWithObject:deviceList
+                                                                         forKey:@"Devices"];
+            
+            NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+            [notificationCenter postNotificationName:NOTIFICATION_NAME__DEVICES_UPDATED
+                                              object:nil
+                                            userInfo:notificationData];        }        
+    }
 }
 
 - (void)devicesUpdated:(NSMutableArray *)collection {

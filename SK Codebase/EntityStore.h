@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SKDeviceStoreDelegate.h"
 #import "DeviceListViewController.h"
+#import "SKDevice.h"
 
 @interface EntityStore : NSObject <SKDeviceStoreDelegate> {
     
@@ -18,6 +19,8 @@
 
 // Adds entity observers
 - (void)addEntityObservers;
+
+- (void)deviceUpdated:(SKDevice *) device;
 
 - (void)devicesUpdated:(NSMutableArray *) collection;
 

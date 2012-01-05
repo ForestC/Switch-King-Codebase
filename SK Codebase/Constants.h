@@ -9,15 +9,23 @@
 #ifndef SK_Codebase_Constants_h
 #define SK_Codebase_Constants_h
 
+/*******************************************************************************
+ Xml tags for REST communication
+ *******************************************************************************/
+
 #define XML_ELEMENT_NAME__DEVICE_ARRAY @"ArrayOfRESTDevice"
 #define XML_ELEMENT_NAME__DEVICE @"RESTDevice"
 
 #define XML_ELEMENT_NAME__DATASOURCE_ARRAY @"ArrayOfRESTDataSource"
 #define XML_ELEMENT_NAME__DATASOURCE @"RESTDataSource"
 
+#define XML_VALUE__TRUE @"true"
+#define XML_VALUE__FALSE @"false"
+
 /*******************************************************************************
- Server IDs
+ Server IDs (Constants)
 *******************************************************************************/
+
 #define ACTION_ID__TURN_ON 2
 #define ACTION_ID__TURN_OFF 1
 
@@ -34,22 +42,24 @@
 #define DEVICE_MODE_TYPE__SCHEDULE_AND_RULE_DRIVEN @"ScheduleAndRuleDriven"
 #define DEVICE_MODE_TYPE__SCENARIO_DRIVEN @"ScenarioDriven"
 
-
 /*******************************************************************************
- Server IDs
+ Internal type definitions
  *******************************************************************************/
 
 #define ENTITY_TYPE__DEVICE 1
 #define ENTITY_TYPE__DEVICE_GROUP 2
 #define ENTITY_TYPE__DATA_SOURCE 3
 
-#define ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY @"EntityReqData"
-
+/*******************************************************************************
+ Notification names
+ *******************************************************************************/
 
 #define NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING @"EntityDirtified"
 #define NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED @"EntityUpdateRequested"
 #define NOTIFICATION_NAME__ENTITY_UPDATE_REQUEST_CANCELLED @"EntityUpdateReqCancelled"
 #define NOTIFICATION_NAME__DEVICES_UPDATED @"DevicesUpdated"
 #define NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED @"DeviceDirtificationUpdated"
+
+#define ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY @"EntityReqData"
 
 #endif

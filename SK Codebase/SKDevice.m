@@ -17,5 +17,20 @@
 @synthesize ModeType;
 @synthesize CurrentDimLevel;
 @synthesize InSemiAutoMode;
+@synthesize Enabled;
+
+@synthesize AutoSynchronizeAllowed;
+@synthesize Description;
+@synthesize DeviceCode;
+@synthesize DisabledByServer;
+@synthesize ManualTargetDimLevel;
+@synthesize ManualTargetStateID;
+@synthesize NativeID;
+@synthesize SupportsAbsoluteDimLvl;
+@synthesize TypeCategory;
+@synthesize TypeID;
+@synthesize TypeModel;
+@synthesize TypeName;
+@synthesize TypeProtocol;
 
 @end

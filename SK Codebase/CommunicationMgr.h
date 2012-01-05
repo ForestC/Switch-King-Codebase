@@ -11,7 +11,7 @@
 #import "CommunicationBase.h"
 #import "DataReceivedDelegate.h"
 #import "EntityActionRequest.h"
-#import "EntityReqNotificationData.h"
+#import "EntityHttpReqNotificationData.h"
 
 @interface CommunicationMgr : NSObject {
     AuthenticationDataContainer *authData;
@@ -21,7 +21,7 @@
 
 - (void)addEntityObservers;
 
-- (void)interpretAndHandleNotificationData:(EntityReqNotificationData *) reqNotData;
+- (void)interpretAndHandleNotificationData:(EntityHttpReqNotificationData *) reqNotData;
 
 - (void)requestEntityAction:(EntityActionRequest *)req;
 

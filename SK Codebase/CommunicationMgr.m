@@ -15,7 +15,7 @@
 #import "SettingsMgr.h"
 #import "AppDelegate.h"
 #import "EntityRequestGenerator.h"
-#import "EntityReqNotificationData.h"
+#import "EntityHttpReqNotificationData.h"
 #include "Constants.h"
 
 @implementation CommunicationMgr
@@ -61,13 +61,20 @@ NSThread * mainUpdateThread;
     
     NSDictionary *dict = [timer userInfo];
     // Get the request data
-    EntityReqNotificationData *reqData = [dict valueForKey:@"EntityReqData"];
+    EntityHttpReqNotificationData *reqData = [dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
 
     // Interpret and handle...
     [self interpretAndHandleNotificationData:reqData];
 }
 
-// Called when a request has been made to update a specific entity
+// Called when a request has been made to update a specific entity by fetching
+// data from the server.
+// The request can either be
+// 1) A request to update the device NOW
+// or
+// 2) A request to update the device after a specific amount of time.
+//    When the specified amount of time has passed, a trigger is triggered
+//    which causes the app to fetch data from server.
 - (void)entityDataUpdateRequested:(NSNotification *) notification
 {
     if ([[notification name] isEqualToString:NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED]) {
@@ -77,14 +84,21 @@ NSThread * mainUpdateThread;
         NSDictionary *dict = [notification userInfo];
               
         // Get the request data
-        EntityReqNotificationData *reqData = (EntityReqNotificationData *)[dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        EntityHttpReqNotificationData *reqData = (EntityHttpReqNotificationData *)[dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
         
         if(reqData != nil) {
             if(reqData.reqDelay > 0) {
                 // Delay...
-                [self performSelector:@selector(entityDataUpdateRequestedOnTick:) 
-                           withObject:nil
-                           afterDelay:reqData.reqDelay];
+//                [self performSelector:@selector(entityDataUpdateRequestedOnTick:) 
+//                           withObject:nil
+//                           afterDelay:reqData.reqDelay];
+//                
+//                
+                [NSTimer scheduledTimerWithTimeInterval:reqData.reqDelay
+                                                 target:self
+                                               selector:@selector(entityDataUpdateRequestedOnTick:)
+                                               userInfo:dict
+                                                repeats:NO];
             } else {
                 // Interpret and handle ASAP...
                 [self interpretAndHandleNotificationData:reqData];
@@ -107,7 +121,7 @@ NSThread * mainUpdateThread;
         // Get the dictionary
         NSDictionary *dict = [notification userInfo];
         // Get the request data
-        EntityReqNotificationData *reqData = [dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        EntityHttpReqNotificationData *reqData = [dict valueForKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
         
         if(reqData == nil) {
             // Pass the device data to the method
@@ -118,7 +132,7 @@ NSThread * mainUpdateThread;
     }  
 }
 
-- (void)interpretAndHandleNotificationData:(EntityReqNotificationData *) reqNotData {
+- (void)interpretAndHandleNotificationData:(EntityHttpReqNotificationData *) reqNotData {
     switch (reqNotData.entityType) {
         case ENTITY_TYPE__DEVICE:
             NSLog(@"%@", @"Interpreted entity req notification as Device");
@@ -142,7 +156,7 @@ NSThread * mainUpdateThread;
 
 - (void)requestEntityAction:(EntityActionRequest *)req {
     // Get the authentication data container
-    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    AuthenticationDataContainer *auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
     CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
@@ -153,7 +167,7 @@ NSThread * mainUpdateThread;
 
     NSString *url = [[communicationBase getBaseUrl] stringByAppendingString:reqPath];
 
-    EntityReqNotificationData *reqNotificationData = [req toNotificationData];
+    EntityHttpReqNotificationData *reqNotificationData = [req toNotificationData];
     NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
                                                          forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
     
@@ -200,14 +214,31 @@ NSThread * mainUpdateThread;
     // Send the request
     [communicationBase sendRequest:[communicationBase getDeviceListUrl]];
     
-    NSLog(@"Device request sent");
+    NSLog(@"Request for all devices sent");
 }
 
 - (void)updateDevice:(NSInteger)deviceId {
     NSString *log = [NSString stringWithFormat:@"Updating device with id %i", deviceId];
     NSLog(@"%@", log);
     
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Get the authentication data container
+    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
     
+    // Create a communication base    
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    
+    // Create a receiver and assign an entity store to the receiver
+    SKDeviceDataReceiver *receiver = [[SKDeviceDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
+    
+    // Set the receiver delegate
+    [communicationBase setReceiverDelegate:receiver];
+    
+    // Send the request
+    [communicationBase sendRequest:[communicationBase getDeviceUrl:deviceId]];
+    
+    NSLog(@"Device request sent");
 }
 
 - (void)updateDeviceGroup:(NSInteger)deviceGroupId {
