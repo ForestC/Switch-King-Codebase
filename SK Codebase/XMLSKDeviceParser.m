@@ -59,7 +59,7 @@
     } else if([elementName isEqualToString:XML_ELEMENT_NAME__DEVICE]) {
         if(!expectsCollection) {
             if(entityStore != nil) {
-                [entityStore entityUpdated:self :device];
+               [entityStore entityUpdated:self :device];
             }
         } else {
             [deviceList addObject:device];
@@ -69,11 +69,17 @@
     }
     else {
         @try {
-            NSString *unescaped = [currentElementValue stringByDecodingHTMLEntities];
-            [device setValue:unescaped forKey:elementName];
+//            if([currentElementValue isEqualToString:XML_VALUE__TRUE]) {
+//                [device setValue:@"YES" forKey:elementName];                
+//            } else if([currentElementValue isEqualToString:XML_VALUE__FALSE]) {
+//                [device setValue:@"NO" forKey:elementName];
+//            } else {
+                NSString *unescaped = [currentElementValue stringByDecodingHTMLEntities];
+                [device setValue:unescaped forKey:elementName];
+           // }
         }
         @catch (NSException * e) {
-            //NSLog(@"Invalid key");
+            NSLog(@"Invalid key: %@", elementName);
         }
     }
                 
