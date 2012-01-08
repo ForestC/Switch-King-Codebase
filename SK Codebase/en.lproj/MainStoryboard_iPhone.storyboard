@@ -10,7 +10,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHX-Pg-z70" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="gPT-4c-seA" customClass="DeviceListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="gRX-dw-xu0">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -74,10 +74,20 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Swipe info" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="fZ8-B6-79r">
+                                            <rect key="frame" x="0.0" y="3" width="300" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
+                                    <outlet property="actionInfo" destination="fZ8-B6-79r" id="Xia-h8-V3a"/>
                                     <outlet property="deviceInfo" destination="Gl3-w0-Emr" id="oHK-AX-yMi"/>
                                     <outlet property="deviceName" destination="Sq8-8o-oDd" id="AcH-6D-qDC"/>
                                     <outlet property="stateImage" destination="3Uh-oa-cxU" id="z0x-7q-HZv"/>
@@ -220,27 +230,6 @@
         <image name="DeviceList_On.png" width="44" height="44"/>
         <image name="Tab_Devices.png" width="48" height="32"/>
     </resources>
-    <classes>
-        <class className="DeviceListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceListViewController.h"/>
-        </class>
-        <class className="SKDeviceGroupStdTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceGroupStdTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="deviceGroupInfo" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="deviceGroupName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stateImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SKDeviceStdTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceStdTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="deviceInfo" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="deviceName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stateImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
