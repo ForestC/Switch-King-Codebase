@@ -213,5 +213,19 @@
     return -1;
 }
 
+- (SKDevice *)getDeviceById:(NSInteger)deviceId {
+    NSUInteger idx = [deviceList indexOfObjectPassingTest:
+                      ^ BOOL (SKDevice* dev, NSUInteger idx, BOOL *stop)
+                      {
+                          return dev.ID == deviceId;
+                      }];
+    
+    if(idx == NSNotFound) {
+        NSLog(@"%@", @"Device not found");
+        return nil;
+    } else {
+        return [deviceList objectAtIndex:idx];
+    }
+}
 
 @end

@@ -45,4 +45,6 @@
 // Gets the id of the active scenario
 - (NSInteger)getActiveScenarioId;
 
+- (SKDevice *)getDeviceById:(NSInteger)deviceId;
+
 @end
