@@ -157,4 +157,16 @@
     [defaults synchronize];
 }
 
+// Gets the number of seconds to wait before requesting update of device state
+// after an action has been requested.
++ (NSTimeInterval)getDeviceUpdateDelay {
+    return 2;
+}
+
+// Gets the number of seconds to wait before requesting update of device group state
+// after an action has been requested.
++ (NSTimeInterval)getDeviceGroupUpdateDelay {
+    return 5;
+}
+
 @end

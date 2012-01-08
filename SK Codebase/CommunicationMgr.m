@@ -17,6 +17,9 @@
 #import "EntityRequestGenerator.h"
 #import "EntityHttpReqNotificationData.h"
 #include "Constants.h"
+#import "NotificationHelper.h"
+#import "SKDevice.h"
+#import "SKDeviceGroup.h"
 
 @implementation CommunicationMgr
 
@@ -89,11 +92,6 @@ NSThread * mainUpdateThread;
         if(reqData != nil) {
             if(reqData.reqDelay > 0) {
                 // Delay...
-//                [self performSelector:@selector(entityDataUpdateRequestedOnTick:) 
-//                           withObject:nil
-//                           afterDelay:reqData.reqDelay];
-//                
-//                
                 [NSTimer scheduledTimerWithTimeInterval:reqData.reqDelay
                                                  target:self
                                                selector:@selector(entityDataUpdateRequestedOnTick:)
@@ -168,6 +166,13 @@ NSThread * mainUpdateThread;
     NSString *url = [[communicationBase getBaseUrl] stringByAppendingString:reqPath];
 
     EntityHttpReqNotificationData *reqNotificationData = [req toNotificationData];
+    
+    if([req.entity isKindOfClass:[SKDevice class]]) {        
+        reqNotificationData.reqDelay = [SettingsMgr getDeviceUpdateDelay]; 
+    } else if([req.entity isKindOfClass:[SKDeviceGroup class]]) {        
+        reqNotificationData.reqDelay = [SettingsMgr getDeviceGroupUpdateDelay]; 
+    }
+    
     NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
                                                          forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
     

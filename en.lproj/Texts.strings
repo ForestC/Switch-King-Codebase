@@ -5,12 +5,12 @@
 "Either the server couldn't be contacted or there was an error during communication. Additional information: {0}" = "Either the server couldn't be contacted or there was an error during communication. Additional information: {0}";
 "Off" = "Off";
 "On" = "On";
-"Dimmed %i%" = "Dimmed %i%";
+"Dimmed %i%%" = "Dimmed %i%%";
 " (manual mode)" = " (manual mode)";
 " (semi automatic mode)" = " (semi automatic mode)";
 " (by schedule and rule)" = " (by schedule and rule)";
 " (by scenario)" = " (by scenario)";
-"Dim {0}%" = "Dim {0}%";
+"Dim %i%%" = "Dim %i%%";
 "(all by schedule)" = "(all by schedule)";
 "(all frozen)" = "(all frozen)";
 "Address" = "Address";
@@ -35,7 +35,7 @@
 "Specify your unique server ID if you are using Switch King's central hub when connecting to your server. Otherwise - leave blank." = "Leave this field blank if you are connecting directly to your own server without using Switch King's central server.";
 "No network connection or unreachable host ({0})" = "Server could not be reached. Check the connection and that the server address ({0}) is correct.";
 "Scenarios has not yet been loaded. Check your network connection." = "Scenarios has not yet been loaded. Check your network connection.";
-"Dim to {0}%" = "Dim to {0}%";
+"Dim to %i%" = "Dim to %i%%";
 "Turn on" = "Turn on";
 "Turn off" = "Turn off";
 "Bad, invalid value" = "Bad, invalid value";

@@ -3,14 +3,14 @@
 "Loading..." = "Laddar...";
 "Error loading" = "Fel vid hämtning";
 "Either the server couldn't be contacted or there was an error during communication. Additional information: {0}" = "Antingen kunde servern inte kontaktas eller uppstod ett fel vid hämtning av information.\n\nYtterligare information:\n{0}";
-"Off" = "Av";
+"Offa" = "Av";
 "On" = "På";
-"Dimmed %i%" = "Dimmad %i%";
+"Dimmed %i%%" = "Dimmad %i%%";
 " (manual mode)" = " (manuellt läge)";
 " (semi automatic mode)" = " (semi-automatiskt läge)";
 " (by schedule and rule)" = " (enligt schema och regel)";
 " (by scenario)" = " (enligt scenario)";
-"Dim {0}%" = "Dim {0}%";
+"Dim %i%%" = "Dim %i%%";
 "(all by schedule)" = "(alla enligt schema)";
 "(all frozen)" = "(alla stoppade)";
 "Address" = "Adress";
@@ -35,7 +35,7 @@
 "Specify your unique server ID if you are using Switch King's central hub when connecting to your server. Otherwise - leave blank." = "Lämna detta fält blankt om du ansluter till din egen server direkt utan att gå via Switch Kings centrala server.";
 "No network connection or unreachable host ({0})" = "Servern kunde inte nås. Kontrollera att nätverksanslutning finns och att serverns adress ({0}) är korrekt.";
 "Scenarios has not yet been loaded. Check your network connection." = "Inga scenarion har hämtats från servern. Kontrollera din nätverksanslutning.";
-"Dim to {0}%" = "Dimma till {0}%";
+"Dim to %i%%" = "Dimma till %i%%";
 "Turn on" = "Slå på";
 "Turn off" = "Slå av";
 "Bad, invalid value" = "Dåligt, ogiltigt värde";

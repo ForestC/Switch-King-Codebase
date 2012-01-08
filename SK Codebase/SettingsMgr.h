@@ -41,4 +41,13 @@
 // Sets the authentication data
 + (void)setAuthenticationData:(AuthenticationDataContainer *) data;
 
+
+// Gets the number of seconds to wait before requesting update of device state
+// after an action has been requested.
++ (NSTimeInterval)getDeviceUpdateDelay;
+
+// Gets the number of seconds to wait before requesting update of device group state
+// after an action has been requested.
++ (NSTimeInterval)getDeviceGroupUpdateDelay;
+
 @end

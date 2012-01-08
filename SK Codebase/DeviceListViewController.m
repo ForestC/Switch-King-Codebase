@@ -21,6 +21,7 @@
 
 @synthesize groups;
 @synthesize devices;
+@synthesize groupsAndDevices;
 //@synthesize deviceGroupCellStd;
 
 - (id)init
@@ -163,13 +164,13 @@
  TableView Layout
 *******************************************************************************/
 
-- (UITableViewCell *) dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)entity {
+- (UITableViewCell *) dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)cellEntity {
     UITableViewCell *cell;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     EntityStore *entityStore = appDelegate.entityStore;
     
-    if([entity isKindOfClass:[SKDevice class]]) {
-        if([entityStore deviceIsDirty:entity.ID]) {
+    if([cellEntity isKindOfClass:[SKDevice class]]) {
+        if([entityStore deviceIsDirty:cellEntity.ID]) {
             static NSString *cellIdentifier = @"DeviceCellStdDirty";
             cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         } else {
@@ -180,9 +181,11 @@
         if (cell == nil) {
             cell = [[SKDeviceStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
-
-    } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
-        if([entityStore deviceIsDirty:entity.ID]) {
+        
+        ((SKDeviceStdTableViewCell*)cell).tableViewController = self;
+        ((SKDeviceStdTableViewCell*)cell).entity = cellEntity;
+    } else if([cellEntity isKindOfClass:[SKDeviceGroup class]]) {
+        if([entityStore deviceIsDirty:cellEntity.ID]) {
             static NSString *cellIdentifier = @"DeviceGroupCellStdDirty";            
             cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         } else {
@@ -193,6 +196,8 @@
         if (cell == nil) {
             cell = [[SKDeviceGroupStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
+        
+        ((SKDeviceGroupStdTableViewCell*)cell).tableViewController = self;        
     } else {
         static NSString *cellIdentifier = @"Cell";
         
@@ -233,7 +238,7 @@
     [self setTableViewCellData:cell :entity];
     
     //cell.deviceGroupName.text = entity.Name;
-    NSLog(@"Returning cell");
+    //NSLog(@"Returning cell");
     return cell;
 
     
@@ -254,18 +259,19 @@
 //    return cell;
 }
 
+
 // Sets the table view cell data depending on the type of cell and entity
-- (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)entity {
+- (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)cellEntity {
     if([cell isKindOfClass:[SKDeviceStdTableViewCell class]]) {
         SKDeviceStdTableViewCell * deviceCell = (SKDeviceStdTableViewCell *)cell;
-        SKDevice *device = (SKDevice *)entity;
+        SKDevice *device = (SKDevice *)cellEntity;
         
         [deviceCell.deviceName setText:device.Name];
         [deviceCell.deviceInfo setText:[TextHelper getDeviceInfoText:device]];
         deviceCell.stateImage.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDevice: device:@"DeviceList_"]];
     } else if([cell isKindOfClass:[SKDeviceGroupStdTableViewCell class]]) {
         SKDeviceGroupStdTableViewCell * deviceGroupCell = (SKDeviceGroupStdTableViewCell *)cell;
-        SKDeviceGroup *deviceGroup = (SKDeviceGroup *)entity;
+        SKDeviceGroup *deviceGroup = (SKDeviceGroup *)cellEntity;
 
         [deviceGroupCell.deviceGroupName setText:deviceGroup.Name];
         deviceGroupCell.stateImage.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDeviceGroup: deviceGroup:@"DeviceList_"]];

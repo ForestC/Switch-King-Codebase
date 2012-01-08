@@ -12,12 +12,13 @@
 #import "SKEntity.h"
 
 @interface DeviceListViewController : UITableViewController {
-    NSMutableArray * groupsAndDevices;
+    //NSMutableArray * groupsAndDevices;
     //IBOutlet SKDeviceGroupStdTableViewCell * deviceGroupCellStd;
 }
 
-@property (atomic, retain) NSMutableArray * devices;
-@property (atomic, retain) NSMutableArray * groups;
+@property (atomic, retain) NSMutableArray *devices;
+@property (atomic, retain) NSMutableArray *groups;
+@property (atomic, retain) NSMutableArray *groupsAndDevices;
 
 //@property (nonatomic, strong) IBOutlet SKDeviceGroupStdTableViewCell * deviceGroupCellStd;
 //@property (nonatomic, retain) SKDeviceGroupStdTableViewCell * deviceGroupCellStd;
@@ -32,9 +33,9 @@
 
 - (void) createDeviceGroupStructure:(NSMutableArray *) deviceData;
 
-- (UITableViewCell *) dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)entity;
+- (UITableViewCell *) dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)cellEntity;
 
 // Sets the table view cell data depending on the type of cell and entity
-- (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)entity;
+- (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)cellEntity;
 
 @end
