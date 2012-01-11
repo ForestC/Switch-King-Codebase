@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 #import "DataReceivedDelegate.h"
 #import "SettingsMgr.h"
+#import "AppDelegate.h"
 
 @implementation CommunicationBase
 
@@ -25,6 +26,9 @@
 }
 
 -(void)sendRequest:(NSString *) url{
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     // Setup NSURLConnection
     NSURL *URL = [NSURL URLWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL
@@ -34,6 +38,8 @@
     NSLog(@"Sending request to %@", URL);
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    [appDelegate requestNetworkActivityIndicator];
     
     if (connection) {
         // Create the NSMutableData to hold the received data.
@@ -85,18 +91,26 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
+    
+    [appDelegate releaseNetworkActivityIndicator];
     
     [receiverDelegate dataReceived:self :receivedData];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+
+    [appDelegate releaseNetworkActivityIndicator];
 }
 
 // Gets the base url
