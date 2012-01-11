@@ -109,7 +109,6 @@
             NSLog(@"%@", @"Device not found");
         } else {
             [deviceList replaceObjectAtIndex:idx withObject:device];
-            NSLog(@"%@", @"FOUND");
             
             // Indicate that this device is now clean
             [self flagDeviceAsDirtyOrClean:device.ID :false];
@@ -201,7 +200,7 @@
 
 // Indicates whether a device group is dirty or not
 - (Boolean)deviceGroupIsDirty:(NSInteger)deviceGroupId {
-    return true;
+    return false;
 }
 
 /*******************************************************************************

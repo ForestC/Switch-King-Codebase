@@ -171,11 +171,9 @@
     
     if([cellEntity isKindOfClass:[SKDevice class]]) {
         if([entityStore deviceIsDirty:cellEntity.ID]) {
-            static NSString *cellIdentifier = @"DeviceCellStdDirty";
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__DEVICE_CELL_STD_DIRTY];
         } else {
-            static NSString *cellIdentifier = @"DeviceCellStd";
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__DEVICE_CELL_STD];
         }
         
         if (cell == nil) {
@@ -185,12 +183,10 @@
         ((SKDeviceStdTableViewCell*)cell).tableViewController = self;
         ((SKDeviceStdTableViewCell*)cell).entity = cellEntity;
     } else if([cellEntity isKindOfClass:[SKDeviceGroup class]]) {
-        if([entityStore deviceIsDirty:cellEntity.ID]) {
-            static NSString *cellIdentifier = @"DeviceGroupCellStdDirty";            
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if([entityStore deviceGroupIsDirty:cellEntity.ID]) {
+            cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY];
         } else {
-            static NSString *cellIdentifier = @"DeviceGroupCellStd";            
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD];
         }
 
         if (cell == nil) {
@@ -266,15 +262,15 @@
         SKDeviceStdTableViewCell * deviceCell = (SKDeviceStdTableViewCell *)cell;
         SKDevice *device = (SKDevice *)cellEntity;
         
-        [deviceCell.deviceName setText:device.Name];
-        [deviceCell.deviceInfo setText:[TextHelper getDeviceInfoText:device]];
-        deviceCell.stateImage.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDevice: device:@"DeviceList_"]];
+        [deviceCell.entityNameLabel setText:device.Name];
+        [deviceCell.entityInfoLabel setText:[TextHelper getDeviceInfoText:device]];
+        deviceCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDevice: device:@"DeviceList_"]];
     } else if([cell isKindOfClass:[SKDeviceGroupStdTableViewCell class]]) {
         SKDeviceGroupStdTableViewCell * deviceGroupCell = (SKDeviceGroupStdTableViewCell *)cell;
         SKDeviceGroup *deviceGroup = (SKDeviceGroup *)cellEntity;
 
-        [deviceGroupCell.deviceGroupName setText:deviceGroup.Name];
-        deviceGroupCell.stateImage.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDeviceGroup: deviceGroup:@"DeviceList_"]];
+        [deviceGroupCell.entityNameLabel setText:deviceGroup.Name];
+        deviceGroupCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDeviceGroup: deviceGroup:@"DeviceList_"]];
     }
 }
 

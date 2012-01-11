@@ -11,13 +11,22 @@
 #import "CommunicationMgr.h"
 #import "EntityActionRequestDelegate.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, EntityActionRequestDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, EntityActionRequestDelegate> {
+    NSInteger netActivityReqs;
+}
 
 // Configures the entity view controllers
 - (void)configureEntityViewControllers;
 
 // Fired when an entity action request is fired.
 - (void)entityActionRequestFired:(NSObject *) src : (EntityActionRequest *) req;
+
+// Requests display of network activity indicator
+- (void)requestNetworkActivityIndicator;
+
+// Requests hiding of network activity indicator
+- (void)releaseNetworkActivityIndicator;
+
 
 @property (strong, nonatomic) UIWindow *window;
 @property (retain) EntityStore *entityStore;

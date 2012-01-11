@@ -135,4 +135,31 @@
      */
 }
 
+/*******************************************************************************
+ Network Activity Indicator
+ *******************************************************************************/
+
+// Requests display of network activity indicator
+- (void)requestNetworkActivityIndicator {
+	UIApplication* app = [UIApplication sharedApplication];
+	app.networkActivityIndicatorVisible = YES;
+    
+	self->netActivityReqs++;
+}
+
+// Requests hiding of network activity indicator
+- (void)releaseNetworkActivityIndicator {
+    
+	self->netActivityReqs--;
+	if(self->netActivityReqs <= 0)
+	{
+		UIApplication* app = [UIApplication sharedApplication];
+		app.networkActivityIndicatorVisible = NO;
+	}
+    
+	//failsafe
+	if(self->netActivityReqs < 0)
+		self->netActivityReqs = 0;
+}
+
 @end
