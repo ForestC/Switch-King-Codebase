@@ -7,16 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKDeviceBaseStdTableViewCell.h"
 
-@interface SKDeviceGroupStdTableViewCell : UITableViewCell <UIGestureRecognizerDelegate>
-
-@property(nonatomic,strong) IBOutlet UILabel *deviceGroupName;
-@property(nonatomic,strong) IBOutlet UILabel *deviceGroupInfo;
-@property(nonatomic,strong) IBOutlet UIImageView *stateImage;
-@property(nonatomic,strong) UITableViewController *tableViewController;
-
-- (void)initGestureRecognizers;
-- (void)cellWasSwipedLeft;
-- (void)cellWasSwipedRight;
+@interface SKDeviceGroupStdTableViewCell : SKDeviceBaseStdTableViewCell
 
 @end
