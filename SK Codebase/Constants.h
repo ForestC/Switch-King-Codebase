@@ -9,6 +9,11 @@
 #ifndef SK_Codebase_Constants_h
 #define SK_Codebase_Constants_h
 
+#define REUSE_IDENTIFIER__DEVICE_CELL_STD @"DeviceCellStd"
+#define REUSE_IDENTIFIER__DEVICE_CELL_STD_DIRTY @"DeviceCellStdDirty"
+#define REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD @"DeviceGroupCellStd"
+#define REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY @"DeviceGroupCellStdDirty"
+
 /*******************************************************************************
  Xml tags for REST communication
  *******************************************************************************/
