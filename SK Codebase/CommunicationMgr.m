@@ -138,7 +138,7 @@ NSThread * mainUpdateThread;
             break;
             
         case ENTITY_TYPE__DEVICE_GROUP:
-            NSLog(@"%@", @"Interpreted entity req notification as Device");
+            NSLog(@"%@", @"Interpreted entity req notification as DeviceGroup");
             [self updateDeviceGroup:reqNotData.entityId];
             break;
             
@@ -168,7 +168,7 @@ NSThread * mainUpdateThread;
     EntityHttpReqNotificationData *reqNotificationData = [req toNotificationData];
     
     if([req.entity isKindOfClass:[SKDevice class]]) {        
-        reqNotificationData.reqDelay = [SettingsMgr getDeviceUpdateDelay]; 
+        reqNotificationData.reqDelay = [SettingsMgr getDeviceUpdateDelay];
     } else if([req.entity isKindOfClass:[SKDeviceGroup class]]) {        
         reqNotificationData.reqDelay = [SettingsMgr getDeviceGroupUpdateDelay]; 
     }
@@ -249,6 +249,9 @@ NSThread * mainUpdateThread;
 - (void)updateDeviceGroup:(NSInteger)deviceGroupId {
     NSString *log = [NSString stringWithFormat:@"Updating device group with id %i", deviceGroupId];
     NSLog(@"%@", log);
+    
+    // Rewrite to update of devices...
+    [self updateDevices];
 }
 
 

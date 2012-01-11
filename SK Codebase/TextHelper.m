@@ -29,4 +29,11 @@
     return localized;
 }
 
+// Gets the info text for a specific device group
++ (NSString *)getDeviceGroupInfoText:(SKDeviceGroup *)entity {
+    NSString *localized = [NSString stringWithFormat:NSLocalizedString(@"%i devices", @"Texts"), entity.devices.count];
+    
+    return localized;
+}
+
 @end

@@ -1,5 +1,5 @@
 "(none)" = "(ingen)";
-"{0} devices" = "{0} enheter";
+"%i devices" = "%i enheter";
 "Loading..." = "Laddar...";
 "Error loading" = "Fel vid hämtning";
 "Either the server couldn't be contacted or there was an error during communication. Additional information: {0}" = "Antingen kunde servern inte kontaktas eller uppstod ett fel vid hämtning av information.\n\nYtterligare information:\n{0}";

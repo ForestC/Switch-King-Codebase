@@ -10,6 +10,7 @@
 #import "SKDeviceStoreDelegate.h"
 #import "DeviceListViewController.h"
 #import "SKDevice.h"
+#import "SKDeviceGroup.h"
 
 @interface EntityStore : NSObject <SKDeviceStoreDelegate> {
     
@@ -20,18 +21,18 @@
 // Adds entity observers
 - (void)addEntityObservers;
 
-- (void)deviceUpdated:(SKDevice *) device;
+- (void)deviceUpdated:(SKDevice*)device;
 
-- (void)devicesUpdated:(NSMutableArray *) collection;
+- (void)devicesUpdated:(NSMutableArray*)collection;
 
 // Flags an entity as dirty or clean
-- (void)flagEntityAsDirtyOrClean:(SKEntity *)entity: (Boolean)isDirty;
+- (void)flagEntityAsDirtyOrClean:(SKEntity*)entity: (Boolean)isDirty;
 
 // Flags a device as dirty or clean
 - (void)flagDeviceAsDirtyOrClean:(NSInteger)deviceId: (Boolean)isDirty;
 
 // Flags a device group as dirty or clean
-- (void)flagDeviceGroupAsDirtyOrClean:(NSInteger)deviceId: (Boolean)isDirty;
+- (void)flagDeviceGroupAsDirtyOrClean:(NSInteger)deviceGroupId: (Boolean)isDirty;
 
 // Indicates whether an entity is dirty or not
 - (Boolean)entityIsDirty:(SKEntity *)entity;
@@ -45,6 +46,14 @@
 // Gets the id of the active scenario
 - (NSInteger)getActiveScenarioId;
 
-- (SKDevice *)getDeviceById:(NSInteger)deviceId;
+// Gets the device by a specific id
+- (SKDevice*)getDeviceById:(NSInteger)deviceId;
+
+// Gets the device group by a specific id
+- (SKDeviceGroup*)getDeviceGroupById:(NSInteger)deviceGroupId;
+
+// Creates the internal device/group structure in order to provide easy access
+// to the entities.
+- (void)createDeviceGroupStructure:(NSMutableArray*)deviceData;
 
 @end

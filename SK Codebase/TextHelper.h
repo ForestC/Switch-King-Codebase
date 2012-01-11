@@ -15,4 +15,7 @@
 // Gets the info text for a specific device
 + (NSString *)getDeviceInfoText:(SKDevice *)entity;
 
+// Gets the info text for a specific device group
++ (NSString *)getDeviceGroupInfoText:(SKDeviceGroup *)entity;
+
 @end

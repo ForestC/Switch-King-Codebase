@@ -21,6 +21,15 @@
                                     <rect key="frame" x="10" y="1" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Swipe info" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="K6z-qg-uEn">
+                                            <rect key="frame" x="-10" y="3" width="320" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Group name" lineBreakMode="tailTruncation" minimumFontSize="10" id="5u3-Ya-WlO">
                                             <rect key="frame" x="44" y="2" width="270" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -44,13 +53,48 @@
                                 </view>
                                 <color key="backgroundColor" red="0.90285326086956519" green="0.90285326086956519" blue="0.90285326086956519" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="actionLabel" destination="K6z-qg-uEn" id="30U-w0-Cav"/>
                                     <outlet property="entityIconImageView" destination="nAd-ER-Vky" id="7De-3a-qfg"/>
                                     <outlet property="entityInfoLabel" destination="aJf-so-qLa" id="TD7-o0-5Dq"/>
                                     <outlet property="entityNameLabel" destination="5u3-Ya-WlO" id="sTu-q6-BCc"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStd" id="G0W-pa-S9u" customClass="SKDeviceStdTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceGroupCellStdDirty" id="3k9-8Q-SPQ" customClass="SKDeviceGroupStdTableViewCell">
                                 <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Group name" lineBreakMode="tailTruncation" minimumFontSize="10" id="GfL-dn-Ftw">
+                                            <rect key="frame" x="44" y="2" width="270" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="DeviceList_Group.png" id="y6g-ga-7Qi">
+                                            <rect key="frame" x="11" y="4" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Group info" lineBreakMode="tailTruncation" minimumFontSize="10" id="cYv-sS-pRu">
+                                            <rect key="frame" x="44" y="18" width="270" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="entityIconImageView" destination="y6g-ga-7Qi" id="cwb-Gc-Vze"/>
+                                    <outlet property="entityInfoLabel" destination="cYv-sS-pRu" id="qKF-TI-rsf"/>
+                                    <outlet property="entityNameLabel" destination="GfL-dn-Ftw" id="7sd-GX-SZr"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStd" id="G0W-pa-S9u" customClass="SKDeviceStdTableViewCell">
+                                <rect key="frame" x="0.0" y="135" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -76,7 +120,7 @@
                                         </label>
                                         <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Swipe info" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="fZ8-B6-79r">
                                             <rect key="frame" x="0.0" y="3" width="300" height="38"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -94,7 +138,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DeviceCellStdDirty" id="Yu7-mo-agb" customClass="SKDeviceStdTableViewCell">
-                                <rect key="frame" x="0.0" y="135" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="179" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="300" height="43"/>

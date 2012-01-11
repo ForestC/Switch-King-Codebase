@@ -11,6 +11,6 @@
 
 @interface SKDeviceGroup : SKEntity
 
-@property (atomic, retain) NSMutableArray * devices;
+@property (atomic, retain) NSMutableArray* devices;
 
 @end

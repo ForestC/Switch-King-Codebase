@@ -55,26 +55,28 @@
 }
 
 // Called when entity data has been updated
-- (void) entityDataUpdated:(NSNotification *) notification
+- (void)entityDataUpdated:(NSNotification *) notification
 {    
     if ([[notification name] isEqualToString:NOTIFICATION_NAME__DEVICES_UPDATED]) {
         // Log
         NSLog (@"DeviceListViewController received info that devices are updated");
         
         // Get the dictionary
-        NSDictionary * dict = [notification userInfo];
+        NSDictionary *dict = [notification userInfo];
         
         // Pass the device data to the method
         [self handleUpdatedDevices:[dict valueForKey:@"Devices"]]; 
-    } else if ([[notification name] isEqualToString:@"DeviceUpdated"]) {
+    } else if ([[notification name] isEqualToString:NOTIFICATION_NAME__DEVICE_UPDATED]) {
         NSLog (@"DeviceListViewController received info that a device is updated");
-    } else if ([[notification name] isEqualToString:NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED]) {
+    } else if (
+               [[notification name] isEqualToString:NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED] ||
+               [[notification name] isEqualToString:NOTIFICATION_NAME__DEVICE_GROUP_DIRTIFICATION_UPDATED]) {
         NSLog (@"DeviceListViewController received info that a dirtification has been updated");
         [[self tableView] reloadData];
     }  
 }
 
-- (void) handleUpdatedDevices:(NSMutableArray *) deviceData {
+- (void)handleUpdatedDevices:(NSMutableArray *) deviceData {
     // Create the internal structure
     [self createDeviceGroupStructure:deviceData];
     // Forces reload of data
@@ -83,7 +85,7 @@
 
 // Creates the internal device/group structure in order to provide easy access
 // to these entities from the UITableViewController.
-- (void) createDeviceGroupStructure:(NSMutableArray *) deviceData {
+- (void)createDeviceGroupStructure:(NSMutableArray *) deviceData {
     NSMutableDictionary * tempGroupDictStore = [[NSMutableDictionary alloc] init];    
     devices = [[NSMutableArray alloc] initWithCapacity:deviceData.count];
     groups = [[NSMutableArray alloc] initWithCapacity:deviceData.count];
@@ -108,13 +110,13 @@
         } else {
             [group.devices addObject:device];
             
-            NSLog(@"Adding to group %@, now with %i devices", group.Name, group.devices.count);
+            //NSLog(@"Adding to group %@, now with %i devices", group.Name, group.devices.count);
         }
         
         [devices addObject:device]; 
         
         // Do your thing with the object.
-        NSLog(@"%@", [device Name]);
+        //NSLog(@"%@", [device Name]);
     }
     
     // Set all group entities.
@@ -129,7 +131,7 @@
         [groupsAndDevices addObjectsFromArray:group.devices];
     }
     
-    NSLog(@"%i devices, %i groups", devices.count, groups.count);
+    NSLog(@"%i devices, %i groups after update", devices.count, groups.count);
 }
 
 - (id)initWithCoder:(NSCoder*)aDecoder 
@@ -143,7 +145,7 @@
 }
 
 // Adds entity observers to be able to listen to notifications
-- (void) addEntityObservers {
+- (void)addEntityObservers {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(entityDataUpdated:)
                                                  name:NOTIFICATION_NAME__DEVICES_UPDATED
@@ -151,20 +153,26 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(entityDataUpdated:)
-                                                 name:@"DeviceUpdated"
+                                                 name:NOTIFICATION_NAME__DEVICE_UPDATED
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(entityDataUpdated:)
                                                  name:NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(entityDataUpdated:)
+                                                 name:NOTIFICATION_NAME__DEVICE_GROUP_DIRTIFICATION_UPDATED
+                                               object:nil];
+
 }
 
 /*******************************************************************************
  TableView Layout
 *******************************************************************************/
 
-- (UITableViewCell *) dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)cellEntity {
+- (UITableViewCell *)dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)cellEntity {
     UITableViewCell *cell;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     EntityStore *entityStore = appDelegate.entityStore;
@@ -180,8 +188,8 @@
             cell = [[SKDeviceStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
         
-        ((SKDeviceStdTableViewCell*)cell).tableViewController = self;
-        ((SKDeviceStdTableViewCell*)cell).entity = cellEntity;
+        ((SKDeviceStdTableViewCell *)cell).tableViewController = self;
+        ((SKDeviceStdTableViewCell *)cell).entity = cellEntity;
     } else if([cellEntity isKindOfClass:[SKDeviceGroup class]]) {
         if([entityStore deviceGroupIsDirty:cellEntity.ID]) {
             cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY];
@@ -193,7 +201,8 @@
             cell = [[SKDeviceGroupStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
         
-        ((SKDeviceGroupStdTableViewCell*)cell).tableViewController = self;        
+        ((SKDeviceGroupStdTableViewCell *)cell).tableViewController = self;
+        ((SKDeviceGroupStdTableViewCell *)cell).entity = cellEntity;
     } else {
         static NSString *cellIdentifier = @"Cell";
         
@@ -257,9 +266,9 @@
 
 
 // Sets the table view cell data depending on the type of cell and entity
-- (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)cellEntity {
+- (void)setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)cellEntity {
     if([cell isKindOfClass:[SKDeviceStdTableViewCell class]]) {
-        SKDeviceStdTableViewCell * deviceCell = (SKDeviceStdTableViewCell *)cell;
+        SKDeviceStdTableViewCell *deviceCell = (SKDeviceStdTableViewCell *)cell;
         SKDevice *device = (SKDevice *)cellEntity;
         
         [deviceCell.entityNameLabel setText:device.Name];
@@ -271,6 +280,7 @@
 
         [deviceGroupCell.entityNameLabel setText:deviceGroup.Name];
         deviceGroupCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDeviceGroup: deviceGroup:@"DeviceList_"]];
+        [deviceGroupCell.entityInfoLabel setText:[TextHelper getDeviceGroupInfoText:deviceGroup]];
     }
 }
 
@@ -288,23 +298,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if(cell.tag > 0) {
+    if(cell.tag > -1) {
         SKEntity *entity = (SKEntity *)[groupsAndDevices objectAtIndex:cell.tag];
         
         if([entity isKindOfClass:[SKDevice class]]) {
-            SKDevice *device = (SKDevice *)entity;
-            
-            EntityActionRequest *r = [EntityActionRequest createByDeviceAction:
-                                                                       device :
-                                                           ACTION_ID__TURN_ON :
-                                                                           20 :
-                                                                            3];
-            
-            
-            // Get the app delegte
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
-            [appDelegate entityActionRequestFired:nil :r];
+//            SKDevice *device = (SKDevice *)entity;
+//            
+//            EntityActionRequest *r = [EntityActionRequest createByDeviceAction:
+//                                                                       device :
+//                                                           ACTION_ID__TURN_ON :
+//                                                                           20 :
+//                                                                            3];
+//            
+//            
+//            // Get the app delegte
+//            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//
+//            [appDelegate entityActionRequestFired:nil :r];
             
         } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
             SKDeviceGroup *deviceGroup = (SKDeviceGroup *)entity;            

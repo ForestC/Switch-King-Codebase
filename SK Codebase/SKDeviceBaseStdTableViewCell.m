@@ -112,7 +112,9 @@
         horizontalAmount = currentPosition.x - gestureStartPoint.x;
         CGRect r = [self bounds];
         
-        if(currentPosition.y < -SWIPE_MARGIN__Y_MOVEMENT || currentPosition.y > r.size.height + SWIPE_MARGIN__Y_MOVEMENT) {
+        if(
+           currentPosition.y < -SWIPE_MARGIN__Y_MOVEMENT || 
+           currentPosition.y > r.size.height + SWIPE_MARGIN__Y_MOVEMENT) {
             [self setSwipeLayerHidden :true];
             gestureStartPoint = [sender locationInView:self];
             swipeInProgress = false;
@@ -139,7 +141,6 @@
             
             return;
         }
-        
         
         if (verticalAmount < 0) {
             verticalAmount = verticalAmount/-1;
@@ -214,18 +215,17 @@
     
     DeviceListViewController* vc = (DeviceListViewController*)self.tableViewController;
     
-    if(self.tag > 0) {
+    if(self.tag != -1) {
         SKEntity *cellEntity = (SKEntity *)[vc.groupsAndDevices objectAtIndex:self.tag];
         
-        if([entity isKindOfClass:[SKDevice class]]) {
-            SKDevice *device = (SKDevice *)cellEntity;
+        if([entity isKindOfClass:[SKDevice class]] ||
+           [entity isKindOfClass:[SKDeviceGroup class]]) {
+            //SKDevice *device = (SKDevice *)cellEntity;
             
-            actionRequest.entity = device;
+            actionRequest.entity = cellEntity;
             actionRequest.reqActionDelay = 0;
             
             [appDelegate entityActionRequestFired:nil :actionRequest];
-        } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
-            SKDeviceGroup *deviceGroup = (SKDeviceGroup *)cellEntity;            
         } 
     }
 }
@@ -237,11 +237,24 @@
         
         return [[device SupportsAbsoluteDimLvl] isEqualToString:XML_VALUE__TRUE];
     } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
-        return YES;            
+        SKDeviceGroup *group = (SKDeviceGroup *)entity;
+        
+        NSInteger supportsDim = 0;
+        
+        for (NSUInteger i = 0; i < group.devices.count; ++i) {
+            if([((SKDevice *)[group.devices objectAtIndex:i]).SupportsAbsoluteDimLvl  isEqualToString:XML_VALUE__TRUE]) {
+                supportsDim++;
+                break;
+            }
+        }
+        
+        if(supportsDim > 0)
+            return true;
+        else
+            return false;
     } 
     
     return NO;
 }
-
 
 @end

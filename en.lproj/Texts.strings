@@ -1,5 +1,5 @@
 "(none)" = "(none)";
-"{0} devices" = "{0} device";
+"%i devices" = "%i devices";
 "Loading..." = "Loading...";
 "Error loading" = "Error loading";
 "Either the server couldn't be contacted or there was an error during communication. Additional information: {0}" = "Either the server couldn't be contacted or there was an error during communication. Additional information: {0}";
