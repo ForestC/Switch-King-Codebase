@@ -21,6 +21,7 @@
 		5B024CD2148FB02700ED3B6D /* AuthenticationDataContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CD1148FB02700ED3B6D /* AuthenticationDataContainer.m */; };
 		5B024CD7148FB54200ED3B6D /* XMLSKDeviceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CD6148FB54200ED3B6D /* XMLSKDeviceParser.m */; };
 		5B024CE1148FC1DA00ED3B6D /* SKDeviceDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CE0148FC1DA00ED3B6D /* SKDeviceDataReceiver.m */; };
+		5B166F3414B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B166F3314B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.m */; };
 		5B2C42C714938F660020A2CD /* EntityStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C42C614938F660020A2CD /* EntityStore.m */; };
 		5B2C42CE149390710020A2CD /* SKEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C42CD149390710020A2CD /* SKEntity.m */; };
 		5B33272414ADB575002A263A /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272114ADB575002A263A /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -98,6 +99,8 @@
 		5B024CD9148FC12800ED3B6D /* EntityDataReceiverDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDataReceiverDelegate.h; sourceTree = "<group>"; };
 		5B024CDF148FC1DA00ED3B6D /* SKDeviceDataReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceDataReceiver.h; sourceTree = "<group>"; };
 		5B024CE0148FC1DA00ED3B6D /* SKDeviceDataReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceDataReceiver.m; sourceTree = "<group>"; };
+		5B166F3214B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceBaseStdTableViewCell.h; sourceTree = "<group>"; };
+		5B166F3314B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceBaseStdTableViewCell.m; sourceTree = "<group>"; };
 		5B2C42C0149385B50020A2CD /* DataReceivedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataReceivedDelegate.h; sourceTree = "<group>"; };
 		5B2C42C514938F660020A2CD /* EntityStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityStore.h; sourceTree = "<group>"; };
 		5B2C42C614938F660020A2CD /* EntityStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityStore.m; sourceTree = "<group>"; };
@@ -424,6 +427,8 @@
 				5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */,
 				5B8027E9149BAC3800F3909E /* SKDeviceStdTableViewCell.h */,
 				5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */,
+				5B166F3214B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.h */,
+				5B166F3314B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -581,6 +586,7 @@
 				5B396B5114B39A3000A590FB /* ImagePathHelper.m in Sources */,
 				5B396B5414B3A9B400A590FB /* TextHelper.m in Sources */,
 				5B4507F814B4BE5D00F3F888 /* NotificationHelper.m in Sources */,
+				5B166F3414B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
