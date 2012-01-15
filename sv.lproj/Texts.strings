@@ -28,6 +28,7 @@
 "Port" = "Port";
 "As set on server" = "Anges på servern";
 "Port (default is 8800)" = "Port (vanligtvis 8800)";
+"Default port is 8800" = "Grundinställning för port är 8800";
 "Server name or IP" = "Datornamn eller IP-adress";
 "Group devices" = "Gruppera enheter";
 "Server ID" = "Serveridentitet";

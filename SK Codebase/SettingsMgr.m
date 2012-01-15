@@ -12,6 +12,29 @@
 @implementation SettingsMgr
 
 // Gets an indication whether settings are configured or not
++ (Boolean)initialSettingsConfigured {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"initialSettingsConfigured";    
+    
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+    
+    return retrievedValue;
+}
+
+// Sets an indication whether settings are configured or not
++ (void)setInitialSettingsConfigured:(Boolean) configured {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"initialSettingsConfigured";
+    
+    // set the value
+    [defaults setBool:configured forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Gets an indication whether settings are configured or not
 + (Boolean)settingsConfigured {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = @"settingsConfigured";    
@@ -36,9 +59,6 @@
 
 // Gets an indication whether to use live or not
 + (Boolean)useLive {
-    if(![SettingsMgr settingsConfigured])
-        return false;
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = @"useLive";    
     
@@ -61,26 +81,61 @@
 }
 
 // Gets the address to connect to
-+ (NSString *)getTargetAddress {
-    if([self useLive])
-        return @"http://live.switchking.se";
-    
++ (NSString *)getTargetAddress:(Boolean) includeProtocol {
+    if([self useLive]) {
+        if(includeProtocol)
+            return @"http://live.switchking.se";
+        else
+            return @"live.switchking.se";
+    }
+        
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = @"targetAddress";
     
     // Get the result
     NSString *retrievedValue = [defaults stringForKey:key];
     
-    if(retrievedValue == nil)
-        return @"http://live.switchking.se";
+    if(retrievedValue == nil) {
+        if(includeProtocol)
+            return @"http://live.switchking.se";
+        else
+            return @"live.switchking.se";
+    }
+    
+    NSString *finalString;
+    
+    if(!includeProtocol) {
+        NSRange range = [retrievedValue rangeOfString:@"//"];
+    
+        // Did we find the string "//" ?
+        if (range.length > 0)
+            finalString = [retrievedValue substringFromIndex:range.location+range.length];
+        else
+            finalString = retrievedValue;
+        
+        return finalString;
+    }
     
     return retrievedValue;
 }
 
 // Sets the address to connect to
-+ (void)setTargetAddress:(NSString *) targetAddress {
++ (void)setTargetAddress:(NSString *) targetAddress:(Boolean) adjustAddress {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = @"targetAddress";
+    
+    if(adjustAddress) {
+        NSRange range = [targetAddress rangeOfString:@"//"];
+        
+        // Did we find the string "//" ?
+        if(range.length == 0)
+            targetAddress = [NSString stringWithFormat:@"http://%@", targetAddress];
+        
+//        range = [targetAddress rangeOfString:@":"];
+//        
+//        if(range.length > 0)
+//            targetAddress = [targetAddress substringToIndex:range.location];
+    }
     
     // set the value
     [defaults setObject:targetAddress forKey:key];
@@ -119,6 +174,32 @@
     [defaults synchronize];
 }
 
+// Gets the server identity
++ (NSInteger)getServerIdentity {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"serverIdentity";
+    
+    // Get the result
+    NSInteger retrievedValue = [defaults integerForKey:key];
+    
+    if(retrievedValue == 0)
+        return 0;
+    
+    return retrievedValue;
+}
+
+// Sets the server identity
++ (void)setServerIdentity:(NSInteger) serverIdentity {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"serverIdentity";
+    
+    // set the value
+    [defaults setInteger:serverIdentity forKey:key];
+    
+    // save it
+    [defaults synchronize]; 
+}
+
 // Gets the stored authentication data
 + (AuthenticationDataContainer *)getAuthenticationData {
     AuthenticationDataContainer *container = [AuthenticationDataContainer alloc];
@@ -130,6 +211,12 @@
     // Get the result
     NSString *retrievedUserValue = [defaults stringForKey:userKey];
     NSString *retrievedPassValue = [defaults stringForKey:passKey];
+    
+    if(retrievedUserValue == nil || [retrievedUserValue isEqualToString:@""])
+        retrievedUserValue = @"user";
+    
+    if(retrievedPassValue == nil || [retrievedPassValue isEqualToString:@""])
+        retrievedPassValue = @"pass";
     
     container.user = retrievedUserValue;
     container.pass = retrievedPassValue;

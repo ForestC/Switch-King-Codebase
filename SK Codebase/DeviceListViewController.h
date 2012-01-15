@@ -33,7 +33,7 @@
 
 - (void) createDeviceGroupStructure:(NSMutableArray *) deviceData;
 
-- (UITableViewCell *) dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)cellEntity;
+- (UITableViewCell *)dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)cellEntity;
 
 // Sets the table view cell data depending on the type of cell and entity
 - (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)cellEntity;

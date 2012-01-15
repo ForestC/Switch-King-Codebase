@@ -115,7 +115,7 @@
 
 // Gets the base url
 - (NSString *)getBaseUrl {
-    NSString * address = [SettingsMgr getTargetAddress];
+    NSString * address = [SettingsMgr getTargetAddress:true];
     NSInteger port = [SettingsMgr getTargetPort];
     NSString * portString = [NSString stringWithFormat:@":%d", port];
     
