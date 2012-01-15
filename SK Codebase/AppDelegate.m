@@ -47,18 +47,11 @@
     //auth.user = @"user";
     //auth.pass = @"pass";
     
-    auth.user = @"sogeti";
-    auth.pass = @"malaysia";
-    
-    [SettingsMgr setAuthenticationData:auth];
-    [SettingsMgr setTargetAddress:@"http://192.168.0.220"];
-    [SettingsMgr setTargetPort:8800];
-    
     auth.user = @"user";
     auth.pass = @"pass";
     
     [SettingsMgr setAuthenticationData:auth];
-    [SettingsMgr setTargetAddress:@"http://www.switchking.se"];
+    [SettingsMgr setTargetAddress:@"http://www.switchking.se":false];
     [SettingsMgr setTargetPort:10800];
     
     // Create the entity store...
@@ -161,5 +154,61 @@
 	if(self->netActivityReqs < 0)
 		self->netActivityReqs = 0;
 }
+
+- (void)toggleOptions:(BOOL)ViewHidden
+{
+    // this method opens/closes the player options view (which sets repeat interval, repeat & delay on/off)
+    
+    if (ViewHidden == NO)
+    {
+        // delay and move view out of superview
+        CGRect optionsFrame = optionsController.view.frame;
+        
+        [UIView beginAnimations:nil context:nil];
+        
+        optionsFrame.origin.y += optionsFrame.size.height;
+        optionsController.view.frame = optionsFrame;
+        
+        [UIView commitAnimations];
+        
+        [optionsController.view
+         performSelector:@selector(removeFromSuperview)
+         withObject:nil
+         afterDelay:0.5];
+        [optionsController
+         performSelector:@selector(release)
+         withObject:nil
+         afterDelay:0.5];
+        optionsController = nil;
+    }
+    else
+    {
+        optionsController = [[PlayOptionsViewController alloc] init];
+        
+        //
+        // Position the options at bottom of screen
+        //
+        CGRect optionsFrame = optionsController.view.frame;
+        optionsFrame.origin.x = 0;
+        optionsFrame.size.width = 320;
+        optionsFrame.origin.y = 423;
+        
+        //
+        // For the animation, move the view up by its own height.
+        //
+        optionsFrame.origin.y += optionsFrame.size.height;
+        
+        optionsController.view.frame = optionsFrame;
+        [window addSubview:optionsController.view];
+        
+        [UIView beginAnimations:nil context:nil];
+        
+        optionsFrame.origin.y -= optionsFrame.size.height;
+        optionsController.view.frame = optionsFrame;
+        
+        [UIView commitAnimations];
+    }
+}
+
 
 @end

@@ -14,6 +14,12 @@
 #define REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD @"DeviceGroupCellStd"
 #define REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY @"DeviceGroupCellStdDirty"
 
+#define REUSE_IDENTIFIER__SETTINGS_CELL_SWITCH @"SwitchSettingStd"
+#define REUSE_IDENTIFIER__SETTINGS_CELL_URL @"UrlSettingStd"
+#define REUSE_IDENTIFIER__SETTINGS_CELL_NUMERIC @"NumericSettingStd"
+#define REUSE_IDENTIFIER__SETTINGS_CELL_PASSWORD @"PasswordSettingStd" 
+#define REUSE_IDENTIFIER__SETTINGS_CELL_TEXT @"TextSettingStd" 
+
 /*******************************************************************************
  Xml tags for REST communication
  *******************************************************************************/
@@ -70,9 +76,29 @@
 #define NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING @"EntityDirtified"
 #define NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED @"EntityUpdateRequested"
 #define NOTIFICATION_NAME__ENTITY_UPDATE_REQUEST_CANCELLED @"EntityUpdateReqCancelled"
+#define NOTIFICATION_NAME__DEVICE_UPDATED @"DeviceUpdated"
 #define NOTIFICATION_NAME__DEVICES_UPDATED @"DevicesUpdated"
 #define NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED @"DeviceDirtificationUpdated"
+#define NOTIFICATION_NAME__DEVICE_GROUP_DIRTIFICATION_UPDATED @"DeviceGroupDirtificationUpdated"
 
 #define ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY @"EntityReqData"
+
+/*******************************************************************************
+ Setting tags
+ *******************************************************************************/
+
+#define CELL_TAG__USE_LIVE 1
+#define CELL_TAG__SERVER_ADDRESS 2
+#define CELL_TAG__SERVER_PORT 3
+#define CELL_TAG__SERVER_IDENTITY 4
+#define CELL_TAG__USERNAME 5
+#define CELL_TAG__PASSWORD 6
+
+/*******************************************************************************
+ Settings sections
+ *******************************************************************************/
+
+#define TABLE_SECTION__SETTINGS__TARGET 0
+#define TABLE_SECTION__SETTINGS__CREDENTIALS 1
 
 #endif
