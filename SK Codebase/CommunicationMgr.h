@@ -41,4 +41,6 @@
 
 - (CommunicationBase *)createCommunicationBase:(NSObject <DataReceivedDelegate> *)del;
 
++ (BOOL)hasConnectivity;
+
 @end

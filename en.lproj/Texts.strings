@@ -34,7 +34,8 @@
 "Server ID" = "Server ID";
 "Unique for your server" = "Unique for your server";
 "Specify your unique server ID if you are using Switch King's central hub when connecting to your server. Otherwise - leave blank." = "Leave this field blank if you are connecting directly to your own server without using Switch King's central server.";
-"No network connection or unreachable host ({0})" = "Server could not be reached. Check the connection and that the server address ({0}) is correct.";
+"No network connection" = "Server could not be reached.\nNo network available.";
+"No network connection or unreachable host (%@)" = "Server could not be reached. Check the connection and that the server address (%@) is correct.";
 "Scenarios has not yet been loaded. Check your network connection." = "Scenarios has not yet been loaded. Check your network connection.";
 "Dim to %i%" = "Dim to %i%%";
 "Turn on" = "Turn on";

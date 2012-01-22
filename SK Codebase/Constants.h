@@ -80,8 +80,11 @@
 #define NOTIFICATION_NAME__DEVICES_UPDATED @"DevicesUpdated"
 #define NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED @"DeviceDirtificationUpdated"
 #define NOTIFICATION_NAME__DEVICE_GROUP_DIRTIFICATION_UPDATED @"DeviceGroupDirtificationUpdated"
+#define NOTIFICATION_NAME__ALERT_INFO_REQUESTED @"AlertReq"
+#define NOTIFICATION_NAME__NO_CONNECTION @"NoConn"
 
 #define ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY @"EntityReqData"
+#define ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY @"Msg"
 
 /*******************************************************************************
  Setting tags
@@ -102,3 +105,5 @@
 #define TABLE_SECTION__SETTINGS__CREDENTIALS 1
 
 #endif
+
+

@@ -1,21 +1,17 @@
 //
-//  SettingsListViewController.m
+//  AlertInfoViewController.m
 //  SK Codebase
 //
-//  Created by Martin Videfors on 2012-01-13.
+//  Created by Martin Videfors on 2012-01-16.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SettingsListViewController_iPhone.h"
+#import "AlertInfoViewController.h"
 #import "AppDelegate.h"
 
-@implementation SettingsListViewController_iPhone
+@implementation AlertInfoViewController
 
-@synthesize updateIntervalLabel;
-@synthesize updateAfterActionLabel;
-@synthesize maxUpcomingEventsLabel;
-@synthesize serverAddressLabel;
-@synthesize enableLearnLabel;
+@synthesize infoTextView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,29 +32,10 @@
 
 #pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-*/
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    // Get the app delegte
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    [appDelegate toggleAlertInfo:false];
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -72,6 +49,17 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    
+    [self.infoTextView setText:[appDelegate alertInfoText]];    
 }
 
 @end

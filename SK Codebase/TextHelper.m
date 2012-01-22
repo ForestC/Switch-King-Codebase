@@ -16,22 +16,22 @@
     NSString *localized;
     
     if (entity.CurrentStateID == DEVICE_STATE_ID__OFF) {
-        localized = NSLocalizedString(@"Off", @"Texts");
+        localized = NSLocalizedStringFromTable(@"Off", @"Texts", nil);
     } else if (entity.CurrentStateID == DEVICE_STATE_ID__ON) {
         if (entity.CurrentDimLevel == 100 || entity.CurrentDimLevel == 0 || entity.CurrentDimLevel == -1) {
-            localized = NSLocalizedString(@"On", @"Texts");
+            localized = NSLocalizedStringFromTable(@"On", @"Texts", nil);
         } else {
-            localized = [NSString stringWithFormat:NSLocalizedString(@"Dimmed %i%", @"Texts"), entity.CurrentDimLevel];
+            localized = [NSString stringWithFormat:NSLocalizedStringFromTable(@"Dimmed %i%%", @"Texts", nil), entity.CurrentDimLevel];
         }
     } else
-        localized = NSLocalizedString(@"On", @"Texts");
+        localized = NSLocalizedStringFromTable(@"On", @"Texts", nil);
     
     return localized;
 }
 
 // Gets the info text for a specific device group
 + (NSString *)getDeviceGroupInfoText:(SKDeviceGroup *)entity {
-    NSString *localized = [NSString stringWithFormat:NSLocalizedString(@"%i devices", @"Texts"), entity.devices.count];
+    NSString *localized = [NSString stringWithFormat:NSLocalizedStringFromTable(@"%i devices", @"Texts", nil), entity.devices.count];
     
     return localized;
 }

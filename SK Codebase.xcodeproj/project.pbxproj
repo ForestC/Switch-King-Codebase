@@ -70,6 +70,9 @@
 		5B80281214A219DD00F3909E /* DeviceList_OnSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FF14A219DD00F3909E /* DeviceList_OnSemiAuto.png */; };
 		5BA69E5F149B43DA00D663BA /* SKDeviceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */; };
 		5BA69E65149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */; };
+		5BDB646A14C47D5100D8020B /* AlertInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB646814C47D5100D8020B /* AlertInfoViewController.m */; };
+		5BDB646B14C47D5100D8020B /* AlertInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BDB646914C47D5100D8020B /* AlertInfoViewController.xib */; };
+		5BDB647114C48BCF00D8020B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */; };
 		5BDD4FDD14BE289D000F4975 /* Toolbar_Configuration.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BDD4FDB14BE289D000F4975 /* Toolbar_Configuration.png */; };
 		5BDD4FDE14BE289D000F4975 /* Toolbar_Configuration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BDD4FDC14BE289D000F4975 /* Toolbar_Configuration@2x.png */; };
 		5BFC370914A31C600062F6E7 /* CommunicationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370814A31C600062F6E7 /* CommunicationMgr.m */; };
@@ -183,6 +186,10 @@
 		5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroup.m; sourceTree = "<group>"; };
 		5BA69E63149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceGroupStdTableViewCell.h; sourceTree = "<group>"; };
 		5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroupStdTableViewCell.m; sourceTree = "<group>"; };
+		5BDB646714C47D5100D8020B /* AlertInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertInfoViewController.h; sourceTree = "<group>"; };
+		5BDB646814C47D5100D8020B /* AlertInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertInfoViewController.m; sourceTree = "<group>"; };
+		5BDB646914C47D5100D8020B /* AlertInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertInfoViewController.xib; sourceTree = "<group>"; };
+		5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5BDD4FDB14BE289D000F4975 /* Toolbar_Configuration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Toolbar_Configuration.png; sourceTree = "<group>"; };
 		5BDD4FDC14BE289D000F4975 /* Toolbar_Configuration@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toolbar_Configuration@2x.png"; sourceTree = "<group>"; };
 		5BFC370714A31C600062F6E7 /* CommunicationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationMgr.h; sourceTree = "<group>"; };
@@ -208,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BDB647114C48BCF00D8020B /* SystemConfiguration.framework in Frameworks */,
 				5B024CAA148FA6B300ED3B6D /* UIKit.framework in Frameworks */,
 				5B024CAC148FA6B300ED3B6D /* Foundation.framework in Frameworks */,
 				5B024CAE148FA6B300ED3B6D /* CoreGraphics.framework in Frameworks */,
@@ -220,6 +228,7 @@
 		5B024C9A148FA6B300ED3B6D = {
 			isa = PBXGroup;
 			children = (
+				5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */,
 				5B396B5F14B3AFA100A590FB /* Texts.strings */,
 				5B396B6314B3B02100A590FB /* Headers.strings */,
 				5B396B6714B3B02E00A590FB /* Buttons.strings */,
@@ -440,6 +449,9 @@
 				5B09208E14C07DA200BB9274 /* SettingsListViewController_iPhone.m */,
 				5B09209E14C0954500BB9274 /* ServerSettingsListViewController_iPhone.h */,
 				5B09209F14C0954500BB9274 /* ServerSettingsListViewController_iPhone.m */,
+				5BDB646714C47D5100D8020B /* AlertInfoViewController.h */,
+				5BDB646814C47D5100D8020B /* AlertInfoViewController.m */,
+				5BDB646914C47D5100D8020B /* AlertInfoViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -600,6 +612,7 @@
 				5B396B5D14B3AFA100A590FB /* Texts.strings in Resources */,
 				5BDD4FDD14BE289D000F4975 /* Toolbar_Configuration.png in Resources */,
 				5BDD4FDE14BE289D000F4975 /* Toolbar_Configuration@2x.png in Resources */,
+				5BDB646B14C47D5100D8020B /* AlertInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +658,7 @@
 				5B0920A014C0954500BB9274 /* ServerSettingsListViewController_iPhone.m in Sources */,
 				5B0920A314C0C74D00BB9274 /* TextSettingStdTableViewCell.m in Sources */,
 				5B0920A614C0C7B200BB9274 /* PasswordSettingStdTableViewCell.m in Sources */,
+				5BDB646A14C47D5100D8020B /* AlertInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
