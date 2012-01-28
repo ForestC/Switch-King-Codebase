@@ -20,6 +20,8 @@
 #define REUSE_IDENTIFIER__SETTINGS_CELL_PASSWORD @"PasswordSettingStd" 
 #define REUSE_IDENTIFIER__SETTINGS_CELL_TEXT @"TextSettingStd" 
 
+#define REUSE_IDENTIFIER__RIGHT_DETAIL @"RightDetail"
+
 /*******************************************************************************
  Xml tags for REST communication
  *******************************************************************************/
@@ -68,6 +70,7 @@
 #define ENTITY_TYPE__DEVICE 1
 #define ENTITY_TYPE__DEVICE_GROUP 2
 #define ENTITY_TYPE__DATA_SOURCE 3
+#define ENTITY_TYPE__ALL_ENTITIES 1000
 
 /*******************************************************************************
  Notification names
@@ -97,12 +100,26 @@
 #define CELL_TAG__USERNAME 5
 #define CELL_TAG__PASSWORD 6
 
+#define CELL_TAG__SETTINGS_LIST__SERVER__ADDRESS 1
+#define CELL_TAG__SETTINGS_LIST__INTERVAL__UPDATE_INTERVAL 2
+#define CELL_TAG__SETTINGS_LIST__INTERVAL__UPDATE_CMD_INTERVAL 3
+#define CELL_TAG__SETTINGS_LIST__EVENTS__MAX_COMING_UP_EVTS 4
+#define CELL_TAG__SETTINGS_LIST__MISC__ALLOW_LEARN 5
+#define CELL_TAG__SETTINGS_LIST__MISC__GROUP_DEVICES 6
+#define CELL_TAG__SETTINGS_LIST__MISC__RELOAD_AT_TAB_SWITCH 7
+
 /*******************************************************************************
  Settings sections
  *******************************************************************************/
 
 #define TABLE_SECTION__SETTINGS__TARGET 0
 #define TABLE_SECTION__SETTINGS__CREDENTIALS 1
+
+#define TABLE_SECTION__SETTINGS_LIST__SERVER 0
+#define TABLE_SECTION__SETTINGS_LIST__INTERVAL 1
+#define TABLE_SECTION__SETTINGS_LIST__EVENTS 2
+#define TABLE_SECTION__SETTINGS_LIST__MISC 3
+
 
 #endif
 

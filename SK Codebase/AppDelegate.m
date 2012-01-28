@@ -22,6 +22,7 @@
 @synthesize communicationMgr;
 @synthesize alertInfoInView;
 @synthesize alertInfoText;
+@synthesize alertTimer;
 
 // Configures the entity view controllers
 - (void)configureEntityViewControllers
@@ -50,19 +51,20 @@
     // Init the alert info view controller
     alertInfoViewController = [[AlertInfoViewController alloc] init];
     
-    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
     
-    auth = [AuthenticationDataContainer alloc];
     
-    //auth.user = @"user";
-    //auth.pass = @"pass";
+//    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+//    
+//    auth = [AuthenticationDataContainer alloc];
+//    auth.user = @"user";
+//    auth.pass = @"pass";
+//    
+//    [SettingsMgr setAuthenticationData:auth];
+//    [SettingsMgr setTargetAddress:@"http://www.switchking.se":false];
+//    [SettingsMgr setTargetPort:10800];
     
-    auth.user = @"user";
-    auth.pass = @"pass";
     
-    [SettingsMgr setAuthenticationData:auth];
-    [SettingsMgr setTargetAddress:@"http://www.switchking.se":false];
-    [SettingsMgr setTargetPort:10800];
+    
     
     // Create the entity store...
     entityStore = [[EntityStore alloc] init];
