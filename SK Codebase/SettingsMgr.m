@@ -80,6 +80,75 @@
     [defaults synchronize];
 }
 
+// Gets an indication whether to group devices or not
++ (Boolean)groupDevices {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"groupDevices";    
+    
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+    
+    return retrievedValue;
+}
+
+// Sets an indication whether to group devices or not
++ (void)setGroupDevices:(Boolean) groupDevices {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"groupDevices";
+    
+    // set the value
+    [defaults setBool:groupDevices forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Gets an indication whether to enable learn button or not
++ (Boolean)showLearnButton {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"enableLearn";    
+    
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+    
+    return retrievedValue;
+}
+
+// Sets an indication whether to enable learn button or not
++ (void)setShowLearnButton:(Boolean) enableLearnButton {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"enableLearn";
+    
+    // set the value
+    [defaults setBool:enableLearnButton forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Gets an indication whether to reload views on tab switch or not
++ (Boolean)enableReloadOnTabSwitch {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"reloadOnTS";    
+    
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+    
+    return retrievedValue;
+}
+
+// Sets an indication whether to reload views on tab switch or not
++ (void)setEnableReloadOnTabSwitch:(Boolean) enableReloadOnTabSwitch {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"reloadOnTS";
+    
+    // set the value
+    [defaults setBool:enableReloadOnTabSwitch forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
 // Gets the address to connect to
 + (NSString *)getTargetAddress:(Boolean) includeProtocol {
     if([self useLive]) {
@@ -247,13 +316,87 @@
 // Gets the number of seconds to wait before requesting update of device state
 // after an action has been requested.
 + (NSTimeInterval)getDeviceUpdateDelay {
-    return 2;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"refrAfterActionInterval";
+    
+    // Get the result
+    NSInteger retrievedValue = [defaults integerForKey:key];
+    
+    if(retrievedValue == 0)
+        return 3;
+    
+    return retrievedValue; 
+}
+
+// Sets the number of seconds to wait before requesting update of device state
+// after an action has been requested.
++ (void)setDeviceUpdateDelay:(NSTimeInterval) interval {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"refrAfterActionInterval";
+    
+    // set the value
+    [defaults setInteger:interval forKey:key];
+    
+    // save it
+    [defaults synchronize];
 }
 
 // Gets the number of seconds to wait before requesting update of device group state
 // after an action has been requested.
 + (NSTimeInterval)getDeviceGroupUpdateDelay {
-    return 5;
+    return [SettingsMgr getDeviceUpdateDelay] * 2.5;
+}
+
+// Gets the refresh interval
++ (NSTimeInterval)getRefreshInterval {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"refrInterval";
+    
+    // Get the result
+    NSInteger retrievedValue = [defaults integerForKey:key];
+    
+    if(retrievedValue == 0)
+        return 30;
+    
+    return retrievedValue; 
+}
+
+// Sets the refreshInterval
++ (void)setRefreshInterval:(NSTimeInterval) interval {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"refrInterval";
+    
+    // set the value
+    [defaults setInteger:interval forKey:key];
+    
+    // save it
+    [defaults synchronize]; 
+}
+
+// Gets the maximum number of upcoming events
++ (NSInteger)getMaxUpcomingEvents {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"maxUpcomingEvents";
+    
+    // Get the result
+    NSInteger retrievedValue = [defaults integerForKey:key];
+    
+    if(retrievedValue == 0)
+        return 10;
+    
+    return retrievedValue;
+}
+
+// Sets the maximum number of upcoming events
++ (void)setMaxUpcomingEvents:(NSInteger) maxUpcomingEvents {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"maxUpcomingEvents";
+    
+    // set the value
+    [defaults setInteger:maxUpcomingEvents forKey:key];
+    
+    // save it
+    [defaults synchronize]; 
 }
 
 @end

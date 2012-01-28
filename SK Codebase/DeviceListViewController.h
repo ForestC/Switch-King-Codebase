@@ -19,6 +19,7 @@
 @property (atomic, retain) NSMutableArray *devices;
 @property (atomic, retain) NSMutableArray *groups;
 @property (atomic, retain) NSMutableArray *groupsAndDevices;
+@property(nonatomic,strong) IBOutlet UIBarButtonItem *refreshBarButtonItem;
 
 //@property (nonatomic, strong) IBOutlet SKDeviceGroupStdTableViewCell * deviceGroupCellStd;
 //@property (nonatomic, retain) SKDeviceGroupStdTableViewCell * deviceGroupCellStd;

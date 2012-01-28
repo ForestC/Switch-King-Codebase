@@ -1,8 +1,8 @@
 "(none)" = "(ingen)";
 "%i devices" = "%i enheter";
 "Loading..." = "Laddar...";
-"Error loading" = "Fel vid hämtning";
-"Either the server couldn't be contacted or there was an error during communication. Additional information: {0}" = "Antingen kunde servern inte kontaktas eller uppstod ett fel vid hämtning av information.\n\nYtterligare information:\n{0}";
+"Error loading data.\n%@" = "Fel vid hämtning.\n%@";
+"Either the server couldn't be contacted or there was an error during communication." = "Antingen kunde servern inte kontaktas eller uppstod ett fel vid hämtning av information.";
 "Off" = "Av";
 "On" = "På";
 "Dimmed %i%%" = "Dimmad %i%%";
@@ -19,9 +19,9 @@
 "Refresh interval" = "Uppdateringsintervall";
 "Refresh after command" = "Uppdatera efter kommando";
 "Max upcoming events" = "Max antal kommande händelser";
-"{0} sec" = "{0} sek";
-"{0} seconds" = "{0} sekunder";
-"{0} events" = "{0} händelser";
+"%i sec" = "%i sek";
+"%i seconds" = "%i sekunder";
+"%i events" = "%i händelser";
 "No value" = "Inget värde";
 "Username" = "Användarnamn";
 "Password" = "Lösenord";
@@ -52,5 +52,5 @@
 "Refresh on tab switch" = "Ladda om vid flikväxling";
 "Server settings has not yet been configured." = "Serverinställningar har inte angetts eller har angetts felaktigt.";
 "Unknown" = "Okänt";
-"Server did not return any data. Check username, password and server identity." = "Servern returnerade ingen data. Kontrollera användarnamn, lösenord och serveridentitet.";
+"Server did not return any data.\nCheck username, password and server identity." = "Servern returnerade ingen data.\nKontrollera användarnamn, lösenord och serveridentitet.";
 "No server set" = "Ingen server angiven";

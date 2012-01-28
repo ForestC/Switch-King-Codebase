@@ -213,7 +213,45 @@ NSThread * mainUpdateThread;
 // Requests all entities to be updated
 // May be called at init of the app
 - (void)requestUpdateOfAllEntities {
-    [self updateAllEntities];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
+    
+    reqNotificationData.entityType = ENTITY_TYPE__ALL_ENTITIES;
+    
+    if([CommunicationMgr hasConnectivity]) {
+        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
+                                                                     forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        /*
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED
+                                          object:nil
+                                        userInfo:notificationData];
+        */
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        [self updateAllEntities];
+    } else {
+        NSString *alertNotificationData = NSLocalizedStringFromTable(@"No network connection", @"Texts", nil);
+        
+        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:alertNotificationData 
+                                                                     forKey:ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY];
+        
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        // Post a notification that an alert is requested to display
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ALERT_INFO_REQUESTED
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        // Post a notification that connection is not available
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__NO_CONNECTION
+                                          object:nil
+                                        userInfo:nil];
+    }
 }
 
 - (void)updateAllEntities {

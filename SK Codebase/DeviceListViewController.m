@@ -16,12 +16,14 @@
 #import "AppDelegate.h"
 #import "ImagePathHelper.h"
 #import "TextHelper.h"
+#import "DeviceDetailController_iPhone.h"
 
 @implementation DeviceListViewController
 
 @synthesize groups;
 @synthesize devices;
 @synthesize groupsAndDevices;
+@synthesize refreshBarButtonItem;
 //@synthesize deviceGroupCellStd;
 
 - (id)init
@@ -40,6 +42,17 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self addEntityObservers];
+    }
+    
+    return self;
+}
+
+
+- (id)initWithCoder:(NSCoder*)aDecoder 
+{
+    if(self = [super initWithCoder:aDecoder]) {
+        // Add entity observers
         [self addEntityObservers];
     }
     
@@ -134,15 +147,6 @@
     NSLog(@"%i devices, %i groups after update", devices.count, groups.count);
 }
 
-- (id)initWithCoder:(NSCoder*)aDecoder 
-{
-    if(self = [super initWithCoder:aDecoder]) {
-        // Add entity observers
-        [self addEntityObservers];
-    }
-    
-    return self;
-}
 
 // Adds entity observers to be able to listen to notifications
 - (void)addEntityObservers {
@@ -169,6 +173,19 @@
 }
 
 /*******************************************************************************
+ Misc
+ *******************************************************************************/
+
+- (void)refreshRequested {
+    // Get the app delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    [appDelegate.communicationMgr requestUpdateOfAllEntities];
+    
+//    NSLog(<#NSString *format, ...#>)
+}
+
+/*******************************************************************************
  TableView Layout
 *******************************************************************************/
 
@@ -190,6 +207,9 @@
         
         ((SKDeviceStdTableViewCell *)cell).tableViewController = self;
         ((SKDeviceStdTableViewCell *)cell).entity = cellEntity;
+
+        // Reset Swipe data
+        [((SKDeviceStdTableViewCell *)cell) setSwipeLayerHidden:true];
     } else if([cellEntity isKindOfClass:[SKDeviceGroup class]]) {
         if([entityStore deviceGroupIsDirty:cellEntity.ID]) {
             cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY];
@@ -203,6 +223,9 @@
         
         ((SKDeviceGroupStdTableViewCell *)cell).tableViewController = self;
         ((SKDeviceGroupStdTableViewCell *)cell).entity = cellEntity;
+        
+        // Reset Swipe data
+        [((SKDeviceGroupStdTableViewCell *)cell) setSwipeLayerHidden:true];
     } else {
         static NSString *cellIdentifier = @"Cell";
         
@@ -275,10 +298,14 @@
         [deviceCell.entityInfoLabel setText:[TextHelper getDeviceInfoText:device]];
         deviceCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDevice: device:@"DeviceList_"]];
     } else if([cell isKindOfClass:[SKDeviceGroupStdTableViewCell class]]) {
-        SKDeviceGroupStdTableViewCell * deviceGroupCell = (SKDeviceGroupStdTableViewCell *)cell;
+        SKDeviceGroupStdTableViewCell *deviceGroupCell = (SKDeviceGroupStdTableViewCell *)cell;
         SKDeviceGroup *deviceGroup = (SKDeviceGroup *)cellEntity;
 
-        [deviceGroupCell.entityNameLabel setText:deviceGroup.Name];
+        if(deviceGroup.ID == -1) {
+            [deviceGroupCell.entityNameLabel setText:NSLocalizedStringFromTable(@"(none)", @"Texts", nil)];
+        } else {
+            [deviceGroupCell.entityNameLabel setText:deviceGroup.Name];
+        }
         deviceGroupCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDeviceGroup: deviceGroup:@"DeviceList_"]];
         [deviceGroupCell.entityInfoLabel setText:[TextHelper getDeviceGroupInfoText:deviceGroup]];
     }
@@ -302,6 +329,11 @@
         SKEntity *entity = (SKEntity *)[groupsAndDevices objectAtIndex:cell.tag];
         
         if([entity isKindOfClass:[SKDevice class]]) {
+//            DeviceDetailController_iPhone *detailController = [[DeviceDetailController_iPhone alloc] initWithNibName:nil bundle:nil];
+            DeviceDetailController_iPhone *detailController = [self.storyboard instantiateViewControllerWithIdentifier:@"DeviceDetails"];
+            
+            [self.navigationController pushViewController:detailController animated:true];
+            
 //            SKDevice *device = (SKDevice *)entity;
 //            
 //            EntityActionRequest *r = [EntityActionRequest createByDeviceAction:
@@ -317,9 +349,13 @@
 //            [appDelegate entityActionRequestFired:nil :r];
             
         } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
-            SKDeviceGroup *deviceGroup = (SKDeviceGroup *)entity;            
+            //SKDeviceGroup *deviceGroup = (SKDeviceGroup *)entity;            
         } 
     }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"%@", @"SCROLL");
 }
 
 #pragma mark - View lifecycle
@@ -336,6 +372,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.refreshBarButtonItem setTarget:self];
+    [self.refreshBarButtonItem setAction:@selector(refreshRequested)];
 }
 
 

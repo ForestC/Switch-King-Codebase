@@ -37,7 +37,6 @@
     if (self) {
         // Initialization code
         [self initGestureRecognizers];
-        actionRequest = [[EntityActionRequest alloc] init];
     }
     return self;
 }
@@ -98,7 +97,7 @@
         swipeRequestsRestart = false;
         swipeInProgress = true;
     } else if (sender.state == UIGestureRecognizerStateEnded) {
-        if(swipeInProgress) {
+        if(swipeInProgress && swipeLayerVisible) {
             swipeRequestsRestart = true;
             [self setSwipeLayerHidden :true];
             [self performRequestedAction];
@@ -128,15 +127,17 @@
                 [self setSwipeLayerHidden :false];
                 
                 [actionLabel setText:NSLocalizedStringFromTable(@"On", @"Texts", nil)];
-                [actionRequest setDimLevel:100];
-                [actionRequest setActionId:ACTION_ID__TURN_ON];
+                
+                actionRequestDimLevel = 100;
+                actionRequestAction = ACTION_ID__TURN_ON;
             }
             else if (currentPosition.x + SWIPE_MARGIN__DETECTION_THRESHOLD < gestureStartPoint.x) {
                 [self setSwipeLayerHidden :false];
                 
                 [actionLabel setText:NSLocalizedStringFromTable(@"Off", @"Texts", nil)];
-                [actionRequest setDimLevel:0];
-                [actionRequest setActionId:ACTION_ID__TURN_OFF];
+                
+                actionRequestDimLevel = 0;
+                actionRequestAction = ACTION_ID__TURN_OFF;
             }
             
             return;
@@ -169,18 +170,21 @@
                 
                 if(i == 0) {
                     [actionLabel setText:NSLocalizedStringFromTable(@"Off", @"Texts", nil)];
-                    [actionRequest setDimLevel:0];
-                    [actionRequest setActionId:ACTION_ID__TURN_OFF];
+                    
+                    actionRequestDimLevel = 0;
+                    actionRequestAction = ACTION_ID__TURN_OFF;
                 } else if (i == 100) {
                     [actionLabel setText:NSLocalizedStringFromTable(@"On", @"Texts", nil)];
-                    [actionRequest setDimLevel:100];
-                    [actionRequest setActionId:ACTION_ID__TURN_ON];
+                    
+                    actionRequestDimLevel = 100;
+                    actionRequestAction = ACTION_ID__TURN_ON;
                 } else {                    
                     NSString *str = NSLocalizedStringFromTable(@"Dim %i%%", @"Texts", nil);
                     str = [NSString stringWithFormat:str, i];
                     [actionLabel setText:str];
-                    [actionRequest setDimLevel:i];
-                    [actionRequest setActionId:ACTION_ID__TURN_ON];
+                    
+                    actionRequestDimLevel = i;
+                    actionRequestAction = ACTION_ID__TURN_ON;
                 }
             }
         }
@@ -190,9 +194,14 @@
 // Hides or shows the swipe info layer
 - (void)setSwipeLayerHidden:(Boolean)hidden {
     CGFloat alpha;
-    
+    swipeLayerVisible = !hidden;
     [actionLabel setHidden:hidden];
     
+    if(
+       [self.reuseIdentifier isEqualToString:REUSE_IDENTIFIER__DEVICE_CELL_STD_DIRTY] ||
+       [self.reuseIdentifier isEqualToString:REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY])
+        return;
+       
     if(hidden) {
         alpha = 1.0f;
     } else {
@@ -222,6 +231,10 @@
            [entity isKindOfClass:[SKDeviceGroup class]]) {
             //SKDevice *device = (SKDevice *)cellEntity;
             
+            EntityActionRequest *actionRequest = [EntityActionRequest alloc];
+
+            actionRequest.dimLevel = actionRequestDimLevel;
+            actionRequest.actionId = actionRequestAction;
             actionRequest.entity = cellEntity;
             actionRequest.reqActionDelay = 0;
             

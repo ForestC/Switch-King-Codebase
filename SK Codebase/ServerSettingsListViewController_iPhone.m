@@ -103,9 +103,9 @@
     } else if(cell.tag == CELL_TAG__SERVER_ADDRESS) {
         [SettingsMgr setTargetAddress:textField.text:true];
     } else if(cell.tag == CELL_TAG__SERVER_IDENTITY) {
-        [SettingsMgr setServerIdentity:textField.text];
+        [SettingsMgr setServerIdentity:[textField.text intValue]];
     } else if(cell.tag == CELL_TAG__SERVER_PORT) {
-        [SettingsMgr setTargetPort:textField.text];
+        [SettingsMgr setTargetPort:[textField.text intValue]];
     }
     
     NSLog(@"%@", @"A");
@@ -275,6 +275,7 @@
     }
 }
 
+// Called when rendering of a cell is requested
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Gets the expected tag
@@ -350,7 +351,6 @@
         // Add change listener
         [settingsCell.settingTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }
-    
 }
 
 - (void)useLiveSwitchTouched:(UIControl *)sender

@@ -1,8 +1,8 @@
 "(none)" = "(none)";
 "%i devices" = "%i devices";
 "Loading..." = "Loading...";
-"Error loading" = "Error loading";
-"Either the server couldn't be contacted or there was an error during communication. Additional information: {0}" = "Either the server couldn't be contacted or there was an error during communication. Additional information: {0}";
+"Error loading data.\n%@" = "Error loading data.\n%@";
+"Either the server couldn't be contacted or there was an error during communication." = "Either the server couldn't be contacted or there was an error during communication.";
 "Off" = "Off";
 "On" = "On";
 "Dimmed %i%%" = "Dimmed %i%%";
@@ -19,9 +19,9 @@
 "Refresh interval" = "Refresh interval";
 "Refresh after command" = "Refresh after command";
 "Max upcoming events" = "Max upcoming events";
-"{0} sec" = "{0} sec";
-"{0} seconds" = "{0} seconds";
-"{0} events" = "{0} events";
+"%i sec" = "{0} sec";
+"%i seconds" = "%i seconds";
+"%i events" = "%i events";
 "No value" = "No value";
 "Username" = "Username";
 "Password" = "Password";
@@ -52,5 +52,5 @@
 "Refresh on tab switch" = "Refresh on tab switch";
 "Server settings has not yet been configured." = "Server settings has not yet been configured.";
 "Unknown" = "Unknown";
-"Server did not return any data. Check username, password and server identity." = "Server did not return any data. Check username, password and server identity.";
+"Server did not return any data.\nCheck username, password and server identity." = "Server did not return any data.\nCheck username, password and server identity.";
 "No server set" = "No server set";

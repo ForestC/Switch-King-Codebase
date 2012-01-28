@@ -71,7 +71,30 @@
                 case ENTITY_TYPE__DEVICE_GROUP:
                     [self flagDeviceGroupAsDirtyOrClean:reqData.entityId
                                                   :true];
-                    break;                    
+                    break;
+                case ENTITY_TYPE__ALL_ENTITIES:
+                {
+                    NSMutableSet *groupIds = [[NSMutableSet alloc] init];
+                    
+                    for(int i=0;i<[deviceList count];i++) {
+                        SKDevice *d = (SKDevice *)[deviceList objectAtIndex:i];
+                        
+                        [groupIds addObject:[NSNumber numberWithInteger:d.GroupID]];
+                    }
+                    
+                    NSArray *groupIdsArray = [groupIds allObjects];
+                    
+                    for(int i=0;i<[groupIdsArray count];i++) {
+                        NSInteger groupId = [(NSNumber *)[groupIdsArray objectAtIndex:i] integerValue];
+
+                        [self flagDeviceGroupAsDirtyOrClean:groupId
+                                                      :true];    
+                        
+                    }
+                    [self flagDeviceGroupAsDirtyOrClean:reqData.entityId
+                                                       :true];
+                    break;    
+                }
                 default:
                     break;
             }

@@ -14,9 +14,11 @@
 	int verticalAmount;
 	int horizontalAmount;
     CGPoint startLocation;
-    EntityActionRequest *actionRequest;
+    NSInteger actionRequestAction;
+    NSInteger actionRequestDimLevel;
     Boolean swipeInProgress;
     Boolean swipeRequestsRestart;
+    Boolean swipeLayerVisible;
 }
 
 // Holds the name of the entity

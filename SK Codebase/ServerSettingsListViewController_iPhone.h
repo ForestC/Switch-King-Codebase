@@ -13,6 +13,7 @@
 // Gets the expected tag by index path.
 - (NSInteger)getExpectedTag:(NSIndexPath *)indexPath;
 
+// Dequeues or creates a new cell
 - (UITableViewCell *)dequeueOrCreateTableViewCell:(UITableView *)tableView: (NSInteger)tag;
 
 // Sets the table view cell data depending on the type of cell and entity

@@ -34,6 +34,12 @@
 		5B33272414ADB575002A263A /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272114ADB575002A263A /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B33272514ADB575002A263A /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272314ADB575002A263A /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B33272914ADD02A002A263A /* EntityHttpReqNotificationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272814ADD02A002A263A /* EntityHttpReqNotificationData.m */; };
+		5B38B4C114CD9407002A3275 /* MaxUpcomingEventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C014CD9407002A3275 /* MaxUpcomingEventsListViewController.m */; };
+		5B38B4C514CD942B002A3275 /* RefreshIntervalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C414CD942B002A3275 /* RefreshIntervalListViewController.m */; };
+		5B38B4C814CD944A002A3275 /* RefreshAfterCommandListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C714CD944A002A3275 /* RefreshAfterCommandListViewController.m */; };
+		5B38B4CB14CDBB37002A3275 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B38B4C914CDBB37002A3275 /* Icon.png */; };
+		5B38B4CC14CDBB37002A3275 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B38B4CA14CDBB37002A3275 /* Icon@2x.png */; };
+		5B38B4CE14CDBC29002A3275 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B38B4CD14CDBC29002A3275 /* Default.png */; };
 		5B396B5114B39A3000A590FB /* ImagePathHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B396B5014B39A3000A590FB /* ImagePathHelper.m */; };
 		5B396B5414B3A9B400A590FB /* TextHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B396B5314B3A9B400A590FB /* TextHelper.m */; };
 		5B396B5614B3AF0800A590FB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B396B5514B3AF0800A590FB /* Localizable.strings */; };
@@ -70,6 +76,14 @@
 		5B80281214A219DD00F3909E /* DeviceList_OnSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FF14A219DD00F3909E /* DeviceList_OnSemiAuto.png */; };
 		5BA69E5F149B43DA00D663BA /* SKDeviceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */; };
 		5BA69E65149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */; };
+		5BAEB0A814D42EE700F1B2AE /* Button_CancelSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */; };
+		5BAEB0A914D42EE700F1B2AE /* Button_Learn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */; };
+		5BAEB0AA14D42EE700F1B2AE /* Button_Synchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */; };
+		5BAEB0AB14D42EE700F1B2AE /* Button_TurnOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A414D42EE700F1B2AE /* Button_TurnOff.png */; };
+		5BAEB0AC14D42EE700F1B2AE /* Button_TurnOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A514D42EE700F1B2AE /* Button_TurnOn.png */; };
+		5BAEB0AD14D42EE700F1B2AE /* Slider_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A614D42EE700F1B2AE /* Slider_Off.png */; };
+		5BAEB0AE14D42EE700F1B2AE /* Slider_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A714D42EE700F1B2AE /* Slider_On.png */; };
+		5BAEB0B514D4302100F1B2AE /* DeviceDetailController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEB0B414D4302100F1B2AE /* DeviceDetailController_iPhone.m */; };
 		5BDB646A14C47D5100D8020B /* AlertInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB646814C47D5100D8020B /* AlertInfoViewController.m */; };
 		5BDB646B14C47D5100D8020B /* AlertInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BDB646914C47D5100D8020B /* AlertInfoViewController.xib */; };
 		5BDB647114C48BCF00D8020B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */; };
@@ -140,6 +154,15 @@
 		5B33272314ADB575002A263A /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		5B33272714ADD02A002A263A /* EntityHttpReqNotificationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityHttpReqNotificationData.h; sourceTree = "<group>"; };
 		5B33272814ADD02A002A263A /* EntityHttpReqNotificationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityHttpReqNotificationData.m; sourceTree = "<group>"; };
+		5B38B4BF14CD9407002A3275 /* MaxUpcomingEventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxUpcomingEventsListViewController.h; sourceTree = "<group>"; };
+		5B38B4C014CD9407002A3275 /* MaxUpcomingEventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxUpcomingEventsListViewController.m; sourceTree = "<group>"; };
+		5B38B4C314CD942B002A3275 /* RefreshIntervalListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshIntervalListViewController.h; sourceTree = "<group>"; };
+		5B38B4C414CD942B002A3275 /* RefreshIntervalListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshIntervalListViewController.m; sourceTree = "<group>"; };
+		5B38B4C614CD944A002A3275 /* RefreshAfterCommandListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshAfterCommandListViewController.h; sourceTree = "<group>"; };
+		5B38B4C714CD944A002A3275 /* RefreshAfterCommandListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshAfterCommandListViewController.m; sourceTree = "<group>"; };
+		5B38B4C914CDBB37002A3275 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		5B38B4CA14CDBB37002A3275 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		5B38B4CD14CDBC29002A3275 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5B396B4F14B39A3000A590FB /* ImagePathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePathHelper.h; sourceTree = "<group>"; };
 		5B396B5014B39A3000A590FB /* ImagePathHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePathHelper.m; sourceTree = "<group>"; };
 		5B396B5214B3A9B400A590FB /* TextHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextHelper.h; sourceTree = "<group>"; };
@@ -186,6 +209,15 @@
 		5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroup.m; sourceTree = "<group>"; };
 		5BA69E63149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceGroupStdTableViewCell.h; sourceTree = "<group>"; };
 		5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroupStdTableViewCell.m; sourceTree = "<group>"; };
+		5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_CancelSemiAuto.png; sourceTree = "<group>"; };
+		5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Learn.png; sourceTree = "<group>"; };
+		5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Synchronize.png; sourceTree = "<group>"; };
+		5BAEB0A414D42EE700F1B2AE /* Button_TurnOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_TurnOff.png; sourceTree = "<group>"; };
+		5BAEB0A514D42EE700F1B2AE /* Button_TurnOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_TurnOn.png; sourceTree = "<group>"; };
+		5BAEB0A614D42EE700F1B2AE /* Slider_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slider_Off.png; sourceTree = "<group>"; };
+		5BAEB0A714D42EE700F1B2AE /* Slider_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slider_On.png; sourceTree = "<group>"; };
+		5BAEB0B314D4302100F1B2AE /* DeviceDetailController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceDetailController_iPhone.h; sourceTree = "<group>"; };
+		5BAEB0B414D4302100F1B2AE /* DeviceDetailController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailController_iPhone.m; sourceTree = "<group>"; };
 		5BDB646714C47D5100D8020B /* AlertInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertInfoViewController.h; sourceTree = "<group>"; };
 		5BDB646814C47D5100D8020B /* AlertInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertInfoViewController.m; sourceTree = "<group>"; };
 		5BDB646914C47D5100D8020B /* AlertInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertInfoViewController.xib; sourceTree = "<group>"; };
@@ -409,6 +441,16 @@
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */,
+				5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */,
+				5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */,
+				5BAEB0A414D42EE700F1B2AE /* Button_TurnOff.png */,
+				5BAEB0A514D42EE700F1B2AE /* Button_TurnOn.png */,
+				5BAEB0A614D42EE700F1B2AE /* Slider_Off.png */,
+				5BAEB0A714D42EE700F1B2AE /* Slider_On.png */,
+				5B38B4CD14CDBC29002A3275 /* Default.png */,
+				5B38B4C914CDBB37002A3275 /* Icon.png */,
+				5B38B4CA14CDBB37002A3275 /* Icon@2x.png */,
 				5BDD4FDB14BE289D000F4975 /* Toolbar_Configuration.png */,
 				5BDD4FDC14BE289D000F4975 /* Toolbar_Configuration@2x.png */,
 				5B8027ED14A219DD00F3909E /* DataSourceList_StatusError.png */,
@@ -452,6 +494,14 @@
 				5BDB646714C47D5100D8020B /* AlertInfoViewController.h */,
 				5BDB646814C47D5100D8020B /* AlertInfoViewController.m */,
 				5BDB646914C47D5100D8020B /* AlertInfoViewController.xib */,
+				5B38B4BF14CD9407002A3275 /* MaxUpcomingEventsListViewController.h */,
+				5B38B4C014CD9407002A3275 /* MaxUpcomingEventsListViewController.m */,
+				5B38B4C314CD942B002A3275 /* RefreshIntervalListViewController.h */,
+				5B38B4C414CD942B002A3275 /* RefreshIntervalListViewController.m */,
+				5B38B4C614CD944A002A3275 /* RefreshAfterCommandListViewController.h */,
+				5B38B4C714CD944A002A3275 /* RefreshAfterCommandListViewController.m */,
+				5BAEB0B314D4302100F1B2AE /* DeviceDetailController_iPhone.h */,
+				5BAEB0B414D4302100F1B2AE /* DeviceDetailController_iPhone.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -613,6 +663,16 @@
 				5BDD4FDD14BE289D000F4975 /* Toolbar_Configuration.png in Resources */,
 				5BDD4FDE14BE289D000F4975 /* Toolbar_Configuration@2x.png in Resources */,
 				5BDB646B14C47D5100D8020B /* AlertInfoViewController.xib in Resources */,
+				5B38B4CB14CDBB37002A3275 /* Icon.png in Resources */,
+				5B38B4CC14CDBB37002A3275 /* Icon@2x.png in Resources */,
+				5B38B4CE14CDBC29002A3275 /* Default.png in Resources */,
+				5BAEB0A814D42EE700F1B2AE /* Button_CancelSemiAuto.png in Resources */,
+				5BAEB0A914D42EE700F1B2AE /* Button_Learn.png in Resources */,
+				5BAEB0AA14D42EE700F1B2AE /* Button_Synchronize.png in Resources */,
+				5BAEB0AB14D42EE700F1B2AE /* Button_TurnOff.png in Resources */,
+				5BAEB0AC14D42EE700F1B2AE /* Button_TurnOn.png in Resources */,
+				5BAEB0AD14D42EE700F1B2AE /* Slider_Off.png in Resources */,
+				5BAEB0AE14D42EE700F1B2AE /* Slider_On.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +719,10 @@
 				5B0920A314C0C74D00BB9274 /* TextSettingStdTableViewCell.m in Sources */,
 				5B0920A614C0C7B200BB9274 /* PasswordSettingStdTableViewCell.m in Sources */,
 				5BDB646A14C47D5100D8020B /* AlertInfoViewController.m in Sources */,
+				5B38B4C114CD9407002A3275 /* MaxUpcomingEventsListViewController.m in Sources */,
+				5B38B4C514CD942B002A3275 /* RefreshIntervalListViewController.m in Sources */,
+				5B38B4C814CD944A002A3275 /* RefreshAfterCommandListViewController.m in Sources */,
+				5BAEB0B514D4302100F1B2AE /* DeviceDetailController_iPhone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,6 +837,7 @@
 				GCC_PREFIX_HEADER = "SK Codebase/SK Codebase-Prefix.pch";
 				INFOPLIST_FILE = "SK Codebase/SK Codebase-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -784,9 +849,46 @@
 				GCC_PREFIX_HEADER = "SK Codebase/SK Codebase-Prefix.pch";
 				INFOPLIST_FILE = "SK Codebase/SK Codebase-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
+		};
+		5BBA448614CDF7410024F771 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		5BBA448714CDF7410024F771 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Martin Videfors (NL4RMD9423)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SK Codebase/SK Codebase-Prefix.pch";
+				INFOPLIST_FILE = "SK Codebase/SK Codebase-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=*]" = "DC7109C3-0D07-44DE-AF68-7432A0C96A7B";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
 		};
 /* End XCBuildConfiguration section */
 
@@ -796,6 +898,7 @@
 			buildConfigurations = (
 				5B024CC4148FA6B300ED3B6D /* Debug */,
 				5B024CC5148FA6B300ED3B6D /* Release */,
+				5BBA448614CDF7410024F771 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -805,6 +908,7 @@
 			buildConfigurations = (
 				5B024CC7148FA6B300ED3B6D /* Debug */,
 				5B024CC8148FA6B300ED3B6D /* Release */,
+				5BBA448714CDF7410024F771 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

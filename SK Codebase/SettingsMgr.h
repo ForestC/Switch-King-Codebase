@@ -57,8 +57,42 @@
 // after an action has been requested.
 + (NSTimeInterval)getDeviceUpdateDelay;
 
+// Sets the number of seconds to wait before requesting update of device state
+// after an action has been requested.
++ (void)setDeviceUpdateDelay:(NSTimeInterval) interval;
+
 // Gets the number of seconds to wait before requesting update of device group state
 // after an action has been requested.
 + (NSTimeInterval)getDeviceGroupUpdateDelay;
+
+// Gets an indication whether to group devices or not
++ (Boolean)groupDevices;
+
+// Sets an indication whether to group devices or not
++ (void)setGroupDevices:(Boolean) groupDevices;
+
+// Gets an indication whether to enable learn button or not
++ (Boolean)showLearnButton;
+
+// Sets an indication whether to enable learn button or not
++ (void)setShowLearnButton:(Boolean) enableLearnButton;
+
+// Gets an indication whether to reload views on tab switch or not
++ (Boolean)enableReloadOnTabSwitch;
+
+// Sets an indication whether to reload views on tab switch or not
++ (void)setEnableReloadOnTabSwitch:(Boolean) enableReloadOnTabSwitch;
+
+// Gets the refresh interval
++ (NSTimeInterval)getRefreshInterval;
+
+// Sets the refreshInterval
++ (void)setRefreshInterval:(NSTimeInterval) interval;
+
+// Gets the maximum number of upcoming events
++ (NSInteger)getMaxUpcomingEvents;
+
+// Sets the maximum number of upcoming events
++ (void)setMaxUpcomingEvents:(NSInteger) maxUpcomingEvents;
 
 @end

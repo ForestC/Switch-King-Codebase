@@ -33,7 +33,7 @@
     NSURL *URL = [NSURL URLWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                         timeoutInterval:30.0];
+                                         timeoutInterval:15.0];
     
     NSLog(@"Sending request to %@", URL);
     
@@ -55,7 +55,9 @@
 - (NSURLCredential*)credentialWithAuthData {
     NSURLCredential *newCredential = [NSURLCredential credentialWithUser:authData.user
                                                                 password:authData.pass
-                                                             persistence:NSURLCredentialPersistenceForSession];
+                                                             persistence:NSURLCredentialPersistenceNone];
+    NSLog(@"USER: %@", authData.user);
+    
     return newCredential;
 }
 
@@ -98,6 +100,15 @@
     
     [appDelegate releaseNetworkActivityIndicator];
     
+    if(receivedData.length == 0) {
+        NSString *info = NSLocalizedStringFromTable(@"Server did not return any data.\nCheck username, password and server identity.", @"Texts", nil);
+        
+        if(!([appDelegate alertInfoInView] && [appDelegate.alertInfoText isEqualToString:info])) {        
+            [appDelegate setAlertInfo:info];
+            [appDelegate toggleAlertInfo:true];
+        }
+    }
+    
     [receiverDelegate dataReceived:self :receivedData];
 }
 
@@ -111,6 +122,20 @@
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
 
     [appDelegate releaseNetworkActivityIndicator];
+    
+    NSString *info = [error localizedDescription];
+    
+    NSString *prefixInfo = NSLocalizedStringFromTable(@"Error loading data.\n%@", @"Texts", nil);
+    
+    if(info == nil) {
+        NSString *dummyInfo = NSLocalizedStringFromTable(@"Either the server couldn't be contacted or there was an error during communication.", @"Texts", nil);
+        info = [NSString stringWithFormat:prefixInfo, dummyInfo];
+    } else {
+        info = [NSString stringWithFormat:prefixInfo, info];
+    }
+    
+    [appDelegate setAlertInfo:info];
+    [appDelegate toggleAlertInfo:true];
 }
 
 // Gets the base url
