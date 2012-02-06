@@ -37,7 +37,7 @@
 
 - (void)updateDataSources;
 
-- (void)updateComingUp;
+- (void)updateEventsComingUp;
 
 - (CommunicationBase *)createCommunicationBase:(NSObject <DataReceivedDelegate> *)del;
 

@@ -10,6 +10,7 @@
 #import "AuthenticationDataContainer.h"
 #import "SKDeviceDataReceiver.h"
 #import "SKDataSourceDataReceiver.h"
+#import "SKEventDataReceiver.h"
 #import "CommunicationBase.h"
 #import "EntityStore.h"
 #import "SettingsMgr.h"
@@ -257,6 +258,7 @@ NSThread * mainUpdateThread;
 - (void)updateAllEntities {
     [self updateDevices];
     [self updateDataSources];
+    [self updateEventsComingUp];
 }
 
 - (void)updateDevices {
@@ -316,22 +318,52 @@ NSThread * mainUpdateThread;
 
 
 - (void)updateDataSources {
-    NSLog(@"Updating datasources");
+    NSLog(@"Updating data sources");
+    
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Get the authentication data container
+    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    
+    // Create a communication base    
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
     
     // Create a receiver and assign an entity store to the receiver
-    SKDataSourceDataReceiver *receiver = [SKDataSourceDataReceiver alloc];
-
-    // Create a communication base    
-    CommunicationBase *communicationBase = [self createCommunicationBase:receiver];
+    SKDataSourceDataReceiver *receiver = [[SKDataSourceDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
+    
+    // Set the receiver delegate
+    [communicationBase setReceiverDelegate:receiver];
     
     // Send the request
-    [communicationBase sendRequest:[communicationBase getDeviceListUrl]];
+    [communicationBase sendRequest:[communicationBase getDataSourceListUrl]];
+    
+    NSLog(@"Request for all data sources sent");
 
-    NSLog(@"DataSource request sent");
 }
 
-- (void)updateComingUp {
+- (void)updateEventsComingUp {
+    NSLog(@"Updating events coming up");
     
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Get the authentication data container
+    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    
+    // Create a communication base    
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    
+    // Create a receiver and assign an entity store to the receiver
+    SKEventDataReceiver *receiver = [[SKEventDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
+    
+    // Set the receiver delegate
+    [communicationBase setReceiverDelegate:receiver];
+    
+    NSInteger maxCount = 20;
+    
+    // Send the request
+    [communicationBase sendRequest:[communicationBase getComingUpEventsListUrl:maxCount]];
+    
+    NSLog(@"Request for all upcoming events");
 }
 
 // Creates a communication base object to be used when communicating with a remote server.

@@ -11,6 +11,9 @@
 
 @interface SettingsMgr : NSObject
 
+// Registers defaults
++ (void)initDefaults;
+
 // Gets an indication whether settings are configured or not
 + (Boolean)initialSettingsConfigured;
 
@@ -70,6 +73,12 @@
 
 // Sets an indication whether to group devices or not
 + (void)setGroupDevices:(Boolean) groupDevices;
+
+// Gets an indication whether to group data sources or not
++ (Boolean)groupDataSources;
+
+// Sets an indication whether to group data sources or not
++ (void)setGroupDataSources:(Boolean) groupDataSources;
 
 // Gets an indication whether to enable learn button or not
 + (Boolean)showLearnButton;

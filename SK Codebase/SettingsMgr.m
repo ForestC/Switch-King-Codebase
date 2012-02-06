@@ -11,6 +11,18 @@
 
 @implementation SettingsMgr
 
++ (void)initDefaults {
+    NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @"NO", @"useLive", 
+                              @"YES", @"groupDevices", 
+                              @"YES", @"groupDS", 
+                              @"http://www.switchking.se", @"targetAddress",
+                              @"10800", @"targetPort",
+                              nil];
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+}
+
 // Gets an indication whether settings are configured or not
 + (Boolean)initialSettingsConfigured {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -98,6 +110,29 @@
     
     // set the value
     [defaults setBool:groupDevices forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Gets an indication whether to group data sources or not
++ (Boolean)groupDataSources {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"groupDS";    
+    
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+    
+    return retrievedValue;
+}
+
+// Sets an indication whether to group data sources or not
++ (void)setGroupDataSources:(Boolean) groupDataSources {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"groupDS";
+    
+    // set the value
+    [defaults setBool:groupDataSources forKey:key];
     
     // save it
     [defaults synchronize];
