@@ -21,6 +21,11 @@
 		5B024CD2148FB02700ED3B6D /* AuthenticationDataContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CD1148FB02700ED3B6D /* AuthenticationDataContainer.m */; };
 		5B024CD7148FB54200ED3B6D /* XMLSKDeviceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CD6148FB54200ED3B6D /* XMLSKDeviceParser.m */; };
 		5B024CE1148FC1DA00ED3B6D /* SKDeviceDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CE0148FC1DA00ED3B6D /* SKDeviceDataReceiver.m */; };
+		5B04A51514DFC87000C8B178 /* EventList_Dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04A51114DFC87000C8B178 /* EventList_Dim.png */; };
+		5B04A51614DFC87000C8B178 /* EventList_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04A51214DFC87000C8B178 /* EventList_Off.png */; };
+		5B04A51714DFC87000C8B178 /* EventList_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04A51314DFC87000C8B178 /* EventList_On.png */; };
+		5B04A51814DFC87000C8B178 /* EventList_Scenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04A51414DFC87000C8B178 /* EventList_Scenario.png */; };
+		5B04A51C14DFD45100C8B178 /* Base64Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04A51B14DFD45000C8B178 /* Base64Encoding.m */; };
 		5B09208F14C07DA200BB9274 /* SettingsListViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B09208E14C07DA200BB9274 /* SettingsListViewController_iPhone.m */; };
 		5B09209714C090D100BB9274 /* UrlSettingStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B09209614C090D100BB9274 /* UrlSettingStdTableViewCell.m */; };
 		5B09209A14C091BD00BB9274 /* NumericSettingStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B09209914C091BD00BB9274 /* NumericSettingStdTableViewCell.m */; };
@@ -47,6 +52,13 @@
 		5B396B6114B3B02100A590FB /* Headers.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B396B6314B3B02100A590FB /* Headers.strings */; };
 		5B396B6514B3B02E00A590FB /* Buttons.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B396B6714B3B02E00A590FB /* Buttons.strings */; };
 		5B4507F814B4BE5D00F3F888 /* NotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4507F714B4BE5D00F3F888 /* NotificationHelper.m */; };
+		5B5D3D7E14D6952F007882E0 /* DataSourceListViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D7D14D6952F007882E0 /* DataSourceListViewController_iPhone.m */; };
+		5B5D3D8214D69AC8007882E0 /* SKDataSourceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D8114D69AC8007882E0 /* SKDataSourceGroup.m */; };
+		5B5D3D8514D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D8414D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.m */; };
+		5B5D3D8814D6A6BC007882E0 /* SKDataSourceStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D8714D6A6BC007882E0 /* SKDataSourceStdTableViewCell.m */; };
+		5B5D3D8B14D6A6D3007882E0 /* SKDataSourceGroupStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D8A14D6A6D3007882E0 /* SKDataSourceGroupStdTableViewCell.m */; };
+		5B5D3D8E14D6A8A0007882E0 /* DataSourceDetailController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D8D14D6A89F007882E0 /* DataSourceDetailController_iPhone.m */; };
+		5B5D3D9114D6B538007882E0 /* StateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D9014D6B537007882E0 /* StateHelper.m */; };
 		5B639CA614964A1B002D7F8F /* Tab_ComingUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */; };
 		5B639CA714964A1B002D7F8F /* Tab_ComingUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */; };
 		5B639CA814964A1B002D7F8F /* Tab_DataSources.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA214964A1B002D7F8F /* Tab_DataSources.png */; };
@@ -54,6 +66,12 @@
 		5B639CAA14964A1B002D7F8F /* Tab_Devices.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA414964A1B002D7F8F /* Tab_Devices.png */; };
 		5B639CAB14964A1B002D7F8F /* Tab_Devices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA514964A1B002D7F8F /* Tab_Devices@2x.png */; };
 		5B639CB214964E2A002D7F8F /* DeviceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B639CB114964E2A002D7F8F /* DeviceListViewController.m */; };
+		5B64DF6C14D9738B00D36647 /* SKEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF6B14D9738B00D36647 /* SKEvent.m */; };
+		5B64DF7014D977E800D36647 /* SKEventDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF6F14D977E800D36647 /* SKEventDataReceiver.m */; };
+		5B64DF7314D9784000D36647 /* XMLSKEventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF7214D9784000D36647 /* XMLSKEventParser.m */; };
+		5B64DF7714D9D47B00D36647 /* EventListViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF7614D9D47B00D36647 /* EventListViewController_iPhone.m */; };
+		5B64DF7A14D9D6D800D36647 /* SKEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF7914D9D6D800D36647 /* SKEventTableViewCell.m */; };
+		5B64DF7D14D9D6FA00D36647 /* SKEventBaseStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF7C14D9D6F900D36647 /* SKEventBaseStdTableViewCell.m */; };
 		5B8027EB149BAC3800F3909E /* SKDeviceStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */; };
 		5B80280014A219DD00F3909E /* DataSourceList_StatusError.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027ED14A219DD00F3909E /* DataSourceList_StatusError.png */; };
 		5B80280114A219DD00F3909E /* DataSourceList_StatusOK.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027EE14A219DD00F3909E /* DataSourceList_StatusOK.png */; };
@@ -125,6 +143,12 @@
 		5B024CD9148FC12800ED3B6D /* EntityDataReceiverDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDataReceiverDelegate.h; sourceTree = "<group>"; };
 		5B024CDF148FC1DA00ED3B6D /* SKDeviceDataReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceDataReceiver.h; sourceTree = "<group>"; };
 		5B024CE0148FC1DA00ED3B6D /* SKDeviceDataReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceDataReceiver.m; sourceTree = "<group>"; };
+		5B04A51114DFC87000C8B178 /* EventList_Dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventList_Dim.png; sourceTree = "<group>"; };
+		5B04A51214DFC87000C8B178 /* EventList_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventList_Off.png; sourceTree = "<group>"; };
+		5B04A51314DFC87000C8B178 /* EventList_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventList_On.png; sourceTree = "<group>"; };
+		5B04A51414DFC87000C8B178 /* EventList_Scenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventList_Scenario.png; sourceTree = "<group>"; };
+		5B04A51A14DFD45000C8B178 /* Base64Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Encoding.h; sourceTree = "<group>"; };
+		5B04A51B14DFD45000C8B178 /* Base64Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Encoding.m; sourceTree = "<group>"; };
 		5B09208D14C07DA200BB9274 /* SettingsListViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsListViewController_iPhone.h; sourceTree = "<group>"; };
 		5B09208E14C07DA200BB9274 /* SettingsListViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsListViewController_iPhone.m; sourceTree = "<group>"; };
 		5B09209514C090D100BB9274 /* UrlSettingStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlSettingStdTableViewCell.h; sourceTree = "<group>"; };
@@ -176,6 +200,20 @@
 		5B396B6814B3B03500A590FB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Buttons.strings; sourceTree = "<group>"; };
 		5B4507F614B4BE5D00F3F888 /* NotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationHelper.h; sourceTree = "<group>"; };
 		5B4507F714B4BE5D00F3F888 /* NotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationHelper.m; sourceTree = "<group>"; };
+		5B5D3D7C14D6952F007882E0 /* DataSourceListViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceListViewController_iPhone.h; sourceTree = "<group>"; };
+		5B5D3D7D14D6952F007882E0 /* DataSourceListViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceListViewController_iPhone.m; sourceTree = "<group>"; };
+		5B5D3D8014D69AC8007882E0 /* SKDataSourceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataSourceGroup.h; sourceTree = "<group>"; };
+		5B5D3D8114D69AC8007882E0 /* SKDataSourceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataSourceGroup.m; sourceTree = "<group>"; };
+		5B5D3D8314D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataSourceBaseStdTableViewCell.h; sourceTree = "<group>"; };
+		5B5D3D8414D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataSourceBaseStdTableViewCell.m; sourceTree = "<group>"; };
+		5B5D3D8614D6A6BC007882E0 /* SKDataSourceStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataSourceStdTableViewCell.h; sourceTree = "<group>"; };
+		5B5D3D8714D6A6BC007882E0 /* SKDataSourceStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataSourceStdTableViewCell.m; sourceTree = "<group>"; };
+		5B5D3D8914D6A6D3007882E0 /* SKDataSourceGroupStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataSourceGroupStdTableViewCell.h; sourceTree = "<group>"; };
+		5B5D3D8A14D6A6D3007882E0 /* SKDataSourceGroupStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataSourceGroupStdTableViewCell.m; sourceTree = "<group>"; };
+		5B5D3D8C14D6A89F007882E0 /* DataSourceDetailController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceDetailController_iPhone.h; sourceTree = "<group>"; };
+		5B5D3D8D14D6A89F007882E0 /* DataSourceDetailController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceDetailController_iPhone.m; sourceTree = "<group>"; };
+		5B5D3D8F14D6B537007882E0 /* StateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateHelper.h; sourceTree = "<group>"; };
+		5B5D3D9014D6B537007882E0 /* StateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateHelper.m; sourceTree = "<group>"; };
 		5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_ComingUp.png; sourceTree = "<group>"; };
 		5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_ComingUp@2x.png"; sourceTree = "<group>"; };
 		5B639CA214964A1B002D7F8F /* Tab_DataSources.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_DataSources.png; sourceTree = "<group>"; };
@@ -184,6 +222,19 @@
 		5B639CA514964A1B002D7F8F /* Tab_Devices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Devices@2x.png"; sourceTree = "<group>"; };
 		5B639CB014964E2A002D7F8F /* DeviceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceListViewController.h; sourceTree = "<group>"; };
 		5B639CB114964E2A002D7F8F /* DeviceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceListViewController.m; sourceTree = "<group>"; };
+		5B64DF6A14D9738B00D36647 /* SKEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEvent.h; sourceTree = "<group>"; };
+		5B64DF6B14D9738B00D36647 /* SKEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEvent.m; sourceTree = "<group>"; };
+		5B64DF6E14D977E800D36647 /* SKEventDataReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEventDataReceiver.h; sourceTree = "<group>"; };
+		5B64DF6F14D977E800D36647 /* SKEventDataReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEventDataReceiver.m; sourceTree = "<group>"; };
+		5B64DF7114D9784000D36647 /* XMLSKEventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSKEventParser.h; sourceTree = "<group>"; };
+		5B64DF7214D9784000D36647 /* XMLSKEventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLSKEventParser.m; sourceTree = "<group>"; };
+		5B64DF7414D979F700D36647 /* SKEventStoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEventStoreDelegate.h; sourceTree = "<group>"; };
+		5B64DF7514D9D47B00D36647 /* EventListViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListViewController_iPhone.h; sourceTree = "<group>"; };
+		5B64DF7614D9D47B00D36647 /* EventListViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListViewController_iPhone.m; sourceTree = "<group>"; };
+		5B64DF7814D9D6D800D36647 /* SKEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEventTableViewCell.h; sourceTree = "<group>"; };
+		5B64DF7914D9D6D800D36647 /* SKEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEventTableViewCell.m; sourceTree = "<group>"; };
+		5B64DF7B14D9D6F900D36647 /* SKEventBaseStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEventBaseStdTableViewCell.h; sourceTree = "<group>"; };
+		5B64DF7C14D9D6F900D36647 /* SKEventBaseStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEventBaseStdTableViewCell.m; sourceTree = "<group>"; };
 		5B8027E9149BAC3800F3909E /* SKDeviceStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceStdTableViewCell.h; sourceTree = "<group>"; };
 		5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceStdTableViewCell.m; sourceTree = "<group>"; };
 		5B8027ED14A219DD00F3909E /* DataSourceList_StatusError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DataSourceList_StatusError.png; sourceTree = "<group>"; };
@@ -342,10 +393,12 @@
 		5B024CD4148FB4FD00ED3B6D /* Xml */ = {
 			isa = PBXGroup;
 			children = (
+				5B64DF7114D9784000D36647 /* XMLSKEventParser.h */,
+				5B64DF7214D9784000D36647 /* XMLSKEventParser.m */,
 				5B024CD5148FB54200ED3B6D /* XMLSKDeviceParser.h */,
+				5BFC371214A334BC0062F6E7 /* XMLSKDataSourceParser.m */,
 				5B024CD6148FB54200ED3B6D /* XMLSKDeviceParser.m */,
 				5BFC371114A334BC0062F6E7 /* XMLSKDataSourceParser.h */,
-				5BFC371214A334BC0062F6E7 /* XMLSKDataSourceParser.m */,
 			);
 			name = Xml;
 			sourceTree = "<group>";
@@ -383,6 +436,8 @@
 				5B2C42C3149387830020A2CD /* Protocols */,
 				5BFC371514A342D60062F6E7 /* SKDataSourceDataReceiver.h */,
 				5BFC371614A342D60062F6E7 /* SKDataSourceDataReceiver.m */,
+				5B64DF6E14D977E800D36647 /* SKEventDataReceiver.h */,
+				5B64DF6F14D977E800D36647 /* SKEventDataReceiver.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -412,6 +467,7 @@
 				5B2C42CB1493903D0020A2CD /* SKDeviceStoreDelegate.h */,
 				5BFC371414A335980062F6E7 /* SKDataSourceStoreDelegate.h */,
 				5BFC372314A3696D0062F6E7 /* EntityActionRequestDelegate.h */,
+				5B64DF7414D979F700D36647 /* SKEventStoreDelegate.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -434,6 +490,8 @@
 				5B396B5314B3A9B400A590FB /* TextHelper.m */,
 				5B4507F614B4BE5D00F3F888 /* NotificationHelper.h */,
 				5B4507F714B4BE5D00F3F888 /* NotificationHelper.m */,
+				5B5D3D8F14D6B537007882E0 /* StateHelper.h */,
+				5B5D3D9014D6B537007882E0 /* StateHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -441,6 +499,10 @@
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B04A51114DFC87000C8B178 /* EventList_Dim.png */,
+				5B04A51214DFC87000C8B178 /* EventList_Off.png */,
+				5B04A51314DFC87000C8B178 /* EventList_On.png */,
+				5B04A51414DFC87000C8B178 /* EventList_Scenario.png */,
 				5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */,
 				5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */,
 				5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */,
@@ -502,6 +564,12 @@
 				5B38B4C714CD944A002A3275 /* RefreshAfterCommandListViewController.m */,
 				5BAEB0B314D4302100F1B2AE /* DeviceDetailController_iPhone.h */,
 				5BAEB0B414D4302100F1B2AE /* DeviceDetailController_iPhone.m */,
+				5B5D3D7C14D6952F007882E0 /* DataSourceListViewController_iPhone.h */,
+				5B5D3D7D14D6952F007882E0 /* DataSourceListViewController_iPhone.m */,
+				5B5D3D8C14D6A89F007882E0 /* DataSourceDetailController_iPhone.h */,
+				5B5D3D8D14D6A89F007882E0 /* DataSourceDetailController_iPhone.m */,
+				5B64DF7514D9D47B00D36647 /* EventListViewController_iPhone.h */,
+				5B64DF7614D9D47B00D36647 /* EventListViewController_iPhone.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -509,6 +577,8 @@
 		5BA69E61149B69EA00D663BA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5B024CC9148FA6F100ED3B6D /* CommunicationBase.h */,
+				5B024CCA148FA6F100ED3B6D /* CommunicationBase.m */,
 				5B396B4D14B39A0D00A590FB /* Helpers */,
 				5B33272614ADD004002A263A /* NotificationData */,
 				5B33272014ADB575002A263A /* GTMNSString+HTML.h */,
@@ -517,8 +587,6 @@
 				5B33272314ADB575002A263A /* NSString+HTML.m */,
 				5BFC371F14A363560062F6E7 /* Requests */,
 				5BFC371B14A35FF00062F6E7 /* RequestGenerators */,
-				5B024CC9148FA6F100ED3B6D /* CommunicationBase.h */,
-				5B024CCA148FA6F100ED3B6D /* CommunicationBase.m */,
 				5B024CD3148FB4F300ED3B6D /* Parsers */,
 				5BFC370D14A3339E0062F6E7 /* Models */,
 				5BA69E62149B6A0600D663BA /* TableCells */,
@@ -526,6 +594,8 @@
 				5BFC370814A31C600062F6E7 /* CommunicationMgr.m */,
 				5BFC370A14A324F30062F6E7 /* SettingsMgr.h */,
 				5BFC370B14A324F30062F6E7 /* SettingsMgr.m */,
+				5B04A51A14DFD45000C8B178 /* Base64Encoding.h */,
+				5B04A51B14DFD45000C8B178 /* Base64Encoding.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -540,6 +610,16 @@
 				5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */,
 				5B166F3214B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.h */,
 				5B166F3314B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.m */,
+				5B5D3D8314D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.h */,
+				5B5D3D8414D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.m */,
+				5B5D3D8614D6A6BC007882E0 /* SKDataSourceStdTableViewCell.h */,
+				5B5D3D8714D6A6BC007882E0 /* SKDataSourceStdTableViewCell.m */,
+				5B5D3D8914D6A6D3007882E0 /* SKDataSourceGroupStdTableViewCell.h */,
+				5B5D3D8A14D6A6D3007882E0 /* SKDataSourceGroupStdTableViewCell.m */,
+				5B64DF7814D9D6D800D36647 /* SKEventTableViewCell.h */,
+				5B64DF7914D9D6D800D36647 /* SKEventTableViewCell.m */,
+				5B64DF7B14D9D6F900D36647 /* SKEventBaseStdTableViewCell.h */,
+				5B64DF7C14D9D6F900D36647 /* SKEventBaseStdTableViewCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -555,6 +635,10 @@
 				5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */,
 				5BFC370E14A333D10062F6E7 /* SKDataSource.h */,
 				5BFC370F14A333D10062F6E7 /* SKDataSource.m */,
+				5B5D3D8014D69AC8007882E0 /* SKDataSourceGroup.h */,
+				5B5D3D8114D69AC8007882E0 /* SKDataSourceGroup.m */,
+				5B64DF6A14D9738B00D36647 /* SKEvent.h */,
+				5B64DF6B14D9738B00D36647 /* SKEvent.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -673,6 +757,10 @@
 				5BAEB0AC14D42EE700F1B2AE /* Button_TurnOn.png in Resources */,
 				5BAEB0AD14D42EE700F1B2AE /* Slider_Off.png in Resources */,
 				5BAEB0AE14D42EE700F1B2AE /* Slider_On.png in Resources */,
+				5B04A51514DFC87000C8B178 /* EventList_Dim.png in Resources */,
+				5B04A51614DFC87000C8B178 /* EventList_Off.png in Resources */,
+				5B04A51714DFC87000C8B178 /* EventList_On.png in Resources */,
+				5B04A51814DFC87000C8B178 /* EventList_Scenario.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,6 +811,20 @@
 				5B38B4C514CD942B002A3275 /* RefreshIntervalListViewController.m in Sources */,
 				5B38B4C814CD944A002A3275 /* RefreshAfterCommandListViewController.m in Sources */,
 				5BAEB0B514D4302100F1B2AE /* DeviceDetailController_iPhone.m in Sources */,
+				5B5D3D7E14D6952F007882E0 /* DataSourceListViewController_iPhone.m in Sources */,
+				5B5D3D8214D69AC8007882E0 /* SKDataSourceGroup.m in Sources */,
+				5B5D3D8514D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.m in Sources */,
+				5B5D3D8814D6A6BC007882E0 /* SKDataSourceStdTableViewCell.m in Sources */,
+				5B5D3D8B14D6A6D3007882E0 /* SKDataSourceGroupStdTableViewCell.m in Sources */,
+				5B5D3D8E14D6A8A0007882E0 /* DataSourceDetailController_iPhone.m in Sources */,
+				5B5D3D9114D6B538007882E0 /* StateHelper.m in Sources */,
+				5B64DF6C14D9738B00D36647 /* SKEvent.m in Sources */,
+				5B64DF7014D977E800D36647 /* SKEventDataReceiver.m in Sources */,
+				5B64DF7314D9784000D36647 /* XMLSKEventParser.m in Sources */,
+				5B64DF7714D9D47B00D36647 /* EventListViewController_iPhone.m in Sources */,
+				5B64DF7A14D9D6D800D36647 /* SKEventTableViewCell.m in Sources */,
+				5B64DF7D14D9D6FA00D36647 /* SKEventBaseStdTableViewCell.m in Sources */,
+				5B04A51C14DFD45100C8B178 /* Base64Encoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
