@@ -12,16 +12,26 @@
 #import "SKDevice.h"
 #import "SKDeviceGroup.h"
 #import "SKDataSource.h"
+#import "SKDataSourceGroup.h"
 #import "DeviceListViewController.h"
 #import "EntityHttpReqNotificationData.h"
+#import "SKEvent.h"
 #include "Constants.h"
 
 @implementation EntityStore
 {
-    NSMutableArray* deviceList;
-    NSMutableArray* deviceGroupList;
-    NSMutableDictionary* deviceDirtyList;
-    NSMutableDictionary* deviceGroupDirtyList;
+    Boolean eventsDirty;
+    NSMutableArray *eventList;
+    
+    NSMutableArray *deviceList;
+    NSMutableArray *deviceGroupList;
+    NSMutableDictionary *deviceDirtyList;
+    NSMutableDictionary *deviceGroupDirtyList;
+    
+    NSMutableArray *dataSourceList;
+    NSMutableArray *dataSourceGroupList;
+    NSMutableDictionary *dataSourceDirtyList;
+    NSMutableDictionary *dataSourceGroupDirtyList;
 }
 
 @synthesize deviceListViewController;
@@ -31,6 +41,9 @@
     
     deviceDirtyList = [[NSMutableDictionary alloc] initWithCapacity:50];
     deviceGroupDirtyList = [[NSMutableDictionary alloc] initWithCapacity:50];
+
+    dataSourceDirtyList = [[NSMutableDictionary alloc] initWithCapacity:50];
+    dataSourceGroupDirtyList = [[NSMutableDictionary alloc] initWithCapacity:50];
     
     [self addEntityObservers];
     
@@ -72,27 +85,23 @@
                     [self flagDeviceGroupAsDirtyOrClean:reqData.entityId
                                                   :true];
                     break;
+                case ENTITY_TYPE__DATA_SOURCE:
+                    [self flagDataSourceAsDirtyOrClean:reqData.entityId
+                                                  :true];
+                    break;
+                case ENTITY_TYPE__DATA_SOURCE_GROUP:
+                    [self flagDataSourceGroupAsDirtyOrClean:reqData.entityId
+                                                       :true];
+                    break;
+                case ENTITY_TYPE__EVENTS:
+                    [self flagAllEventsAsDirtyOrClean:true];
+                    break;                    
                 case ENTITY_TYPE__ALL_ENTITIES:
                 {
-                    NSMutableSet *groupIds = [[NSMutableSet alloc] init];
+                    [self flagAllDeviceEntitiesAsDirtyOrClean:true];
+                    [self flagAllDataSourceEntitiesAsDirtyOrClean:true];
+                    [self flagAllEventsAsDirtyOrClean:true];
                     
-                    for(int i=0;i<[deviceList count];i++) {
-                        SKDevice *d = (SKDevice *)[deviceList objectAtIndex:i];
-                        
-                        [groupIds addObject:[NSNumber numberWithInteger:d.GroupID]];
-                    }
-                    
-                    NSArray *groupIdsArray = [groupIds allObjects];
-                    
-                    for(int i=0;i<[groupIdsArray count];i++) {
-                        NSInteger groupId = [(NSNumber *)[groupIdsArray objectAtIndex:i] integerValue];
-
-                        [self flagDeviceGroupAsDirtyOrClean:groupId
-                                                      :true];    
-                        
-                    }
-                    [self flagDeviceGroupAsDirtyOrClean:reqData.entityId
-                                                       :true];
                     break;    
                 }
                 default:
@@ -109,15 +118,23 @@
 - (void)entityUpdated:(NSObject*) src : (SKEntity *) entity {
     if([entity isKindOfClass:[SKDevice class]]) {
         [self deviceUpdated:(SKDevice *)entity];
+    } else if([entity isKindOfClass:[SKDataSource class]]) {
+        [self dataSourceUpdated:(SKDataSource *)entity];
+    } else if([entity isKindOfClass:[SKEvent class]]) {
+        //[self eventUpdated:(SKEvent *)entity];
     }
     
     NSLog(@"Updated id value :%i", entity.ID);
 }
 
 - (void)entityCollectionUpdated:(NSObject*) src:(NSMutableArray *) collection:(Class) entityClass {
-    if([entityClass class] == [SKDevice class]){
+    if([entityClass class] == [SKDevice class]) {
         [self devicesUpdated:collection];
-    }    
+    } else if([entityClass class] == [SKDataSource class]) {
+        [self dataSourcesUpdated:collection];
+    } else if([entityClass class] == [SKEvent class]) {
+        [self eventsUpdated:collection];
+    }
 }
 
 - (void)deviceUpdated:(SKDevice*)device {
@@ -170,6 +187,73 @@
     
 }
 
+- (void)dataSourceUpdated:(SKDataSource*)dataSource {
+    if(dataSourceList.count == 0) {
+        // If the dataSource list is empty, create a new dataSource...
+        [self dataSourcesUpdated:[NSMutableArray arrayWithObject:dataSource]];
+    } else {
+        NSUInteger idx = [dataSourceList indexOfObjectPassingTest:
+                          ^ BOOL (SKDataSource* ds, NSUInteger idx, BOOL *stop)
+                          {
+                              return ds.ID == dataSource.ID;
+                          }];
+        
+        if(idx == NSNotFound) {
+            NSLog(@"%@", @"DataSource not found");
+        } else {
+            [dataSourceList replaceObjectAtIndex:idx withObject:dataSource];
+            
+            // Indicate that this dataSource is now clean
+            [self flagDataSourceAsDirtyOrClean:dataSource.ID :false];
+            
+            // Send a dictionary with dataSources to the receivers...
+            NSDictionary *notificationData = [NSDictionary dictionaryWithObject:dataSourceList
+                                                                         forKey:@"DataSources"];
+            
+            NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+            [notificationCenter postNotificationName:NOTIFICATION_NAME__DATA_SOURCES_UPDATED
+                                              object:nil
+                                            userInfo:notificationData];        }        
+    }
+}
+
+- (void)dataSourcesUpdated:(NSMutableArray*)collection {
+    // Store the devices internally
+    dataSourceList = collection;
+    // Clear list of dirty object
+    [dataSourceDirtyList removeAllObjects];
+    [dataSourceGroupDirtyList removeAllObjects];
+    
+    //[self createDeviceGroupStructure:deviceList];
+    
+    // Send a dictionary with devices to the receivers...
+    NSDictionary* notificationData = [NSDictionary dictionaryWithObject:collection
+                                                                 forKey:@"DataSources"];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__DATA_SOURCES_UPDATED
+                                      object:nil
+                                    userInfo:notificationData];
+    
+}
+
+- (void)eventsUpdated:(NSMutableArray*)collection {
+    // Store the devices internally
+    eventList = collection;
+    // Clear list of dirty object
+    eventsDirty = false;
+    
+    // Send a dictionary with devices to the receivers...
+    NSDictionary* notificationData = [NSDictionary dictionaryWithObject:collection
+                                                                 forKey:@"Events"];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__EVENTS_UPDATED
+                                      object:nil
+                                    userInfo:notificationData];
+    
+}
+
 /*******************************************************************************
  Dirtification
  *******************************************************************************/
@@ -185,7 +269,12 @@
     } else if([entity isKindOfClass:[SKDataSource class]]) {
         [self flagDeviceGroupAsDirtyOrClean:entity.ID 
                                            :isDirty];
-    }
+    } else if([entity isKindOfClass:[SKDataSourceGroup class]]) {
+        [self flagDataSourceGroupAsDirtyOrClean:entity.ID 
+                                           :isDirty];
+    } else if([entity isKindOfClass:[SKEvent class]]) {
+        [self flagAllEventsAsDirtyOrClean:isDirty];
+    } 
 }
 
 // Flags a device as dirty or clean
@@ -208,12 +297,89 @@
                                     userInfo:nil];
 }
 
+// Flags ALL device entities as dirty or clean
+- (void)flagAllDeviceEntitiesAsDirtyOrClean:(Boolean)isDirty {
+    NSMutableSet *deviceGroupIds = [[NSMutableSet alloc] init];
+    
+    for(int i=0;i<[deviceList count];i++) {
+        SKDevice *d = (SKDevice *)[deviceList objectAtIndex:i];
+        
+        [deviceGroupIds addObject:[NSNumber numberWithInteger:d.GroupID]];
+    }
+    
+    NSArray *groupIdsArray = [deviceGroupIds allObjects];
+    
+    for(int i=0;i<[groupIdsArray count];i++) {
+        NSInteger groupId = [(NSNumber *)[groupIdsArray objectAtIndex:i] integerValue];
+        
+        [self flagDeviceGroupAsDirtyOrClean:groupId
+                                           :true];    
+    }
+}
+
+// Flags a data source as dirty or clean
+- (void)flagDataSourceAsDirtyOrClean:(NSInteger)dataSourceId: (Boolean)isDirty {
+    [dataSourceDirtyList setObject:[NSNumber numberWithBool:isDirty] forKey:[NSNumber numberWithInt:dataSourceId]];
+    
+    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__DATA_SOURCE_DIRTIFICATION_UPDATED
+                                      object:nil
+                                    userInfo:nil];
+}
+
+// Flags a data source group as dirty or clean
+- (void)flagDataSourceGroupAsDirtyOrClean:(NSInteger)dataSourceGroupId: (Boolean)isDirty {
+    [dataSourceGroupDirtyList setObject:[NSNumber numberWithBool:isDirty] forKey:[NSNumber numberWithInt:dataSourceGroupId]];
+    
+    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__DATA_SOURCE_GROUP_DIRTIFICATION_UPDATED
+                                      object:nil
+                                    userInfo:nil];
+
+}
+
+// Flags ALL data source entities as dirty or clean
+- (void)flagAllDataSourceEntitiesAsDirtyOrClean:(Boolean)isDirty {
+    NSMutableSet *dataSourceGroupIds = [[NSMutableSet alloc] init];
+    
+    for(int i=0;i<[dataSourceList count];i++) {
+        SKDataSource *ds = (SKDataSource *)[dataSourceList objectAtIndex:i];
+        
+        [dataSourceGroupIds addObject:[NSNumber numberWithInteger:ds.GroupID]];
+    }
+    
+    NSArray *groupIdsArray = [dataSourceGroupIds allObjects];
+    
+    for(int i=0;i<[groupIdsArray count];i++) {
+        NSInteger groupId = [(NSNumber *)[groupIdsArray objectAtIndex:i] integerValue];
+        
+        [self flagDataSourceGroupAsDirtyOrClean:groupId
+                                           :true];    
+    }
+}
+
+// Flags ALL event entities as dirty or clean
+- (void)flagAllEventsAsDirtyOrClean:(Boolean)isDirty {
+    eventsDirty = isDirty;
+    
+    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__EVENTS_DIRTIFICATION_UPDATED
+                                      object:nil
+                                    userInfo:nil];
+}
+
 // Indicates whether an entity is dirty or not
 - (Boolean)entityIsDirty:(SKEntity *)entity {
     if([entity isKindOfClass:[SKDevice class]]) {
         return [self deviceIsDirty:entity.ID];
     } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
         return [self deviceGroupIsDirty:entity.ID];
+    } else if([entity isKindOfClass:[SKDataSource class]]) {
+        return [self dataSourceIsDirty:entity.ID];
+    } else if([entity isKindOfClass:[SKDataSourceGroup class]]) {
+        return [self dataSourceGroupIsDirty:entity.ID];
+    } else if([entity isKindOfClass:[SKEvent class]]) {
+        return [self eventIsDirty:entity.ID];
     }
     
     return true;
@@ -258,6 +424,50 @@
         return [number boolValue];
 }
 
+// Indicates whether a data source is dirty or not
+- (Boolean)dataSourceIsDirty:(NSInteger)dataSourceId {
+    if(
+       [dataSourceDirtyList count] == 0 &&
+       [dataSourceGroupDirtyList count] == 0)
+        return false;
+    
+    NSNumber* dataSourceIdInDict = [dataSourceDirtyList objectForKey:[NSNumber numberWithInt:dataSourceId]];
+    
+    if(dataSourceIdInDict == nil) {
+        SKDataSource *dataSource = [self getDataSourceById:dataSourceId];
+        Boolean dirtyByDataSourceGroup = [self dataSourceGroupIsDirty:dataSource.GroupID];
+        
+        return dirtyByDataSourceGroup;
+    } else {
+        if([dataSourceIdInDict boolValue])
+            return true;
+        else {
+            SKDataSource *dataSource = [self getDataSourceById:dataSourceId];
+            Boolean dirtyByDataSourceGroup = [self dataSourceGroupIsDirty:dataSource.GroupID];
+            
+            return dirtyByDataSourceGroup;    
+        }
+    }
+}
+
+// Indicates whether a data source group is dirty or not
+- (Boolean)dataSourceGroupIsDirty:(NSInteger)dataSourceGroupId {
+    if([dataSourceGroupDirtyList count] == 0)
+        return false;
+    
+    NSNumber* number = [dataSourceGroupDirtyList objectForKey:[NSNumber numberWithInt:dataSourceGroupId]];
+    
+    if(number == nil)
+        return false;
+    else
+        return [number boolValue];
+}
+
+// Indicates whether an event is dirty or not
+- (Boolean)eventIsDirty:(NSInteger)eventId {
+    return eventsDirty;
+}
+
 /*******************************************************************************
  ???????
  *******************************************************************************/
@@ -282,9 +492,30 @@
     }
 }
 
+// Gets the data source by a specific id
+- (SKDataSource*)getDataSourceById:(NSInteger)dataSourceId {
+    NSUInteger idx = [dataSourceList indexOfObjectPassingTest:
+                      ^ BOOL (SKDataSource* ds, NSUInteger idx, BOOL *stop)
+                      {
+                          return ds.ID == dataSourceId;
+                      }];
+    
+    if(idx == NSNotFound) {
+        NSLog(@"%@", @"DataSource not found");
+        return nil;
+    } else {
+        return [dataSourceList objectAtIndex:idx];
+    }
+}
+
+// Gets the data source group by a specific id
+- (SKDataSourceGroup*)getDataSourceGroupById:(NSInteger)dataSourceGroupId {
+    
+}
+
 // Creates the internal device/group structure in order to provide easy access
 // to the entities.
-- (void)createDeviceGroupStructure:(NSMutableArray*)deviceData {
+- (void)createDeviceGroupStructurea:(NSMutableArray*)deviceData {
     NSMutableDictionary* tempGroupDictStore = [[NSMutableDictionary alloc] init];    
     NSMutableArray* devices = [[NSMutableArray alloc] initWithCapacity:deviceData.count];
     

@@ -22,8 +22,7 @@
     return self;
 }
 
-- (void)dataReceived:(NSObject *) src : (NSMutableData *) receivedData
-{
+- (void)dataReceived:(NSObject *) src : (NSMutableData *) receivedData {
     NSLog(@"SKDataSource data received");
     
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:receivedData];
