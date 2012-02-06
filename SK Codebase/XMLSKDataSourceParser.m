@@ -9,6 +9,7 @@
 #import "XMLSKDataSourceParser.h"
 #import "SKDataSource.h"
 #include "Constants.h"
+#import "NSString+HTML.h"
 
 @implementation XMLSKDataSourceParser
 
@@ -32,8 +33,6 @@
         //Initialize the book.
         dataSource = [[SKDataSource alloc] init];
     }
-    
-    //NSLog(@"Processing Element: %@", elementName);
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -42,9 +41,6 @@
         currentElementValue = [[NSMutableString alloc] initWithString:string];
     else
         [currentElementValue appendString:string];
-    
-    //NSLog(@"Processing Value: %@", currentElementValue);
-    
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
@@ -56,6 +52,10 @@
         
         dataSource = nil;
     } else if([elementName isEqualToString:XML_ELEMENT_NAME__DATASOURCE]) {
+        if(dataSource.GroupID == 0) {
+            dataSource.GroupID = GROUP_ID__NONE;
+        }
+        
         if(!expectsCollection) {
             if(entityStore != nil) {
                 [entityStore entityUpdated:self :dataSource];
@@ -68,10 +68,17 @@
     }
     else {
         @try {
-            [dataSource setValue:currentElementValue forKey:elementName];
+            //            if([currentElementValue isEqualToString:XML_VALUE__TRUE]) {
+            //                [device setValue:@"YES" forKey:elementName];                
+            //            } else if([currentElementValue isEqualToString:XML_VALUE__FALSE]) {
+            //                [device setValue:@"NO" forKey:elementName];
+            //            } else {
+            NSString *unescaped = [currentElementValue stringByDecodingHTMLEntities];
+            [dataSource setValue:unescaped forKey:elementName];
+            // }
         }
         @catch (NSException * e) {
-            //NSLog(@"Invalid key");
+            NSLog(@"Invalid key: %@", elementName);
         }
     }
     
