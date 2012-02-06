@@ -14,6 +14,15 @@
 #define REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD @"DeviceGroupCellStd"
 #define REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY @"DeviceGroupCellStdDirty"
 
+#define REUSE_IDENTIFIER__DATA_SOURCE_CELL_STD @"DataSourceCellStd"
+#define REUSE_IDENTIFIER__DATA_SOURCE_CELL_STD_DIRTY @"DataSourceCellStdDirty"
+#define REUSE_IDENTIFIER__DATA_SOURCE_GROUP_CELL_STD @"DataSourceGroupCellStd"
+#define REUSE_IDENTIFIER__DATA_SOURCE_GROUP_CELL_STD_DIRTY @"DataSourceGroupCellStdDirty"
+
+#define REUSE_IDENTIFIER__EVENT_CELL_STD @"EventCellStd"
+#define REUSE_IDENTIFIER__EVENT_CELL_STD_DIRTY @"EventCellStdDirty"
+
+
 #define REUSE_IDENTIFIER__SETTINGS_CELL_SWITCH @"SwitchSettingStd"
 #define REUSE_IDENTIFIER__SETTINGS_CELL_URL @"UrlSettingStd"
 #define REUSE_IDENTIFIER__SETTINGS_CELL_NUMERIC @"NumericSettingStd"
@@ -21,6 +30,43 @@
 #define REUSE_IDENTIFIER__SETTINGS_CELL_TEXT @"TextSettingStd" 
 
 #define REUSE_IDENTIFIER__RIGHT_DETAIL @"RightDetail"
+
+/*******************************************************************************
+ Data source status values
+ *******************************************************************************/
+
+#define DATA_SOURCE__PRESENTED_STATUS__BAD 2
+#define DATA_SOURCE__PRESENTED_STATUS__GOOD 3
+#define DATA_SOURCE__PRESENTED_STATUS__UNKNOWN 0
+#define DATA_SOURCE__PRESENTED_STATUS__DEGRADED 1
+
+#define DATA_SOURCE__STATUS__UNKNOWN 0
+#define DATA_SOURCE__STATUS__SUCCESS 1
+#define DATA_SOURCE__STATUS__FAILURE 2
+#define DATA_SOURCE__STATUS__EXCEPTION 3
+
+#define DATA_SOURCE__STATUS_STRING__UNKNOWN @"Unknown"
+#define DATA_SOURCE__STATUS_STRING__SUCCESS @"Success"
+#define DATA_SOURCE__STATUS_STRING__FAILURE @"Failure"
+#define DATA_SOURCE__STATUS_STRING__EXCEPTION @"Exception"
+
+#define DATA_SOURCE__VALUE_STATUS__UNKNOWN 0
+#define DATA_SOURCE__VALUE_STATUS__OK 1
+#define DATA_SOURCE__VALUE_STATUS__EXPIRED 2
+#define DATA_SOURCE__VALUE_STATUS__OUT_OF_RANGE 3
+#define DATA_SOURCE__VALUE_STATUS__NO_VALUE_STORED 4
+#define DATA_SOURCE__VALUE_STATUS__ERROR_PARSING 5
+#define DATA_SOURCE__VALUE_STATUS__EXCEPTION 6
+#define DATA_SOURCE__VALUE_STATUS__NOT_COLLECTED 100
+
+#define DATA_SOURCE__VALUE_STATUS_STRING__UNKNOWN @"Unknown"
+#define DATA_SOURCE__VALUE_STATUS_STRING__OK @"OK"
+#define DATA_SOURCE__VALUE_STATUS_STRING__EXPIRED @"Expired"
+#define DATA_SOURCE__VALUE_STATUS_STRING__OUT_OF_RANGE @"OutOfRange"
+#define DATA_SOURCE__VALUE_STATUS_STRING__NO_VALUE_STORED @"NoValueStored"
+#define DATA_SOURCE__VALUE_STATUS_STRING__ERROR_PARSING @"ErrorParsing"
+#define DATA_SOURCE__VALUE_STATUS_STRING__EXCEPTION @"Exception"
+#define DATA_SOURCE__VALUE_STATUS_STRING__NOT_COLLECTED @"NotCollected"
 
 /*******************************************************************************
  Xml tags for REST communication
@@ -31,6 +77,9 @@
 
 #define XML_ELEMENT_NAME__DATASOURCE_ARRAY @"ArrayOfRESTDataSource"
 #define XML_ELEMENT_NAME__DATASOURCE @"RESTDataSource"
+
+#define XML_ELEMENT_NAME__EVENT_ARRAY @"ArrayOfRESTEvent"
+#define XML_ELEMENT_NAME__EVENT @"RESTEvent"
 
 #define XML_VALUE__TRUE @"true"
 #define XML_VALUE__FALSE @"false"
@@ -46,6 +95,10 @@
 /*******************************************************************************
  Server IDs (Constants)
 *******************************************************************************/
+
+#define DATETIME__MAX_VALUE @"9999-12-31T23:59:59.9999999"
+
+#define GROUP_ID__NONE -1
 
 #define ACTION_ID__TURN_ON 2
 #define ACTION_ID__TURN_OFF 1
@@ -63,6 +116,8 @@
 #define DEVICE_MODE_TYPE__SCHEDULE_AND_RULE_DRIVEN @"ScheduleAndRuleDriven"
 #define DEVICE_MODE_TYPE__SCENARIO_DRIVEN @"ScenarioDriven"
 
+#define DATA_SOURCE__POLL_SCHEDULE_TYPE__WHEN_MODIFIED @"WhenModified"
+
 /*******************************************************************************
  Internal type definitions
  *******************************************************************************/
@@ -70,7 +125,12 @@
 #define ENTITY_TYPE__DEVICE 1
 #define ENTITY_TYPE__DEVICE_GROUP 2
 #define ENTITY_TYPE__DATA_SOURCE 3
+#define ENTITY_TYPE__DATA_SOURCE_GROUP 4
+#define ENTITY_TYPE__EVENTS 5
 #define ENTITY_TYPE__ALL_ENTITIES 1000
+
+#define ENTITY_TYPE_STRING__DEVICE @"Device"
+#define ENTITY_TYPE_STRING__SCENARIO @"Scenario"
 
 /*******************************************************************************
  Notification names
@@ -79,10 +139,20 @@
 #define NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING @"EntityDirtified"
 #define NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED @"EntityUpdateRequested"
 #define NOTIFICATION_NAME__ENTITY_UPDATE_REQUEST_CANCELLED @"EntityUpdateReqCancelled"
+
 #define NOTIFICATION_NAME__DEVICE_UPDATED @"DeviceUpdated"
 #define NOTIFICATION_NAME__DEVICES_UPDATED @"DevicesUpdated"
 #define NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED @"DeviceDirtificationUpdated"
 #define NOTIFICATION_NAME__DEVICE_GROUP_DIRTIFICATION_UPDATED @"DeviceGroupDirtificationUpdated"
+
+#define NOTIFICATION_NAME__DATA_SOURCE_UPDATED @"DSUpdated"
+#define NOTIFICATION_NAME__DATA_SOURCES_UPDATED @"DSsUpdated"
+#define NOTIFICATION_NAME__DATA_SOURCE_DIRTIFICATION_UPDATED @"DSDirtificationUpdated"
+#define NOTIFICATION_NAME__DATA_SOURCE_GROUP_DIRTIFICATION_UPDATED @"DSGroupDirtificationUpdated"
+
+#define NOTIFICATION_NAME__EVENTS_UPDATED @"EvtsUpdated"
+#define NOTIFICATION_NAME__EVENTS_DIRTIFICATION_UPDATED @"EventsDirtificationUpdated"
+
 #define NOTIFICATION_NAME__ALERT_INFO_REQUESTED @"AlertReq"
 #define NOTIFICATION_NAME__NO_CONNECTION @"NoConn"
 

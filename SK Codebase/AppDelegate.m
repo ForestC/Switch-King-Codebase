@@ -14,6 +14,10 @@
 #import "SettingsMgr.h"
 #import <objc/runtime.h>
 #include "Constants.h"
+#import "TextHelper.h"
+#import "SettingsListViewController_iPhone.h"
+#import "ServerSettingsListViewController_iPhone.h"
+#import "Base64Encoding.h"
 
 @implementation AppDelegate
 
@@ -45,13 +49,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+    
+    
+    // Init user defaults
+    [SettingsMgr initDefaults];
+    
     // Adds observers for alerts etc.
     [self addObservers];
     
     // Init the alert info view controller
     alertInfoViewController = [[AlertInfoViewController alloc] init];
-    
-    
     
 //    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
 //    
@@ -112,6 +120,40 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+
+    @try {
+        //CancelRefreshTimer ();
+        
+        UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
+        UINavigationController *navController = (UINavigationController*)[tabController selectedViewController];
+
+        if (navController != nil) {            
+            if(
+               ![navController.visibleViewController isKindOfClass:[ServerSettingsListViewController_iPhone class]] &&
+               ![navController.visibleViewController isKindOfClass:[SettingsListViewController_iPhone class]]) {
+                
+                NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+                
+                EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
+                
+                reqNotificationData.entityType = ENTITY_TYPE__ALL_ENTITIES;
+                
+                NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
+                                                                             forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+                [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                                  object:nil
+                                                userInfo:notificationData];                    
+                
+                [navController popViewControllerAnimated:false];
+            }
+        }
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -242,6 +284,10 @@
         
         alertInfoViewController.view.frame = alertFrame;
         
+        
+        [alertInfoViewController.infoTextView setText:alertInfoText];
+        
+        
         //[v3 addSubview:optionsController.view];
         [self.window.rootViewController.view addSubview:alertInfoViewController.view];
 //        [v2 addSubview:optionsController.view];
@@ -278,7 +324,8 @@
 // Sets the alert info text
 - (void)setAlertInfo:(NSString *)infoText {
     self.alertInfoText = infoText;
-    [[alertInfoViewController infoTextView] setText:infoText];
+    
+    [alertInfoViewController.infoTextView setText:infoText];
 }
 
 // Triggered when the alert info view is to be hidden after a specific amount of time.
