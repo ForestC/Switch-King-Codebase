@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SKDevice.h"
 #import "SKDeviceGroup.h"
+#import "SKEvent.h"
+#import "SKDataSource.h"
+#import "SKDataSourceGroup.h"
 
 @interface TextHelper : NSObject
 
@@ -17,5 +20,23 @@
 
 // Gets the info text for a specific device group
 + (NSString *)getDeviceGroupInfoText:(SKDeviceGroup *)entity;
+
+// Gets the value text for a specific data source
++ (NSString *)getDataSourceValueText:(SKDataSource *)entity;
+
+// Gets the info text for a specific data source group
++ (NSString *)getDataSourceGroupInfoText:(SKDataSourceGroup *)entity;
+
+// Gets the formatted status text for a specific data source
++ (NSString *)getFormattedDataSourceStatusText:(SKDataSource *)entity;
+
+// Gets the formatted date text, simplified
++ (NSString *)getFormattedDateText:(NSString *)dateText:(Boolean)includeSeconds;
+
+// Gets the info text for a specific event
++ (NSString *)getEventInfoText:(SKEvent *)entity;
+
+// Parses a date string
++ (NSDate *)parseRFC3339Date:(NSString *)dateString;
 
 @end

@@ -33,6 +33,9 @@
 // Gets the complete url to the data source list
 - (NSString *)getDataSourceListUrl;
 
+// Gets the complete url to the list with upcoming events
+- (NSString *)getComingUpEventsListUrl:(NSInteger)maxCount;
+
 @property (retain) id receiverDelegate;
 
 @end

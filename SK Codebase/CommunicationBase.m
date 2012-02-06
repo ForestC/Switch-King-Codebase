@@ -8,11 +8,11 @@
 
 #import "CommunicationBase.h"
 #import "AuthenticationDataContainer.h"
-#import "XMLSKDeviceParser.h"
 #import <UIKit/UIKit.h>
 #import "DataReceivedDelegate.h"
 #import "SettingsMgr.h"
 #import "AppDelegate.h"
+#import "Base64Encoding.h"
 
 @implementation CommunicationBase
 
@@ -31,9 +31,20 @@
     
     // Setup NSURLConnection
     NSURL *URL = [NSURL URLWithString:url];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:15.0];
+
+    NSString *str = [NSString stringWithFormat:@"%@:%@", authData.user, authData.pass];
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    
+    if([SettingsMgr useLive]) {
+        [request addValue:[NSString stringWithFormat:@"%i", [SettingsMgr getServerIdentity]] forHTTPHeaderField:@"SKSrvId"];
+    }
+    
+    NSString *auth =[@"Basic " stringByAppendingString:[Base64Encoding encodeBase64WithData:data]];
+    
+    [request addValue:auth forHTTPHeaderField:@"Authorization"];
     
     NSLog(@"Sending request to %@", URL);
     
@@ -48,8 +59,6 @@
     } else {
         // Inform the user that the connection failed.
     }
-    
-   // [connection start];
 }
 
 - (NSURLCredential*)credentialWithAuthData {
@@ -169,6 +178,13 @@
 - (NSString *)getDataSourceListUrl {
     NSString * url = [self getBaseUrl];
     return [url stringByAppendingString:@"/datasources"];    
+}
+
+// Gets the complete url to the list with upcoming events
+- (NSString *)getComingUpEventsListUrl:(NSInteger)maxCount {
+    NSString *url = [self getBaseUrl];
+    NSString *param = [NSString stringWithFormat:@"/events/future?maxcount=%i", maxCount];
+    return [url stringByAppendingString:param];
 }
 
 @end

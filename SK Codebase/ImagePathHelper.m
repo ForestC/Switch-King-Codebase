@@ -9,6 +9,7 @@
 #import "ImagePathHelper.h"
 #include "AppDelegate.h"
 #include "Constants.h"
+#include "StateHelper.h"
 
 @implementation ImagePathHelper
 
@@ -84,6 +85,54 @@
 // Gets the image name from the device group entity
 + (NSString *)getImageNameFromDeviceGroup:(SKDeviceGroup *)entity: (NSString *)prefix {
     return [prefix stringByAppendingString:@"Group.png"];
+}
+
+// Gets the image name from the data source entity
++ (NSString *)getImageNameFromDataSource:(SKDataSource *)entity: (NSString *)prefix {
+    NSInteger status = [StateHelper getPresentedStatus:entity];
+    
+    switch (status) {
+        case DATA_SOURCE__PRESENTED_STATUS__GOOD:           
+        {
+            return [prefix stringByAppendingString:@"StatusOK.png"];
+        }            
+        case DATA_SOURCE__PRESENTED_STATUS__DEGRADED:
+        {
+            return [prefix stringByAppendingString:@"StatusWarning.png"];
+        }            
+        case DATA_SOURCE__PRESENTED_STATUS__BAD:
+        {
+            return [prefix stringByAppendingString:@"StatusError.png"];
+        }            
+        default:            
+        {
+            return [prefix stringByAppendingString:@"StatusWarning.png"];;
+        }
+    }
+}
+
+// Gets the image name from the data source group entity
++ (NSString *)getImageNameFromDataSourceGroup:(SKDataSourceGroup *)entity: (NSString *)prefix {
+    return [prefix stringByAppendingString:@"Group.png"];    
+}
+
+// Gets the image name from the event entity
++ (NSString *)getImageNameFromEvent:(SKEvent *)entity: (NSString *)prefix {
+    if([ENTITY_TYPE_STRING__SCENARIO isEqualToString:entity.EntityType]) {
+        return [prefix stringByAppendingString:@"Scenario.png"];
+    } else {
+        if (entity.ActionId == ACTION_ID__TURN_ON) {
+            if (entity.DimLevel > 0 && entity.DimLevel < 100) {
+                prefix = [prefix stringByAppendingString:@"Dim"];
+            } else {
+                prefix = [prefix stringByAppendingString:@"On"];
+            }            
+        } else if(entity.ActionId == ACTION_ID__TURN_OFF) {
+            prefix = [prefix stringByAppendingString:@"Off"];            
+        }
+    }
+    
+    return prefix;
 }
 
 @end
