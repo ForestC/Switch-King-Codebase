@@ -54,3 +54,6 @@
 "Unknown" = "Unknown";
 "Server did not return any data.\nCheck username, password and server identity." = "Server did not return any data.\nCheck username, password and server identity.";
 "No server set" = "No server set";
+"Tomorrow, %@" = "Tomorrow, %@";
+"Yesterday, %@" = "Yesterday, %@";
+"Dim" = "Dim";

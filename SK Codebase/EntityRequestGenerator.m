@@ -44,6 +44,15 @@
             case ACTION_ID__TURN_OFF:
                 url = [NSString stringWithFormat:@"/devices/%d/turnoff", entity.ID];
                 break;
+            case ACTION_ID__SYNCHRONIZE:
+                url = [NSString stringWithFormat:@"/devices/%d/synchronize", entity.ID];
+                break;
+            case ACTION_ID__SEND_LEARN:
+                url = [NSString stringWithFormat:@"/devices/%d/learn", entity.ID];
+                break;
+            case ACTION_ID__CANCEL_SEMI_AUTO:
+                url = [NSString stringWithFormat:@"/devices/%d/cancelsemiauto", entity.ID];
+                break;
             default:
                 NSLog(@"Invalid type of action.");
                 break;
@@ -58,6 +67,12 @@
                 break;
             case ACTION_ID__TURN_OFF:
                 url = [NSString stringWithFormat:@"/devicegroups/%d/turnoff", entity.ID];
+                break;
+            case ACTION_ID__SYNCHRONIZE:
+                url = [NSString stringWithFormat:@"/devicegroups/%d/synchronize", entity.ID];
+                break;
+            case ACTION_ID__CANCEL_SEMI_AUTO:
+                url = [NSString stringWithFormat:@"/devicegroups/%d/cancelsemiauto", entity.ID];
                 break;
             default:
                 NSLog(@"Invalid type of action.");

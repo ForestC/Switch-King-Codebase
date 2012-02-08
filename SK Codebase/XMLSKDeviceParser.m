@@ -61,7 +61,7 @@
             if(entityStore != nil) {
                [entityStore entityUpdated:self :device];
             }
-        } else {
+        } else if([XML_VALUE__TRUE isEqualToString:device.Enabled]) {
             [deviceList addObject:device];
         }
         
