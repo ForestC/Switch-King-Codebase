@@ -17,6 +17,7 @@
 #import "ImagePathHelper.h"
 #import "TextHelper.h"
 #import "DeviceDetailController_iPhone.h"
+#import "SettingsMgr.h"
 
 @implementation DeviceListViewController
 
@@ -43,6 +44,12 @@
     if (self) {
         // Custom initialization
         [self addEntityObservers];
+        
+        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
+                                              initWithTarget:self action:@selector(handleLongPress:)];
+        lpgr.minimumPressDuration = 0.5; //seconds
+        lpgr.delegate = self;
+        [self.tableView addGestureRecognizer:lpgr];
     }
     
     return self;
@@ -132,21 +139,53 @@
         //NSLog(@"%@", [device Name]);
     }
     
-    // Set all group entities.
-    [groups setArray:[tempGroupDictStore allValues]];
-    
-    groupsAndDevices = [[NSMutableArray alloc] initWithCapacity:groups.count+devices.count];
-    
-    for(int n=0; n<groups.count;n=n+1) {
-        SKDeviceGroup * group = (SKDeviceGroup *)[groups objectAtIndex:n];
+    if([SettingsMgr groupDevices]) {    
+        // Set all group entities.
+        NSArray *tempGroups = [NSArray arrayWithArray:[tempGroupDictStore allValues]];
         
-        [groupsAndDevices addObject:group];
-        [groupsAndDevices addObjectsFromArray:group.devices];
+        groupsAndDevices = [[NSMutableArray alloc] initWithCapacity:tempGroups.count+devices.count];
+        
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<tempGroups.count; i++) {
+            NSString *name = ((SKDeviceGroup *)[tempGroups objectAtIndex:i]).Name;
+            
+            if(name == nil)
+                name = @"ÖÖÖÖÖÖ";
+            
+            [arr addObject:(NSString*)name];
+        }
+        
+        [arr sortUsingSelector:@selector(stringCompare:)];
+        
+        for(int i=0;i<arr.count;i++) {
+            for(int j=0;j<tempGroups.count;j++) {
+                SKDeviceGroup *g = (SKDeviceGroup *)[tempGroups objectAtIndex:j];
+                
+                if([((NSString *)[arr objectAtIndex:i]) isEqualToString:@"ÖÖÖÖÖÖ"]) {
+                    if(g.Name == nil) {
+                        [groups addObject:g];
+                    }
+                } else if(g.Name != nil && [g.Name isEqualToString:((NSString *)[arr objectAtIndex:i])])
+                    [groups addObject:g];            
+            }
+        }
+        
+        
+        for(int n=0; n<groups.count;n=n+1) {
+            SKDeviceGroup * group = (SKDeviceGroup *)[groups objectAtIndex:n];
+            
+            [groupsAndDevices addObject:group];
+            
+            if([SettingsMgr deviceGroupIsExpanded:group.ID])
+                [groupsAndDevices addObjectsFromArray:group.devices];
+        }
+    } else {
+        groupsAndDevices = [[NSMutableArray alloc] initWithArray:devices];
     }
     
     NSLog(@"%i devices, %i groups after update", devices.count, groups.count);
 }
-
 
 // Adds entity observers to be able to listen to notifications
 - (void)addEntityObservers {
@@ -181,6 +220,8 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
     [appDelegate.communicationMgr requestUpdateOfAllEntities];
+    
+//    [appDelegate toggleSwipeInfo:true];
     
 //    NSLog(<#NSString *format, ...#>)
 }
@@ -245,7 +286,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // In this view, all devices are always grouped...
-    return groups.count + devices.count;
+    return groupsAndDevices.count;// groups.count + devices.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -323,33 +364,22 @@
 //}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView reloadData];
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if(cell.tag > -1) {
         SKEntity *entity = (SKEntity *)[groupsAndDevices objectAtIndex:cell.tag];
         
-        if([entity isKindOfClass:[SKDevice class]]) {
-//            DeviceDetailController_iPhone *detailController = [[DeviceDetailController_iPhone alloc] initWithNibName:nil bundle:nil];
+        if(
+           [entity isKindOfClass:[SKDevice class]] ||
+           [entity isKindOfClass:[SKDeviceGroup class]]) {
+            // Create controller
             DeviceDetailController_iPhone *detailController = [self.storyboard instantiateViewControllerWithIdentifier:@"DeviceDetails"];
-            
+            // Assign entity
+            detailController.entity = entity;
+            // Navigate
             [self.navigationController pushViewController:detailController animated:true];
-            
-//            SKDevice *device = (SKDevice *)entity;
-//            
-//            EntityActionRequest *r = [EntityActionRequest createByDeviceAction:
-//                                                                       device :
-//                                                           ACTION_ID__TURN_ON :
-//                                                                           20 :
-//                                                                            3];
-//            
-//            
-//            // Get the app delegte
-//            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//
-//            [appDelegate entityActionRequestFired:nil :r];
-            
-        } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
-            //SKDeviceGroup *deviceGroup = (SKDeviceGroup *)entity;            
         } 
     }
 }
@@ -358,15 +388,35 @@
     NSLog(@"%@", @"SCROLL");
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (indexPath == nil)
+        NSLog(@"long press on table view but not on a row");
+    else if(gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:false];
+        
+        
+        NSLog(@"long press on table view at row %d", indexPath.row);
+        
+        SKEntity *entity = [groupsAndDevices objectAtIndex:indexPath.row];
+        
+        if([entity isKindOfClass:[SKDeviceGroup class]]) {
+            [SettingsMgr toggleDeviceGroupExpanded:entity.ID];
+            
+            //[self.tableView deleteRowsAtIndexPaths:[self getIndexPathsForDeviceGroupChildren:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            [self createDeviceGroupStructure:devices];
+//            [self.tableView reloadData];
+        }
+        
+        [self.tableView reloadData];
+    }
 }
-*/
 
+#pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -375,6 +425,20 @@
     
     [self.refreshBarButtonItem setTarget:self];
     [self.refreshBarButtonItem setAction:@selector(refreshRequested)];
+    
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 0.75; //seconds
+    lpgr.delegate = self;
+    
+    [self.tableView addGestureRecognizer:lpgr];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 
@@ -387,9 +451,19 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     return YES;
-//    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end
+
+@implementation NSString (SortCompare)
+
+-(NSInteger) stringCompare:(NSString *)str2
+{
+    if([@"ÖÖÖÖÖÖ" isEqualToString:self])
+        return NSIntegerMax;
+    return [(NSString *)self localizedCaseInsensitiveCompare:str2];
+}
+
+@end
+

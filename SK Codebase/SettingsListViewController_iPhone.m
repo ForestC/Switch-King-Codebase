@@ -92,7 +92,6 @@
     } else if(s == self.showLearnButtonDetailSwitch) {
         [SettingsMgr setShowLearnButton:s.on];
     }
-    [SettingsMgr setUseLive:s.on];
     
     [self.tableView reloadData];
 }
