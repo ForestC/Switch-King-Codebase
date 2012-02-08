@@ -104,4 +104,16 @@
 // Sets the maximum number of upcoming events
 + (void)setMaxUpcomingEvents:(NSInteger) maxUpcomingEvents;
 
+// Indicates whether a device group is expanded or not
++ (Boolean)deviceGroupIsExpanded:(NSInteger)groupId;
+
+// Sets a device group to expanded or not
++ (void)setDeviceGroupExpanded:(NSInteger)groupId: (Boolean)expanded;
+
+// Clears expansion data
++ (void)clearDeviceGroupExpansionData;
+
+// Toggles expansion
++ (void)toggleDeviceGroupExpanded:(NSInteger)groupId;
+
 @end

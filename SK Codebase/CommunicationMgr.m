@@ -358,7 +358,7 @@ NSThread * mainUpdateThread;
     // Set the receiver delegate
     [communicationBase setReceiverDelegate:receiver];
     
-    NSInteger maxCount = 20;
+    NSInteger maxCount = [SettingsMgr getMaxUpcomingEvents];
     
     // Send the request
     [communicationBase sendRequest:[communicationBase getComingUpEventsListUrl:maxCount]];

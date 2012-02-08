@@ -90,6 +90,9 @@
     
     // save it
     [defaults synchronize];
+    
+    // Clear...
+    [SettingsMgr clearDeviceGroupExpansionData];
 }
 
 // Gets an indication whether to group devices or not
@@ -346,6 +349,9 @@
     
     // save it
     [defaults synchronize];
+    
+    // Clear...
+    [SettingsMgr clearDeviceGroupExpansionData];
 }
 
 // Gets the number of seconds to wait before requesting update of device state
@@ -432,6 +438,78 @@
     
     // save it
     [defaults synchronize]; 
+}
+
+// Indicates whether a device group is expanded or not
++ (Boolean)deviceGroupIsExpanded:(NSInteger)groupId {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"collapsedGroups";
+    
+    // Get the result
+    NSString *retrievedValue = [defaults stringForKey:key];
+    
+    if(retrievedValue == nil || [@"" isEqualToString:retrievedValue])
+        return true;
+    
+    NSRange r = [retrievedValue rangeOfString:[NSString stringWithFormat:@",%i,", groupId]];
+    
+    if(r.location == NSNotFound)
+        return true;
+    else        
+        return false;
+}
+
+// Sets a device group to expanded or not
++ (void)setDeviceGroupExpanded:(NSInteger)groupId: (Boolean)expanded {
+    Boolean currentlyExpanded = [SettingsMgr deviceGroupIsExpanded:groupId];
+    
+    if(expanded && currentlyExpanded)
+        return;
+    else {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *key = @"collapsedGroups";
+        
+        // Get the result
+        NSString *retrievedValue = [defaults stringForKey:key];
+        
+        if(retrievedValue == nil)
+            retrievedValue = @"";
+        
+        if(expanded && !currentlyExpanded) {
+            retrievedValue = [retrievedValue stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@",%i,", groupId] withString:@","];
+        } else if((expanded && currentlyExpanded) || (!expanded && !currentlyExpanded)) {
+            // Do nothing
+        } else if(!expanded && currentlyExpanded) {
+            if([@"" isEqualToString:retrievedValue])
+                retrievedValue = [NSString stringWithFormat:@"%@,%i,", retrievedValue, groupId];
+            else
+                retrievedValue = [NSString stringWithFormat:@"%@%i,", retrievedValue, groupId];
+        }
+        
+        // set the value
+        [defaults setObject:retrievedValue forKey:key];
+        
+        // save it
+        [defaults synchronize]; 
+    }
+}
+
+// Clears expansion data
++ (void)clearDeviceGroupExpansionData {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"collapsedGroups";
+    
+    // set the value
+    [defaults setObject:@"" forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+
+// Toggles expansion
++ (void)toggleDeviceGroupExpanded:(NSInteger)groupId {
+    [SettingsMgr setDeviceGroupExpanded:groupId :![SettingsMgr deviceGroupIsExpanded:groupId]];
 }
 
 @end

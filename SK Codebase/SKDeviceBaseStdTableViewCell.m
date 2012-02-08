@@ -20,8 +20,6 @@
 @synthesize entityInfoLabel;
 // Holds the entity icon
 @synthesize entityIconImageView;
-// Holds the action label used to show what's happening
-@synthesize actionLabel;
 // Holds the parent table view controller
 @synthesize tableViewController;
 // Holds the entity stored in the cell
@@ -102,9 +100,16 @@
             [self setSwipeLayerHidden :true];
             [self performRequestedAction];
         }
+        
+        self.selectionStyle = UITableViewCellSelectionStyleBlue;
+        self.tableViewController.tableView.scrollEnabled = true;
     } else if(sender.state == UIGestureRecognizerStateChanged) {
         if(swipeRequestsRestart)
             return;
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         CGPoint currentPosition = [sender locationInView:self];
         verticalAmount = currentPosition.y - gestureStartPoint.y;
@@ -126,18 +131,22 @@
             if (currentPosition.x - SWIPE_MARGIN__DETECTION_THRESHOLD > gestureStartPoint.x) {
                 [self setSwipeLayerHidden :false];
                 
-                [actionLabel setText:NSLocalizedStringFromTable(@"On", @"Texts", nil)];
-                
                 actionRequestDimLevel = 100;
                 actionRequestAction = ACTION_ID__TURN_ON;
+                
+                [appDelegate setSwipeInfoData:NSLocalizedStringFromTable(@"On", @"Texts", nil): ACTION_ID__TURN_ON: false: 100];
+                
+                        self.tableViewController.tableView.scrollEnabled = false;
             }
             else if (currentPosition.x + SWIPE_MARGIN__DETECTION_THRESHOLD < gestureStartPoint.x) {
                 [self setSwipeLayerHidden :false];
                 
-                [actionLabel setText:NSLocalizedStringFromTable(@"Off", @"Texts", nil)];
-                
                 actionRequestDimLevel = 0;
                 actionRequestAction = ACTION_ID__TURN_OFF;
+                
+                [appDelegate setSwipeInfoData:NSLocalizedStringFromTable(@"Off", @"Texts", nil): ACTION_ID__TURN_OFF: false: 0];
+                
+                        self.tableViewController.tableView.scrollEnabled = false;
             }
             
             return;
@@ -165,26 +174,30 @@
         i = i * 10;
         
         if (horizontalAmount > verticalAmount) {
-            if (currentPosition.x - SWIPE_MARGIN__DETECTION_THRESHOLD > gestureStartPoint.x || currentPosition.x + SWIPE_MARGIN__DETECTION_THRESHOLD < gestureStartPoint.x) {
+            if (!self.tableViewController.tableView.scrollEnabled || currentPosition.x - SWIPE_MARGIN__DETECTION_THRESHOLD > gestureStartPoint.x || currentPosition.x + SWIPE_MARGIN__DETECTION_THRESHOLD < gestureStartPoint.x) {
                 [self setSwipeLayerHidden :false];
                 
+                self.tableViewController.tableView.scrollEnabled = false;
+                
                 if(i == 0) {
-                    [actionLabel setText:NSLocalizedStringFromTable(@"Off", @"Texts", nil)];
-                    
                     actionRequestDimLevel = 0;
                     actionRequestAction = ACTION_ID__TURN_OFF;
-                } else if (i == 100) {
-                    [actionLabel setText:NSLocalizedStringFromTable(@"On", @"Texts", nil)];
                     
+                    [appDelegate setSwipeInfoData:NSLocalizedStringFromTable(@"Off", @"Texts", nil): ACTION_ID__TURN_OFF: true: 0];
+                    
+                } else if (i == 100) {
                     actionRequestDimLevel = 100;
                     actionRequestAction = ACTION_ID__TURN_ON;
+                    
+                    [appDelegate setSwipeInfoData:NSLocalizedStringFromTable(@"On", @"Texts", nil): ACTION_ID__TURN_ON: true: 100];
                 } else {                    
                     NSString *str = NSLocalizedStringFromTable(@"Dim %i%%", @"Texts", nil);
                     str = [NSString stringWithFormat:str, i];
-                    [actionLabel setText:str];
                     
                     actionRequestDimLevel = i;
                     actionRequestAction = ACTION_ID__TURN_ON;
+                    
+                    [appDelegate setSwipeInfoData:str: ACTION_ID__TURN_ON: true: i];
                 }
             }
         }
@@ -195,7 +208,6 @@
 - (void)setSwipeLayerHidden:(Boolean)hidden {
     CGFloat alpha;
     swipeLayerVisible = !hidden;
-    [actionLabel setHidden:hidden];
     
     if(
        [self.reuseIdentifier isEqualToString:REUSE_IDENTIFIER__DEVICE_CELL_STD_DIRTY] ||
@@ -211,6 +223,11 @@
     [entityIconImageView setAlpha:alpha];
     [entityInfoLabel setAlpha:alpha];
     [entityNameLabel setAlpha:alpha];
+    
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate toggleSwipeInfo:!hidden :self.frame];
+    self.tableViewController.tableView.scrollEnabled = hidden;
 }
 
 /*******************************************************************************

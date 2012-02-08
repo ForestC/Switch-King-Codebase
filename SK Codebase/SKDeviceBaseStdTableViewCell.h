@@ -27,8 +27,6 @@
 @property(nonatomic,strong) IBOutlet UILabel *entityInfoLabel;
 // Holds the entity icon
 @property(nonatomic,strong) IBOutlet UIImageView *entityIconImageView;
-// Holds the action label used to show what's happening
-@property(nonatomic,strong) IBOutlet UILabel *actionLabel;
 // Holds the parent table view controller
 @property(nonatomic,strong) UITableViewController *tableViewController;
 // Holds the entity stored in the cell
