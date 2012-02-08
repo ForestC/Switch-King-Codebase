@@ -11,13 +11,18 @@
 #import "CommunicationMgr.h"
 #import "EntityActionRequestDelegate.h"
 #import "AlertInfoViewController.h"
+#import "SwipeInfoViewController.h"
+#import "SKTabBarControllerDelegate_iPhone.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, EntityActionRequestDelegate> {
     NSInteger netActivityReqs;
     Boolean alertInfoInView;
     NSString *alertInfoText;
     AlertInfoViewController *alertInfoViewController;
+    SwipeInfoViewController *swipeViewController;
     NSTimer *alertTimer;
+    SKTabBarControllerDelegate_iPhone *tabBarDelegate;
+    Boolean swipeInfoIsInView;
 }
 
 // Configures the entity view controllers
@@ -40,6 +45,10 @@
 
 // Hides the alert info
 - (void)hideAlertInfo;
+
+- (void)setSwipeInfoData:(NSString *)text:(NSInteger)action:(Boolean)supportsDim:(NSInteger)dimLevel;
+
+- (void)toggleSwipeInfo:(BOOL)viewHidden:(CGRect)viewFrame;
 
 /*******************************************************************************
  Notification Methods

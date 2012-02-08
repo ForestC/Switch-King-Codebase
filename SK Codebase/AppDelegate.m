@@ -18,6 +18,7 @@
 #import "SettingsListViewController_iPhone.h"
 #import "ServerSettingsListViewController_iPhone.h"
 #import "Base64Encoding.h"
+#import "SKTabBarControllerDelegate_iPhone.h"
 
 @implementation AppDelegate
 
@@ -49,9 +50,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-    
-    
     // Init user defaults
     [SettingsMgr initDefaults];
     
@@ -60,6 +58,14 @@
     
     // Init the alert info view controller
     alertInfoViewController = [[AlertInfoViewController alloc] init];
+    
+    swipeViewController = [[SwipeInfoViewController alloc] init];
+    
+    UITabBarController *v2 = (UITabBarController*)self.window.rootViewController;
+    tabBarDelegate = [[SKTabBarControllerDelegate_iPhone alloc] init];
+    v2.delegate = tabBarDelegate;
+    
+    
     
 //    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
 //    
@@ -237,6 +243,162 @@
         }
     }  
 }
+
+/*******************************************************************************
+ Swipe Info View
+ *******************************************************************************/
+
+
+- (void)setSwipeInfoData:(NSString *)text:(NSInteger)action:(Boolean)supportsDim:(NSInteger)dimLevel {
+    swipeViewController.swipeInfoLabel.text = text;
+    
+    if(supportsDim) {
+        if(action == ACTION_ID__TURN_OFF) {
+            swipeViewController.swipeInfoImageView.image = [UIImage imageNamed:@"SwipeDimOff"]; 
+        } else if(action == ACTION_ID__TURN_ON && dimLevel == 100) {
+            swipeViewController.swipeInfoImageView.image = [UIImage imageNamed:@"SwipeDimOn"]; 
+        } else {
+            swipeViewController.swipeInfoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"SwipeDim%i", dimLevel]]; 
+        }
+    } else {
+        if(action == ACTION_ID__TURN_ON) {
+            swipeViewController.swipeInfoImageView.image = [UIImage imageNamed:@"SwipeOn"]; 
+        } else {
+            swipeViewController.swipeInfoImageView.image = [UIImage imageNamed:@"SwipeOff"]; 
+        }
+    }
+}
+
+// Sets the alert info as visible or hidden
+- (void)toggleSwipeInfo:(BOOL)viewHidden:(CGRect)viewFrame
+{
+    // this method opens/closes the player options view (which sets repeat interval, repeat & delay on/off)    
+    if (viewHidden == NO)
+    {/*
+        // delay and move view out of superview
+        CGRect alertFrame = swipeViewController.view.frame;
+        
+        [UIView beginAnimations:nil context:nil];
+        
+        alertFrame.origin.y += alertFrame.size.height * 2;
+        swipeViewController.view.frame = alertFrame;
+        
+        [UIView commitAnimations];
+        
+        [self 
+         performSelector:@selector(hideAlertInfo)
+         withObject:nil
+         afterDelay:0.5];
+        */
+        
+        [UIView beginAnimations:nil context:NULL]; 
+        [UIView setAnimationDuration:0.5]; 
+        [swipeViewController.view setAlpha:0.0]; 
+        [UIView commitAnimations]; 
+        
+        
+        swipeInfoIsInView = false;
+    }
+    else if(!swipeInfoIsInView)
+    {
+        swipeInfoIsInView = true;
+        
+        //
+        // Position the options at bottom of screen
+        //
+        
+        UIInterfaceOrientation orientation =         [UIApplication sharedApplication].statusBarOrientation;
+        
+
+        
+        Boolean portrait = orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown;
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth;
+        CGFloat screenHeight;
+        
+        if(portrait) {
+            screenWidth=  screenRect.size.width;
+            screenHeight = screenRect.size.height;            
+        } else {
+             screenWidth=  screenRect.size.height;
+            screenHeight = screenRect.size.width;
+        }
+            
+
+        
+        CGRect alertFrame = swipeViewController.view.frame;
+        alertFrame.origin.x = screenWidth / 2 - (alertFrame.size.width/2);
+        //alertFrame.size.width = 320;
+        
+  /*      
+        if(viewFrame.origin.y > (screenHeight /3)) {
+            alertFrame.origin.y = -alertFrame.size.height;
+        } else {
+            alertFrame.origin.y = screenHeight;
+        }
+        
+*/
+        //ORIGINAL
+        
+                if(viewFrame.origin.y > (screenHeight /5)) {
+                    alertFrame.origin.y = viewFrame.origin.y - (alertFrame.size.height / 2); // (screenHeight /3) - (alertFrame.size.height/2);// - h;
+                } else {
+                    alertFrame.origin.y = viewFrame.origin.y + viewFrame.size.height + (alertFrame.size.height) - (alertFrame.size.height/4);
+                }
+        
+        //alertFrame.size.height = 37;
+        
+        //
+        // For the animation, move the view up by its own height.
+        //
+        //alertFrame.origin.y -18;//+= alertFrame.size.height;
+        
+        swipeViewController.view.frame = alertFrame;
+        
+        
+        //[swipeViewController.infoTextView setText:alertInfoText];
+        
+        
+        //[v3 addSubview:optionsController.view];
+        [self.window.rootViewController.view addSubview:swipeViewController.view];
+        //        [v2 addSubview:optionsController.view];
+        /*
+        [UIView beginAnimations:nil context:nil];
+        
+        if(viewFrame.origin.y > (screenHeight /3)) {
+            alertFrame.origin.y = viewFrame.origin.y - (alertFrame.size.height / 2); // (screenHeight /3) - (alertFrame.size.height/2);// - h;
+        } else {
+            alertFrame.origin.y = viewFrame.origin.y + viewFrame.size.height + (alertFrame.size.height) - (alertFrame.size.height/4);
+        }
+        */
+
+                [swipeViewController.view setAlpha:0.0]; 
+        
+        [UIView beginAnimations:nil context:NULL]; 
+        [UIView setAnimationDuration:0.5]; 
+        [swipeViewController.view setAlpha:1.0]; 
+        //[UIView commitAnimations]; 
+        
+        //swipeViewController.view.frame = alertFrame;
+        
+        [UIView commitAnimations];
+    }
+}
+//
+//// Hides the alert info
+//- (void)hideAlertInfo {
+//    [alertInfoViewController.view removeFromSuperview];
+//    
+//    [self setAlertInfoInView:false];
+//}
+//
+//// Sets the alert info text
+//- (void)setAlertInfo:(NSString *)infoText {
+//    self.alertInfoText = infoText;
+//    
+//    [alertInfoViewController.infoTextView setText:infoText];
+//}
+
 
 /*******************************************************************************
  Alert Info View

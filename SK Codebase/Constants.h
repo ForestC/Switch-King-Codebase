@@ -90,7 +90,9 @@
 
 #define SWIPE_MARGIN__PER_SIDE 60
 #define SWIPE_MARGIN__DETECTION_THRESHOLD 30
-#define SWIPE_MARGIN__Y_MOVEMENT 20
+//#define SWIPE_MARGIN__DETECTION_THRESHOLD 50
+//#define SWIPE_MARGIN__Y_MOVEMENT 20
+#define SWIPE_MARGIN__Y_MOVEMENT 05
 
 /*******************************************************************************
  Server IDs (Constants)
@@ -102,6 +104,10 @@
 
 #define ACTION_ID__TURN_ON 2
 #define ACTION_ID__TURN_OFF 1
+#define ACTION_ID__SYNCHRONIZE 9000
+#define ACTION_ID__CANCEL_SEMI_AUTO 9001
+#define ACTION_ID__SEND_LEARN 9002
+
 
 #define DEVICE_STATE_ID__ON 2
 #define DEVICE_STATE_ID__OFF 1
