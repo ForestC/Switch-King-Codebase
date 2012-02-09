@@ -99,6 +99,20 @@
 		5B80281214A219DD00F3909E /* DeviceList_OnSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FF14A219DD00F3909E /* DeviceList_OnSemiAuto.png */; };
 		5BA69E5F149B43DA00D663BA /* SKDeviceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */; };
 		5BA69E65149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */; };
+		5BA9691914E339A000FAA66D /* SwipeCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BA9691814E339A000FAA66D /* SwipeCancel.png */; };
+		5BA9691D14E3B7CC00FAA66D /* SKSystemSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9691C14E3B7CC00FAA66D /* SKSystemSetting.m */; };
+		5BA9692014E3B86800FAA66D /* XMLSKSystemSettingParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9691F14E3B86800FAA66D /* XMLSKSystemSettingParser.m */; };
+		5BA9692314E3B99700FAA66D /* XMLSKScenarioParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9692214E3B99700FAA66D /* XMLSKScenarioParser.m */; };
+		5BA9692614E3B9CF00FAA66D /* SKScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9692514E3B9CF00FAA66D /* SKScenario.m */; };
+		5BA9692914E3C17800FAA66D /* SKScenarioDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9692814E3C17800FAA66D /* SKScenarioDataReceiver.m */; };
+		5BA9692C14E3C19400FAA66D /* SKSystemSettingDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9692B14E3C19400FAA66D /* SKSystemSettingDataReceiver.m */; };
+		5BA9692F14E3E04600FAA66D /* SKScenarioStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9692E14E3E04600FAA66D /* SKScenarioStdTableViewCell.m */; };
+		5BA9693514E3F6EA00FAA66D /* ScenarioListViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9693414E3F6EA00FAA66D /* ScenarioListViewController_iPhone.m */; };
+		5BA9693814E42C7300FAA66D /* SKNavigationControllerDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9693714E42C7300FAA66D /* SKNavigationControllerDelegate_iPhone.m */; };
+		5BA9693C14E4521000FAA66D /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9693A14E4520E00FAA66D /* MessageViewController.m */; };
+		5BA9693D14E4521000FAA66D /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BA9693B14E4521000FAA66D /* MessageViewController.xib */; };
+		5BA9694014E453D000FAA66D /* InfoMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9693F14E453CC00FAA66D /* InfoMessageView.m */; };
+		5BA9694214E454F600FAA66D /* InfoWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BA9694114E454F600FAA66D /* InfoWarning.png */; };
 		5BAEB0A814D42EE700F1B2AE /* Button_CancelSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */; };
 		5BAEB0A914D42EE700F1B2AE /* Button_Learn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */; };
 		5BAEB0AA14D42EE700F1B2AE /* Button_Synchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */; };
@@ -109,7 +123,6 @@
 		5BAEB0B514D4302100F1B2AE /* DeviceDetailController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEB0B414D4302100F1B2AE /* DeviceDetailController_iPhone.m */; };
 		5BB6255014E2C2EC0006E168 /* SquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6254F14E2C2EC0006E168 /* SquareView.m */; };
 		5BB6255314E2D2260006E168 /* Project22.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6255214E2D2260006E168 /* Project22.png */; };
-		5BB6255614E2E06B0006E168 /* ScenarioTableViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6255514E2E06A0006E168 /* ScenarioTableViewController_iPhone.m */; };
 		5BB6256614E3027D0006E168 /* SwipeDimOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6255914E3027D0006E168 /* SwipeDimOn.png */; };
 		5BB6256714E3027D0006E168 /* SwipeDim90.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6255A14E3027D0006E168 /* SwipeDim90.png */; };
 		5BB6256814E3027D0006E168 /* SwipeDim80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6255B14E3027D0006E168 /* SwipeDim80.png */; };
@@ -288,6 +301,31 @@
 		5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroup.m; sourceTree = "<group>"; };
 		5BA69E63149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceGroupStdTableViewCell.h; sourceTree = "<group>"; };
 		5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroupStdTableViewCell.m; sourceTree = "<group>"; };
+		5BA9691814E339A000FAA66D /* SwipeCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeCancel.png; sourceTree = "<group>"; };
+		5BA9691B14E3B7CC00FAA66D /* SKSystemSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSystemSetting.h; sourceTree = "<group>"; };
+		5BA9691C14E3B7CC00FAA66D /* SKSystemSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSystemSetting.m; sourceTree = "<group>"; };
+		5BA9691E14E3B86800FAA66D /* XMLSKSystemSettingParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSKSystemSettingParser.h; sourceTree = "<group>"; };
+		5BA9691F14E3B86800FAA66D /* XMLSKSystemSettingParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLSKSystemSettingParser.m; sourceTree = "<group>"; };
+		5BA9692114E3B99700FAA66D /* XMLSKScenarioParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSKScenarioParser.h; sourceTree = "<group>"; };
+		5BA9692214E3B99700FAA66D /* XMLSKScenarioParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLSKScenarioParser.m; sourceTree = "<group>"; };
+		5BA9692414E3B9CE00FAA66D /* SKScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKScenario.h; sourceTree = "<group>"; };
+		5BA9692514E3B9CF00FAA66D /* SKScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKScenario.m; sourceTree = "<group>"; };
+		5BA9692714E3C17800FAA66D /* SKScenarioDataReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKScenarioDataReceiver.h; sourceTree = "<group>"; };
+		5BA9692814E3C17800FAA66D /* SKScenarioDataReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKScenarioDataReceiver.m; sourceTree = "<group>"; };
+		5BA9692A14E3C19400FAA66D /* SKSystemSettingDataReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSystemSettingDataReceiver.h; sourceTree = "<group>"; };
+		5BA9692B14E3C19400FAA66D /* SKSystemSettingDataReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSystemSettingDataReceiver.m; sourceTree = "<group>"; };
+		5BA9692D14E3E04600FAA66D /* SKScenarioStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKScenarioStdTableViewCell.h; sourceTree = "<group>"; };
+		5BA9692E14E3E04600FAA66D /* SKScenarioStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKScenarioStdTableViewCell.m; sourceTree = "<group>"; };
+		5BA9693314E3F6E900FAA66D /* ScenarioListViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenarioListViewController_iPhone.h; sourceTree = "<group>"; };
+		5BA9693414E3F6EA00FAA66D /* ScenarioListViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenarioListViewController_iPhone.m; sourceTree = "<group>"; };
+		5BA9693614E42C7200FAA66D /* SKNavigationControllerDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKNavigationControllerDelegate_iPhone.h; sourceTree = "<group>"; };
+		5BA9693714E42C7300FAA66D /* SKNavigationControllerDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKNavigationControllerDelegate_iPhone.m; sourceTree = "<group>"; };
+		5BA9693914E4520D00FAA66D /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		5BA9693A14E4520E00FAA66D /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		5BA9693B14E4521000FAA66D /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
+		5BA9693E14E453C800FAA66D /* InfoMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoMessageView.h; sourceTree = "<group>"; };
+		5BA9693F14E453CC00FAA66D /* InfoMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoMessageView.m; sourceTree = "<group>"; };
+		5BA9694114E454F600FAA66D /* InfoWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoWarning.png; sourceTree = "<group>"; };
 		5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_CancelSemiAuto.png; sourceTree = "<group>"; };
 		5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Learn.png; sourceTree = "<group>"; };
 		5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Synchronize.png; sourceTree = "<group>"; };
@@ -300,8 +338,6 @@
 		5BB6254E14E2C2EC0006E168 /* SquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareView.h; sourceTree = "<group>"; };
 		5BB6254F14E2C2EC0006E168 /* SquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareView.m; sourceTree = "<group>"; };
 		5BB6255214E2D2260006E168 /* Project22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Project22.png; sourceTree = "<group>"; };
-		5BB6255414E2E06A0006E168 /* ScenarioTableViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenarioTableViewController_iPhone.h; sourceTree = "<group>"; };
-		5BB6255514E2E06A0006E168 /* ScenarioTableViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenarioTableViewController_iPhone.m; sourceTree = "<group>"; };
 		5BB6255914E3027D0006E168 /* SwipeDimOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeDimOn.png; sourceTree = "<group>"; };
 		5BB6255A14E3027D0006E168 /* SwipeDim90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeDim90.png; sourceTree = "<group>"; };
 		5BB6255B14E3027D0006E168 /* SwipeDim80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeDim80.png; sourceTree = "<group>"; };
@@ -409,6 +445,8 @@
 				5B024CD8148FBF8E00ED3B6D /* Constants.h */,
 				5BB6254E14E2C2EC0006E168 /* SquareView.h */,
 				5BB6254F14E2C2EC0006E168 /* SquareView.m */,
+				5BA9693E14E453C800FAA66D /* InfoMessageView.h */,
+				5BA9693F14E453CC00FAA66D /* InfoMessageView.m */,
 			);
 			path = "SK Codebase";
 			sourceTree = "<group>";
@@ -448,6 +486,10 @@
 				5BFC371214A334BC0062F6E7 /* XMLSKDataSourceParser.m */,
 				5B024CD6148FB54200ED3B6D /* XMLSKDeviceParser.m */,
 				5BFC371114A334BC0062F6E7 /* XMLSKDataSourceParser.h */,
+				5BA9691E14E3B86800FAA66D /* XMLSKSystemSettingParser.h */,
+				5BA9691F14E3B86800FAA66D /* XMLSKSystemSettingParser.m */,
+				5BA9692114E3B99700FAA66D /* XMLSKScenarioParser.h */,
+				5BA9692214E3B99700FAA66D /* XMLSKScenarioParser.m */,
 			);
 			name = Xml;
 			sourceTree = "<group>";
@@ -487,6 +529,10 @@
 				5BFC371614A342D60062F6E7 /* SKDataSourceDataReceiver.m */,
 				5B64DF6E14D977E800D36647 /* SKEventDataReceiver.h */,
 				5B64DF6F14D977E800D36647 /* SKEventDataReceiver.m */,
+				5BA9692714E3C17800FAA66D /* SKScenarioDataReceiver.h */,
+				5BA9692814E3C17800FAA66D /* SKScenarioDataReceiver.m */,
+				5BA9692A14E3C19400FAA66D /* SKSystemSettingDataReceiver.h */,
+				5BA9692B14E3C19400FAA66D /* SKSystemSettingDataReceiver.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -550,6 +596,8 @@
 			children = (
 				5B3E30BB14E02A9000AA6517 /* SKTabBarControllerDelegate_iPhone.h */,
 				5B3E30BC14E02A9000AA6517 /* SKTabBarControllerDelegate_iPhone.m */,
+				5BA9693614E42C7200FAA66D /* SKNavigationControllerDelegate_iPhone.h */,
+				5BA9693714E42C7300FAA66D /* SKNavigationControllerDelegate_iPhone.m */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -557,6 +605,8 @@
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BA9694114E454F600FAA66D /* InfoWarning.png */,
+				5BA9691814E339A000FAA66D /* SwipeCancel.png */,
 				5BB6257114E309160006E168 /* SwipeOn.png */,
 				5BB6257214E309160006E168 /* SwipeOff.png */,
 				5BB6255914E3027D0006E168 /* SwipeDimOn.png */,
@@ -647,8 +697,11 @@
 				5B5D412B14E004DC00759648 /* SwipeInfoViewController.h */,
 				5B5D412C14E004DC00759648 /* SwipeInfoViewController.m */,
 				5B5D412D14E004DC00759648 /* SwipeInfoViewController.xib */,
-				5BB6255414E2E06A0006E168 /* ScenarioTableViewController_iPhone.h */,
-				5BB6255514E2E06A0006E168 /* ScenarioTableViewController_iPhone.m */,
+				5BA9693314E3F6E900FAA66D /* ScenarioListViewController_iPhone.h */,
+				5BA9693414E3F6EA00FAA66D /* ScenarioListViewController_iPhone.m */,
+				5BA9693914E4520D00FAA66D /* MessageViewController.h */,
+				5BA9693A14E4520E00FAA66D /* MessageViewController.m */,
+				5BA9693B14E4521000FAA66D /* MessageViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -699,6 +752,8 @@
 				5B64DF7914D9D6D800D36647 /* SKEventTableViewCell.m */,
 				5B64DF7B14D9D6F900D36647 /* SKEventBaseStdTableViewCell.h */,
 				5B64DF7C14D9D6F900D36647 /* SKEventBaseStdTableViewCell.m */,
+				5BA9692D14E3E04600FAA66D /* SKScenarioStdTableViewCell.h */,
+				5BA9692E14E3E04600FAA66D /* SKScenarioStdTableViewCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -718,6 +773,10 @@
 				5B5D3D8114D69AC8007882E0 /* SKDataSourceGroup.m */,
 				5B64DF6A14D9738B00D36647 /* SKEvent.h */,
 				5B64DF6B14D9738B00D36647 /* SKEvent.m */,
+				5BA9691B14E3B7CC00FAA66D /* SKSystemSetting.h */,
+				5BA9691C14E3B7CC00FAA66D /* SKSystemSetting.m */,
+				5BA9692414E3B9CE00FAA66D /* SKScenario.h */,
+				5BA9692514E3B9CF00FAA66D /* SKScenario.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -857,6 +916,9 @@
 				5BB6257014E3027D0006E168 /* SwipeDimOff.png in Resources */,
 				5BB6257314E309170006E168 /* SwipeOn.png in Resources */,
 				5BB6257414E309170006E168 /* SwipeOff.png in Resources */,
+				5BA9691914E339A000FAA66D /* SwipeCancel.png in Resources */,
+				5BA9693D14E4521000FAA66D /* MessageViewController.xib in Resources */,
+				5BA9694214E454F600FAA66D /* InfoWarning.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,7 +986,17 @@
 				5B5D412E14E004DC00759648 /* SwipeInfoViewController.m in Sources */,
 				5B3E30BD14E02A9000AA6517 /* SKTabBarControllerDelegate_iPhone.m in Sources */,
 				5BB6255014E2C2EC0006E168 /* SquareView.m in Sources */,
-				5BB6255614E2E06B0006E168 /* ScenarioTableViewController_iPhone.m in Sources */,
+				5BA9691D14E3B7CC00FAA66D /* SKSystemSetting.m in Sources */,
+				5BA9692014E3B86800FAA66D /* XMLSKSystemSettingParser.m in Sources */,
+				5BA9692314E3B99700FAA66D /* XMLSKScenarioParser.m in Sources */,
+				5BA9692614E3B9CF00FAA66D /* SKScenario.m in Sources */,
+				5BA9692914E3C17800FAA66D /* SKScenarioDataReceiver.m in Sources */,
+				5BA9692C14E3C19400FAA66D /* SKSystemSettingDataReceiver.m in Sources */,
+				5BA9692F14E3E04600FAA66D /* SKScenarioStdTableViewCell.m in Sources */,
+				5BA9693514E3F6EA00FAA66D /* ScenarioListViewController_iPhone.m in Sources */,
+				5BA9693814E42C7300FAA66D /* SKNavigationControllerDelegate_iPhone.m in Sources */,
+				5BA9693C14E4521000FAA66D /* MessageViewController.m in Sources */,
+				5BA9694014E453D000FAA66D /* InfoMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
