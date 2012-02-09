@@ -179,7 +179,7 @@
     // Get the app delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [appDelegate.communicationMgr requestUpdateOfAllEntities];
+    [appDelegate.communicationMgr requestUpdateOfDataSources];
     
     //    NSLog(<#NSString *format, ...#>)
 }

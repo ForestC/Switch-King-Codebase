@@ -18,6 +18,7 @@
                               @"YES", @"groupDS", 
                               @"http://www.switchking.se", @"targetAddress",
                               @"10800", @"targetPort",
+                              @"YES", @"needServerVersionUpdate",
                               nil];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
@@ -46,10 +47,10 @@
     [defaults synchronize];
 }
 
-// Gets an indication whether settings are configured or not
-+ (Boolean)settingsConfigured {
+// Gets an indication whether server version needs update
++ (Boolean)needServerVersionUpdate {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *key = @"settingsConfigured";    
+    NSString *key = @"needServerVersionUpdate";    
     
     // Get the result
     Boolean retrievedValue = [defaults boolForKey:key];
@@ -57,13 +58,13 @@
     return retrievedValue;
 }
 
-// Sets an indication whether settings are configured or not
-+ (void)setSettingsConfigured:(Boolean) configured {
+// Sets an indication whether server version needs update
++ (void)setNeedServerVersionUpdate:(Boolean) needServerVersionUpdate {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *key = @"settingsConfigured";
+    NSString *key = @"needServerVersionUpdate";
     
     // set the value
-    [defaults setBool:configured forKey:key];
+    [defaults setBool:needServerVersionUpdate forKey:key];
     
     // save it
     [defaults synchronize];
@@ -237,11 +238,6 @@
         // Did we find the string "//" ?
         if(range.length == 0)
             targetAddress = [NSString stringWithFormat:@"http://%@", targetAddress];
-        
-//        range = [targetAddress rangeOfString:@":"];
-//        
-//        if(range.length > 0)
-//            targetAddress = [targetAddress substringToIndex:range.location];
     }
     
     // set the value
@@ -510,6 +506,77 @@
 // Toggles expansion
 + (void)toggleDeviceGroupExpanded:(NSInteger)groupId {
     [SettingsMgr setDeviceGroupExpanded:groupId :![SettingsMgr deviceGroupIsExpanded:groupId]];
+}
+
+// Indicates whether scenario list needs refresh
++ (void)setScenarioListRefreshNeeded:(Boolean)refreshOfScenarioListNeeded {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"scenarioRefr";
+    
+    // set the value
+    [defaults setBool:refreshOfScenarioListNeeded forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Indicates whether a full refresh of scenario list is needed
++ (Boolean)scenarioListRefreshNeeded {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"scenarioRefr";    
+    
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+    
+    return retrievedValue;
+}
+
+// Indicates whether historic events are supported
++ (void)setSupportsHistoricEvents:(Boolean)supportsHistoricEvents {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"histEvt";
+    
+    // set the value
+    [defaults setBool:supportsHistoricEvents forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Indicates whether historic events are supported
++ (Boolean)supportsHistoricEvents; {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"histEvt";    
+    
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+    
+    return retrievedValue;
+}
+
+// Sets the server version
++ (void)setServerVersion:(NSString *)serverVersion {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"serverVer";
+    
+    NSLog(@"Server Version: %@", serverVersion);
+    
+    // set the value
+    [defaults setObject:serverVersion forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Gets the server version
++ (NSString *)getServerVersion {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"serverVer";
+    
+    // Get the result
+    NSString *retrievedValue = [defaults stringForKey:key];
+
+    return retrievedValue;
 }
 
 @end

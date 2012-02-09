@@ -20,11 +20,11 @@
 // Sets an indication whether settings are configured or not
 + (void)setInitialSettingsConfigured:(Boolean) configured;
 
-// Gets an indication whether settings are configured or not
-+ (Boolean)settingsConfigured;
+// Gets an indication whether server version needs update
++ (Boolean)needServerVersionUpdate;
 
-// Sets an indication whether settings are configured or not
-+ (void)setSettingsConfigured:(Boolean) configured;
+// Sets an indication whether server version needs update
++ (void)setNeedServerVersionUpdate:(Boolean) needServerVersionUpdate;
 
 // Gets an indication whether to use live or not
 + (Boolean)useLive;
@@ -115,5 +115,23 @@
 
 // Toggles expansion
 + (void)toggleDeviceGroupExpanded:(NSInteger)groupId;
+
+// Indicates whether scenario list needs refresh
++ (void)setScenarioListRefreshNeeded:(Boolean)refreshOfScenarioListNeeded;
+
+// Indicates whether a full refresh of scenario list is needed
++ (Boolean)scenarioListRefreshNeeded;
+
+// Indicates whether historic events are supported
++ (void)setSupportsHistoricEvents:(Boolean)supportsHistoricEvents;
+
+// Indicates whether historic events are supported
++ (Boolean)supportsHistoricEvents;
+
+// Sets the server version
++ (void)setServerVersion:(NSString *)erverVersion;
+
+// Gets the server version
++ (NSString *)getServerVersion;
 
 @end

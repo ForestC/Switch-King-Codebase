@@ -67,6 +67,10 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.communicationMgr requestUpdateOfAllEntities];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -108,7 +112,7 @@
         [SettingsMgr setTargetPort:[textField.text intValue]];
     }
     
-    NSLog(@"%@", @"A");
+    [SettingsMgr setNeedServerVersionUpdate:true];
 }
 
 

@@ -92,7 +92,7 @@
                [[notification name] isEqualToString:NOTIFICATION_NAME__DEVICE_DIRTIFICATION_UPDATED] ||
                [[notification name] isEqualToString:NOTIFICATION_NAME__DEVICE_GROUP_DIRTIFICATION_UPDATED]) {
         NSLog (@"DeviceListViewController received info that a dirtification has been updated");
-        [[self tableView] reloadData];
+        [self requestTableViewReload];
     }  
 }
 
@@ -100,7 +100,7 @@
     // Create the internal structure
     [self createDeviceGroupStructure:deviceData];
     // Forces reload of data
-    [self.tableView reloadData];
+    [self requestTableViewReload];
 }
 
 // Creates the internal device/group structure in order to provide easy access
@@ -219,11 +219,11 @@
     // Get the app delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-    [appDelegate.communicationMgr requestUpdateOfAllEntities];
-    
-//    [appDelegate toggleSwipeInfo:true];
-    
-//    NSLog(<#NSString *format, ...#>)
+    [appDelegate.communicationMgr requestUpdateOfDevices];
+}
+
+- (void)requestTableViewReload {
+    [self.tableView reloadData];
 }
 
 /*******************************************************************************
@@ -283,6 +283,14 @@
     // Single section
     return 1;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if([SettingsMgr groupDevices]) {
+        return NSLocalizedStringFromTable(@"Swipe to send command\nHold groups to expand or collapse", @"Texts", nil);
+    } else {
+        return NSLocalizedStringFromTable(@"Swipe to send command", @"Texts", nil);        
+    }
+}  
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // In this view, all devices are always grouped...
@@ -364,7 +372,7 @@
 //}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView reloadData];
+    [self requestTableViewReload];
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
@@ -393,9 +401,8 @@
     CGPoint p = [gestureRecognizer locationInView:self.tableView];
     
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-    if (indexPath == nil)
-        NSLog(@"long press on table view but not on a row");
-    else if(gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+
+    if(indexPath != nil && gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:false];
         
         
@@ -405,14 +412,11 @@
         
         if([entity isKindOfClass:[SKDeviceGroup class]]) {
             [SettingsMgr toggleDeviceGroupExpanded:entity.ID];
-            
-            //[self.tableView deleteRowsAtIndexPaths:[self getIndexPathsForDeviceGroupChildren:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            
+                        
             [self createDeviceGroupStructure:devices];
-//            [self.tableView reloadData];
         }
         
-        [self.tableView reloadData];
+        [self requestTableViewReload];
     }
 }
 
@@ -438,7 +442,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.tableView reloadData];
+    [self requestTableViewReload];
 }
 
 

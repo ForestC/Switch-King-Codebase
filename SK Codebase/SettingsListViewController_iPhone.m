@@ -9,6 +9,7 @@
 #import "SettingsListViewController_iPhone.h"
 #import "AppDelegate.h"
 #import "SettingsMgr.h"
+#import "Constants.h"
 
 @implementation SettingsListViewController_iPhone
 
@@ -57,8 +58,15 @@
     [self.showLearnButtonHeaderLabel setText:NSLocalizedStringFromTable(@"Show Learn button", @"Texts", nil)];
     
     // Refresh interval
-    NSInteger refreshInterval = [SettingsMgr getRefreshInterval];
-    NSString *refreshIntervalStr = [NSString stringWithFormat:NSLocalizedStringFromTable(@"%i sec", @"Texts", nil), refreshInterval];
+    NSInteger refreshInterval = [SettingsMgr getRefreshInterval];    
+    NSString *refreshIntervalStr;
+    
+    if(refreshInterval != AUTOMATIC_REFRESH__TURNED_OFF) {
+        refreshIntervalStr = [NSString stringWithFormat:NSLocalizedStringFromTable(@"%i sec", @"Texts", nil), refreshInterval];
+    } else {
+        refreshIntervalStr = [NSString stringWithFormat:NSLocalizedStringFromTable(@"Off", @"Texts", nil), refreshInterval];
+    }
+            
     [self.refreshIntervalDetailLabel setText:refreshIntervalStr];
     [self.refreshIntervalHeaderLabel setText:NSLocalizedStringFromTable(@"Refresh interval", @"Texts", nil)];
     

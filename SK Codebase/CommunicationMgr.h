@@ -25,6 +25,14 @@
 
 - (void)requestEntityAction:(EntityActionRequest *)req;
 
+- (void)requestUpdateOfDevices;
+
+- (void)requestUpdateOfDataSources;
+
+- (void)requestUpdateOfEvents;
+
+- (void)requestUpdateOfScenarios;
+
 - (void)requestUpdateOfAllEntities;
 
 - (void)updateAllEntities;
@@ -39,7 +47,13 @@
 
 - (void)updateEventsComingUp;
 
+- (void)updateScenarios;
+
+- (void)updateSystemSettingServerVersion;
+
 - (CommunicationBase *)createCommunicationBase:(NSObject <DataReceivedDelegate> *)del;
+
++ (void)notifyNoConnection:(NSNotificationCenter *)notificationCenter;
 
 + (BOOL)hasConnectivity;
 

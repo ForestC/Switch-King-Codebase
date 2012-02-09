@@ -44,6 +44,8 @@
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 
+- (void)requestTableViewReload;
+
 // Gets children's index paths
 //- (NSArray *)getIndexPathsForDeviceGroupChildren:(NSIndexPath *)path;
 

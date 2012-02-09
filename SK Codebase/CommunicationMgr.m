@@ -11,6 +11,8 @@
 #import "SKDeviceDataReceiver.h"
 #import "SKDataSourceDataReceiver.h"
 #import "SKEventDataReceiver.h"
+#import "SKScenarioDataReceiver.h"
+#import "SKSystemSettingDataReceiver.h"
 #import "CommunicationBase.h"
 #import "EntityStore.h"
 #import "SettingsMgr.h"
@@ -147,14 +149,19 @@ NSThread * mainUpdateThread;
             [self updateDeviceGroup:reqNotData.entityId];
             break;
             
+        case ENTITY_TYPE__SCENARIO:
+            NSLog(@"%@", @"Interpreted entity req notification as Scenario");
+            [self updateScenarios];
+            break;            
+            
         default:
-            NSLog(@"%@", @"Missing or invalid entity type while interpreting entity req notification");
+            NSLog(@"Missing or invalid entity type (%i) while interpreting entity req notification", reqNotData.entityType);
             break;
     }
 }
 
 /*******************************************************************************
- Request methods
+ Update Request methods
  *******************************************************************************/
 
 - (void)requestEntityAction:(EntityActionRequest *)req {
@@ -164,10 +171,18 @@ NSThread * mainUpdateThread;
     // Create a communication base    
     CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
     
-    NSString *reqPath = [EntityRequestGenerator getDeviceActionRequestPath:req.entity 
-                                                                          :req.actionId 
-                                                                          :req.dimLevel];
-
+    NSString *reqPath;
+    
+    if(req.actionId == ACTION_ID__SYNCHRONIZE) {
+        reqPath = [EntityRequestGenerator getDeviceSynchronizeRequestPath:req.entity];
+    } else if(req.actionId == ACTION_ID__CHANGE_SCENARIO) {
+        reqPath = [EntityRequestGenerator getScenarioChangeRequestPath:req.entity];        
+    } else {
+        reqPath = [EntityRequestGenerator getDeviceActionRequestPath:req.entity 
+                                                                    :req.actionId 
+                                                                    :req.dimLevel];
+    }
+    
     NSString *url = [[communicationBase getBaseUrl] stringByAppendingString:reqPath];
 
     EntityHttpReqNotificationData *reqNotificationData = [req toNotificationData];
@@ -176,6 +191,8 @@ NSThread * mainUpdateThread;
         reqNotificationData.reqDelay = [SettingsMgr getDeviceUpdateDelay];
     } else if([req.entity isKindOfClass:[SKDeviceGroup class]]) {        
         reqNotificationData.reqDelay = [SettingsMgr getDeviceGroupUpdateDelay]; 
+    } else if([req.entity isKindOfClass:[SKScenario class]]) {
+        reqNotificationData.reqDelay = REFRESH_INTERVAL__SCENARIO_CHANGE; 
     }
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -194,7 +211,8 @@ NSThread * mainUpdateThread;
                                           object:nil
                                         userInfo:notificationData];
     } else {
-        NSString *alertNotificationData = NSLocalizedStringFromTable(@"No network connection", @"Texts", nil);
+        [CommunicationMgr notifyNoConnection:notificationCenter];
+/*        NSString *alertNotificationData = NSLocalizedStringFromTable(@"No network connection", @"Texts", nil);
 
         NSDictionary *notificationData = [NSDictionary dictionaryWithObject:alertNotificationData 
                                                                      forKey:ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY];
@@ -207,8 +225,93 @@ NSThread * mainUpdateThread;
         // Post a notification that connection is not available
         [notificationCenter postNotificationName:NOTIFICATION_NAME__NO_CONNECTION
                                           object:nil
-                                        userInfo:nil];
+                                        userInfo:nil];*/
     }
+}
+
+
+- (void)requestUpdateOfDevices {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
+    
+    reqNotificationData.entityType = ENTITY_TYPE__DEVICE;
+    
+    if([CommunicationMgr hasConnectivity]) {
+        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
+                                                                     forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        [self updateDevices];
+    } else {
+        [CommunicationMgr notifyNoConnection:notificationCenter];
+    }
+}
+
+- (void)requestUpdateOfDataSources {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
+    
+    reqNotificationData.entityType = ENTITY_TYPE__DATA_SOURCE;
+    
+    if([CommunicationMgr hasConnectivity]) {
+        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
+                                                                     forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        [self updateDataSources];
+    } else {
+        [CommunicationMgr notifyNoConnection:notificationCenter];
+    }
+}
+
+- (void)requestUpdateOfEvents {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
+    
+    reqNotificationData.entityType = ENTITY_TYPE__EVENTS;
+    
+    if([CommunicationMgr hasConnectivity]) {
+        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
+                                                                     forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        [self updateEventsComingUp];
+    } else {
+        [CommunicationMgr notifyNoConnection:notificationCenter];
+    }
+}
+
+- (void)requestUpdateOfScenarios {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
+    
+    reqNotificationData.entityType = ENTITY_TYPE__SCENARIO;
+    
+    if([CommunicationMgr hasConnectivity]) {
+        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
+                                                                     forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        [self updateScenarios];
+    } else {
+        [CommunicationMgr notifyNoConnection:notificationCenter];
+    } 
 }
 
 // Requests all entities to be updated
@@ -216,49 +319,37 @@ NSThread * mainUpdateThread;
 - (void)requestUpdateOfAllEntities {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
-    EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
-    
-    reqNotificationData.entityType = ENTITY_TYPE__ALL_ENTITIES;
-    
     if([CommunicationMgr hasConnectivity]) {
+        EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
+        
+        reqNotificationData.entityType = ENTITY_TYPE__ALL_ENTITIES;
+        
         NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData 
                                                                      forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
-        /*
-        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_UPDATE_REQUESTED
-                                          object:nil
-                                        userInfo:notificationData];
-        */
+        
         [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
                                           object:nil
                                         userInfo:notificationData];
         
-        [self updateAllEntities];
+        if([SettingsMgr needServerVersionUpdate]) {
+            [self updateSystemSettingServerVersion];
+        } else {            
+            [self updateAllEntities];
+        }
     } else {
-        NSString *alertNotificationData = NSLocalizedStringFromTable(@"No network connection", @"Texts", nil);
-        
-        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:alertNotificationData 
-                                                                     forKey:ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY];
-        
-        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
-                                          object:nil
-                                        userInfo:notificationData];
-        
-        // Post a notification that an alert is requested to display
-        [notificationCenter postNotificationName:NOTIFICATION_NAME__ALERT_INFO_REQUESTED
-                                          object:nil
-                                        userInfo:notificationData];
-        
-        // Post a notification that connection is not available
-        [notificationCenter postNotificationName:NOTIFICATION_NAME__NO_CONNECTION
-                                          object:nil
-                                        userInfo:nil];
+        [CommunicationMgr notifyNoConnection:notificationCenter];
     }
 }
+
+/*******************************************************************************
+ Update methods
+ *******************************************************************************/
 
 - (void)updateAllEntities {
     [self updateDevices];
     [self updateDataSources];
     [self updateEventsComingUp];
+    [self updateScenarios];
 }
 
 - (void)updateDevices {
@@ -366,6 +457,57 @@ NSThread * mainUpdateThread;
     NSLog(@"Request for all upcoming events");
 }
 
+- (void)updateScenarios {
+    NSLog(@"Updating scenarios");
+    
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Get the authentication data container
+    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    
+    // Create a communication base    
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    
+    // Create a receiver and assign an entity store to the receiver
+    SKScenarioDataReceiver *receiver = [[SKScenarioDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
+    
+    // Set the receiver delegate
+    [communicationBase setReceiverDelegate:receiver];
+    
+    // Send the request
+    [communicationBase sendRequest:[communicationBase getScenarioListUrl]];
+    
+    NSLog(@"Request for all scenarios");
+}
+
+- (void)updateSystemSettingServerVersion {
+    NSLog(@"Updating system setting version");
+    
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Get the authentication data container
+    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    
+    // Create a communication base    
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    
+    // Create a receiver and assign an entity store to the receiver
+    SKSystemSettingDataReceiver *receiver = [[SKSystemSettingDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
+    
+    // Set the receiver delegate
+    [communicationBase setReceiverDelegate:receiver];
+    
+    // Send the request
+    [communicationBase sendRequest:[communicationBase getSystemSettingVersionUrl]];
+    
+    NSLog(@"Request for update of system setting version");
+}
+
+
+/*******************************************************************************
+ Base methods
+ *******************************************************************************/
+
 // Creates a communication base object to be used when communicating with a remote server.
 - (CommunicationBase *)createCommunicationBase:(NSObject <DataReceivedDelegate> *)del {
     // Get the app delegate
@@ -389,6 +531,31 @@ NSThread * mainUpdateThread;
     [communicationBase setReceiverDelegate:del];
     
     return communicationBase;
+}
+
+/*******************************************************************************
+ Connectivity methods
+ *******************************************************************************/
+
++ (void)notifyNoConnection:(NSNotificationCenter *)notificationCenter {
+    NSString *alertNotificationData = NSLocalizedStringFromTable(@"No network connection", @"Texts", nil);
+    
+    NSDictionary *notificationData = [NSDictionary dictionaryWithObject:alertNotificationData 
+                                                                 forKey:ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY];
+    
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                      object:nil
+                                    userInfo:notificationData];
+    
+    // Post a notification that an alert is requested to display
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__ALERT_INFO_REQUESTED
+                                      object:nil
+                                    userInfo:notificationData];
+    
+    // Post a notification that connection is not available
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__NO_CONNECTION
+                                      object:nil
+                                    userInfo:nil];
 }
 
 /* 
