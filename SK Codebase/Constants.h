@@ -22,6 +22,9 @@
 #define REUSE_IDENTIFIER__EVENT_CELL_STD @"EventCellStd"
 #define REUSE_IDENTIFIER__EVENT_CELL_STD_DIRTY @"EventCellStdDirty"
 
+#define REUSE_IDENTIFIER__SCENARIO_CELL_STD @"ScenarioCellStd"
+#define REUSE_IDENTIFIER__SCENARIO_CELL_STD_DIRTY @"ScenarioCellStdDirty"
+
 
 #define REUSE_IDENTIFIER__SETTINGS_CELL_SWITCH @"SwitchSettingStd"
 #define REUSE_IDENTIFIER__SETTINGS_CELL_URL @"UrlSettingStd"
@@ -30,6 +33,15 @@
 #define REUSE_IDENTIFIER__SETTINGS_CELL_TEXT @"TextSettingStd" 
 
 #define REUSE_IDENTIFIER__RIGHT_DETAIL @"RightDetail"
+
+#define TAB_INDEX__DEVICES 0
+#define TAB_INDEX__DATA_SOURCES 2
+#define TAB_INDEX__EVENTS 1
+#define TAB_INDEX__SCENARIOS 3
+
+#define AUTOMATIC_REFRESH__TURNED_OFF -1
+
+#define REFRESH_INTERVAL__SCENARIO_CHANGE 3
 
 /*******************************************************************************
  Data source status values
@@ -81,6 +93,13 @@
 #define XML_ELEMENT_NAME__EVENT_ARRAY @"ArrayOfRESTEvent"
 #define XML_ELEMENT_NAME__EVENT @"RESTEvent"
 
+#define XML_ELEMENT_NAME__SYSTEM_SETTING_ARRAY @"ArrayOfRESTSystemSetting"
+#define XML_ELEMENT_NAME__SYSTEM_SETTING @"RESTSystemSetting"
+
+#define XML_ELEMENT_NAME__SCENARIO_ARRAY @"ArrayOfRESTScenario"
+#define XML_ELEMENT_NAME__SCENARIO @"RESTScenario"
+
+
 #define XML_VALUE__TRUE @"true"
 #define XML_VALUE__FALSE @"false"
 
@@ -88,7 +107,8 @@
  Swipe Params (Constants)
  *******************************************************************************/
 
-#define SWIPE_MARGIN__PER_SIDE 60
+#define SWIPE_MARGIN__PER_SIDE 100
+#define SWIPE_MARGIN__CANCELLATION_AREA 30
 #define SWIPE_MARGIN__DETECTION_THRESHOLD 30
 //#define SWIPE_MARGIN__DETECTION_THRESHOLD 50
 //#define SWIPE_MARGIN__Y_MOVEMENT 20
@@ -102,11 +122,14 @@
 
 #define GROUP_ID__NONE -1
 
+#define ACTION_ID__CANCEL -9999
+
 #define ACTION_ID__TURN_ON 2
 #define ACTION_ID__TURN_OFF 1
 #define ACTION_ID__SYNCHRONIZE 9000
 #define ACTION_ID__CANCEL_SEMI_AUTO 9001
 #define ACTION_ID__SEND_LEARN 9002
+#define ACTION_ID__CHANGE_SCENARIO 9003
 
 
 #define DEVICE_STATE_ID__ON 2
@@ -124,6 +147,8 @@
 
 #define DATA_SOURCE__POLL_SCHEDULE_TYPE__WHEN_MODIFIED @"WhenModified"
 
+#define SYSTEM_SETTING_NAME__SERVER_VERSION @"ServerVersion"
+
 /*******************************************************************************
  Internal type definitions
  *******************************************************************************/
@@ -133,6 +158,7 @@
 #define ENTITY_TYPE__DATA_SOURCE 3
 #define ENTITY_TYPE__DATA_SOURCE_GROUP 4
 #define ENTITY_TYPE__EVENTS 5
+#define ENTITY_TYPE__SCENARIO 6
 #define ENTITY_TYPE__ALL_ENTITIES 1000
 
 #define ENTITY_TYPE_STRING__DEVICE @"Device"
@@ -156,11 +182,16 @@
 #define NOTIFICATION_NAME__DATA_SOURCE_DIRTIFICATION_UPDATED @"DSDirtificationUpdated"
 #define NOTIFICATION_NAME__DATA_SOURCE_GROUP_DIRTIFICATION_UPDATED @"DSGroupDirtificationUpdated"
 
+#define NOTIFICATION_NAME__SCENARIOS_UPDATED @"SCUpdated"
+#define NOTIFICATION_NAME__SCENARIOS_DIRTIFICATION_UPDATED @"SCDirtificationUpdated"
+
 #define NOTIFICATION_NAME__EVENTS_UPDATED @"EvtsUpdated"
 #define NOTIFICATION_NAME__EVENTS_DIRTIFICATION_UPDATED @"EventsDirtificationUpdated"
 
 #define NOTIFICATION_NAME__ALERT_INFO_REQUESTED @"AlertReq"
 #define NOTIFICATION_NAME__NO_CONNECTION @"NoConn"
+
+#define NOTIFICATION_NAME__SERVER_VERSION_UPDATED @"ServerVersionUpdated"
 
 #define ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY @"EntityReqData"
 #define ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY @"Msg"

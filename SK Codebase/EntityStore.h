@@ -13,6 +13,8 @@
 #import "SKDeviceGroup.h"
 #import "SKDataSource.h"
 #import "SKDataSourceGroup.h"
+#import "SKScenario.h"
+#import "SKSystemSetting.h"
 
 @interface EntityStore : NSObject <SKDeviceStoreDelegate> {
     
@@ -32,6 +34,14 @@
 - (void)dataSourcesUpdated:(NSMutableArray*)collection;
 
 - (void)eventsUpdated:(NSMutableArray*)collection;
+
+- (void)scenarioUpdated:(SKScenario*)scenario;
+
+- (void)scenariosUpdated:(NSMutableArray*)collection;
+
+- (void)systemSettingUpdated:(SKSystemSetting*)setting;
+
+- (void)systemSettingsUpdated:(NSMutableArray*)collection;
 
 // Flags an entity as dirty or clean
 - (void)flagEntityAsDirtyOrClean:(SKEntity*)entity: (Boolean)isDirty;
@@ -57,6 +67,9 @@
 // Flags ALL event entities as dirty or clean
 - (void)flagAllEventsAsDirtyOrClean:(Boolean)isDirty;
 
+// Flags ALL event entities as dirty or clean
+- (void)flagAllScenariosAsDirtyOrClean:(Boolean)isDirty;
+
 // Indicates whether an entity is dirty or not
 - (Boolean)entityIsDirty:(SKEntity *)entity;
 
@@ -75,6 +88,9 @@
 // Indicates whether an event is dirty or not
 - (Boolean)eventIsDirty:(NSInteger)eventId;
 
+// Indicates whether an event is dirty or not
+- (Boolean)scenarioIsDirty:(NSInteger)eventId;
+
 // Gets the id of the active scenario
 - (NSInteger)getActiveScenarioId;
 
@@ -89,10 +105,5 @@
 
 // Gets the data source group by a specific id
 - (SKDataSourceGroup*)getDataSourceGroupById:(NSInteger)dataSourceGroupId;
-
-
-// Creates the internal device/group structure in order to provide easy access
-// to the entities.
-- (void)createDeviceGroupStructurea:(NSMutableArray*)deviceData;
 
 @end

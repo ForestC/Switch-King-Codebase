@@ -16,7 +16,10 @@
 #import "DeviceListViewController.h"
 #import "EntityHttpReqNotificationData.h"
 #import "SKEvent.h"
+#import "SKScenario.h"
+#import "SKSystemSetting.h"
 #include "Constants.h"
+#import "SettingsMgr.h"
 
 @implementation EntityStore
 {
@@ -32,6 +35,9 @@
     NSMutableArray *dataSourceGroupList;
     NSMutableDictionary *dataSourceDirtyList;
     NSMutableDictionary *dataSourceGroupDirtyList;
+    
+    NSMutableArray *scenarioList;
+    Boolean scenariosDirty;
 }
 
 @synthesize deviceListViewController;
@@ -95,12 +101,16 @@
                     break;
                 case ENTITY_TYPE__EVENTS:
                     [self flagAllEventsAsDirtyOrClean:true];
-                    break;                    
+                    break; 
+                case ENTITY_TYPE__SCENARIO:
+                    [self flagAllScenariosAsDirtyOrClean:true];
+                    break; 
                 case ENTITY_TYPE__ALL_ENTITIES:
                 {
                     [self flagAllDeviceEntitiesAsDirtyOrClean:true];
                     [self flagAllDataSourceEntitiesAsDirtyOrClean:true];
                     [self flagAllEventsAsDirtyOrClean:true];
+                    [self flagAllScenariosAsDirtyOrClean:true];
                     
                     break;    
                 }
@@ -122,7 +132,11 @@
         [self dataSourceUpdated:(SKDataSource *)entity];
     } else if([entity isKindOfClass:[SKEvent class]]) {
         //[self eventUpdated:(SKEvent *)entity];
-    }
+    } else if([entity isKindOfClass:[SKScenario class]]) {
+        [self scenarioUpdated:(SKScenario *)entity];
+    } else if([entity isKindOfClass:[SKSystemSetting class]]) {
+        [self systemSettingUpdated:(SKSystemSetting *)entity];
+    } 
     
     NSLog(@"Updated id value :%i", entity.ID);
 }
@@ -134,6 +148,10 @@
         [self dataSourcesUpdated:collection];
     } else if([entityClass class] == [SKEvent class]) {
         [self eventsUpdated:collection];
+    } else if([entityClass class] == [SKScenario class]) {
+        [self scenariosUpdated:collection];
+    } else if([entityClass class] == [SKSystemSetting class]) {
+        [self systemSettingsUpdated:collection];        
     }
 }
 
@@ -254,6 +272,86 @@
     
 }
 
+- (void)systemSettingUpdated:(SKSystemSetting*)setting {
+    if(setting != nil && [SYSTEM_SETTING_NAME__SERVER_VERSION isEqualToString:setting.Name]) {
+        [SettingsMgr setServerVersion:setting.Value];
+        [SettingsMgr setNeedServerVersionUpdate:false];
+        
+        Boolean validForHistoricEvents = false;
+        
+        if(setting.Value != nil) {
+            NSRange notValidForHistoricEvents1 = [setting.Value rangeOfString:@"2.0.2"];
+            NSRange notValidForHistoricEvents2 = [setting.Value rangeOfString:@"1."];
+            
+            if(notValidForHistoricEvents1.location == NSNotFound && notValidForHistoricEvents2.location == NSNotFound) {
+                validForHistoricEvents = true;
+            } else if(notValidForHistoricEvents1.location == 0 || notValidForHistoricEvents2.location == 0) {
+                validForHistoricEvents = false;
+            }
+        }
+        
+        [SettingsMgr setSupportsHistoricEvents:validForHistoricEvents];
+        
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__SERVER_VERSION_UPDATED
+                                          object:nil
+                                        userInfo:nil];
+    }
+}
+
+- (void)systemSettingsUpdated:(NSMutableArray*)collection {
+    for (int i=0; i<collection.count; i++) {
+        [self systemSettingUpdated:(SKSystemSetting *)[collection objectAtIndex:i]];
+    }
+}
+
+- (void)scenarioUpdated:(SKScenario*)scenario {
+    if(scenarioList.count == 0) {
+        // If the dataSource list is empty, create a new dataSource...
+        [self scenariosUpdated:[NSMutableArray arrayWithObject:scenario]];
+    } else {
+        NSUInteger idx = [scenarioList indexOfObjectPassingTest:
+                          ^ BOOL (SKScenario* ds, NSUInteger idx, BOOL *stop)
+                          {
+                              return ds.ID == scenario.ID;
+                          }];
+        
+        if(idx == NSNotFound) {
+            NSLog(@"%@", @"Scenario not found");
+        } else {
+            [scenarioList replaceObjectAtIndex:idx withObject:scenario];
+            
+            // Indicate that this scenario is now clean
+            [self flagAllScenariosAsDirtyOrClean:false];
+            
+            // Send a dictionary with scenarios to the receivers...
+            NSDictionary *notificationData = [NSDictionary dictionaryWithObject:scenarioList
+                                                                         forKey:@"Scenarios"];
+            
+            NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+            [notificationCenter postNotificationName:NOTIFICATION_NAME__SCENARIOS_UPDATED
+                                              object:nil
+                                            userInfo:notificationData];        }        
+    }
+}
+
+- (void)scenariosUpdated:(NSMutableArray*)collection {
+    // Store the entities internally
+    scenarioList = collection;
+    // Clear list of dirty object
+    scenariosDirty = false;
+    
+    // Send a dictionary with entities to the receivers...
+    NSDictionary* notificationData = [NSDictionary dictionaryWithObject:collection
+                                                                 forKey:@"Scenarios"];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__SCENARIOS_UPDATED
+                                      object:nil
+                                    userInfo:notificationData];
+    
+}
+
 /*******************************************************************************
  Dirtification
  *******************************************************************************/
@@ -274,6 +372,8 @@
                                            :isDirty];
     } else if([entity isKindOfClass:[SKEvent class]]) {
         [self flagAllEventsAsDirtyOrClean:isDirty];
+    } else if([entity isKindOfClass:[SKScenario class]]) {
+        [self flagAllScenariosAsDirtyOrClean:isDirty];
     } 
 }
 
@@ -368,6 +468,17 @@
                                     userInfo:nil];
 }
 
+// Flags ALL entities as dirty or clean
+- (void)flagAllScenariosAsDirtyOrClean:(Boolean)isDirty {
+    scenariosDirty = isDirty;
+    
+    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__SCENARIOS_DIRTIFICATION_UPDATED
+                                      object:nil
+                                    userInfo:nil];
+}
+
+
 // Indicates whether an entity is dirty or not
 - (Boolean)entityIsDirty:(SKEntity *)entity {
     if([entity isKindOfClass:[SKDevice class]]) {
@@ -380,6 +491,8 @@
         return [self dataSourceGroupIsDirty:entity.ID];
     } else if([entity isKindOfClass:[SKEvent class]]) {
         return [self eventIsDirty:entity.ID];
+    } else if([entity isKindOfClass:[SKScenario class]]) {
+        return [self scenarioIsDirty:entity.ID];
     }
     
     return true;
@@ -468,6 +581,11 @@
     return eventsDirty;
 }
 
+// Indicates whether a scenario is dirty or not
+- (Boolean)scenarioIsDirty:(NSInteger)scenarioId {
+    return scenariosDirty;
+}
+
 /*******************************************************************************
  ???????
  *******************************************************************************/
@@ -512,44 +630,4 @@
 - (SKDataSourceGroup*)getDataSourceGroupById:(NSInteger)dataSourceGroupId {
     
 }
-
-// Creates the internal device/group structure in order to provide easy access
-// to the entities.
-- (void)createDeviceGroupStructurea:(NSMutableArray*)deviceData {
-    NSMutableDictionary* tempGroupDictStore = [[NSMutableDictionary alloc] init];    
-    NSMutableArray* devices = [[NSMutableArray alloc] initWithCapacity:deviceData.count];
-    
-    deviceGroupList = [[NSMutableArray alloc] initWithCapacity:deviceData.count];
-    
-    for(int n = 0; n < [deviceData count]; n = n + 1)
-    {
-        SKDevice * device = (SKDevice *)[deviceData objectAtIndex:n];
-        
-        NSString * groupId = [NSString stringWithFormat:@"%d", device.GroupID];
-        
-        SKDeviceGroup * group = (SKDeviceGroup *)[tempGroupDictStore valueForKey:groupId];
-        
-        if(group == nil) {
-            SKDeviceGroup * newGroup = [SKDeviceGroup alloc];
-            
-            newGroup.Name = device.GroupName;
-            newGroup.ID = device.GroupID;
-            newGroup.devices = [[NSMutableArray alloc] init];
-            [newGroup.devices addObject:device];
-            
-            [tempGroupDictStore setValue:newGroup forKey:[groupId copy]];            
-        } else {
-            [group.devices addObject:device];
-            
-            NSLog(@"Adding to group %@, now with %i devices", group.Name, group.devices.count);
-        }
-        
-        [devices addObject:device]; 
-    }
-    
-    // Set all group entities.
-    [deviceGroupList setArray:[tempGroupDictStore allValues]];
-}
-
-
 @end
