@@ -19,6 +19,7 @@
     Boolean swipeInProgress;
     Boolean swipeRequestsRestart;
     Boolean swipeLayerVisible;
+    Boolean currentlyInCancelArea;
 }
 
 // Holds the name of the entity

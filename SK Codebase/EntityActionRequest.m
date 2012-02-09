@@ -10,6 +10,8 @@
 #import "SKDevice.h"
 #import "SKDeviceGroup.h"
 #import "SKDataSource.h"
+#import "SKScenario.h"
+#import "SKEvent.h"
 #include "Constants.h"
 
 @implementation EntityActionRequest
@@ -42,8 +44,12 @@
         data.entityType = ENTITY_TYPE__DEVICE;
     } else if([self.entity isKindOfClass:[SKDeviceGroup class]]) {
         data.entityType = ENTITY_TYPE__DEVICE_GROUP;
-    } if([self.entity isKindOfClass:[SKDataSource class]]) {
+    } else if([self.entity isKindOfClass:[SKDataSource class]]) {
         data.entityType = ENTITY_TYPE__DATA_SOURCE;
+    } else if([self.entity isKindOfClass:[SKScenario class]]) {
+        data.entityType = ENTITY_TYPE__SCENARIO;
+    } else if([self.entity isKindOfClass:[SKEvent class]]) {
+        data.entityType = ENTITY_TYPE__EVENTS;
     }
     
     return data;

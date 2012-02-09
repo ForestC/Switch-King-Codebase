@@ -11,6 +11,7 @@
 #import "SKDeviceGroup.h"
 #import "SKDataSource.h"
 #import "Constants.h"
+#import "SKScenario.h"
 
 @implementation EntityRequestGenerator
 
@@ -24,6 +25,19 @@
         url = [NSString stringWithFormat:@"devicegroups/%d/synchronize", entity.ID];
     } else {
         NSLog(@"Invalid type for synchronization request.");
+    }
+    
+    return url;
+}
+
+// Gets the url for a scenario change request
++ (NSString *)getScenarioChangeRequestPath:(SKEntity *) entity {
+    NSString *url;
+    
+    if([entity isKindOfClass:[SKScenario class]]) {
+        url = [NSString stringWithFormat:@"/commandqueue?operation=changescenario&target=%i&param1=&param2=&param3=", entity.ID];
+    } else {
+        NSLog(@"Invalid type for scenario request.");
     }
     
     return url;

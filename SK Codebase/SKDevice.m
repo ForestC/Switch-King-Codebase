@@ -33,4 +33,6 @@
 @synthesize TypeName;
 @synthesize TypeProtocol;
 
+@synthesize OnW;
+
 @end

@@ -90,6 +90,13 @@
 
 // Called when a pan gesture is detected
 - (void)panGesture:(UIPanGestureRecognizer *)sender {
+/*    if(
+       [REUSE_IDENTIFIER__DEVICE_CELL_STD_DIRTY isEqualToString:self.reuseIdentifier] ||
+       [REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY isEqualToString:self.reuseIdentifier]) {
+        return;
+    }*/
+    
+    
     if (sender.state == UIGestureRecognizerStateBegan) {
         gestureStartPoint = [sender locationInView:self];
         swipeRequestsRestart = false;
@@ -98,16 +105,15 @@
         if(swipeInProgress && swipeLayerVisible) {
             swipeRequestsRestart = true;
             [self setSwipeLayerHidden :true];
+            if(!currentlyInCancelArea) {
             [self performRequestedAction];
+            }
         }
-        
-        self.selectionStyle = UITableViewCellSelectionStyleBlue;
-        self.tableViewController.tableView.scrollEnabled = true;
     } else if(sender.state == UIGestureRecognizerStateChanged) {
         if(swipeRequestsRestart)
             return;
         
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        //self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
@@ -115,10 +121,14 @@
         verticalAmount = currentPosition.y - gestureStartPoint.y;
         horizontalAmount = currentPosition.x - gestureStartPoint.x;
         CGRect r = [self bounds];
+        CGFloat leftCancellationArea = SWIPE_MARGIN__CANCELLATION_AREA;
+        CGFloat rightCancellationArea = r.size.width - SWIPE_MARGIN__CANCELLATION_AREA;
+
         
         if(
            currentPosition.y < -SWIPE_MARGIN__Y_MOVEMENT || 
            currentPosition.y > r.size.height + SWIPE_MARGIN__Y_MOVEMENT) {
+            
             [self setSwipeLayerHidden :true];
             gestureStartPoint = [sender locationInView:self];
             swipeInProgress = false;
@@ -127,9 +137,15 @@
         }
         
         if(![self supportsAbsoluteDim]) {
-            
-            if (currentPosition.x - SWIPE_MARGIN__DETECTION_THRESHOLD > gestureStartPoint.x) {
-                [self setSwipeLayerHidden :false];
+            if(!self.tableViewController.tableView.scrollEnabled && 
+               (currentPosition.x < leftCancellationArea || 
+                currentPosition.x > rightCancellationArea)) {
+                   currentlyInCancelArea = true;
+                   [appDelegate setSwipeInfoData:NSLocalizedStringFromTable(@"Cancel", @"Texts", nil) :ACTION_ID__CANCEL :false :-1];
+               } else if (currentPosition.x - SWIPE_MARGIN__DETECTION_THRESHOLD > gestureStartPoint.x) {
+                   currentlyInCancelArea = false;
+                   
+                   [self setSwipeLayerHidden :false];
                 
                 actionRequestDimLevel = 100;
                 actionRequestAction = ACTION_ID__TURN_ON;
@@ -139,6 +155,8 @@
                         self.tableViewController.tableView.scrollEnabled = false;
             }
             else if (currentPosition.x + SWIPE_MARGIN__DETECTION_THRESHOLD < gestureStartPoint.x) {
+                                   currentlyInCancelArea = false;
+                
                 [self setSwipeLayerHidden :false];
                 
                 actionRequestDimLevel = 0;
@@ -174,10 +192,22 @@
         i = i * 10;
         
         if (horizontalAmount > verticalAmount) {
-            if (!self.tableViewController.tableView.scrollEnabled || currentPosition.x - SWIPE_MARGIN__DETECTION_THRESHOLD > gestureStartPoint.x || currentPosition.x + SWIPE_MARGIN__DETECTION_THRESHOLD < gestureStartPoint.x) {
+            if (
+                !self.tableViewController.tableView.scrollEnabled && 
+                (currentPosition.x < leftCancellationArea || 
+                currentPosition.x > rightCancellationArea)) {
+                    currentlyInCancelArea = true;
+                    [appDelegate setSwipeInfoData:NSLocalizedStringFromTable(@"Cancel", @"Texts", nil) :ACTION_ID__CANCEL :false :-1];
+            } else if (
+                !self.tableViewController.tableView.scrollEnabled || 
+                currentPosition.x - SWIPE_MARGIN__DETECTION_THRESHOLD > gestureStartPoint.x || 
+                currentPosition.x + SWIPE_MARGIN__DETECTION_THRESHOLD < gestureStartPoint.x) {
+                
+                currentlyInCancelArea = false;
+                
                 [self setSwipeLayerHidden :false];
                 
-                self.tableViewController.tableView.scrollEnabled = false;
+                //self.tableViewController.tableView.scrollEnabled = false;
                 
                 if(i == 0) {
                     actionRequestDimLevel = 0;
@@ -209,24 +239,29 @@
     CGFloat alpha;
     swipeLayerVisible = !hidden;
     
-    if(
-       [self.reuseIdentifier isEqualToString:REUSE_IDENTIFIER__DEVICE_CELL_STD_DIRTY] ||
-       [self.reuseIdentifier isEqualToString:REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY])
-        return;
-       
-    if(hidden) {
-        alpha = 1.0f;
-    } else {
-        alpha = 0.5f;        
+    Boolean dirtyCell = [self.reuseIdentifier isEqualToString:REUSE_IDENTIFIER__DEVICE_CELL_STD_DIRTY] ||
+        [self.reuseIdentifier isEqualToString:REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY];
+
+    if(!dirtyCell) {
+        if(hidden) {
+            alpha = 1.0f;
+        } else {
+            alpha = 0.5f;        
+        }
+        
+        [entityIconImageView setAlpha:alpha];
+        [entityInfoLabel setAlpha:alpha];
+        [entityNameLabel setAlpha:alpha];
     }
     
-    [entityIconImageView setAlpha:alpha];
-    [entityInfoLabel setAlpha:alpha];
-    [entityNameLabel setAlpha:alpha];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSIndexPath *indexPath = [self.tableViewController.tableView indexPathForCell:self];
+    CGRect rectInTableView = [self.tableViewController.tableView rectForRowAtIndexPath:indexPath];
+    CGRect rectInSuperview = [self.tableViewController.tableView convertRect:rectInTableView toView:[self.tableViewController.tableView superview]];
     
-    [appDelegate toggleSwipeInfo:!hidden :self.frame];
+    [appDelegate toggleSwipeInfo:!hidden :rectInSuperview];
+    
     self.tableViewController.tableView.scrollEnabled = hidden;
 }
 

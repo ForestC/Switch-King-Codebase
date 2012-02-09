@@ -32,6 +32,7 @@
     NSString *TypeModel;
     NSString *TypeName;
     NSString *TypeProtocol;
+    NSString *OnW;
 }
 
 @property (atomic, assign) NSInteger GroupID;
@@ -56,5 +57,7 @@
 @property (atomic, retain) NSString *TypeModel;
 @property (atomic, retain) NSString *TypeName;
 @property (atomic, retain) NSString *TypeProtocol;
+
+@property (atomic, retain) NSString *OnW;
 
 @end
