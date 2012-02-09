@@ -187,4 +187,22 @@
     return [url stringByAppendingString:param];
 }
 
+// Gets the complete url to the scenario list
+- (NSString *)getScenarioListUrl {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:@"/scenarios"];
+}
+
+// Gets the complete url to the active scenario
+- (NSString *)getActiveScenarioUrl {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:@"/scenarios/active"];
+}
+
+// Gets the complete url to the system setting containing version info
+- (NSString *)getSystemSettingVersionUrl {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:@"/systemsettings/byname/ServerVersion"];    
+}
+
 @end

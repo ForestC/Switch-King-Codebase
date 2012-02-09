@@ -36,6 +36,15 @@
 // Gets the complete url to the list with upcoming events
 - (NSString *)getComingUpEventsListUrl:(NSInteger)maxCount;
 
+// Gets the complete url to the scenario list
+- (NSString *)getScenarioListUrl;
+
+// Gets the complete url to the active scenario
+- (NSString *)getActiveScenarioUrl;
+
+// Gets the complete url to the system setting containing version info
+- (NSString *)getSystemSettingVersionUrl;
+
 @property (retain) id receiverDelegate;
 
 @end

@@ -57,3 +57,5 @@
 "Tomorrow, %@" = "Imorgon, %@";
 "Yesterday, %@" = "Igår, %@";
 "Dim" = "Dim";
+"Turned off" = "Inte aktiverat";
+"Swipe to send command\nHold groups to expand or collapse" = "Svep för att skicka kommando\nHåll inne över grupper för att visa/dölja";
