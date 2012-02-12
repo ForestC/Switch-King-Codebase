@@ -51,11 +51,9 @@
     
     // Address
     [self.serverAddressDetailLabel setText:[SettingsMgr getTargetAddress:false]];
-    [self.serverAddressHeaderLabel setText:NSLocalizedStringFromTable(@"Address", @"Texts", nil)];
     
     // Learn
     [self.showLearnButtonDetailSwitch setOn:[SettingsMgr showLearnButton]];
-    [self.showLearnButtonHeaderLabel setText:NSLocalizedStringFromTable(@"Show Learn button", @"Texts", nil)];
     
     // Refresh interval
     NSInteger refreshInterval = [SettingsMgr getRefreshInterval];    
@@ -68,25 +66,20 @@
     }
             
     [self.refreshIntervalDetailLabel setText:refreshIntervalStr];
-    [self.refreshIntervalHeaderLabel setText:NSLocalizedStringFromTable(@"Refresh interval", @"Texts", nil)];
     
     // Refresh after command
     NSInteger deviceUpdateInterval = [SettingsMgr getDeviceUpdateDelay];
     NSString *deviceUpdateStr = [NSString stringWithFormat:NSLocalizedStringFromTable(@"%i sec", @"Texts", nil), deviceUpdateInterval];
     [self.refreshAfterCommandDetailLabel setText:deviceUpdateStr];
-    [self.refreshAfterCommandHeaderLabel setText:NSLocalizedStringFromTable(@"Refresh after command", @"Texts", nil)];
     
     // Max upcoming events
     [self.maxUpcomingEventsDetailLabel setText:[NSString stringWithFormat:@"%i", [SettingsMgr getMaxUpcomingEvents]]];
-    [self.maxUpcomingEventsHeaderLabel setText:NSLocalizedStringFromTable(@"Max upcoming events", @"Texts", nil)];
     
     // Group devices
     [self.groupDevicesDetailSwitch setOn:[SettingsMgr groupDevices]];
-    [self.groupDevicesHeaderLabel setText:NSLocalizedStringFromTable(@"Group devices", @"Texts", nil)];
     
     // Refresh on tab switch
     [self.reloadOnTabSwitchDetailSwitch setOn:[SettingsMgr enableReloadOnTabSwitch]];
-    [self.reloadOnTabSwitchHeaderLabel setText:NSLocalizedStringFromTable(@"Refresh on tab switch", @"Texts", nil)];
 }
 
 - (void)switchTouched:(UIControl *)sender
