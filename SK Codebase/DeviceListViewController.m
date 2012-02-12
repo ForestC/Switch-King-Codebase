@@ -223,8 +223,12 @@
 }
 
 - (void)requestTableViewReload {
+/*    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__DEVICE_TABLE_REFRESH_REQUESTED
+                                      object:nil
+                                    userInfo:nil];*/
     [self.tableView reloadData];
-}
+}   
 
 /*******************************************************************************
  TableView Layout
@@ -285,8 +289,11 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if(self.groupsAndDevices.count == 0)
+        return nil;    
+    
     if([SettingsMgr groupDevices]) {
-        return NSLocalizedStringFromTable(@"Swipe to send command\nHold groups to expand or collapse", @"Texts", nil);
+        return NSLocalizedStringFromTable(@"Swipe to send command\nHold group to expand or collapse", @"Texts", nil);
     } else {
         return NSLocalizedStringFromTable(@"Swipe to send command", @"Texts", nil);        
     }
