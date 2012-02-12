@@ -14,11 +14,9 @@
 "(all by schedule)" = "(alla enligt schema)";
 "(all frozen)" = "(alla stoppade)";
 "Address" = "Adress";
-"Misc" = "Övrigt";
 "Show Learn button" = "Tillåt upplärning";
 "Refresh interval" = "Uppdateringsintervall";
 "Refresh after command" = "Uppdatera efter kommando";
-"Max upcoming events" = "Max antal kommande händelser";
 "%i sec" = "%i sek";
 "%i seconds" = "%i sekunder";
 "%i events" = "%i händelser";
@@ -58,4 +56,4 @@
 "Yesterday, %@" = "Igår, %@";
 "Dim" = "Dim";
 "Turned off" = "Inte aktiverat";
-"Swipe to send command\nHold groups to expand or collapse" = "Svep för att skicka kommando\nHåll inne över grupper för att visa/dölja";
+"Swipe to send command\nHold group to expand or collapse" = "Svep för att skicka kommando\nHåll inne över grupper för att visa/dölja";
