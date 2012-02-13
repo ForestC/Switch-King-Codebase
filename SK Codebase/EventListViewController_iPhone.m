@@ -72,9 +72,12 @@
         
         // Get the dictionary
         NSDictionary *dict = [notification userInfo];
-        
+        // Log
+        NSLog (@"EventListViewController received info that events are updated2");
         // Pass the dataSource data to the method
         [self handleUpdatedEvents:[dict valueForKey:@"Events"]]; 
+        // Log
+        NSLog (@"EventListViewController received info that events are updated33");
     } else if ([[notification name] isEqualToString:NOTIFICATION_NAME__EVENTS_DIRTIFICATION_UPDATED]) {
         NSLog (@"EventListViewController received info that a dirtification has been updated");
         [[self tableView] reloadData];
