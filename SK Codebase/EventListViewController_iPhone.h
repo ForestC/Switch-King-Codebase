@@ -11,8 +11,9 @@
 
 @interface EventListViewController_iPhone : UITableViewController
 
-@property (atomic, retain) NSMutableArray *events;
-@property(nonatomic,strong) IBOutlet UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic, retain) NSMutableArray *futureEvents;
+@property (nonatomic, retain) NSMutableArray *historicEvents;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *refreshBarButtonItem;
 
 // Adds entity observers to be able to listen to notifications
 - (void)addEntityObservers;
@@ -22,10 +23,14 @@
 
 - (void)handleUpdatedEvents:(NSMutableArray *)eventData;
 
+- (void)interpretEvents:(NSMutableArray *)eventData;
+
 - (UITableViewCell *)dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)cellEntity;
 
 // Sets the table view cell data depending on the type of cell and entity
 - (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)cellEntity;
 
+// Gets the content type for a specific section
+- (NSInteger)getSectionContentType:(NSInteger)section;
 
 @end

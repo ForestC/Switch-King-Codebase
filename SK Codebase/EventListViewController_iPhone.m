@@ -14,10 +14,12 @@
 #import "SKEventTableViewCell.h"
 #import "TextHelper.h"
 #import "ImagePathHelper.h"
+#import "SettingsMgr.h"
 
 @implementation EventListViewController_iPhone
 
-@synthesize events;
+@synthesize futureEvents;
+@synthesize historicEvents;
 @synthesize refreshBarButtonItem;
 
 - (id)init
@@ -80,10 +82,30 @@
 }
 
 - (void)handleUpdatedEvents:(NSMutableArray *)eventData {
-    self.events = [NSMutableArray arrayWithArray:eventData];
+    [self interpretEvents:eventData];
     // Forces reload of data
     [self.tableView reloadData];
 }
+
+- (void)interpretEvents:(NSMutableArray *)eventData {
+    NSMutableArray *newFuture =  [[NSMutableArray alloc] initWithCapacity:eventData.count];
+    NSMutableArray *newHistoric =  [[NSMutableArray alloc] initWithCapacity:eventData.count];
+    
+    for(int i=0;i<eventData.count;i++) {
+        SKEvent *evt = (SKEvent *)[eventData objectAtIndex:i];
+        
+        if ([TextHelper isFutureDate:evt.EventDate]) {
+            [newFuture addObject:evt];
+        } else {
+            [newHistoric addObject:evt];
+        }
+    }
+    
+    self.historicEvents = newHistoric;
+    self.futureEvents = newFuture;
+}
+             
+             
 
 // Adds entity observers to be able to listen to notifications
 - (void)addEntityObservers {
@@ -107,8 +129,6 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     [appDelegate.communicationMgr requestUpdateOfEvents];
-    
-    //    NSLog(<#NSString *format, ...#>)
 }
 
 /*******************************************************************************
@@ -147,38 +167,60 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Single section
-    return 1;
+    if(![SettingsMgr supportsHistoricEvents])
+        return 1;
+    
+    if(historicEvents.count > 0 && futureEvents.count > 0)
+        return 2;
+    else        
+        return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return nil;
+    NSInteger type = [self getSectionContentType:section];
+    
+    switch (type) {
+        case TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS:
+            return NSLocalizedStringFromTable(@"Historic", @"Texts", nil);
+            break;
+            
+        default:
+            return NSLocalizedStringFromTable(@"Future", @"Texts", nil);
+            break;
+    }
 }  
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return events.count;
+    NSInteger type = [self getSectionContentType:section];
+    
+    switch (type) {
+        case TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS:
+            return historicEvents.count;
+            break;
+            
+        default:
+            return futureEvents.count;
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SKEntity *entity;
-    
-    //    if([self entitiesGrouped])
-    //        entity = (SKEntity *)[groupsAndDataSources objectAtIndex:indexPath.row];
-    //    else
-    //        entity = (SKEntity *)[dataSources objectAtIndex:indexPath.row];
-    
-    entity = (SKEntity *)[events objectAtIndex:indexPath.row];
+
+    NSInteger type = [self getSectionContentType:indexPath.section];
+
+    switch (type) {
+        case TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS:
+            entity = (SKEntity *)[historicEvents objectAtIndex:indexPath.row];
+            break;
+            
+        default:
+            entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row];
+            break;
+    }
     
     // Dequeue or create
     UITableViewCell *cell = [self dequeueOrCreateTableViewCell:tableView :entity];
-    
-    if(
-       [entity isKindOfClass:[SKDataSource class]] ||
-       [entity isKindOfClass:[SKDataSourceGroup class]])
-    {
-        cell.tag = indexPath.row;
-    } else {
-        cell.tag = -1;
-    }
     
     [self setTableViewCellData:cell :entity];
     
@@ -262,8 +304,18 @@
 //    }
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    NSLog(@"%@", @"SCROLL");
+// Gets the content type for a specific section
+- (NSInteger)getSectionContentType:(NSInteger)section {
+    if(section == 1)
+        return TABLE_VIEW_SECTION_TYPE__FUTURE_EVENTS;
+    else if(section == 0) {
+        if(historicEvents.count == 0)
+            return TABLE_VIEW_SECTION_TYPE__FUTURE_EVENTS;
+        else
+            return TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS;
+    }
+    
+    return TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS;
 }
 
 #pragma mark - View lifecycle
