@@ -43,6 +43,9 @@
 
 #define REFRESH_INTERVAL__SCENARIO_CHANGE 3
 
+#define TABLE_VIEW_SECTION_TYPE__FUTURE_EVENTS 1
+#define TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS 2
+
 /*******************************************************************************
  Data source status values
  *******************************************************************************/
