@@ -222,4 +222,23 @@
     return localized;   
 }
 
+// Parses a date string and flags the date as future or historic
++ (Boolean)isFutureDate:(NSString *)dateString {
+    NSTimeZone *defaultTimeZone = [NSTimeZone defaultTimeZone];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    [dateFormatter setTimeZone:defaultTimeZone];
+    
+    NSDate *parsed = [dateFormatter dateFromString:dateString];
+	NSDate *today = [[NSDate alloc] init];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    [cal setTimeZone:defaultTimeZone];
+
+    NSTimeInterval time = [parsed timeIntervalSinceDate:today];
+    
+    return time > 0;
+}
+
 @end
