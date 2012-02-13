@@ -169,7 +169,8 @@ NSThread * mainUpdateThread;
     AuthenticationDataContainer *auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
-    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :true];
     
     NSString *reqPath;
     
@@ -361,7 +362,8 @@ NSThread * mainUpdateThread;
     AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
-    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :true];
     
     // Create a receiver and assign an entity store to the receiver
     SKDeviceDataReceiver *receiver = [[SKDeviceDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
@@ -385,7 +387,8 @@ NSThread * mainUpdateThread;
     AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
-    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :true];
     
     // Create a receiver and assign an entity store to the receiver
     SKDeviceDataReceiver *receiver = [[SKDeviceDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
@@ -417,7 +420,8 @@ NSThread * mainUpdateThread;
     AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
-    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :true];
     
     // Create a receiver and assign an entity store to the receiver
     SKDataSourceDataReceiver *receiver = [[SKDataSourceDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
@@ -441,7 +445,8 @@ NSThread * mainUpdateThread;
     AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
-    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :true];
     
     // Create a receiver and assign an entity store to the receiver
     SKEventDataReceiver *receiver = [[SKEventDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
@@ -466,7 +471,8 @@ NSThread * mainUpdateThread;
     AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
-    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :true];
     
     // Create a receiver and assign an entity store to the receiver
     SKScenarioDataReceiver *receiver = [[SKScenarioDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
@@ -489,7 +495,8 @@ NSThread * mainUpdateThread;
     AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
-    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :false];
     
     // Create a receiver and assign an entity store to the receiver
     SKSystemSettingDataReceiver *receiver = [[SKSystemSettingDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
@@ -501,36 +508,6 @@ NSThread * mainUpdateThread;
     [communicationBase sendRequest:[communicationBase getSystemSettingVersionUrl]];
     
     NSLog(@"Request for update of system setting version");
-}
-
-
-/*******************************************************************************
- Base methods
- *******************************************************************************/
-
-// Creates a communication base object to be used when communicating with a remote server.
-- (CommunicationBase *)createCommunicationBase:(NSObject <DataReceivedDelegate> *)del {
-    // Get the app delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    // Get the authentication data container
-    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
-    
-    if([del isKindOfClass:[SKDeviceDataReceiver class]]) {
-        SKDeviceDataReceiver *typed = (SKDeviceDataReceiver *)del;
-        typed.entityStore = appDelegate.entityStore;
-    } else if([del isKindOfClass:[SKDataSourceDataReceiver class]]) {
-        SKDataSourceDataReceiver *typed = (SKDataSourceDataReceiver *)del;
-        typed.entityStore = appDelegate.entityStore;        
-    } 
-    
-    // Create a communication base    
-    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth];
-    
-    // Set the receiver delegate
-    [communicationBase setReceiverDelegate:del];
-    
-    return communicationBase;
 }
 
 /*******************************************************************************

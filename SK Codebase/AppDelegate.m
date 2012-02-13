@@ -20,6 +20,7 @@
 #import "Base64Encoding.h"
 #import "SKTabBarControllerDelegate_iPhone.h"
 #import "SKNavigationControllerDelegate_iPhone.h"
+#import "AlertMessageView.h"
 
 @implementation AppDelegate
 
@@ -30,24 +31,10 @@
 @synthesize alertInfoText;
 @synthesize alertTimer;
 
-// Configures the entity view controllers
-- (void)configureEntityViewControllers
-{
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
-
-    // The device list view controller...
-    DeviceListViewController *deviceListViewController = (DeviceListViewController *)navigationController;
-    
-    // Connect the device list view controller to the entity stores notification
-   // [entityStore setDeviceListViewController:deviceListViewController];
-}
-
 // Called when an entity action request has been fired
 - (void)entityActionRequestFired:(NSObject *) src : (EntityActionRequest *) req {
     [communicationMgr requestEntityAction:req]; 
 }
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -58,7 +45,9 @@
     [self addObservers];
     
     // Init the alert info view controller
-    alertInfoViewController = [[MessageViewController alloc] init];
+    alertMessageViewController = [[UIViewController alloc] initWithNibName:@"AlertMessageView" 
+                                                                 bundle:[NSBundle mainBundle]];
+    
     
     swipeViewController = [[SwipeInfoViewController alloc] init];
     
@@ -66,7 +55,6 @@
     tabBarDelegate = [[SKTabBarControllerDelegate_iPhone alloc] init];
     v2.delegate = tabBarDelegate;
    
-    
     // Create the entity store...
     entityStore = [[EntityStore alloc] init];
     // Create the communication manager...
@@ -74,9 +62,6 @@
     // Request update of all entities...
     [communicationMgr requestUpdateOfAllEntities];
     
-//    [self toggleAlertInfo:true];
-    
-    // Override point for customization after application launch.
     return YES;
 }
 							
@@ -135,6 +120,7 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    [self.communicationMgr requestUpdateOfAllEntities];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -323,14 +309,14 @@
  *******************************************************************************/
 
 // Sets the alert info as visible or hidden
-- (void)toggleAlertInfo:(BOOL)viewHidden
+- (void)toggleAlertInfo:(BOOL)show
 {
     // this method opens/closes the player options view (which sets repeat interval, repeat & delay on/off)    
-    if (viewHidden == NO)
+    if (show == NO)
     {
         [UIView beginAnimations:nil context:NULL]; 
         [UIView setAnimationDuration:0.5]; 
-        [alertInfoViewController.view setAlpha:0.0]; 
+        [alertMessageViewController.view setAlpha:0.0]; 
         [UIView commitAnimations]; 
 
         [self 
@@ -356,24 +342,23 @@
             screenHeight = screenRect.size.width;
         }
         
-        CGRect alertFrame = alertInfoViewController.view.frame;
+        CGRect alertFrame = alertMessageViewController.view.frame;
         alertFrame.origin.x = screenWidth / 2 - (alertFrame.size.width/2);
         
         alertFrame.origin.y = screenHeight - 60 - alertFrame.size.height;
         
-        alertInfoViewController.view.frame = alertFrame;
+        alertMessageViewController.view.frame = alertFrame;
         
-        [self.window.rootViewController.view addSubview:alertInfoViewController.view];
+        [self.window.rootViewController.view addSubview:alertMessageViewController.view];
         
-        [alertInfoViewController.view setAlpha:0.0]; 
+        [alertMessageViewController.view setAlpha:0.0]; 
         
         [UIView beginAnimations:nil context:NULL]; 
         [UIView setAnimationDuration:0.5]; 
-        [alertInfoViewController.view setAlpha:1.0]; 
+        [alertMessageViewController.view setAlpha:1.0]; 
         
         [UIView commitAnimations];
 
-        
         if(alertTimer != nil) {
             [alertTimer invalidate];
             alertTimer = nil;
@@ -383,72 +368,21 @@
                                                       target:self 
                                                     selector:@selector(alertTimerOnTick:) 
                                                     userInfo:nil 
-                                                     repeats: NO];
-
-        
-        /*
-        UITabBarController *v2 = (UITabBarController*)self.window.rootViewController;
-        CGFloat v44 = v2.tabBar.frame.size.height;
-        
-        //
-        // Position the options at bottom of screen
-        //
-        CGRect alertFrame = alertInfoViewController.view.frame;
-        alertFrame.origin.x = 0;
-        alertFrame.size.width = 320;
-        alertFrame.origin.y = 403 - v44;// - h;
-        alertFrame.size.height = 77;
-        
-        //
-        // For the animation, move the view up by its own height.
-        //
-        alertFrame.origin.y += alertFrame.size.height;
-        
-        alertInfoViewController.view.frame = alertFrame;
-        
-        
-        [alertInfoViewController.infoTextView setText:alertInfoText];
-        
-        
-        //[v3 addSubview:optionsController.view];
-        [self.window.rootViewController.view addSubview:alertInfoViewController.view];
-//        [v2 addSubview:optionsController.view];
-        
-        [UIView beginAnimations:nil context:nil];
-        
-        alertFrame.origin.y -= alertFrame.size.height;
-        alertInfoViewController.view.frame = alertFrame;
-        
-        [UIView commitAnimations];
-        
-        alertInfoInView = true;
-
-        if(alertTimer != nil) {
-            [alertTimer invalidate];
-            alertTimer = nil;
-        }
-        
-        alertTimer = [NSTimer scheduledTimerWithTimeInterval: 10.0 
-                                                  target:self 
-                                                    selector:@selector(alertTimerOnTick:) 
-                                                userInfo:nil 
-                                                 repeats: NO];
-         */
+                                                     repeats: NO];    
     }
 }
          
 // Hides the alert info
 - (void)hideAlertInfo {
-    [alertInfoViewController.view removeFromSuperview];
+    [alertMessageViewController.view removeFromSuperview];
     
     [self setAlertInfoInView:false];
 }
 
 // Sets the alert info text
 - (void)setAlertInfo:(NSString *)infoText {
-    self.alertInfoText = infoText;
-    
-    [alertInfoViewController.infoTextView setText:infoText];
+    AlertMessageView *v = (AlertMessageView *)(alertMessageViewController.view);
+    [[v infoTextView] setText:infoText];
 }
 
 // Triggered when the alert info view is to be hidden after a specific amount of time.

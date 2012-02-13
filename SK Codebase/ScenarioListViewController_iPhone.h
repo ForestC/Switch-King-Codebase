@@ -12,7 +12,7 @@
 @interface ScenarioListViewController_iPhone : UITableViewController
 
 @property (atomic, retain) NSMutableArray *scenarios;
-@property(nonatomic,strong) IBOutlet UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic,strong) IBOutlet UIBarButtonItem *refreshBarButtonItem;
 
 // Adds entity observers to be able to listen to notifications
 - (void)addEntityObservers;

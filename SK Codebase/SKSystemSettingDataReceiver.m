@@ -23,7 +23,7 @@
 }
 
 - (void)dataReceived:(NSObject *) src : (NSMutableData *) receivedData {
-    NSLog(@"SKScenario data received");
+    NSLog(@"SKSystemSetting data received");
     
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:receivedData];
     XMLSKSystemSettingParser *eventParser = [XMLSKSystemSettingParser alloc];

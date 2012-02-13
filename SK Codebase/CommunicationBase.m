@@ -13,14 +13,16 @@
 #import "SettingsMgr.h"
 #import "AppDelegate.h"
 #import "Base64Encoding.h"
+#import "Constants.h"
 
 @implementation CommunicationBase
 
 @synthesize receiverDelegate;
 
--(CommunicationBase *)initWithAuthenticationData:(AuthenticationDataContainer *)auth {
+-(CommunicationBase *)initWithAuthenticationData:(AuthenticationDataContainer *) auth:(Boolean)notifyOnCommunicationError {
     self = [super init];
     authData = auth;
+    notifyOnError = notifyOnCommunicationError;
     
     return self;
 }
@@ -70,6 +72,20 @@
     return newCredential;
 }
 
+
+// Post error notification to receivers
+- (void)postErrorNotification:(NSString *)info {
+    // Set the notification data    
+    NSDictionary *notificationData = [NSDictionary dictionaryWithObject:info 
+                                                                 forKey:ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY];
+
+    
+    // Post a notification that an alert is requested to display
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_NAME__ALERT_INFO_REQUESTED
+                                                        object:nil
+                                                      userInfo:notificationData];
+}
+
 // NSURLConnection Delegates
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     if ([challenge previousFailureCount] == 0) {
@@ -112,9 +128,11 @@
     if(receivedData.length == 0) {
         NSString *info = NSLocalizedStringFromTable(@"Server did not return any data.\nCheck username, password and server identity.", @"Texts", nil);
         
-        if(!([appDelegate alertInfoInView] && [appDelegate.alertInfoText isEqualToString:info])) {        
-            [appDelegate setAlertInfo:info];
-            [appDelegate toggleAlertInfo:true];
+        if(!([appDelegate alertInfoInView] && [appDelegate.alertInfoText isEqualToString:info])) {
+            if(notifyOnError) {
+                // Post info about error
+                [self postErrorNotification:info];
+            }
         }
     }
     
@@ -143,8 +161,10 @@
         info = [NSString stringWithFormat:prefixInfo, info];
     }
     
-    [appDelegate setAlertInfo:info];
-    [appDelegate toggleAlertInfo:true];
+    if(notifyOnError) {
+        // Post info about error
+        [self postErrorNotification:info];
+    }
 }
 
 // Gets the base url

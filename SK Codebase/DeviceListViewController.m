@@ -129,8 +129,6 @@
             [tempGroupDictStore setValue:newGroup forKey:[groupId copy]];            
         } else {
             [group.devices addObject:device];
-            
-            //NSLog(@"Adding to group %@, now with %i devices", group.Name, group.devices.count);
         }
         
         [devices addObject:device]; 

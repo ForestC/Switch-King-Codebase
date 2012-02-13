@@ -19,6 +19,7 @@
                               @"http://www.switchking.se", @"targetAddress",
                               @"10800", @"targetPort",
                               @"YES", @"needServerVersionUpdate",
+                              @"YES", @"reloadOnTS",
                               nil];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];

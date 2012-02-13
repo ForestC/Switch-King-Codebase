@@ -12,14 +12,18 @@
 
 @interface CommunicationBase : NSObject
 {
-    NSMutableData * receivedData;
-    AuthenticationDataContainer * authData;
+    Boolean notifyOnError;
+    NSMutableData *receivedData;
+    AuthenticationDataContainer *authData;
     id<DataReceivedDelegate> receiverDelegate;
 }
 
-- (CommunicationBase *)initWithAuthenticationData:(AuthenticationDataContainer *)auth;
+- (CommunicationBase *)initWithAuthenticationData:(AuthenticationDataContainer *) auth:(Boolean) notifyOnCommunicationError;
 
 - (void)sendRequest:(NSString *)url;
+
+// Post error notification to receivers
+- (void)postErrorNotification:(NSString *)info;
 
 // Gets the base url
 - (NSString *)getBaseUrl;

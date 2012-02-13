@@ -10,25 +10,26 @@
 #import "EntityStore.h"
 #import "CommunicationMgr.h"
 #import "EntityActionRequestDelegate.h"
-#import "AlertInfoViewController.h"
 #import "MessageViewController.h"
 #import "SwipeInfoViewController.h"
 #import "SKTabBarControllerDelegate_iPhone.h"
-#import "MessageViewController.h"
+//#import "MessageViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, EntityActionRequestDelegate> {
     NSInteger netActivityReqs;
-    Boolean alertInfoInView;
-    NSString *alertInfoText;
-    MessageViewController *alertInfoViewController;
+
+    // Indicates whether alert view is visible
+    Boolean alertViewInView;
+    // Holds the message text
+//    NSString *alertMessageText;
+    // Holds the controller
+    UIViewController *alertMessageViewController;
+    
     SwipeInfoViewController *swipeViewController;
     NSTimer *alertTimer;
     SKTabBarControllerDelegate_iPhone *tabBarDelegate;
     Boolean swipeInfoIsInView;
 }
-
-// Configures the entity view controllers
-- (void)configureEntityViewControllers;
 
 // Fired when an entity action request is fired.
 - (void)entityActionRequestFired:(NSObject *) src : (EntityActionRequest *) req;
@@ -43,7 +44,7 @@
 - (void)setAlertInfo:(NSString *)infoText;
 
 // Sets the alert info as visible or hidden
-- (void)toggleAlertInfo:(BOOL)viewHidden;
+- (void)toggleAlertInfo:(BOOL)show;
 
 // Hides the alert info
 - (void)hideAlertInfo;

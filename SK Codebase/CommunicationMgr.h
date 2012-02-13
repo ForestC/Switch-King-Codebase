@@ -51,8 +51,6 @@
 
 - (void)updateSystemSettingServerVersion;
 
-- (CommunicationBase *)createCommunicationBase:(NSObject <DataReceivedDelegate> *)del;
-
 + (void)notifyNoConnection:(NSNotificationCenter *)notificationCenter;
 
 + (BOOL)hasConnectivity;

@@ -10,7 +10,7 @@
 
 @interface SwipeInfoViewController : UIViewController
 
-@property (assign, atomic) IBOutlet UILabel *swipeInfoLabel;
-@property (assign, atomic) IBOutlet UIImageView *swipeInfoImageView;
+@property (weak) IBOutlet UILabel *swipeInfoLabel;
+@property (weak) IBOutlet UIImageView *swipeInfoImageView;
 
 @end
