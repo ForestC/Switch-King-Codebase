@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "CommunicationBase.h"
 #import "SKDeviceDataReceiver.h"
 #import "DeviceListViewController.h"
 #import "CommunicationMgr.h"
