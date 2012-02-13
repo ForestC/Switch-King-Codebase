@@ -16,9 +16,8 @@
     NSMutableString *currentElementValue;
     SKScenario *scenario;
     NSMutableArray *scenarioList;
-    EntityStore *entityStore;
 }
 
-@property (retain) EntityStore *entityStore;
+@property (nonatomic, weak) EntityStore *entityStore;
 
 @end

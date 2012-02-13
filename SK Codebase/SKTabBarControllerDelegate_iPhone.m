@@ -15,11 +15,16 @@
 @implementation SKTabBarControllerDelegate_iPhone
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
+    //return;
+    
     UINavigationController *nav = (UINavigationController *)tabBarController.selectedViewController;
     
     [nav popToRootViewControllerAnimated:false];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    //[appDelegate toggleAlertInfo:false];
     
     if([SettingsMgr enableReloadOnTabSwitch]) {
         switch (tabBarController.selectedIndex) {

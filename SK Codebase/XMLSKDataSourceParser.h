@@ -17,9 +17,8 @@
     NSMutableString *currentElementValue;
     SKDataSource *dataSource;
     NSMutableArray *dataSourceList;
-    EntityStore *entityStore;
 }
 
-@property (retain) EntityStore * entityStore;
+@property (nonatomic, weak) EntityStore *entityStore;
 
 @end

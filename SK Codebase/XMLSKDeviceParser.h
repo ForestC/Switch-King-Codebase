@@ -19,9 +19,8 @@
     NSMutableString *currentElementValue;
     SKDevice *device;
     NSMutableArray *deviceList;
-    EntityStore *entityStore;
 }
 
-@property (retain) EntityStore * entityStore;
+@property (nonatomic, weak) EntityStore * entityStore;
     
 @end

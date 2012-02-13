@@ -16,9 +16,8 @@
     NSMutableString *currentElementValue;
     SKSystemSetting *setting;
     NSMutableArray *settingList;
-    EntityStore *entityStore;
 }
 
-@property (retain) EntityStore *entityStore;
+@property (nonatomic, weak) EntityStore *entityStore;
 
 @end

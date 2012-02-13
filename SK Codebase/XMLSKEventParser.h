@@ -17,9 +17,8 @@
     NSMutableString *currentElementValue;
     SKEvent *event;
     NSMutableArray *eventList;
-    EntityStore *entityStore;
 }
 
-@property (retain) EntityStore * entityStore;
+@property (nonatomic, weak) EntityStore *entityStore;
 
 @end

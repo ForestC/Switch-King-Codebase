@@ -15,7 +15,6 @@
 		5B024CBA148FA6B300ED3B6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CB9148FA6B300ED3B6D /* AppDelegate.m */; };
 		5B024CBD148FA6B300ED3B6D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B024CBB148FA6B300ED3B6D /* MainStoryboard_iPhone.storyboard */; };
 		5B024CC0148FA6B300ED3B6D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B024CBE148FA6B300ED3B6D /* MainStoryboard_iPad.storyboard */; };
-		5B024CC3148FA6B300ED3B6D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CC2148FA6B300ED3B6D /* ViewController.m */; };
 		5B024CCB148FA6F100ED3B6D /* CommunicationBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CCA148FA6F100ED3B6D /* CommunicationBase.m */; };
 		5B024CCF148FAC7600ED3B6D /* SKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CCE148FAC7600ED3B6D /* SKDevice.m */; };
 		5B024CD2148FB02700ED3B6D /* AuthenticationDataContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B024CD1148FB02700ED3B6D /* AuthenticationDataContainer.m */; };
@@ -49,10 +48,7 @@
 		5B396B5414B3A9B400A590FB /* TextHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B396B5314B3A9B400A590FB /* TextHelper.m */; };
 		5B396B5614B3AF0800A590FB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B396B5514B3AF0800A590FB /* Localizable.strings */; };
 		5B396B5D14B3AFA100A590FB /* Texts.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B396B5F14B3AFA100A590FB /* Texts.strings */; };
-		5B396B6114B3B02100A590FB /* Headers.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B396B6314B3B02100A590FB /* Headers.strings */; };
-		5B396B6514B3B02E00A590FB /* Buttons.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B396B6714B3B02E00A590FB /* Buttons.strings */; };
 		5B3E30BD14E02A9000AA6517 /* SKTabBarControllerDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E30BC14E02A9000AA6517 /* SKTabBarControllerDelegate_iPhone.m */; };
-		5B4507F814B4BE5D00F3F888 /* NotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4507F714B4BE5D00F3F888 /* NotificationHelper.m */; };
 		5B5D3D7E14D6952F007882E0 /* DataSourceListViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D7D14D6952F007882E0 /* DataSourceListViewController_iPhone.m */; };
 		5B5D3D8214D69AC8007882E0 /* SKDataSourceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D8114D69AC8007882E0 /* SKDataSourceGroup.m */; };
 		5B5D3D8514D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D8414D6A597007882E0 /* SKDataSourceBaseStdTableViewCell.m */; };
@@ -62,8 +58,6 @@
 		5B5D3D9114D6B538007882E0 /* StateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D3D9014D6B537007882E0 /* StateHelper.m */; };
 		5B5D412E14E004DC00759648 /* SwipeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D412C14E004DC00759648 /* SwipeInfoViewController.m */; };
 		5B5D412F14E004DC00759648 /* SwipeInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B5D412D14E004DC00759648 /* SwipeInfoViewController.xib */; };
-		5B5E65FA14E1C5450047485A /* Tab_Scenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5E65F814E1C5450047485A /* Tab_Scenario.png */; };
-		5B5E65FB14E1C5450047485A /* Tab_Scenario@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5E65F914E1C5450047485A /* Tab_Scenario@2.png */; };
 		5B639CA614964A1B002D7F8F /* Tab_ComingUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */; };
 		5B639CA714964A1B002D7F8F /* Tab_ComingUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */; };
 		5B639CA814964A1B002D7F8F /* Tab_DataSources.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B639CA214964A1B002D7F8F /* Tab_DataSources.png */; };
@@ -112,7 +106,6 @@
 		5BA9693C14E4521000FAA66D /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9693A14E4520E00FAA66D /* MessageViewController.m */; };
 		5BA9693D14E4521000FAA66D /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BA9693B14E4521000FAA66D /* MessageViewController.xib */; };
 		5BA9694014E453D000FAA66D /* InfoMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9693F14E453CC00FAA66D /* InfoMessageView.m */; };
-		5BA9694214E454F600FAA66D /* InfoWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BA9694114E454F600FAA66D /* InfoWarning.png */; };
 		5BAEB0A814D42EE700F1B2AE /* Button_CancelSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */; };
 		5BAEB0A914D42EE700F1B2AE /* Button_Learn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */; };
 		5BAEB0AA14D42EE700F1B2AE /* Button_Synchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */; };
@@ -136,11 +129,16 @@
 		5BB6257014E3027D0006E168 /* SwipeDimOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6256314E3027D0006E168 /* SwipeDimOff.png */; };
 		5BB6257314E309170006E168 /* SwipeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6257114E309160006E168 /* SwipeOn.png */; };
 		5BB6257414E309170006E168 /* SwipeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6257214E309160006E168 /* SwipeOff.png */; };
+		5BCA31BD14E86D3600052F61 /* Tab_Scenario@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA31BB14E86D3600052F61 /* Tab_Scenario@2.png */; };
+		5BCA31BE14E86D3600052F61 /* Tab_Scenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */; };
+		5BCA31C114E9173D00052F61 /* SKGroupableEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA31C014E9173D00052F61 /* SKGroupableEntity.m */; };
+		5BCA31C414E91F5200052F61 /* SKDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA31C314E91F5200052F61 /* SKDataReceiver.m */; };
 		5BDB646A14C47D5100D8020B /* AlertInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB646814C47D5100D8020B /* AlertInfoViewController.m */; };
 		5BDB646B14C47D5100D8020B /* AlertInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BDB646914C47D5100D8020B /* AlertInfoViewController.xib */; };
 		5BDB647114C48BCF00D8020B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */; };
 		5BDD4FDD14BE289D000F4975 /* Toolbar_Configuration.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BDD4FDB14BE289D000F4975 /* Toolbar_Configuration.png */; };
 		5BDD4FDE14BE289D000F4975 /* Toolbar_Configuration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BDD4FDC14BE289D000F4975 /* Toolbar_Configuration@2x.png */; };
+		5BECA7DF14E459EA005FA668 /* InfoWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BECA7DE14E459EA005FA668 /* InfoWarning.png */; };
 		5BFC370914A31C600062F6E7 /* CommunicationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370814A31C600062F6E7 /* CommunicationMgr.m */; };
 		5BFC370C14A324F30062F6E7 /* SettingsMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370B14A324F30062F6E7 /* SettingsMgr.m */; };
 		5BFC371014A333D10062F6E7 /* SKDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370F14A333D10062F6E7 /* SKDataSource.m */; };
@@ -163,8 +161,6 @@
 		5B024CB9148FA6B300ED3B6D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5B024CBC148FA6B300ED3B6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		5B024CBF148FA6B300ED3B6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		5B024CC1148FA6B300ED3B6D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5B024CC2148FA6B300ED3B6D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5B024CC9148FA6F100ED3B6D /* CommunicationBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationBase.h; sourceTree = "<group>"; };
 		5B024CCA148FA6F100ED3B6D /* CommunicationBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationBase.m; sourceTree = "<group>"; };
 		5B024CCD148FAC7600ED3B6D /* SKDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDevice.h; sourceTree = "<group>"; };
@@ -228,14 +224,8 @@
 		5B396B5514B3AF0800A590FB /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5B396B5E14B3AFA100A590FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Texts.strings; sourceTree = "<group>"; };
 		5B396B6014B3AFCD00A590FB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Texts.strings; sourceTree = "<group>"; };
-		5B396B6214B3B02100A590FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Headers.strings; sourceTree = "<group>"; };
-		5B396B6414B3B02A00A590FB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Headers.strings; sourceTree = "<group>"; };
-		5B396B6614B3B02E00A590FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Buttons.strings; sourceTree = "<group>"; };
-		5B396B6814B3B03500A590FB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Buttons.strings; sourceTree = "<group>"; };
 		5B3E30BB14E02A9000AA6517 /* SKTabBarControllerDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTabBarControllerDelegate_iPhone.h; sourceTree = "<group>"; };
 		5B3E30BC14E02A9000AA6517 /* SKTabBarControllerDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTabBarControllerDelegate_iPhone.m; sourceTree = "<group>"; };
-		5B4507F614B4BE5D00F3F888 /* NotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationHelper.h; sourceTree = "<group>"; };
-		5B4507F714B4BE5D00F3F888 /* NotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationHelper.m; sourceTree = "<group>"; };
 		5B5D3D7C14D6952F007882E0 /* DataSourceListViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceListViewController_iPhone.h; sourceTree = "<group>"; };
 		5B5D3D7D14D6952F007882E0 /* DataSourceListViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceListViewController_iPhone.m; sourceTree = "<group>"; };
 		5B5D3D8014D69AC8007882E0 /* SKDataSourceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataSourceGroup.h; sourceTree = "<group>"; };
@@ -253,8 +243,6 @@
 		5B5D412B14E004DC00759648 /* SwipeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeInfoViewController.h; sourceTree = "<group>"; };
 		5B5D412C14E004DC00759648 /* SwipeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeInfoViewController.m; sourceTree = "<group>"; };
 		5B5D412D14E004DC00759648 /* SwipeInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwipeInfoViewController.xib; sourceTree = "<group>"; };
-		5B5E65F814E1C5450047485A /* Tab_Scenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Scenario.png; sourceTree = "<group>"; };
-		5B5E65F914E1C5450047485A /* Tab_Scenario@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Scenario@2.png"; sourceTree = "<group>"; };
 		5B639CA014964A1B002D7F8F /* Tab_ComingUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_ComingUp.png; sourceTree = "<group>"; };
 		5B639CA114964A1B002D7F8F /* Tab_ComingUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_ComingUp@2x.png"; sourceTree = "<group>"; };
 		5B639CA214964A1B002D7F8F /* Tab_DataSources.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_DataSources.png; sourceTree = "<group>"; };
@@ -325,7 +313,6 @@
 		5BA9693B14E4521000FAA66D /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
 		5BA9693E14E453C800FAA66D /* InfoMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoMessageView.h; sourceTree = "<group>"; };
 		5BA9693F14E453CC00FAA66D /* InfoMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoMessageView.m; sourceTree = "<group>"; };
-		5BA9694114E454F600FAA66D /* InfoWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoWarning.png; sourceTree = "<group>"; };
 		5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_CancelSemiAuto.png; sourceTree = "<group>"; };
 		5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Learn.png; sourceTree = "<group>"; };
 		5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Synchronize.png; sourceTree = "<group>"; };
@@ -351,12 +338,19 @@
 		5BB6256314E3027D0006E168 /* SwipeDimOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeDimOff.png; sourceTree = "<group>"; };
 		5BB6257114E309160006E168 /* SwipeOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeOn.png; sourceTree = "<group>"; };
 		5BB6257214E309160006E168 /* SwipeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeOff.png; sourceTree = "<group>"; };
+		5BCA31BB14E86D3600052F61 /* Tab_Scenario@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Scenario@2.png"; sourceTree = "<group>"; };
+		5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Scenario.png; sourceTree = "<group>"; };
+		5BCA31BF14E9173D00052F61 /* SKGroupableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKGroupableEntity.h; sourceTree = "<group>"; };
+		5BCA31C014E9173D00052F61 /* SKGroupableEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKGroupableEntity.m; sourceTree = "<group>"; };
+		5BCA31C214E91F5200052F61 /* SKDataReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataReceiver.h; sourceTree = "<group>"; };
+		5BCA31C314E91F5200052F61 /* SKDataReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataReceiver.m; sourceTree = "<group>"; };
 		5BDB646714C47D5100D8020B /* AlertInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertInfoViewController.h; sourceTree = "<group>"; };
 		5BDB646814C47D5100D8020B /* AlertInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertInfoViewController.m; sourceTree = "<group>"; };
 		5BDB646914C47D5100D8020B /* AlertInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertInfoViewController.xib; sourceTree = "<group>"; };
 		5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5BDD4FDB14BE289D000F4975 /* Toolbar_Configuration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Toolbar_Configuration.png; sourceTree = "<group>"; };
 		5BDD4FDC14BE289D000F4975 /* Toolbar_Configuration@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toolbar_Configuration@2x.png"; sourceTree = "<group>"; };
+		5BECA7DE14E459EA005FA668 /* InfoWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoWarning.png; sourceTree = "<group>"; };
 		5BFC370714A31C600062F6E7 /* CommunicationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationMgr.h; sourceTree = "<group>"; };
 		5BFC370814A31C600062F6E7 /* CommunicationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationMgr.m; sourceTree = "<group>"; };
 		5BFC370A14A324F30062F6E7 /* SettingsMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsMgr.h; sourceTree = "<group>"; };
@@ -395,8 +389,6 @@
 			children = (
 				5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */,
 				5B396B5F14B3AFA100A590FB /* Texts.strings */,
-				5B396B6314B3B02100A590FB /* Headers.strings */,
-				5B396B6714B3B02E00A590FB /* Buttons.strings */,
 				5B396B5514B3AF0800A590FB /* Localizable.strings */,
 				5B024CAF148FA6B300ED3B6D /* SK Codebase */,
 				5B024CA8148FA6B300ED3B6D /* Frameworks */,
@@ -437,8 +429,6 @@
 				5B024CB9148FA6B300ED3B6D /* AppDelegate.m */,
 				5B024CBB148FA6B300ED3B6D /* MainStoryboard_iPhone.storyboard */,
 				5B024CBE148FA6B300ED3B6D /* MainStoryboard_iPad.storyboard */,
-				5B024CC1148FA6B300ED3B6D /* ViewController.h */,
-				5B024CC2148FA6B300ED3B6D /* ViewController.m */,
 				5B024CB0148FA6B300ED3B6D /* Supporting Files */,
 				5B024CD0148FB02700ED3B6D /* AuthenticationDataContainer.h */,
 				5B024CD1148FB02700ED3B6D /* AuthenticationDataContainer.m */,
@@ -533,6 +523,8 @@
 				5BA9692814E3C17800FAA66D /* SKScenarioDataReceiver.m */,
 				5BA9692A14E3C19400FAA66D /* SKSystemSettingDataReceiver.h */,
 				5BA9692B14E3C19400FAA66D /* SKSystemSettingDataReceiver.m */,
+				5BCA31C214E91F5200052F61 /* SKDataReceiver.h */,
+				5BCA31C314E91F5200052F61 /* SKDataReceiver.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -583,8 +575,6 @@
 				5B396B5014B39A3000A590FB /* ImagePathHelper.m */,
 				5B396B5214B3A9B400A590FB /* TextHelper.h */,
 				5B396B5314B3A9B400A590FB /* TextHelper.m */,
-				5B4507F614B4BE5D00F3F888 /* NotificationHelper.h */,
-				5B4507F714B4BE5D00F3F888 /* NotificationHelper.m */,
 				5B5D3D8F14D6B537007882E0 /* StateHelper.h */,
 				5B5D3D9014D6B537007882E0 /* StateHelper.m */,
 			);
@@ -605,7 +595,9 @@
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5BA9694114E454F600FAA66D /* InfoWarning.png */,
+				5BCA31BB14E86D3600052F61 /* Tab_Scenario@2.png */,
+				5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */,
+				5BECA7DE14E459EA005FA668 /* InfoWarning.png */,
 				5BA9691814E339A000FAA66D /* SwipeCancel.png */,
 				5BB6257114E309160006E168 /* SwipeOn.png */,
 				5BB6257214E309160006E168 /* SwipeOff.png */,
@@ -621,8 +613,6 @@
 				5BB6256214E3027D0006E168 /* SwipeDim10.png */,
 				5BB6256314E3027D0006E168 /* SwipeDimOff.png */,
 				5BB6255214E2D2260006E168 /* Project22.png */,
-				5B5E65F814E1C5450047485A /* Tab_Scenario.png */,
-				5B5E65F914E1C5450047485A /* Tab_Scenario@2.png */,
 				5B04A51114DFC87000C8B178 /* EventList_Dim.png */,
 				5B04A51214DFC87000C8B178 /* EventList_Off.png */,
 				5B04A51314DFC87000C8B178 /* EventList_On.png */,
@@ -777,6 +767,8 @@
 				5BA9691C14E3B7CC00FAA66D /* SKSystemSetting.m */,
 				5BA9692414E3B9CE00FAA66D /* SKScenario.h */,
 				5BA9692514E3B9CF00FAA66D /* SKScenario.m */,
+				5BCA31BF14E9173D00052F61 /* SKGroupableEntity.h */,
+				5BCA31C014E9173D00052F61 /* SKGroupableEntity.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -879,8 +871,6 @@
 				5B80281114A219DD00F3909E /* DeviceList_OnScenario.png in Resources */,
 				5B80281214A219DD00F3909E /* DeviceList_OnSemiAuto.png in Resources */,
 				5B396B5614B3AF0800A590FB /* Localizable.strings in Resources */,
-				5B396B6514B3B02E00A590FB /* Buttons.strings in Resources */,
-				5B396B6114B3B02100A590FB /* Headers.strings in Resources */,
 				5B396B5D14B3AFA100A590FB /* Texts.strings in Resources */,
 				5BDD4FDD14BE289D000F4975 /* Toolbar_Configuration.png in Resources */,
 				5BDD4FDE14BE289D000F4975 /* Toolbar_Configuration@2x.png in Resources */,
@@ -900,8 +890,6 @@
 				5B04A51714DFC87000C8B178 /* EventList_On.png in Resources */,
 				5B04A51814DFC87000C8B178 /* EventList_Scenario.png in Resources */,
 				5B5D412F14E004DC00759648 /* SwipeInfoViewController.xib in Resources */,
-				5B5E65FA14E1C5450047485A /* Tab_Scenario.png in Resources */,
-				5B5E65FB14E1C5450047485A /* Tab_Scenario@2.png in Resources */,
 				5BB6255314E2D2260006E168 /* Project22.png in Resources */,
 				5BB6256614E3027D0006E168 /* SwipeDimOn.png in Resources */,
 				5BB6256714E3027D0006E168 /* SwipeDim90.png in Resources */,
@@ -918,7 +906,9 @@
 				5BB6257414E309170006E168 /* SwipeOff.png in Resources */,
 				5BA9691914E339A000FAA66D /* SwipeCancel.png in Resources */,
 				5BA9693D14E4521000FAA66D /* MessageViewController.xib in Resources */,
-				5BA9694214E454F600FAA66D /* InfoWarning.png in Resources */,
+				5BECA7DF14E459EA005FA668 /* InfoWarning.png in Resources */,
+				5BCA31BD14E86D3600052F61 /* Tab_Scenario@2.png in Resources */,
+				5BCA31BE14E86D3600052F61 /* Tab_Scenario.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,7 +921,6 @@
 			files = (
 				5B024CB6148FA6B300ED3B6D /* main.m in Sources */,
 				5B024CBA148FA6B300ED3B6D /* AppDelegate.m in Sources */,
-				5B024CC3148FA6B300ED3B6D /* ViewController.m in Sources */,
 				5B024CCB148FA6F100ED3B6D /* CommunicationBase.m in Sources */,
 				5B024CCF148FAC7600ED3B6D /* SKDevice.m in Sources */,
 				5B024CD2148FB02700ED3B6D /* AuthenticationDataContainer.m in Sources */,
@@ -955,7 +944,6 @@
 				5B33272914ADD02A002A263A /* EntityHttpReqNotificationData.m in Sources */,
 				5B396B5114B39A3000A590FB /* ImagePathHelper.m in Sources */,
 				5B396B5414B3A9B400A590FB /* TextHelper.m in Sources */,
-				5B4507F814B4BE5D00F3F888 /* NotificationHelper.m in Sources */,
 				5B166F3414B9E11F00563CB1 /* SKDeviceBaseStdTableViewCell.m in Sources */,
 				5B09208F14C07DA200BB9274 /* SettingsListViewController_iPhone.m in Sources */,
 				5B09209714C090D100BB9274 /* UrlSettingStdTableViewCell.m in Sources */,
@@ -997,6 +985,8 @@
 				5BA9693814E42C7300FAA66D /* SKNavigationControllerDelegate_iPhone.m in Sources */,
 				5BA9693C14E4521000FAA66D /* MessageViewController.m in Sources */,
 				5BA9694014E453D000FAA66D /* InfoMessageView.m in Sources */,
+				5BCA31C114E9173D00052F61 /* SKGroupableEntity.m in Sources */,
+				5BCA31C414E91F5200052F61 /* SKDataReceiver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1034,24 +1024,6 @@
 				5B396B6014B3AFCD00A590FB /* sv */,
 			);
 			name = Texts.strings;
-			sourceTree = "<group>";
-		};
-		5B396B6314B3B02100A590FB /* Headers.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B396B6214B3B02100A590FB /* en */,
-				5B396B6414B3B02A00A590FB /* sv */,
-			);
-			name = Headers.strings;
-			sourceTree = "<group>";
-		};
-		5B396B6714B3B02E00A590FB /* Buttons.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B396B6614B3B02E00A590FB /* en */,
-				5B396B6814B3B03500A590FB /* sv */,
-			);
-			name = Buttons.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
