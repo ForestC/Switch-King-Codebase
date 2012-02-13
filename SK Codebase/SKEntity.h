@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface SKEntity : NSObject
-{
-    NSInteger ID;
-    NSString * Name;
-}
 
-@property (atomic, assign) NSInteger ID;
-@property (atomic, retain) NSString * Name;
+//------------------------------------------------------------
+// Identification properties
+@property (nonatomic, assign) NSInteger ID;
+@property (nonatomic, copy) NSString *Name;
+@property (nonatomic, copy) NSString *Description;
 
 @end

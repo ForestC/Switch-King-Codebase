@@ -10,29 +10,38 @@
 
 @implementation SKDevice
 
-@synthesize GroupID;
-@synthesize GroupName;
+//------------------------------------------------------------
+// Identification/description properties
+@synthesize DeviceCode;
+@synthesize NativeID;
+
+//------------------------------------------------------------
+// State properties
 @synthesize CurrentStateID;
 @synthesize ModeID;
 @synthesize ModeType;
 @synthesize CurrentDimLevel;
 @synthesize InSemiAutoMode;
 @synthesize Enabled;
-
-@synthesize AutoSynchronizeAllowed;
-@synthesize Description;
-@synthesize DeviceCode;
 @synthesize DisabledByServer;
 @synthesize ManualTargetDimLevel;
 @synthesize ManualTargetStateID;
-@synthesize NativeID;
+
+//------------------------------------------------------------
+// Behavior properties
+@synthesize AutoSynchronizeAllowed;
 @synthesize SupportsAbsoluteDimLvl;
+
+//------------------------------------------------------------
+// Device type properties
 @synthesize TypeCategory;
 @synthesize TypeID;
 @synthesize TypeModel;
 @synthesize TypeName;
 @synthesize TypeProtocol;
 
+//------------------------------------------------------------
+// Misc properties
 @synthesize OnW;
 
 @end

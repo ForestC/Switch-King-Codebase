@@ -10,6 +10,8 @@
 
 @implementation SKSystemSetting
 
+//------------------------------------------------------------
+// Misc properties
 @synthesize DataType;
 @synthesize Value;
 

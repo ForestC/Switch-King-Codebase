@@ -10,11 +10,19 @@
 
 @implementation SKDataSource
 
-@synthesize Status;
-@synthesize Description;
-@synthesize Enabled;
+//------------------------------------------------------------
+// Behavior properties
 @synthesize EvalMinMax;
-@synthesize EngineeringUnit;
+@synthesize PollScheduleRate;
+@synthesize PollScheduleType;
+@synthesize PollScheduleValue;
+
+//------------------------------------------------------------
+// State properties
+@synthesize Enabled;
+@synthesize Status;
+@synthesize NextRun;
+
 @synthesize GroupID;
 @synthesize GroupName;
 @synthesize LastRun;
@@ -26,10 +34,7 @@
 @synthesize LastValueAdditionalData;
 @synthesize LastValueIsFailureValue;
 @synthesize LastValueLocalTimestamp;
-@synthesize NextRun;
-@synthesize PollScheduleRate;
-@synthesize PollScheduleType;
-@synthesize PollScheduleValue;
+
 @synthesize UsedValue;
 @synthesize UsedValueStatus;
 @synthesize UsedValueExpires;
@@ -38,5 +43,9 @@
 @synthesize UsedValueAdditionalData;
 @synthesize UsedValueIsFailureValue;
 @synthesize UsedValueLocalTimestamp;
+
+//------------------------------------------------------------
+// Presentation properties
+@synthesize EngineeringUnit;
 
 @end

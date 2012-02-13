@@ -10,7 +10,10 @@
 
 @implementation SKEntity
 
+//------------------------------------------------------------
+// Identification properties
 @synthesize ID;
 @synthesize Name;
+@synthesize Description;
 
 @end

@@ -10,6 +10,8 @@
 
 @implementation SKScenario
 
+//------------------------------------------------------------
+// Misc properties
 @synthesize Enabled;
 @synthesize Active;
 @synthesize Abbreviation;

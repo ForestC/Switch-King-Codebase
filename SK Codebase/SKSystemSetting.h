@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "SKEntity.h"
 
-@interface SKSystemSetting : SKEntity {
-    NSString *DataType;
-    NSString *Value;
-}
+@interface SKSystemSetting : SKEntity
 
-@property (atomic, retain) NSString *DataType;
-@property (atomic, retain) NSString *Value;
+//------------------------------------------------------------
+// Misc properties
+@property (nonatomic, copy) NSString *DataType;
+@property (nonatomic, copy) NSString *Value;
 
 @end

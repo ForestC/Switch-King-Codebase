@@ -9,14 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "SKEntity.h"
 
-@interface SKScenario : SKEntity {
-    NSString *Abbreviation;
-    NSString *Active;
-    NSString *Enabled;
-}
+@interface SKScenario : SKEntity
 
-@property (atomic, retain) NSString *Abbreviation;
-@property (atomic, retain) NSString *Active;
-@property (atomic, retain) NSString *Enabled;
+//------------------------------------------------------------
+// Misc properties
+@property (nonatomic, copy) NSString *Abbreviation;
+@property (nonatomic, copy) NSString *Active;
+@property (nonatomic, copy) NSString *Enabled;
 
 @end

@@ -7,57 +7,42 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SKEntity.h"
+#import "SKGroupableEntity.h"
 
-@interface SKDevice : SKEntity {
-    NSInteger GroupID;
-    NSString *GroupName;
-    NSInteger CurrentStateID;
-    NSInteger ModeID;
-    NSString *ModeType;
-    NSInteger CurrentDimLevel;
-    NSString *InSemiAutoMode;
-    NSString *Enabled;
-    
-    NSString * AutoSynchronizeAllowed;
-    NSString *Description;
-    NSString *DeviceCode;
-    NSString *DisabledByServer;
-    NSInteger ManualTargetDimLevel;
-    NSInteger ManualTargetStateID;
-    NSString *NativeID;
-    NSString *SupportsAbsoluteDimLvl;
-    NSString *TypeCategory;
-    NSInteger TypeID;
-    NSString *TypeModel;
-    NSString *TypeName;
-    NSString *TypeProtocol;
-    NSString *OnW;
-}
+@interface SKDevice : SKGroupableEntity
 
-@property (atomic, assign) NSInteger GroupID;
-@property (atomic, retain) NSString *GroupName;
-@property (atomic, assign) NSInteger CurrentStateID;
-@property (atomic, assign) NSInteger ModeID;
-@property (atomic, retain) NSString *ModeType;
-@property (atomic, assign) NSInteger CurrentDimLevel;
-@property (atomic, retain) NSString *InSemiAutoMode;
-@property (atomic, retain) NSString *Enabled;
+//------------------------------------------------------------
+// Identification/description properties
+@property (nonatomic, copy) NSString *DeviceCode;
+@property (nonatomic, copy) NSString *NativeID;
 
-@property (atomic, retain) NSString *AutoSynchronizeAllowed;
-@property (atomic, retain) NSString *Description;
-@property (atomic, retain) NSString *DeviceCode;
-@property (atomic, retain) NSString *DisabledByServer;
-@property (atomic, assign) NSInteger ManualTargetDimLevel;
-@property (atomic, assign) NSInteger ManualTargetStateID;
-@property (atomic, retain) NSString *NativeID;
-@property (atomic, retain) NSString *SupportsAbsoluteDimLvl;
-@property (atomic, retain) NSString *TypeCategory;
-@property (atomic, assign) NSInteger TypeID;
-@property (atomic, retain) NSString *TypeModel;
-@property (atomic, retain) NSString *TypeName;
-@property (atomic, retain) NSString *TypeProtocol;
+//------------------------------------------------------------
+// State properties
+@property (nonatomic, assign) NSInteger CurrentStateID;
+@property (nonatomic, assign) NSInteger ModeID;
+@property (nonatomic, copy) NSString *ModeType;
+@property (nonatomic, assign) NSInteger CurrentDimLevel;
+@property (nonatomic, copy) NSString *InSemiAutoMode;
+@property (nonatomic, copy) NSString *Enabled;
+@property (nonatomic, copy) NSString *DisabledByServer;
+@property (nonatomic, assign) NSInteger ManualTargetDimLevel;
+@property (nonatomic, assign) NSInteger ManualTargetStateID;
 
-@property (atomic, retain) NSString *OnW;
+//------------------------------------------------------------
+// Behavior properties
+@property (nonatomic, copy) NSString *AutoSynchronizeAllowed;
+@property (nonatomic, copy) NSString *SupportsAbsoluteDimLvl;
+
+//------------------------------------------------------------
+// Device type properties
+@property (nonatomic, copy) NSString *TypeCategory;
+@property (nonatomic, assign) NSInteger TypeID;
+@property (nonatomic, copy) NSString *TypeModel;
+@property (nonatomic, copy) NSString *TypeName;
+@property (nonatomic, copy) NSString *TypeProtocol;
+
+//------------------------------------------------------------
+// Misc properties
+@property (nonatomic, copy) NSString *OnW;
 
 @end
