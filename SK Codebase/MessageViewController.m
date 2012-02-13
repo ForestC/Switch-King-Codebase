@@ -7,6 +7,7 @@
 //
 
 #import "MessageViewController.h"
+#import "AppDelegate.h"
 
 @implementation MessageViewController
 
@@ -45,10 +46,19 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    
+    [self.infoTextView setText:[appDelegate alertInfoText]];    
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 @end

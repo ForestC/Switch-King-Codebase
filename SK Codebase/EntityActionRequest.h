@@ -19,7 +19,7 @@
 - (EntityHttpReqNotificationData *)toNotificationData;
 
 // The entity involved in the request
-@property (retain) SKEntity * entity;
+@property (retain) SKEntity *entity;
 // The requested action
 @property (assign) NSInteger actionId;
 // The requested dim level
