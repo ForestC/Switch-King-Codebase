@@ -11,14 +11,16 @@
 #import "CommunicationMgr.h"
 #import "EntityActionRequestDelegate.h"
 #import "AlertInfoViewController.h"
+#import "MessageViewController.h"
 #import "SwipeInfoViewController.h"
 #import "SKTabBarControllerDelegate_iPhone.h"
+#import "MessageViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, EntityActionRequestDelegate> {
     NSInteger netActivityReqs;
     Boolean alertInfoInView;
     NSString *alertInfoText;
-    AlertInfoViewController *alertInfoViewController;
+    MessageViewController *alertInfoViewController;
     SwipeInfoViewController *swipeViewController;
     NSTimer *alertTimer;
     SKTabBarControllerDelegate_iPhone *tabBarDelegate;
@@ -62,10 +64,10 @@
 
 
 @property (strong, nonatomic) UIWindow *window;
-@property (retain) EntityStore *entityStore;
-@property (retain) CommunicationMgr *communicationMgr;
-@property (retain) NSString *alertInfoText;
-@property (assign) Boolean alertInfoInView;
+@property (strong) EntityStore *entityStore;
+@property (strong) CommunicationMgr *communicationMgr;
+@property (nonatomic, copy) NSString *alertInfoText;
+@property (nonatomic, assign) Boolean alertInfoInView;
 @property (nonatomic, retain) NSTimer *alertTimer;
 
 @end

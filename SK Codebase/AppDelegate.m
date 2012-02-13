@@ -40,7 +40,7 @@
     DeviceListViewController *deviceListViewController = (DeviceListViewController *)navigationController;
     
     // Connect the device list view controller to the entity stores notification
-    [entityStore setDeviceListViewController:deviceListViewController];
+   // [entityStore setDeviceListViewController:deviceListViewController];
 }
 
 // Called when an entity action request has been fired
@@ -58,7 +58,7 @@
     [self addObservers];
     
     // Init the alert info view controller
-    alertInfoViewController = [[AlertInfoViewController alloc] init];
+    alertInfoViewController = [[MessageViewController alloc] init];
     
     swipeViewController = [[SwipeInfoViewController alloc] init];
     
@@ -73,6 +73,8 @@
     communicationMgr = [[CommunicationMgr alloc] init];
     // Request update of all entities...
     [communicationMgr requestUpdateOfAllEntities];
+    
+//    [self toggleAlertInfo:true];
     
     // Override point for customization after application launch.
     return YES;
@@ -140,7 +142,7 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    [self.communicationMgr requestUpdateOfAllEntities];
+   // [self.communicationMgr requestUpdateOfAllEntities];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -326,15 +328,10 @@
     // this method opens/closes the player options view (which sets repeat interval, repeat & delay on/off)    
     if (viewHidden == NO)
     {
-        // delay and move view out of superview
-        CGRect alertFrame = alertInfoViewController.view.frame;
-        
-        [UIView beginAnimations:nil context:nil];
-        
-        alertFrame.origin.y += alertFrame.size.height * 2;
-        alertInfoViewController.view.frame = alertFrame;
-        
-        [UIView commitAnimations];
+        [UIView beginAnimations:nil context:NULL]; 
+        [UIView setAnimationDuration:0.5]; 
+        [alertInfoViewController.view setAlpha:0.0]; 
+        [UIView commitAnimations]; 
 
         [self 
          performSelector:@selector(hideAlertInfo)
@@ -343,6 +340,53 @@
     }
     else
     {
+        alertInfoInView = true;
+        
+        UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+        Boolean portrait = orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown;
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth;
+        CGFloat screenHeight;
+        
+        if(portrait) {
+            screenWidth = screenRect.size.width;
+            screenHeight = screenRect.size.height;            
+        } else {
+            screenWidth = screenRect.size.height;
+            screenHeight = screenRect.size.width;
+        }
+        
+        CGRect alertFrame = alertInfoViewController.view.frame;
+        alertFrame.origin.x = screenWidth / 2 - (alertFrame.size.width/2);
+        
+        alertFrame.origin.y = screenHeight - 60 - alertFrame.size.height;
+        
+        alertInfoViewController.view.frame = alertFrame;
+        
+        [self.window.rootViewController.view addSubview:alertInfoViewController.view];
+        
+        [alertInfoViewController.view setAlpha:0.0]; 
+        
+        [UIView beginAnimations:nil context:NULL]; 
+        [UIView setAnimationDuration:0.5]; 
+        [alertInfoViewController.view setAlpha:1.0]; 
+        
+        [UIView commitAnimations];
+
+        
+        if(alertTimer != nil) {
+            [alertTimer invalidate];
+            alertTimer = nil;
+        }
+        
+        alertTimer = [NSTimer scheduledTimerWithTimeInterval: 10.0 
+                                                      target:self 
+                                                    selector:@selector(alertTimerOnTick:) 
+                                                    userInfo:nil 
+                                                     repeats: NO];
+
+        
+        /*
         UITabBarController *v2 = (UITabBarController*)self.window.rootViewController;
         CGFloat v44 = v2.tabBar.frame.size.height;
         
@@ -389,6 +433,7 @@
                                                     selector:@selector(alertTimerOnTick:) 
                                                 userInfo:nil 
                                                  repeats: NO];
+         */
     }
 }
          

@@ -10,7 +10,7 @@
 
 @interface AuthenticationDataContainer : NSObject
 
-@property (atomic, retain) NSString * user;
-@property (atomic, retain) NSString * pass;
+@property (nonatomic, copy) NSString *user;
+@property (nonatomic, copy) NSString *pass;
 
 @end
