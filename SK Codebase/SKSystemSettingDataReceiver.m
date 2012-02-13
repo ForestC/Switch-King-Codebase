@@ -17,7 +17,7 @@
     self = [super init];
     
     // Set the store
-    entityStore = store;
+    [super setEntityStore:store];
     
     return self;
 }

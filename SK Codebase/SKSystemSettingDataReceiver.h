@@ -9,12 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "EntityStore.h"
 #import "DataReceivedDelegate.h"
+#import "SKDataReceiver.h"
 
-@interface SKSystemSettingDataReceiver : NSObject <DataReceivedDelegate>
-{
-    EntityStore * entityStore;
-}
-
-@property (retain) EntityStore * entityStore;
+@interface SKSystemSettingDataReceiver : SKDataReceiver <DataReceivedDelegate>
 
 @end

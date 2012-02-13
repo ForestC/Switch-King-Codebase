@@ -40,8 +40,6 @@
     Boolean scenariosDirty;
 }
 
-@synthesize deviceListViewController;
-
 - (EntityStore *)init {
     self = [super init];
     

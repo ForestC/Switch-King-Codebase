@@ -20,8 +20,6 @@
     
 }
 
-@property (nonatomic, strong) DeviceListViewController *deviceListViewController;
-
 // Adds entity observers
 - (void)addEntityObservers;
 

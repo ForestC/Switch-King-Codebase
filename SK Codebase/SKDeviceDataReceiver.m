@@ -11,13 +11,11 @@
 
 @implementation SKDeviceDataReceiver
 
-@synthesize entityStore;
-
 - (SKDeviceDataReceiver *)initWithEntityStore:(EntityStore *)store {
     self = [super init];
     
     // Set the store
-    entityStore = store;
+    [super setEntityStore:store];
 
     return self;
 }
@@ -28,7 +26,7 @@
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:receivedData];
     XMLSKDeviceParser *deviceParser = [XMLSKDeviceParser alloc];
     
-    [deviceParser setEntityStore:entityStore];
+    [deviceParser setEntityStore:super.entityStore];
     
     //Set delegate
     [xmlParser setDelegate:deviceParser];

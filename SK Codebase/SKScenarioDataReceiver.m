@@ -11,13 +11,11 @@
 
 @implementation SKScenarioDataReceiver
 
-@synthesize entityStore;
-
 - (SKScenarioDataReceiver *)initWithEntityStore:(EntityStore *)store {
     self = [super init];
     
     // Set the store
-    entityStore = store;
+    [super setEntityStore:store];
     
     return self;
 }
@@ -28,7 +26,7 @@
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:receivedData];
     XMLSKScenarioParser *eventParser = [XMLSKScenarioParser alloc];
     
-    [eventParser setEntityStore:entityStore];
+    [eventParser setEntityStore:super.entityStore];
     
     //Set delegate
     [xmlParser setDelegate:eventParser];
