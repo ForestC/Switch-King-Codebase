@@ -13,11 +13,7 @@
 #import "EntityActionRequest.h"
 #import "EntityHttpReqNotificationData.h"
 
-@interface CommunicationMgr : NSObject {
-    AuthenticationDataContainer *authData;
-    //CommunicationBase *communicationBase;
-    //SKDeviceDataReceiver *deviceDataReceiver;
-}
+@interface CommunicationMgr : NSObject
 
 - (void)addEntityObservers;
 
