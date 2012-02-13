@@ -362,6 +362,7 @@
     UISwitch *s = (UISwitch*)sender;
     
     [SettingsMgr setUseLive:s.on];
+    [SettingsMgr setNeedServerVersionUpdate:true];
     
     [self.tableView reloadData];
 }

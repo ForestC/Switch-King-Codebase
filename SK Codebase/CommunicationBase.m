@@ -201,9 +201,16 @@
 }
 
 // Gets the complete url to the list with upcoming events
-- (NSString *)getComingUpEventsListUrl:(NSInteger)maxCount {
+- (NSString *)getFutureEventsListUrl:(NSInteger)maxCount {
     NSString *url = [self getBaseUrl];
     NSString *param = [NSString stringWithFormat:@"/events/future?maxcount=%i", maxCount];
+    return [url stringByAppendingString:param];
+}
+
+// Gets the complete url to the list with upcoming and historic events
+- (NSString *)getHistoricAndFutureEventsListUrl:(NSInteger)maxCount {
+    NSString *url = [self getBaseUrl];
+    NSString *param = [NSString stringWithFormat:@"/events/historicandfuture?maxcount=%i", maxCount];
     return [url stringByAppendingString:param];
 }
 

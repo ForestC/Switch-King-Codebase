@@ -38,7 +38,10 @@
 - (NSString *)getDataSourceListUrl;
 
 // Gets the complete url to the list with upcoming events
-- (NSString *)getComingUpEventsListUrl:(NSInteger)maxCount;
+- (NSString *)getFutureEventsListUrl:(NSInteger)maxCount;
+
+// Gets the complete url to the list with upcoming and historic events
+- (NSString *)getHistoricAndFutureEventsListUrl:(NSInteger)maxCount;
 
 // Gets the complete url to the scenario list
 - (NSString *)getScenarioListUrl;

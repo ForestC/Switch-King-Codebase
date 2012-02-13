@@ -455,9 +455,16 @@ NSThread * mainUpdateThread;
     [communicationBase setReceiverDelegate:receiver];
     
     NSInteger maxCount = [SettingsMgr getMaxUpcomingEvents];
+    Boolean historicAndFuture = [SettingsMgr supportsHistoricEvents];
+    NSString *url;
+    
+    if(historicAndFuture)
+        url = [communicationBase getHistoricAndFutureEventsListUrl:maxCount];
+    else
+        url = [communicationBase getFutureEventsListUrl:maxCount];
     
     // Send the request
-    [communicationBase sendRequest:[communicationBase getComingUpEventsListUrl:maxCount]];
+    [communicationBase sendRequest:url];
     
     NSLog(@"Request for all upcoming events");
 }

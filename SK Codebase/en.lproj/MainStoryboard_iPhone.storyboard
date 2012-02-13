@@ -722,14 +722,47 @@
                                     <outlet property="entityTimestampLabel" destination="RGv-RR-nLf" id="dfQ-MI-xMb"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCellDirtyStd" id="5jk-GH-26S" customClass="SKEventTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCellStdDirty" id="5jk-GH-26S" customClass="SKEventTableViewCell">
                                 <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Action timestamp" lineBreakMode="tailTruncation" minimumFontSize="10" id="hv3-if-V9S">
+                                            <rect key="frame" x="44" y="2" width="270" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="DeviceList_Off.png" id="IPw-gO-dpQ">
+                                            <rect key="frame" x="11" y="4" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Action entity name" lineBreakMode="tailTruncation" minimumFontSize="10" id="Ky5-Ah-5gz">
+                                            <rect key="frame" x="44" y="20" width="181" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Action type" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="9ou-x8-XdY">
+                                            <rect key="frame" x="230" y="20" width="60" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="entityActionLabel" destination="9ou-x8-XdY" id="qf8-am-VEl"/>
+                                    <outlet property="entityIconImageView" destination="IPw-gO-dpQ" id="Ual-wB-xGh"/>
+                                    <outlet property="entityNameLabel" destination="Ky5-Ah-5gz" id="MsY-a9-RaP"/>
+                                    <outlet property="entityTimestampLabel" destination="hv3-if-V9S" id="tG1-a0-Yly"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

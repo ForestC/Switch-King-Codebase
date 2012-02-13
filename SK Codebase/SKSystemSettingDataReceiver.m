@@ -11,8 +11,6 @@
 
 @implementation SKSystemSettingDataReceiver
 
-@synthesize entityStore;
-
 - (SKSystemSettingDataReceiver *)initWithEntityStore:(EntityStore *)store {
     self = [super init];
     
@@ -28,7 +26,7 @@
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:receivedData];
     XMLSKSystemSettingParser *eventParser = [XMLSKSystemSettingParser alloc];
     
-    [eventParser setEntityStore:entityStore];
+    [eventParser setEntityStore:super.entityStore];
     
     //Set delegate
     [xmlParser setDelegate:eventParser];
