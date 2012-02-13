@@ -30,9 +30,6 @@
 
 @implementation CommunicationMgr
 
-// The main update thread
-NSThread * mainUpdateThread;
-
 /*******************************************************************************
  Init methods
  *******************************************************************************/
@@ -213,20 +210,6 @@ NSThread * mainUpdateThread;
                                         userInfo:notificationData];
     } else {
         [CommunicationMgr notifyNoConnection:notificationCenter];
-/*        NSString *alertNotificationData = NSLocalizedStringFromTable(@"No network connection", @"Texts", nil);
-
-        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:alertNotificationData 
-                                                                     forKey:ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY];
-        
-        // Post a notification that an alert is requested to display
-        [notificationCenter postNotificationName:NOTIFICATION_NAME__ALERT_INFO_REQUESTED
-                                          object:nil
-                                        userInfo:notificationData];
-        
-        // Post a notification that connection is not available
-        [notificationCenter postNotificationName:NOTIFICATION_NAME__NO_CONNECTION
-                                          object:nil
-                                        userInfo:nil];*/
     }
 }
 
@@ -447,9 +430,11 @@ NSThread * mainUpdateThread;
     // Create a communication base    
     CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
                                                                                                 :true];
+    // The store
+    EntityStore *store = appDelegate.entityStore;
     
     // Create a receiver and assign an entity store to the receiver
-    SKEventDataReceiver *receiver = [[SKEventDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
+    SKEventDataReceiver *receiver = [[SKEventDataReceiver alloc] initWithEntityStore:store];
     
     // Set the receiver delegate
     [communicationBase setReceiverDelegate:receiver];
