@@ -13,7 +13,11 @@
 #import "SettingsMgr.h"
 #import "AppDelegate.h"
 #import "Base64Encoding.h"
+#import "Base64Enc.h"
 #import "Constants.h"
+
+static NSString *sMyLock1 = @"Lock1";
+
 
 @implementation CommunicationBase
 
@@ -21,16 +25,24 @@
 
 -(CommunicationBase *)initWithAuthenticationData:(AuthenticationDataContainer *) auth:(Boolean)notifyOnCommunicationError {
     self = [super init];
-    authData = auth;
+    authData = [[AuthenticationDataContainer alloc] init];
+    
+    [authData setPass:auth.pass];
+    [authData setUser:auth.user];
+    
     notifyOnError = notifyOnCommunicationError;
     
     return self;
 }
 
 -(void)sendRequest:(NSString *) url{
+    @synchronized(sMyLock1) {    
+    
+    NSLog(@"SEND REQUEST");
+    
     // Get the app delegte
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+
     // Setup NSURLConnection
     NSURL *URL = [NSURL URLWithString:url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL
@@ -39,14 +51,20 @@
 
     NSString *str = [NSString stringWithFormat:@"%@:%@", authData.user, authData.pass];
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-    
+   
     if([SettingsMgr useLive]) {
-        [request addValue:[NSString stringWithFormat:@"%i", [SettingsMgr getServerIdentity]] forHTTPHeaderField:@"SKSrvId"];
+        [request setValue:[NSString stringWithFormat:@"%i", [SettingsMgr getServerIdentity]] forHTTPHeaderField:@"SKSrvId"];
     }
+   
+    //NSString *auth = @"Basic VGVzdDpUZXN0Mg==";//  [NSString stringWithFormat:@"Basic %@", [Base64Encoding encodeBase64WithData:data]];
+    //NSString *auth = [NSString stringWithFormat:@"Basic %@", [Base64Encoding encodeBase64WithData:data]];
+        
+        NSString *encoded = [Base64Enc base64StringFromData:data length:data.length];
+        NSString *auth = [NSString stringWithFormat:@"Basic %@", encoded];
+        
+        
     
-    NSString *auth =[@"Basic " stringByAppendingString:[Base64Encoding encodeBase64WithData:data]];
-    
-    [request addValue:auth forHTTPHeaderField:@"Authorization"];
+    [request setValue:auth forHTTPHeaderField:@"Authorization"];
     
     NSLog(@"Sending request to %@", URL);
     
@@ -60,6 +78,9 @@
         receivedData = [NSMutableData alloc];
     } else {
         // Inform the user that the connection failed.
+    }
+    
+        NSLog(@"REQUEST SENT");
     }
 }
 
@@ -108,6 +129,9 @@
     // It can be called multiple times, for example in the case of a
     // redirect, so each time we reset the data.
     // receivedData is an instance variable declared elsewhere.
+    
+    NSLog(@"Did receiveResp from %@", tgtUrl);
+    
     [receivedData setLength:0];
 }
 
@@ -115,11 +139,15 @@
     // Append the new data to receivedData.
     // receivedData is an instance variable declared elsewhere.
     [receivedData appendData:data];
+    
+        NSLog(@"Did receiveData from %@", tgtUrl);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     // Get the app delegte
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+        NSLog(@"Did finish from %@", tgtUrl);
     
     // NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     
@@ -136,7 +164,11 @@
         }
     }
     
+        NSLog(@"Posting to delegate for %@", tgtUrl);
+    
     [receiverDelegate dataReceived:self :receivedData];
+    
+            NSLog(@"Posted to delegate for %@", tgtUrl);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

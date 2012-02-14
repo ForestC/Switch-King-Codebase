@@ -27,6 +27,7 @@
 #import <netinet/in.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
+static NSString *sMyLock1 = @"Lock1";
 
 @implementation CommunicationMgr
 
@@ -342,7 +343,7 @@
     // Get the app delegte
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Get the authentication data container
-    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    AuthenticationDataContainer *auth = [SettingsMgr getAuthenticationData];
     
     // Create a communication base    
     CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth

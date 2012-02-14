@@ -306,7 +306,7 @@
 
 // Gets the stored authentication data
 + (AuthenticationDataContainer *)getAuthenticationData {
-    AuthenticationDataContainer *container = [AuthenticationDataContainer alloc];
+    AuthenticationDataContainer *container = [[AuthenticationDataContainer alloc] init];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *userKey = @"user";

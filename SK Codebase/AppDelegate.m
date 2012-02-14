@@ -202,8 +202,10 @@
         NSString *alertData = [dict valueForKey:ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY];
         
         if(alertData != nil) {
-            [self setAlertInfo:alertData];
-            [self toggleAlertInfo:true];
+            if([self eligableForAlertInfoDisplay:alertData]) {
+                [self setAlertInfo:alertData];
+                [self toggleAlertInfo:true];
+            }
         } else {
             NSLog(@"Empty alert.");
         }
@@ -382,6 +384,21 @@
 - (void)setAlertInfo:(NSString *)infoText {
     AlertMessageView *v = (AlertMessageView *)(alertMessageViewController.view);
     [[v infoTextView] setText:infoText];
+}
+        
+// Gets the alert string currently displayed
+- (NSString *)getAlertInfo {
+    AlertMessageView *v = (AlertMessageView *)(alertMessageViewController.view);
+    return v.infoTextView.text;
+}
+
+// Gets the alert string currently displayed
+- (Boolean)eligableForAlertInfoDisplay:(NSString *)str {
+    if([self alertInfoInView]) {
+        return ![str isEqualToString:[self getAlertInfo]];
+    } else {
+        return true;
+    }
 }
 
 // Triggered when the alert info view is to be hidden after a specific amount of time.

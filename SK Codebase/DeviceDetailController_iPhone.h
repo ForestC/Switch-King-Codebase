@@ -32,10 +32,15 @@
 @property (atomic, retain) IBOutlet UIButton *synhronizeButton;
 @property (atomic, retain) IBOutlet UIButton *learnButton;
 @property (atomic, retain) IBOutlet UIButton *cancelSemiAutoButton;
+@property (atomic, retain) IBOutlet UIButton *onButton;
+@property (atomic, retain) IBOutlet UIButton *offButton;
+
 
 - (IBAction)synchronizeButtonClick;
 - (IBAction)cancelSemiAutoButtonClick;
 - (IBAction)learnButtonClick;
+- (IBAction)onButtonClick;
+- (IBAction)offButtonClick;
 
 // Sets data for the view
 - (void)setViewData;

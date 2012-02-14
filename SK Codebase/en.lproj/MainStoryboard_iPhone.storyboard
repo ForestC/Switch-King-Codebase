@@ -165,7 +165,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="AEN-Gx-XeW">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="c2n-al-tiJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="c2n-al-tiJ">
+                            <connections>
+                                <action selector="doneButtonClick:" destination="Frk-Il-cIK" id="JJn-N9-o7L"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
@@ -349,6 +353,16 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Version x" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="WMj-19-BdG">
+                            <rect key="frame" x="0.0" y="510" width="320" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.29803922772407532" green="0.33725491166114807" blue="0.42352944612503052" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="1"/>
+                        </label>
                         <sections>
                             <tableViewSection headerTitle="Server" id="sEt-br-Wtf">
                                 <cells>
@@ -478,7 +492,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="General" footerTitle="Version ?" id="jFU-dj-9Hu">
+                            <tableViewSection headerTitle="General" id="jFU-dj-9Hu">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Rhe-XT-maK">
                                         <rect key="frame" x="0.0" y="366" width="320" height="45"/>
@@ -573,6 +587,7 @@
                         <outlet property="serverAddressHeaderLabel" destination="lhD-q6-cOR" id="jpE-vG-aPS"/>
                         <outlet property="showLearnButtonDetailSwitch" destination="8X9-iV-JHO" id="t42-BH-SD5"/>
                         <outlet property="showLearnButtonHeaderLabel" destination="edX-H8-co0" id="xh5-9J-lbm"/>
+                        <outlet property="versionLabel" destination="WMj-19-BdG" id="RvV-dJ-Vce"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -683,14 +698,17 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="9ng-l7-3IH">
-                                    <rect key="frame" x="9" y="9" width="303" height="30"/>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="GXU-rh-D3x">
+                                    <rect key="frame" x="9" y="8" width="302" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <segments>
                                         <segment title="All"/>
-                                        <segment title="Historic"/>
                                         <segment title="Future"/>
+                                        <segment title="Historic"/>
                                     </segments>
+                                    <connections>
+                                        <action selector="eventDataSegmentedControlClick" destination="9Px-Ou-m9Q" eventType="valueChanged" id="QsP-qh-Zxv"/>
+                                    </connections>
                                 </segmentedControl>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -790,6 +808,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="oJ1-Ni-I1E"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventDataSegmentedControl" destination="GXU-rh-D3x" id="eQQ-9Y-vbb"/>
                         <outlet property="refreshBarButtonItem" destination="oJ1-Ni-I1E" id="N36-Ms-B07"/>
                     </connections>
                 </tableViewController>
@@ -966,11 +985,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="xpM-8b-RR7">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="291"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pOC-Iw-SJh">
-                                    <rect key="frame" x="8" y="97" width="304" height="37"/>
+                                    <rect key="frame" x="8" y="209" width="304" height="37"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -987,7 +1006,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WEc-s1-XrC">
-                                    <rect key="frame" x="8" y="142" width="304" height="37"/>
+                                    <rect key="frame" x="8" y="254" width="304" height="37"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1021,11 +1040,45 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h8Z-6U-1fc">
+                                    <rect key="frame" x="8" y="98" width="302" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="On" image="Button_TurnOn.png">
+                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onButtonClick" destination="zEs-zo-6Uc" eventType="touchUpInside" id="zxu-i8-i47"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NMk-p1-h9c">
+                                    <rect key="frame" x="9" y="143" width="302" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Off" image="Button_TurnOff.png">
+                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="offButtonClick" destination="zEs-zo-6Uc" eventType="touchUpInside" id="yLL-IP-y6E"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Cl2-a7-3ES">
-                            <rect key="frame" x="0.0" y="219" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="311" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dMX-3t-byu">
@@ -1067,7 +1120,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2659" y="600"/>
+            <point key="canvasLocation" x="2642" y="574"/>
         </scene>
         <scene sceneID="IJB-39-gVj">
             <objects>
@@ -1618,6 +1671,8 @@
     <resources>
         <image name="Button_CancelSemiAuto.png" width="20" height="20"/>
         <image name="Button_Synchronize.png" width="20" height="20"/>
+        <image name="Button_TurnOff.png" width="20" height="20"/>
+        <image name="Button_TurnOn.png" width="20" height="20"/>
         <image name="DataSourceList_StatusError.png" width="44" height="44"/>
         <image name="DataSourceList_StatusOK.png" width="44" height="44"/>
         <image name="DeviceList_Group.png" width="44" height="44"/>
@@ -1653,6 +1708,8 @@
             <relationships>
                 <relationship kind="action" name="cancelSemiAutoButtonClick"/>
                 <relationship kind="action" name="learnButtonClick"/>
+                <relationship kind="action" name="offButtonClick"/>
+                <relationship kind="action" name="onButtonClick"/>
                 <relationship kind="action" name="synchronizeButtonClick"/>
                 <relationship kind="outlet" name="cancelSemiAutoButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="entityCurrentPowerConsumptionLabel" candidateClass="UILabel"/>
@@ -1663,6 +1720,8 @@
                 <relationship kind="outlet" name="entityNextEventLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="entityTotalPowerConsumptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="learnButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="offButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="onButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="synhronizeButton" candidateClass="UIButton"/>
             </relationships>
         </class>
@@ -1675,6 +1734,8 @@
         <class className="EventListViewController_iPhone" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController_iPhone.h"/>
             <relationships>
+                <relationship kind="action" name="eventDataSegmentedControlClick"/>
+                <relationship kind="outlet" name="eventDataSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
@@ -1746,6 +1807,9 @@
         </class>
         <class className="ServerSettingsListViewController_iPhone" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ServerSettingsListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonClick:"/>
+            </relationships>
         </class>
         <class className="SettingsListViewController_iPhone" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsListViewController_iPhone.h"/>
@@ -1764,6 +1828,7 @@
                 <relationship kind="outlet" name="serverAddressHeaderLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="showLearnButtonDetailSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="showLearnButtonHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="SwitchSettingStdTableViewCell" superclassName="UITableViewCell">

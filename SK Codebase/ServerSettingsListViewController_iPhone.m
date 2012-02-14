@@ -156,7 +156,7 @@
                 TextSettingStdTableViewCell *cell = (TextSettingStdTableViewCell*)[self.tableView cellForRowAtIndexPath:sibling];
                 [cell.settingTextField becomeFirstResponder];
             } else {
-                [[self navigationController] popViewControllerAnimated:true];
+                [[self navigationController] popToRootViewControllerAnimated:true];
             }
         }
     }
@@ -367,5 +367,9 @@
     [self.tableView reloadData];
 }
 
+// Takes care of the click on the done button
+- (IBAction)doneButtonClick:(id)sender {
+    [[self navigationController] popToRootViewControllerAnimated:true];
+}
 
 @end

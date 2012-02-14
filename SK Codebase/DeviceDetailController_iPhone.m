@@ -29,6 +29,8 @@
 @synthesize entityLastEventLabel;
 @synthesize entityNextEventLabel;
 @synthesize entityTotalPowerConsumptionLabel;
+@synthesize onButton;
+@synthesize offButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,6 +60,15 @@
 - (IBAction)learnButtonClick {
     [self handleButtonClick:ACTION_ID__SEND_LEARN];    
 }
+
+- (IBAction)onButtonClick {
+    [self handleButtonClick:ACTION_ID__TURN_ON];    
+}
+
+- (IBAction)offButtonClick {
+    [self handleButtonClick:ACTION_ID__TURN_OFF];    
+}
+
 
 // Handles action
 - (void)handleButtonClick:(NSInteger)actionId {

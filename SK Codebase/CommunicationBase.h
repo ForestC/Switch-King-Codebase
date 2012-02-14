@@ -12,6 +12,7 @@
 
 @interface CommunicationBase : NSObject
 {
+    NSString *tgtUrl;
     Boolean notifyOnError;
     NSMutableData *receivedData;
     AuthenticationDataContainer *authData;

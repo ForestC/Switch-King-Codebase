@@ -14,6 +14,9 @@
 @property (nonatomic, retain) NSMutableArray *futureEvents;
 @property (nonatomic, retain) NSMutableArray *historicEvents;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *eventDataSegmentedControl;
+
+- (IBAction)eventDataSegmentedControlClick;
 
 // Adds entity observers to be able to listen to notifications
 - (void)addEntityObservers;

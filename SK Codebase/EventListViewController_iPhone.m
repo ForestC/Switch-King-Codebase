@@ -21,6 +21,7 @@
 @synthesize futureEvents;
 @synthesize historicEvents;
 @synthesize refreshBarButtonItem;
+@synthesize eventDataSegmentedControl;
 
 - (id)init
 {
@@ -123,6 +124,10 @@
                                                object:nil];
 }
 
+- (IBAction)eventDataSegmentedControlClick {
+    [self.tableView reloadData];
+}
+
 /*******************************************************************************
  Misc
  *******************************************************************************/
@@ -170,16 +175,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Single section
-    if(![SettingsMgr supportsHistoricEvents])
+    /*if(![SettingsMgr supportsHistoricEvents])
         return 1;
     
     if(historicEvents.count > 0 && futureEvents.count > 0)
         return 2;
     else        
         return 1;
+     */ return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return nil;
+    
     NSInteger type = [self getSectionContentType:section];
     
     switch (type) {
@@ -194,6 +202,19 @@
 }  
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger idx = [self.eventDataSegmentedControl selectedSegmentIndex];
+    
+    if(idx == 0) {
+        return self.historicEvents.count + self.futureEvents.count;
+    } else if(idx == 2) {
+        return self.historicEvents.count;
+    } else {
+        return self.futureEvents.count;
+    }
+    /*
+    
+    if([self.eventDataSegmentedControl selectedSegmentIndex == 0
+    
     NSInteger type = [self getSectionContentType:section];
     
     switch (type) {
@@ -204,12 +225,12 @@
         default:
             return futureEvents.count;
             break;
-    }
+    }*/
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SKEntity *entity;
-
+/*
     NSInteger type = [self getSectionContentType:indexPath.section];
 
     switch (type) {
@@ -220,6 +241,20 @@
         default:
             entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row];
             break;
+    }*/
+    
+    NSInteger idx = [self.eventDataSegmentedControl selectedSegmentIndex];
+    
+    if(idx == 0) {
+        if(indexPath.row > historicEvents.count - 1)
+            entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row - historicEvents.count];
+        else
+            entity = (SKEntity *)[historicEvents objectAtIndex:indexPath.row];
+    } else if(idx == 1) {
+        entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row];
+    } else {
+        NSInteger idx = (historicEvents.count - indexPath.row - 1);
+        entity = (SKEntity *)[historicEvents objectAtIndex:idx];
     }
     
     // Dequeue or create
@@ -330,6 +365,16 @@
  }
  */
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if(![SettingsMgr supportsHistoricEvents] && self.eventDataSegmentedControl.subviews.count == 3) {
+        [self.eventDataSegmentedControl removeSegmentAtIndex:2 animated:false];
+    }
+    
+    [self.tableView reloadData];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad

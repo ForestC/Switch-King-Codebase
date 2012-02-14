@@ -43,6 +43,12 @@
 // Sets the alert info text
 - (void)setAlertInfo:(NSString *)infoText;
 
+// Gets the alert string currently displayed
+- (NSString *)getAlertInfo;
+
+// Gets the alert string currently displayed
+- (Boolean)eligableForAlertInfoDisplay:(NSString *)str;
+
 // Sets the alert info as visible or hidden
 - (void)toggleAlertInfo:(BOOL)show;
 

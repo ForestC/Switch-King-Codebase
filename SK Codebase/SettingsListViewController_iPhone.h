@@ -11,34 +11,36 @@
 @interface SettingsListViewController_iPhone : UITableViewController
 
 // Holds the name of the entity
-@property(nonatomic,strong) IBOutlet UILabel *serverAddressHeaderLabel;
+@property(nonatomic,weak) IBOutlet UILabel *serverAddressHeaderLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *refreshIntervalHeaderLabel;
+@property(nonatomic,weak) IBOutlet UILabel *refreshIntervalHeaderLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *refreshAfterCommandHeaderLabel;
+@property(nonatomic,weak) IBOutlet UILabel *refreshAfterCommandHeaderLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *maxUpcomingEventsHeaderLabel;
+@property(nonatomic,weak) IBOutlet UILabel *maxUpcomingEventsHeaderLabel;
 
-@property(nonatomic,strong) IBOutlet UILabel *showLearnButtonHeaderLabel;
+@property(nonatomic,weak) IBOutlet UILabel *showLearnButtonHeaderLabel;
 
-@property(nonatomic,strong) IBOutlet UILabel *groupDevicesHeaderLabel;
+@property(nonatomic,weak) IBOutlet UILabel *groupDevicesHeaderLabel;
 
-@property(nonatomic,strong) IBOutlet UILabel *reloadOnTabSwitchHeaderLabel;
+@property(nonatomic,weak) IBOutlet UILabel *reloadOnTabSwitchHeaderLabel;
 
 // Holds the name of the entity
-@property(nonatomic,strong) IBOutlet UILabel *serverAddressDetailLabel;
+@property(nonatomic,weak) IBOutlet UILabel *serverAddressDetailLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *refreshIntervalDetailLabel;
+@property(nonatomic,weak) IBOutlet UILabel *refreshIntervalDetailLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *refreshAfterCommandDetailLabel;
+@property(nonatomic,weak) IBOutlet UILabel *refreshAfterCommandDetailLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *maxUpcomingEventsDetailLabel;
+@property(nonatomic,weak) IBOutlet UILabel *maxUpcomingEventsDetailLabel;
 
-@property(nonatomic,strong) IBOutlet UISwitch *showLearnButtonDetailSwitch;
+@property(nonatomic,weak) IBOutlet UISwitch *showLearnButtonDetailSwitch;
 
-@property(nonatomic,strong) IBOutlet UISwitch *groupDevicesDetailSwitch;
+@property(nonatomic,weak) IBOutlet UISwitch *groupDevicesDetailSwitch;
 
-@property(nonatomic,strong) IBOutlet UISwitch *reloadOnTabSwitchDetailSwitch;
+@property(nonatomic,weak) IBOutlet UISwitch *reloadOnTabSwitchDetailSwitch;
+
+@property(nonatomic,weak) IBOutlet UILabel *versionLabel;
 
 // Sets view data
 - (void)setViewData;

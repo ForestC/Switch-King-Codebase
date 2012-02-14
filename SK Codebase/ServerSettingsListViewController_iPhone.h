@@ -19,4 +19,7 @@
 // Sets the table view cell data depending on the type of cell and entity
 - (void)setTableViewCellData:(UITableView *)tableView: (UITableViewCell *)cell;
 
+// Takes care of the click on the done button
+- (IBAction)doneButtonClick:(id)sender;
+
 @end

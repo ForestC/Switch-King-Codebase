@@ -128,13 +128,14 @@
 		5BB6257014E3027D0006E168 /* SwipeDimOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6256314E3027D0006E168 /* SwipeDimOff.png */; };
 		5BB6257314E309170006E168 /* SwipeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6257114E309160006E168 /* SwipeOn.png */; };
 		5BB6257414E309170006E168 /* SwipeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6257214E309160006E168 /* SwipeOff.png */; };
-		5BCA31BD14E86D3600052F61 /* Tab_Scenario@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA31BB14E86D3600052F61 /* Tab_Scenario@2.png */; };
+		5BCA31BD14E86D3600052F61 /* Tab_Scenario@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA31BB14E86D3600052F61 /* Tab_Scenario@2x.png */; };
 		5BCA31BE14E86D3600052F61 /* Tab_Scenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */; };
 		5BCA31C114E9173D00052F61 /* SKGroupableEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA31C014E9173D00052F61 /* SKGroupableEntity.m */; };
 		5BCA31C414E91F5200052F61 /* SKDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA31C314E91F5200052F61 /* SKDataReceiver.m */; };
 		5BDB647114C48BCF00D8020B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */; };
 		5BDD4FDD14BE289D000F4975 /* Toolbar_Configuration.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BDD4FDB14BE289D000F4975 /* Toolbar_Configuration.png */; };
 		5BDD4FDE14BE289D000F4975 /* Toolbar_Configuration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BDD4FDC14BE289D000F4975 /* Toolbar_Configuration@2x.png */; };
+		5BEC819E14E99F31006BA682 /* Base64Enc.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC819D14E99F30006BA682 /* Base64Enc.m */; };
 		5BECA7DF14E459EA005FA668 /* InfoWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BECA7DE14E459EA005FA668 /* InfoWarning.png */; };
 		5BFC370914A31C600062F6E7 /* CommunicationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370814A31C600062F6E7 /* CommunicationMgr.m */; };
 		5BFC370C14A324F30062F6E7 /* SettingsMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC370B14A324F30062F6E7 /* SettingsMgr.m */; };
@@ -333,7 +334,7 @@
 		5BB6256314E3027D0006E168 /* SwipeDimOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeDimOff.png; sourceTree = "<group>"; };
 		5BB6257114E309160006E168 /* SwipeOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeOn.png; sourceTree = "<group>"; };
 		5BB6257214E309160006E168 /* SwipeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeOff.png; sourceTree = "<group>"; };
-		5BCA31BB14E86D3600052F61 /* Tab_Scenario@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Scenario@2.png"; sourceTree = "<group>"; };
+		5BCA31BB14E86D3600052F61 /* Tab_Scenario@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Scenario@2x.png"; sourceTree = "<group>"; };
 		5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Scenario.png; sourceTree = "<group>"; };
 		5BCA31BF14E9173D00052F61 /* SKGroupableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKGroupableEntity.h; sourceTree = "<group>"; };
 		5BCA31C014E9173D00052F61 /* SKGroupableEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKGroupableEntity.m; sourceTree = "<group>"; };
@@ -342,6 +343,8 @@
 		5BDB647014C48BCF00D8020B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5BDD4FDB14BE289D000F4975 /* Toolbar_Configuration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Toolbar_Configuration.png; sourceTree = "<group>"; };
 		5BDD4FDC14BE289D000F4975 /* Toolbar_Configuration@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toolbar_Configuration@2x.png"; sourceTree = "<group>"; };
+		5BEC819C14E99F30006BA682 /* Base64Enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Enc.h; sourceTree = "<group>"; };
+		5BEC819D14E99F30006BA682 /* Base64Enc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Enc.m; sourceTree = "<group>"; };
 		5BECA7DE14E459EA005FA668 /* InfoWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoWarning.png; sourceTree = "<group>"; };
 		5BFC370714A31C600062F6E7 /* CommunicationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationMgr.h; sourceTree = "<group>"; };
 		5BFC370814A31C600062F6E7 /* CommunicationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationMgr.m; sourceTree = "<group>"; };
@@ -476,6 +479,8 @@
 				5B024CD8148FBF8E00ED3B6D /* Constants.h */,
 				5BB6254E14E2C2EC0006E168 /* SquareView.h */,
 				5BB6254F14E2C2EC0006E168 /* SquareView.m */,
+				5BEC819C14E99F30006BA682 /* Base64Enc.h */,
+				5BEC819D14E99F30006BA682 /* Base64Enc.m */,
 			);
 			path = "SK Codebase";
 			sourceTree = "<group>";
@@ -633,7 +638,7 @@
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5BCA31BB14E86D3600052F61 /* Tab_Scenario@2.png */,
+				5BCA31BB14E86D3600052F61 /* Tab_Scenario@2x.png */,
 				5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */,
 				5BECA7DE14E459EA005FA668 /* InfoWarning.png */,
 				5BA9691814E339A000FAA66D /* SwipeCancel.png */,
@@ -901,7 +906,7 @@
 				5BA9691914E339A000FAA66D /* SwipeCancel.png in Resources */,
 				5BA9693D14E4521000FAA66D /* AlertMessageView.xib in Resources */,
 				5BECA7DF14E459EA005FA668 /* InfoWarning.png in Resources */,
-				5BCA31BD14E86D3600052F61 /* Tab_Scenario@2.png in Resources */,
+				5BCA31BD14E86D3600052F61 /* Tab_Scenario@2x.png in Resources */,
 				5BCA31BE14E86D3600052F61 /* Tab_Scenario.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -979,6 +984,7 @@
 				5BA9694014E453D000FAA66D /* AlertMessageView.m in Sources */,
 				5BCA31C114E9173D00052F61 /* SKGroupableEntity.m in Sources */,
 				5BCA31C414E91F5200052F61 /* SKDataReceiver.m in Sources */,
+				5BEC819E14E99F31006BA682 /* Base64Enc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1125,7 +1131,7 @@
 				INFOPLIST_FILE = "SK Codebase/SK Codebase-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=*]" = "DC7109C3-0D07-44DE-AF68-7432A0C96A7B";
+				"PROVISIONING_PROFILE[sdk=*]" = "E4AACD47-D890-434F-AC96-A2FDB74DE60B";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

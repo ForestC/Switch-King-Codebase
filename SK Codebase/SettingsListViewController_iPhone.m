@@ -27,6 +27,7 @@
 @synthesize groupDevicesDetailSwitch;
 @synthesize showLearnButtonHeaderLabel;
 @synthesize showLearnButtonDetailSwitch;
+@synthesize versionLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,6 +81,9 @@
     
     // Refresh on tab switch
     [self.reloadOnTabSwitchDetailSwitch setOn:[SettingsMgr enableReloadOnTabSwitch]];
+    
+    // Set version label
+    [self.versionLabel setText:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Version %@", @"Texts", nil), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]];
 }
 
 - (void)switchTouched:(UIControl *)sender
