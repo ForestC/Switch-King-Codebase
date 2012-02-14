@@ -74,7 +74,7 @@
 //            } else if([currentElementValue isEqualToString:XML_VALUE__FALSE]) {
 //                [device setValue:@"NO" forKey:elementName];
 //            } else {
-                NSString *unescaped = [currentElementValue stringByDecodingHTMLEntities];
+            NSString *unescaped = [currentElementValue stringByDecodingHTMLEntities];
                 [device setValue:unescaped forKey:elementName];
            // }
         }
