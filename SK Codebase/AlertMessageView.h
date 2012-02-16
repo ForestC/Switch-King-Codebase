@@ -11,5 +11,6 @@
 @interface AlertMessageView : UIView
 
 @property (weak) IBOutlet UITextView *infoTextView;
+@property (weak) IBOutlet UIImageView *infoImageView;
 
 @end

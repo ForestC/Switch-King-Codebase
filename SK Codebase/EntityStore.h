@@ -41,6 +41,8 @@
 
 - (void)systemSettingsUpdated:(NSMutableArray*)collection;
 
+- (void)daysLeftOfLiveUsageUpdated:(NSInteger)daysLeft;
+
 // Flags an entity as dirty or clean
 - (void)flagEntityAsDirtyOrClean:(SKEntity*)entity: (Boolean)isDirty;
 

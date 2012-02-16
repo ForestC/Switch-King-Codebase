@@ -580,4 +580,42 @@
     return retrievedValue;
 }
 
+// Sets an indication whether it's necessary to indicate days left for live usage
++ (void)setNextDateWhenNeedToDisplayDaysLeftForLive:(NSDate *)nextCheck {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"nextLiveInfoDate";
+    
+    // set the value
+    [defaults setObject:nextCheck forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Gets an indication whether it's necessary to indicate days left for live usage
++ (Boolean)needToDisplayDaysLeftForLive {
+    if(![SettingsMgr useLive])
+        return false;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"nextLiveInfoDate";
+    
+    // Get the result
+    NSDate *retrievedValue = (NSDate *)[defaults objectForKey:key];
+    
+    if(retrievedValue == nil)
+        return true;
+    
+	NSDate *today = [[NSDate alloc] init];
+    NSTimeZone *defaultTimeZone = [NSTimeZone defaultTimeZone];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    [cal setTimeZone:defaultTimeZone];
+    
+    NSTimeInterval time = [today timeIntervalSinceDate:retrievedValue];
+    
+    return time > 0;
+}
+
 @end

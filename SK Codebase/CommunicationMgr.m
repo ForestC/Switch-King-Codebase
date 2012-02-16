@@ -26,6 +26,7 @@
 #import <sys/socket.h>
 #import <netinet/in.h>
 #import <SystemConfiguration/SystemConfiguration.h>
+#import "SKLiveDaysLeftReceiver.h"
 
 static NSString *sMyLock1 = @"Lock1";
 
@@ -299,6 +300,16 @@ static NSString *sMyLock1 = @"Lock1";
     } 
 }
 
+- (void)requestUpdateOfLiveDaysLeft {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    if([CommunicationMgr hasConnectivity]) {
+        [self updateLiveDaysLeft];
+    } else {
+        [CommunicationMgr notifyNoConnection:notificationCenter];
+    }
+}
+
 // Requests all entities to be updated
 // May be called at init of the app
 - (void)requestUpdateOfAllEntities {
@@ -501,6 +512,30 @@ static NSString *sMyLock1 = @"Lock1";
     [communicationBase sendRequest:[communicationBase getSystemSettingVersionUrl]];
     
     NSLog(@"Request for update of system setting version");
+}
+
+- (void)updateLiveDaysLeft {
+    NSLog(@"Updating days left");
+    
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Get the authentication data container
+    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    
+    // Create a communication base    
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :false];
+    
+    // Create a receiver and assign an entity store to the receiver
+    SKLiveDaysLeftReceiver *receiver = [[SKLiveDaysLeftReceiver alloc] initWithEntityStore:appDelegate.entityStore];
+    
+    // Set the receiver delegate
+    [communicationBase setReceiverDelegate:receiver];
+    
+    // Send the request
+    [communicationBase sendRequest:[communicationBase getLiveDaysLeftUrl]];
+    
+    NSLog(@"Request for update of live days left");
 }
 
 /*******************************************************************************

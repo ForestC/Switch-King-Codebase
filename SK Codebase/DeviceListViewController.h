@@ -14,12 +14,14 @@
 @interface DeviceListViewController : UITableViewController<UIGestureRecognizerDelegate> {
     //NSMutableArray * groupsAndDevices;
     //IBOutlet SKDeviceGroupStdTableViewCell * deviceGroupCellStd;
+   // Boolean isScrolling;
 }
 
+@property (nonatomic, assign) Boolean isScrolling;
 @property (atomic, retain) NSMutableArray *devices;
 @property (atomic, retain) NSMutableArray *groups;
 @property (atomic, retain) NSMutableArray *groupsAndDevices;
-@property(nonatomic,strong) IBOutlet UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *refreshBarButtonItem;
 
 //- (IBAction)handleLongPress:(id)sender;
 

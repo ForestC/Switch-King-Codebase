@@ -134,4 +134,10 @@
 // Gets the server version
 + (NSString *)getServerVersion;
 
+// Sets an indication whether it's necessary to indicate days left for live usage
++ (void)setNextDateWhenNeedToDisplayDaysLeftForLive:(NSDate *)nextCheck;
+
+// Gets an indication whether it's necessary to indicate days left for live usage
++ (Boolean)needToDisplayDaysLeftForLive;
+
 @end

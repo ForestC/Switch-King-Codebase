@@ -71,6 +71,8 @@
 		5B64DF7714D9D47B00D36647 /* EventListViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF7614D9D47B00D36647 /* EventListViewController_iPhone.m */; };
 		5B64DF7A14D9D6D800D36647 /* SKEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF7914D9D6D800D36647 /* SKEventTableViewCell.m */; };
 		5B64DF7D14D9D6FA00D36647 /* SKEventBaseStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64DF7C14D9D6F900D36647 /* SKEventBaseStdTableViewCell.m */; };
+		5B71ACE414EAFA1F009352DD /* XMLSKLiveDaysLeftParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B71ACE314EAFA1F009352DD /* XMLSKLiveDaysLeftParser.m */; };
+		5B71ACE714EAFCB4009352DD /* SKLiveDaysLeftReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B71ACE614EAFCB4009352DD /* SKLiveDaysLeftReceiver.m */; };
 		5B8027EB149BAC3800F3909E /* SKDeviceStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */; };
 		5B80280014A219DD00F3909E /* DataSourceList_StatusError.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027ED14A219DD00F3909E /* DataSourceList_StatusError.png */; };
 		5B80280114A219DD00F3909E /* DataSourceList_StatusOK.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027EE14A219DD00F3909E /* DataSourceList_StatusOK.png */; };
@@ -91,6 +93,7 @@
 		5B80281014A219DD00F3909E /* DeviceList_OnRule.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FD14A219DD00F3909E /* DeviceList_OnRule.png */; };
 		5B80281114A219DD00F3909E /* DeviceList_OnScenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FE14A219DD00F3909E /* DeviceList_OnScenario.png */; };
 		5B80281214A219DD00F3909E /* DeviceList_OnSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8027FF14A219DD00F3909E /* DeviceList_OnSemiAuto.png */; };
+		5B8729EC14ED40D100492EB6 /* InfoChime.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8729EB14ED40D100492EB6 /* InfoChime.png */; };
 		5BA69E5F149B43DA00D663BA /* SKDeviceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */; };
 		5BA69E65149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA69E64149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.m */; };
 		5BA9691914E339A000FAA66D /* SwipeCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BA9691814E339A000FAA66D /* SwipeCancel.png */; };
@@ -262,6 +265,10 @@
 		5B64DF7914D9D6D800D36647 /* SKEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEventTableViewCell.m; sourceTree = "<group>"; };
 		5B64DF7B14D9D6F900D36647 /* SKEventBaseStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEventBaseStdTableViewCell.h; sourceTree = "<group>"; };
 		5B64DF7C14D9D6F900D36647 /* SKEventBaseStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEventBaseStdTableViewCell.m; sourceTree = "<group>"; };
+		5B71ACE214EAFA1F009352DD /* XMLSKLiveDaysLeftParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSKLiveDaysLeftParser.h; sourceTree = "<group>"; };
+		5B71ACE314EAFA1F009352DD /* XMLSKLiveDaysLeftParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLSKLiveDaysLeftParser.m; sourceTree = "<group>"; };
+		5B71ACE514EAFCB4009352DD /* SKLiveDaysLeftReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKLiveDaysLeftReceiver.h; sourceTree = "<group>"; };
+		5B71ACE614EAFCB4009352DD /* SKLiveDaysLeftReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLiveDaysLeftReceiver.m; sourceTree = "<group>"; };
 		5B8027E9149BAC3800F3909E /* SKDeviceStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceStdTableViewCell.h; sourceTree = "<group>"; };
 		5B8027EA149BAC3800F3909E /* SKDeviceStdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceStdTableViewCell.m; sourceTree = "<group>"; };
 		5B8027ED14A219DD00F3909E /* DataSourceList_StatusError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DataSourceList_StatusError.png; sourceTree = "<group>"; };
@@ -283,6 +290,7 @@
 		5B8027FD14A219DD00F3909E /* DeviceList_OnRule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OnRule.png; sourceTree = "<group>"; };
 		5B8027FE14A219DD00F3909E /* DeviceList_OnScenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OnScenario.png; sourceTree = "<group>"; };
 		5B8027FF14A219DD00F3909E /* DeviceList_OnSemiAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceList_OnSemiAuto.png; sourceTree = "<group>"; };
+		5B8729EB14ED40D100492EB6 /* InfoChime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoChime.png; sourceTree = "<group>"; };
 		5BA69E5D149B43DA00D663BA /* SKDeviceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceGroup.h; sourceTree = "<group>"; };
 		5BA69E5E149B43DA00D663BA /* SKDeviceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDeviceGroup.m; sourceTree = "<group>"; };
 		5BA69E63149B6AA100D663BA /* SKDeviceGroupStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDeviceGroupStdTableViewCell.h; sourceTree = "<group>"; };
@@ -524,6 +532,8 @@
 				5BA9691F14E3B86800FAA66D /* XMLSKSystemSettingParser.m */,
 				5BA9692114E3B99700FAA66D /* XMLSKScenarioParser.h */,
 				5BA9692214E3B99700FAA66D /* XMLSKScenarioParser.m */,
+				5B71ACE214EAFA1F009352DD /* XMLSKLiveDaysLeftParser.h */,
+				5B71ACE314EAFA1F009352DD /* XMLSKLiveDaysLeftParser.m */,
 			);
 			name = Xml;
 			sourceTree = "<group>";
@@ -568,6 +578,8 @@
 				5BA9692B14E3C19400FAA66D /* SKSystemSettingDataReceiver.m */,
 				5BCA31C214E91F5200052F61 /* SKDataReceiver.h */,
 				5BCA31C314E91F5200052F61 /* SKDataReceiver.m */,
+				5B71ACE514EAFCB4009352DD /* SKLiveDaysLeftReceiver.h */,
+				5B71ACE614EAFCB4009352DD /* SKLiveDaysLeftReceiver.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -638,6 +650,7 @@
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B8729EB14ED40D100492EB6 /* InfoChime.png */,
 				5BCA31BB14E86D3600052F61 /* Tab_Scenario@2x.png */,
 				5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */,
 				5BECA7DE14E459EA005FA668 /* InfoWarning.png */,
@@ -908,6 +921,7 @@
 				5BECA7DF14E459EA005FA668 /* InfoWarning.png in Resources */,
 				5BCA31BD14E86D3600052F61 /* Tab_Scenario@2x.png in Resources */,
 				5BCA31BE14E86D3600052F61 /* Tab_Scenario.png in Resources */,
+				5B8729EC14ED40D100492EB6 /* InfoChime.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +999,8 @@
 				5BCA31C114E9173D00052F61 /* SKGroupableEntity.m in Sources */,
 				5BCA31C414E91F5200052F61 /* SKDataReceiver.m in Sources */,
 				5BEC819E14E99F31006BA682 /* Base64Enc.m in Sources */,
+				5B71ACE414EAFA1F009352DD /* XMLSKLiveDaysLeftParser.m in Sources */,
+				5B71ACE714EAFCB4009352DD /* SKLiveDaysLeftReceiver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

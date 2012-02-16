@@ -113,6 +113,7 @@
     }
     
     [SettingsMgr setNeedServerVersionUpdate:true];
+    [SettingsMgr setNextDateWhenNeedToDisplayDaysLeftForLive:[NSDate date]];
 }
 
 
@@ -363,6 +364,7 @@
     
     [SettingsMgr setUseLive:s.on];
     [SettingsMgr setNeedServerVersionUpdate:true];
+    [SettingsMgr setNextDateWhenNeedToDisplayDaysLeftForLive:[NSDate date]];
     
     [self.tableView reloadData];
 }

@@ -264,4 +264,10 @@ static NSString *sMyLock1 = @"Lock1";
     return [url stringByAppendingString:@"/systemsettings/byname/ServerVersion"];    
 }
 
+// Gets the complete url to the information about days left
+- (NSString *)getLiveDaysLeftUrl {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:@"/supportservices/licenses/daysleft"];    
+}
+
 @end

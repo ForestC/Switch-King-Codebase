@@ -46,6 +46,12 @@
 #define TABLE_VIEW_SECTION_TYPE__FUTURE_EVENTS 1
 #define TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS 2
 
+#define ALERT_INFO_TYPE__WARNING @"Warning"
+#define ALERT_INFO_TYPE__CHIME @"Chime"
+#define ALERT_INFO_TYPE @"AlertType"
+
+#define DAYS_LEFT_NO_INFO 9876
+
 /*******************************************************************************
  Data source status values
  *******************************************************************************/
@@ -195,6 +201,8 @@
 #define NOTIFICATION_NAME__NO_CONNECTION @"NoConn"
 
 #define NOTIFICATION_NAME__SERVER_VERSION_UPDATED @"ServerVersionUpdated"
+
+#define NOTIFICATION_NAME__LIVE_DAYS_LEFT_UPDATED @"LiveDaysLeftUpdated"
 
 #define ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY @"EntityReqData"
 #define ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY @"Msg"

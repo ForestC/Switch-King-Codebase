@@ -25,6 +25,7 @@
 @synthesize devices;
 @synthesize groupsAndDevices;
 @synthesize refreshBarButtonItem;
+@synthesize isScrolling;
 //@synthesize deviceGroupCellStd;
 
 - (id)init
@@ -399,6 +400,11 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     NSLog(@"%@", @"SCROLL");
+    [self setIsScrolling:true];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self setIsScrolling:false];    
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer

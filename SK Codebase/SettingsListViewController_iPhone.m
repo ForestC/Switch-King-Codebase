@@ -138,7 +138,8 @@
     // Get the app delegte
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [appDelegate toggleAlertInfo:false];
+    [appDelegate toggleAlertInfo:false
+                                :nil];
     
     [self setViewData];
 }

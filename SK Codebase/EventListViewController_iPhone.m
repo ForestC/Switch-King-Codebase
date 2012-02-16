@@ -249,7 +249,7 @@
         if(indexPath.row > historicEvents.count - 1)
             entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row - historicEvents.count];
         else
-            entity = (SKEntity *)[historicEvents objectAtIndex:indexPath.row];
+            entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row];
     } else if(idx == 1) {
         entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row];
     } else {

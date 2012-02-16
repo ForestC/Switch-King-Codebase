@@ -53,6 +53,9 @@
 // Gets the complete url to the system setting containing version info
 - (NSString *)getSystemSettingVersionUrl;
 
+// Gets the complete url to the information about days left
+- (NSString *)getLiveDaysLeftUrl;
+
 @property (retain) id receiverDelegate;
 
 @end

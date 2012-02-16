@@ -95,9 +95,11 @@
        [REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY isEqualToString:self.reuseIdentifier]) {
         return;
     }*/
+
+    DeviceListViewController *ctlr = (DeviceListViewController *)self.tableViewController;
+    Boolean isScrolling = ctlr.isScrolling;
     
-    
-    if (sender.state == UIGestureRecognizerStateBegan) {
+    if (sender.state == UIGestureRecognizerStateBegan && !isScrolling) {
         gestureStartPoint = [sender locationInView:self];
         swipeRequestsRestart = false;
         swipeInProgress = true;
@@ -110,7 +112,7 @@
             }
         }
     } else if(sender.state == UIGestureRecognizerStateChanged) {
-        if(swipeRequestsRestart)
+        if(swipeRequestsRestart || isScrolling)
             return;
         
         //self.selectionStyle = UITableViewCellSelectionStyleNone;

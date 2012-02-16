@@ -29,6 +29,7 @@
     NSTimer *alertTimer;
     SKTabBarControllerDelegate_iPhone *tabBarDelegate;
     Boolean swipeInfoIsInView;
+    CGRect originalAlertFrame;
 }
 
 // Fired when an entity action request is fired.
@@ -50,7 +51,7 @@
 - (Boolean)eligableForAlertInfoDisplay:(NSString *)str;
 
 // Sets the alert info as visible or hidden
-- (void)toggleAlertInfo:(BOOL)show;
+- (void)toggleAlertInfo:(BOOL) show:(NSString *)alertInfoType;
 
 // Hides the alert info
 - (void)hideAlertInfo;

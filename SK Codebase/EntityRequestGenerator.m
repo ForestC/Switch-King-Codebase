@@ -20,9 +20,9 @@
     NSString *url;
     
     if([entity isKindOfClass:[SKDevice class]]) {
-        url = [NSString stringWithFormat:@"devices/%d/synchronize", entity.ID];
+        url = [NSString stringWithFormat:@"/devices/%d/synchronize", entity.ID];
     } else if([entity isKindOfClass:[SKDeviceGroup class]]) {
-        url = [NSString stringWithFormat:@"devicegroups/%d/synchronize", entity.ID];
+        url = [NSString stringWithFormat:@"/devicegroups/%d/synchronize", entity.ID];
     } else {
         NSLog(@"Invalid type for synchronization request.");
     }

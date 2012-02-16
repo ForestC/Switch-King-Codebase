@@ -29,6 +29,8 @@
 
 - (void)requestUpdateOfScenarios;
 
+- (void)requestUpdateOfLiveDaysLeft;
+
 - (void)requestUpdateOfAllEntities;
 
 - (void)updateAllEntities;
@@ -46,6 +48,8 @@
 - (void)updateScenarios;
 
 - (void)updateSystemSettingServerVersion;
+
+- (void)updateLiveDaysLeft;
 
 + (void)notifyNoConnection:(NSNotificationCenter *)notificationCenter;
 

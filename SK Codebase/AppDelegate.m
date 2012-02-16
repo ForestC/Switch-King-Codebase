@@ -47,6 +47,7 @@
     alertMessageViewController = [[UIViewController alloc] initWithNibName:@"AlertMessageView" 
                                                                  bundle:[NSBundle mainBundle]];
     
+    originalAlertFrame = alertMessageViewController.view.frame;
     
     swipeViewController = [[SwipeInfoViewController alloc] init];
     
@@ -60,6 +61,10 @@
     communicationMgr = [[CommunicationMgr alloc] init];
     // Request update of all entities...
     [communicationMgr requestUpdateOfAllEntities];
+    // Request update of Live days left
+    if([SettingsMgr needToDisplayDaysLeftForLive]) {
+        [communicationMgr requestUpdateOfLiveDaysLeft];
+    }
     
     return YES;
 }
@@ -120,6 +125,11 @@
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
     [self.communicationMgr requestUpdateOfAllEntities];
+    
+    // Request update of Live days left
+    if([SettingsMgr needToDisplayDaysLeftForLive]) {
+        [communicationMgr requestUpdateOfLiveDaysLeft];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -182,7 +192,29 @@
     [notificationCenter addObserver:self
                            selector:@selector(serverVersionUpdated)
                                name:NOTIFICATION_NAME__SERVER_VERSION_UPDATED
-                             object:nil]; 
+                             object:nil];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(liveDaysLeftUpdated:)
+                               name:NOTIFICATION_NAME__LIVE_DAYS_LEFT_UPDATED
+                             object:nil];
+
+}
+
+// Called when days left of live usage has been updated
+- (void)liveDaysLeftUpdated:(NSNotification *)daysLeftNotification {
+    NSString *localized = NSLocalizedStringFromTable(@"Your license for Switch King Live will expire in %@ day(s).", @"Texts", nil);
+    NSNumber *daysLeft = [daysLeftNotification.userInfo objectForKey:@"LiveDaysLeft"];
+    localized = [NSString stringWithFormat:localized, [daysLeft stringValue]];
+
+    NSDictionary *notificationData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   localized, ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY,
+                                   ALERT_INFO_TYPE__CHIME, ALERT_INFO_TYPE,
+                                   nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_NAME__ALERT_INFO_REQUESTED
+                                                        object:nil
+                                                      userInfo:notificationData];
 }
 
 // Called after server version has been updated
@@ -200,11 +232,14 @@
         NSDictionary *dict = [notification userInfo];
         // Get the request data
         NSString *alertData = [dict valueForKey:ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY];
+        // The alert info type
+        NSString *alertInfoType = [dict valueForKey:ALERT_INFO_TYPE];
         
         if(alertData != nil) {
             if([self eligableForAlertInfoDisplay:alertData]) {
                 [self setAlertInfo:alertData];
-                [self toggleAlertInfo:true];
+                [self toggleAlertInfo:true
+                                     :alertInfoType];
             }
         } else {
             NSLog(@"Empty alert.");
@@ -310,7 +345,7 @@
  *******************************************************************************/
 
 // Sets the alert info as visible or hidden
-- (void)toggleAlertInfo:(BOOL)show
+- (void)toggleAlertInfo:(BOOL) show:(NSString *)alertInfoType
 {
     // this method opens/closes the player options view (which sets repeat interval, repeat & delay on/off)    
     if (show == NO)
@@ -329,6 +364,14 @@
     {
         alertInfoInView = true;
         
+        AlertMessageView *v = (AlertMessageView *)(alertMessageViewController.view);
+        
+        if(![ALERT_INFO_TYPE__CHIME isEqualToString:alertInfoType]) {
+            v.infoImageView.image = [UIImage imageNamed:@"InfoWarning"];
+        } else {
+            v.infoImageView.image = [UIImage imageNamed:@"InfoChime"];
+        }
+        
         UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
         Boolean portrait = orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown;
         CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -343,12 +386,14 @@
             screenHeight = screenRect.size.width;
         }
         
-        CGRect alertFrame = alertMessageViewController.view.frame;
-        alertFrame.origin.x = screenWidth / 2 - (alertFrame.size.width/2);
+        CGRect alertFrame = originalAlertFrame;//alertMessageViewController.view.frame;
         
+        alertFrame.origin.x = screenWidth / 2 - (alertFrame.size.width/2);
         alertFrame.origin.y = screenHeight - 60 - alertFrame.size.height;
         
         alertMessageViewController.view.frame = alertFrame;
+        
+        [alertMessageViewController.view setNeedsLayout];
         
         [self.window.rootViewController.view addSubview:alertMessageViewController.view];
         
@@ -408,7 +453,8 @@
         alertTimer = nil;
     }
     
-    [self toggleAlertInfo:false];
+    [self toggleAlertInfo:false
+                         :nil];
 }
 
 @end

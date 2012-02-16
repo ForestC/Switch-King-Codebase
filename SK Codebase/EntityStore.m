@@ -350,6 +350,38 @@
     
 }
 
+- (void)daysLeftOfLiveUsageUpdated:(NSInteger)daysLeft {
+    NSDate *nextCheck = [NSDate date];
+    
+    if(daysLeft == DAYS_LEFT_NO_INFO) {
+        nextCheck = [nextCheck dateByAddingTimeInterval:(30*24*60*60)]; // 30 days        
+    } else {
+        if(daysLeft > 300)        
+            nextCheck = [nextCheck dateByAddingTimeInterval:(250*24*60*60)]; // 250 days
+        else if(daysLeft > 80)        
+            nextCheck = [nextCheck dateByAddingTimeInterval:(250*24*60*60)]; // 60 days
+        else if(daysLeft > 60)        
+            nextCheck = [nextCheck dateByAddingTimeInterval:(30*24*60*60)]; // 30 days
+        else if(daysLeft > 10)
+            nextCheck = [nextCheck dateByAddingTimeInterval:(5*24*60*60)]; // 5 days
+        else
+            nextCheck = [nextCheck dateByAddingTimeInterval:(2*24*60*60)]; // 2 days
+    }
+    
+    [SettingsMgr setNextDateWhenNeedToDisplayDaysLeftForLive:nextCheck];
+    
+    NSNumber *days = [NSNumber numberWithInt:daysLeft];
+    
+    NSDictionary* notificationData = [NSDictionary dictionaryWithObject:days
+                                                                 forKey:@"LiveDaysLeft"];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__LIVE_DAYS_LEFT_UPDATED
+                                      object:nil
+                                    userInfo:notificationData];
+}
+
+
 /*******************************************************************************
  Dirtification
  *******************************************************************************/

@@ -11,6 +11,7 @@
 @implementation AlertMessageView
 
 @synthesize infoTextView;
+@synthesize infoImageView;
 
 - (void)drawRect:(CGRect)rect;
 {   
