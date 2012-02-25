@@ -20,6 +20,7 @@
                               @"10800", @"targetPort",
                               @"YES", @"needServerVersionUpdate",
                               @"YES", @"reloadOnTS",
+                              @"YES", @"deviceListSwipeEnabled",
                               nil];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
@@ -184,6 +185,29 @@
     
     // set the value
     [defaults setBool:enableReloadOnTabSwitch forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Gets an indication whether swipe on device list is enabled or not
++ (Boolean)deviceListSwipeEnabled {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"deviceListSwipeEnabled";    
+    
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+    
+    return retrievedValue;
+}
+
+// Sets an indication whether swipe on device list is enabled or not
++ (void)setDeviceListSwipeEnabled:(Boolean) enabled {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"deviceListSwipeEnabled";
+    
+    // set the value
+    [defaults setBool:enabled forKey:key];
     
     // save it
     [defaults synchronize];

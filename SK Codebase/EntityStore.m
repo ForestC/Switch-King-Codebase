@@ -658,6 +658,6 @@
 
 // Gets the data source group by a specific id
 - (SKDataSourceGroup*)getDataSourceGroupById:(NSInteger)dataSourceGroupId {
-    
+    return nil;
 }
 @end

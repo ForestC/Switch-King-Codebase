@@ -59,7 +59,7 @@ static const short _base64DecTable[256] = {
     
     if ( do_now < lentext )
     {
-        char tmpbuf[3] = {0,0,0};
+        unsigned char tmpbuf[3] = {0,0,0};
         int left = lentext%3;
         for ( int i=0; i < left; i++ )
         {

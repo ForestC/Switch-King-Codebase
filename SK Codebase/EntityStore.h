@@ -97,9 +97,6 @@
 // Gets the device by a specific id
 - (SKDevice*)getDeviceById:(NSInteger)deviceId;
 
-// Gets the device group by a specific id
-- (SKDeviceGroup*)getDeviceGroupById:(NSInteger)deviceGroupId;
-
 // Gets the data source by a specific id
 - (SKDataSource*)getDataSourceById:(NSInteger)dataSourceId;
 

@@ -36,9 +36,6 @@
 // Gets the info text for a specific event
 + (NSString *)getEventInfoText:(SKEvent *)entity;
 
-// Parses a date string
-+ (NSDate *)parseRFC3339Date:(NSString *)dateString;
-
 // Parses a date string and flags the date as future or historic
 + (Boolean)isFutureDate:(NSString *)dateString;
 

@@ -16,7 +16,6 @@
 #import "TextHelper.h"
 #import "SettingsListViewController_iPhone.h"
 #import "ServerSettingsListViewController_iPhone.h"
-#import "Base64Encoding.h"
 #import "SKTabBarControllerDelegate_iPhone.h"
 #import "SKNavigationControllerDelegate_iPhone.h"
 #import "AlertMessageView.h"

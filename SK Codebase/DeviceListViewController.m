@@ -388,8 +388,22 @@
         if(
            [entity isKindOfClass:[SKDevice class]] ||
            [entity isKindOfClass:[SKDeviceGroup class]]) {
+            Boolean supportsDim;
+            
+            if([entity isKindOfClass:[SKDevice class]]) {
+                supportsDim = [XML_VALUE__TRUE isEqualToString:((SKDevice *)entity).SupportsAbsoluteDimLvl];
+            } else {
+                supportsDim = ((SKDeviceGroup *)entity).supportsAbsoluteDim;
+            }
+            
             // Create controller
-            DeviceDetailController_iPhone *detailController = [self.storyboard instantiateViewControllerWithIdentifier:@"DeviceDetails"];
+            DeviceDetailController_iPhone *detailController;
+            
+            if(!supportsDim)
+                detailController = [self.storyboard instantiateViewControllerWithIdentifier:@"RelayDeviceDetails"];
+            else
+                detailController = [self.storyboard instantiateViewControllerWithIdentifier:@"DimmableDeviceDetails"];
+            
             // Assign entity
             detailController.entity = entity;
             // Navigate

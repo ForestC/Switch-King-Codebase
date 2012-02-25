@@ -13,4 +13,7 @@
 
 @property (atomic, retain) NSMutableArray* devices;
 
+// Indicates whether at least one device in this group supports absolute dim
+- (Boolean)supportsAbsoluteDim;
+
 @end

@@ -24,7 +24,6 @@
 		5B04A51614DFC87000C8B178 /* EventList_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04A51214DFC87000C8B178 /* EventList_Off.png */; };
 		5B04A51714DFC87000C8B178 /* EventList_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04A51314DFC87000C8B178 /* EventList_On.png */; };
 		5B04A51814DFC87000C8B178 /* EventList_Scenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04A51414DFC87000C8B178 /* EventList_Scenario.png */; };
-		5B04A51C14DFD45100C8B178 /* Base64Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04A51B14DFD45000C8B178 /* Base64Encoding.m */; };
 		5B09208F14C07DA200BB9274 /* SettingsListViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B09208E14C07DA200BB9274 /* SettingsListViewController_iPhone.m */; };
 		5B09209714C090D100BB9274 /* UrlSettingStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B09209614C090D100BB9274 /* UrlSettingStdTableViewCell.m */; };
 		5B09209A14C091BD00BB9274 /* NumericSettingStdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B09209914C091BD00BB9274 /* NumericSettingStdTableViewCell.m */; };
@@ -178,8 +177,6 @@
 		5B04A51214DFC87000C8B178 /* EventList_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventList_Off.png; sourceTree = "<group>"; };
 		5B04A51314DFC87000C8B178 /* EventList_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventList_On.png; sourceTree = "<group>"; };
 		5B04A51414DFC87000C8B178 /* EventList_Scenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventList_Scenario.png; sourceTree = "<group>"; };
-		5B04A51A14DFD45000C8B178 /* Base64Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Encoding.h; sourceTree = "<group>"; };
-		5B04A51B14DFD45000C8B178 /* Base64Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Encoding.m; sourceTree = "<group>"; };
 		5B09208D14C07DA200BB9274 /* SettingsListViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsListViewController_iPhone.h; sourceTree = "<group>"; };
 		5B09208E14C07DA200BB9274 /* SettingsListViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsListViewController_iPhone.m; sourceTree = "<group>"; };
 		5B09209514C090D100BB9274 /* UrlSettingStdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlSettingStdTableViewCell.h; sourceTree = "<group>"; };
@@ -443,8 +440,6 @@
 				5BFC370814A31C600062F6E7 /* CommunicationMgr.m */,
 				5BFC370A14A324F30062F6E7 /* SettingsMgr.h */,
 				5BFC370B14A324F30062F6E7 /* SettingsMgr.m */,
-				5B04A51A14DFD45000C8B178 /* Base64Encoding.h */,
-				5B04A51B14DFD45000C8B178 /* Base64Encoding.m */,
 				5B639CAC14964A99002D7F8F /* ViewControllers */,
 				5B639CB014964E2A002D7F8F /* DeviceListViewController.h */,
 				5B639CB114964E2A002D7F8F /* DeviceListViewController.m */,
@@ -982,7 +977,6 @@
 				5B64DF7714D9D47B00D36647 /* EventListViewController_iPhone.m in Sources */,
 				5B64DF7A14D9D6D800D36647 /* SKEventTableViewCell.m in Sources */,
 				5B64DF7D14D9D6FA00D36647 /* SKEventBaseStdTableViewCell.m in Sources */,
-				5B04A51C14DFD45100C8B178 /* Base64Encoding.m in Sources */,
 				5B5D412E14E004DC00759648 /* SwipeInfoViewController.m in Sources */,
 				5B3E30BD14E02A9000AA6517 /* SKTabBarControllerDelegate_iPhone.m in Sources */,
 				5BB6255014E2C2EC0006E168 /* SquareView.m in Sources */,
@@ -1049,6 +1043,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1064,6 +1059,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1075,7 +1072,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1122,7 +1120,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Videfors (NL4RMD9423)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Martin Videfors (NL4RMD9423)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1131,7 +1130,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=*]" = "";
+				PROVISIONING_PROFILE = "5C6D4C2A-1EDE-47DF-8782-68BA2FFA73F3";
+				"PROVISIONING_PROFILE[sdk=*]" = "5C6D4C2A-1EDE-47DF-8782-68BA2FFA73F3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1147,7 +1147,6 @@
 				INFOPLIST_FILE = "SK Codebase/SK Codebase-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=*]" = "E4AACD47-D890-434F-AC96-A2FDB74DE60B";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

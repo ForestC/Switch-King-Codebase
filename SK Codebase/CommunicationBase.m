@@ -12,7 +12,6 @@
 #import "DataReceivedDelegate.h"
 #import "SettingsMgr.h"
 #import "AppDelegate.h"
-#import "Base64Encoding.h"
 #import "Base64Enc.h"
 #import "Constants.h"
 

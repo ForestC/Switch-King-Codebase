@@ -9,31 +9,36 @@
 #import <UIKit/UIKit.h>
 #import "SKEntity.h"
 
-@interface DeviceDetailController_iPhone : UITableViewController
+@interface DeviceDetailController_iPhone : UITableViewController {
+    // Holds text for dim levels
+    NSArray *dimLevelTexts;
+}
 
 @property (atomic, retain) SKEntity *entity;
 
 // Holds the name of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityNameLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityNameLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityInfoLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityInfoLabel;
 // Holds the name of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityLastEventLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityLastEventLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityNextEventLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityNextEventLabel;
 // Holds the name of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityTotalPowerConsumptionLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityTotalPowerConsumptionLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityCurrentPowerConsumptionLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityCurrentPowerConsumptionLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UIImageView *entityIconImageView;
+@property(nonatomic,weak) IBOutlet UIImageView *entityIconImageView;
 
 
-@property (atomic, retain) IBOutlet UIButton *synhronizeButton;
-@property (atomic, retain) IBOutlet UIButton *learnButton;
-@property (atomic, retain) IBOutlet UIButton *cancelSemiAutoButton;
-@property (atomic, retain) IBOutlet UIButton *onButton;
-@property (atomic, retain) IBOutlet UIButton *offButton;
+@property (nonatomic, weak) IBOutlet UIButton *synhronizeButton;
+@property (nonatomic, weak) IBOutlet UIButton *learnButton;
+@property (nonatomic, weak) IBOutlet UIButton *cancelSemiAutoButton;
+@property (nonatomic, weak) IBOutlet UIButton *onButton;
+@property (nonatomic, weak) IBOutlet UIButton *offButton;
+@property (nonatomic, weak) IBOutlet UILabel *dimLevelLabel;
+@property (nonatomic, weak) IBOutlet UISlider *dimLevelSlider;
 
 
 - (IBAction)synchronizeButtonClick;
@@ -41,11 +46,20 @@
 - (IBAction)learnButtonClick;
 - (IBAction)onButtonClick;
 - (IBAction)offButtonClick;
+- (IBAction)dimSliderValueChanged;
+- (IBAction)dimSliderTouchUpInside;
+- (IBAction)dimSliderDrag;
 
 // Sets data for the view
 - (void)setViewData;
 
 // Handles action
 - (void)handleButtonClick:(NSInteger)actionId;
+
+// Handles slider action
+- (void)handleSliderChange;
+
+// Initializes dim level texts to display in slider
+- (void)initDimLevelTexts;
 
 @end

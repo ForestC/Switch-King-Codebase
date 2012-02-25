@@ -92,6 +92,12 @@
 // Sets an indication whether to reload views on tab switch or not
 + (void)setEnableReloadOnTabSwitch:(Boolean) enableReloadOnTabSwitch;
 
+// Gets an indication whether swipe on device list is enabled or not
++ (Boolean)deviceListSwipeEnabled;
+
+// Sets an indication whether swipe on device list is enabled or not
++ (void)setDeviceListSwipeEnabled:(Boolean) enabled;
+
 // Gets the refresh interval
 + (NSTimeInterval)getRefreshInterval;
 

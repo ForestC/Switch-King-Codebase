@@ -174,15 +174,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Single section
-    /*if(![SettingsMgr supportsHistoricEvents])
-        return 1;
-    
-    if(historicEvents.count > 0 && futureEvents.count > 0)
-        return 2;
-    else        
-        return 1;
-     */ return 1;
+    return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -211,21 +203,6 @@
     } else {
         return self.futureEvents.count;
     }
-    /*
-    
-    if([self.eventDataSegmentedControl selectedSegmentIndex == 0
-    
-    NSInteger type = [self getSectionContentType:section];
-    
-    switch (type) {
-        case TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS:
-            return historicEvents.count;
-            break;
-            
-        default:
-            return futureEvents.count;
-            break;
-    }*/
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -244,16 +221,17 @@
     }*/
     
     NSInteger idx = [self.eventDataSegmentedControl selectedSegmentIndex];
+    NSInteger row = indexPath.row;
     
     if(idx == 0) {
-        if(indexPath.row > historicEvents.count - 1)
-            entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row - historicEvents.count];
+        if(row > historicEvents.count - 1)
+            entity = (SKEntity *)[futureEvents objectAtIndex:row - historicEvents.count];
         else
-            entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row];
+            entity = (SKEntity *)[historicEvents objectAtIndex:row];
     } else if(idx == 1) {
-        entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row];
+        entity = (SKEntity *)[futureEvents objectAtIndex:row];
     } else {
-        NSInteger idx = (historicEvents.count - indexPath.row - 1);
+        NSInteger idx = (historicEvents.count - row - 1);
         entity = (SKEntity *)[historicEvents objectAtIndex:idx];
     }
     
@@ -283,63 +261,6 @@
         }
         //dataSourceCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDataSource: dataSource:@"DeviceList_"]];
     }
-    
-    //FIXA HÄR
-    
-//    if([cell isKindOfClass:[SKDataSourceStdTableViewCell class]]) {
-//        SKDataSourceStdTableViewCell *dataSourceCell = (SKDataSourceStdTableViewCell *)cell;
-//        SKDataSource *dataSource = (SKDataSource *)cellEntity;
-//        
-//        [dataSourceCell.entityNameLabel setText:dataSource.Name];
-//        [dataSourceCell.entityInfoLabel setText:[TextHelper getDataSourceValueText:dataSource]];
-//        dataSourceCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDataSource: dataSource:@"DataSourceList_"]];
-//    } else if([cell isKindOfClass:[SKDataSourceGroupStdTableViewCell class]]) {
-//        SKDataSourceGroupStdTableViewCell *dataSourceGroupCell = (SKDataSourceGroupStdTableViewCell *)cell;
-//        SKDataSourceGroup *dataSourceGroup = (SKDataSourceGroup *)cellEntity;
-//        
-//        if(dataSourceGroup.ID == -1) {
-//            [dataSourceGroupCell.entityNameLabel setText:NSLocalizedStringFromTable(@"(none)", @"Texts", nil)];
-//        } else {
-//            [dataSourceGroupCell.entityNameLabel setText:dataSourceGroup.Name];
-//        }
-//        dataSourceGroupCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDataSourceGroup: dataSourceGroup:@"DataSourceList_"]];
-//        [dataSourceGroupCell.entityInfoLabel setText:[TextHelper getDataSourceGroupInfoText:dataSourceGroup]];
-//    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    
-//    if(cell.tag > -1) {
-//        SKEntity *entity = (SKEntity *)[dataSources objectAtIndex:cell.tag];
-//        
-//        if([entity isKindOfClass:[SKDataSource class]]) {
-//            //            dataSourceDetailController_iPhone *detailController = [[dataSourceDetailController_iPhone alloc] initWithNibName:nil bundle:nil];
-//            DataSourceDetailController_iPhone *detailController = [self.storyboard instantiateViewControllerWithIdentifier:@"DataSourceDetails"];
-//            
-//            // Assign data source
-//            [detailController setDataSource:(SKDataSource *)entity];
-//            
-//            [self.navigationController pushViewController:detailController animated:true];
-//            
-//            //            SKDataSource *dataSource = (SKDataSource *)entity;
-//            //            
-//            //            EntityActionRequest *r = [EntityActionRequest createBydataSourceAction:
-//            //                                                                       dataSource :
-//            //                                                           ACTION_ID__TURN_ON :
-//            //                                                                           20 :
-//            //                                                                            3];
-//            //            
-//            //            
-//            //            // Get the app delegte
-//            //            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//            //
-//            //            [appDelegate entityActionRequestFired:nil :r];
-//            
-//        } else if([entity isKindOfClass:[SKDataSourceGroup class]]) {
-//            //SKDataSourceGroup *dataSourceGroup = (SKDataSourceGroup *)entity;            
-//        } 
-//    }
 }
 
 // Gets the content type for a specific section
