@@ -34,6 +34,6 @@
 - (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)cellEntity;
 
 // Gets the content type for a specific section
-- (NSInteger)getSectionContentType:(NSInteger)section;
+- (NSInteger)getDisplayedContentType;
 
 @end

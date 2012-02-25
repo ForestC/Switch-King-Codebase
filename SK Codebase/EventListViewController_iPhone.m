@@ -177,28 +177,11 @@
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return nil;
-    
-    NSInteger type = [self getSectionContentType:section];
-    
-    switch (type) {
-        case TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS:
-            return NSLocalizedStringFromTable(@"Historic", @"Texts", nil);
-            break;
-            
-        default:
-            return NSLocalizedStringFromTable(@"Future", @"Texts", nil);
-            break;
-    }
-}  
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger idx = [self.eventDataSegmentedControl selectedSegmentIndex];
+    NSInteger contentType = [self getDisplayedContentType];
     
-    if(idx == 0) {
-        return self.historicEvents.count + self.futureEvents.count;
-    } else if(idx == 2) {
+    if(contentType == TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS) {
         return self.historicEvents.count;
     } else {
         return self.futureEvents.count;
@@ -207,32 +190,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SKEntity *entity;
-/*
-    NSInteger type = [self getSectionContentType:indexPath.section];
 
-    switch (type) {
-        case TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS:
-            entity = (SKEntity *)[historicEvents objectAtIndex:indexPath.row];
-            break;
-            
-        default:
-            entity = (SKEntity *)[futureEvents objectAtIndex:indexPath.row];
-            break;
-    }*/
-    
-    NSInteger idx = [self.eventDataSegmentedControl selectedSegmentIndex];
     NSInteger row = indexPath.row;
+    NSInteger contentType = [self getDisplayedContentType];
     
-    if(idx == 0) {
-        if(row > historicEvents.count - 1)
-            entity = (SKEntity *)[futureEvents objectAtIndex:row - historicEvents.count];
-        else
-            entity = (SKEntity *)[historicEvents objectAtIndex:row];
-    } else if(idx == 1) {
-        entity = (SKEntity *)[futureEvents objectAtIndex:row];
+    if(contentType == TABLE_VIEW_SECTION_TYPE__FUTURE_EVENTS) {
+        entity = (SKEntity *)[futureEvents objectAtIndex:row];    
     } else {
-        NSInteger idx = (historicEvents.count - row - 1);
-        entity = (SKEntity *)[historicEvents objectAtIndex:idx];
+        //entity = (SKEntity *)[historicEvents objectAtIndex:row];    
+        entity = (SKEntity *)[historicEvents objectAtIndex:(historicEvents.count - row - 1)];    
     }
     
     // Dequeue or create
@@ -264,34 +230,24 @@
 }
 
 // Gets the content type for a specific section
-- (NSInteger)getSectionContentType:(NSInteger)section {
-    if(section == 1)
+- (NSInteger)getDisplayedContentType {
+    if(self.eventDataSegmentedControl.subviews.count == 1) {
         return TABLE_VIEW_SECTION_TYPE__FUTURE_EVENTS;
-    else if(section == 0) {
-        if(historicEvents.count == 0)
-            return TABLE_VIEW_SECTION_TYPE__FUTURE_EVENTS;
-        else
-            return TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS;
+    } else if(self.eventDataSegmentedControl.selectedSegmentIndex == 0) {
+        return TABLE_VIEW_SECTION_TYPE__FUTURE_EVENTS;
+    } else {
+        return TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS;
     }
-    
-    return TABLE_VIEW_SECTION_TYPE__HISTORIC_EVENTS;
 }
 
 #pragma mark - View lifecycle
-
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView
- {
- }
- */
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if(![SettingsMgr supportsHistoricEvents] && self.eventDataSegmentedControl.subviews.count == 3) {
-        [self.eventDataSegmentedControl removeSegmentAtIndex:2 animated:false];
+    if(![SettingsMgr supportsHistoricEvents] && self.eventDataSegmentedControl.subviews.count == 2) {
+        [self.eventDataSegmentedControl removeSegmentAtIndex:1 animated:false];
     }
     
     [self.tableView reloadData];
