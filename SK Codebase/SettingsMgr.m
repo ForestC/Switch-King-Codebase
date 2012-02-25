@@ -8,6 +8,7 @@
 
 #import "SettingsMgr.h"
 #import "AuthenticationDataContainer.h"
+#import "Constants.h"
 
 @implementation SettingsMgr
 
@@ -20,7 +21,7 @@
                               @"10800", @"targetPort",
                               @"YES", @"needServerVersionUpdate",
                               @"YES", @"reloadOnTS",
-                              @"YES", @"deviceListSwipeEnabled",
+                              @"1", @"qaMode",
                               nil];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
@@ -192,25 +193,38 @@
 
 // Gets an indication whether swipe on device list is enabled or not
 + (Boolean)deviceListSwipeEnabled {
+    return [SettingsMgr quickActionMode] == QUICK_ACTION_MODE__SWIPE;
+}
+
+
+// Gets an indication whether swipe on device list is enabled or not
++ (Boolean)deviceListToggleEnabled {
+    NSInteger mode = [SettingsMgr quickActionMode];
+    
+    return mode == QUICK_ACTION_MODE__TOGGLE || mode == QUICK_ACTION_MODE__SWIPE;
+}
+
+// Gets the quick action mode
++ (NSInteger)quickActionMode {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *key = @"deviceListSwipeEnabled";    
+    NSString *key = @"qaMode";    
     
     // Get the result
-    Boolean retrievedValue = [defaults boolForKey:key];
+    NSInteger retrievedValue = [defaults integerForKey:key];
     
     return retrievedValue;
 }
 
-// Sets an indication whether swipe on device list is enabled or not
-+ (void)setDeviceListSwipeEnabled:(Boolean) enabled {
+// Gets the quick action mode
++ (void)setQuickActionMode:(NSInteger)mode {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *key = @"deviceListSwipeEnabled";
+    NSString *key = @"qaMode";
     
     // set the value
-    [defaults setBool:enabled forKey:key];
+    [defaults setInteger:mode forKey:key];
     
     // save it
-    [defaults synchronize];
+    [defaults synchronize];    
 }
 
 // Gets the address to connect to

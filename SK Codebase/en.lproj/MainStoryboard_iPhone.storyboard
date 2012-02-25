@@ -210,6 +210,21 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4NC-M4-A3r">
+                                            <rect key="frame" x="11" y="4" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                            <state key="normal">
+                                                <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="toggleButtonClick" destination="xOe-x0-oCa" eventType="touchUpInside" id="8Dt-zr-pel"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -280,6 +295,21 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OTY-PG-OjG">
+                                            <rect key="frame" x="11" y="4" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="toggleButtonClick" destination="G0W-pa-S9u" eventType="touchUpInside" id="5Zn-vZ-DTw"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -345,6 +375,87 @@
             </objects>
             <point key="canvasLocation" x="1304" y="-56"/>
         </scene>
+        <scene sceneID="Yfq-GC-wdU">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="47o-n3-I6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="2t3-n1-ywl" customClass="QuickActionsModeViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Akt-e1-mJb">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection footerTitle="Enables or disables &quot;quick actions&quot; in the device list." id="sQe-m5-OjO">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="85G-kG-dQ3" style="IBUITableViewCellStyleDefault" id="uYl-bE-jcJ">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Quick actions disabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="85G-kG-dQ3">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell tag="2" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="5Yg-JT-D6P" style="IBUITableViewCellStyleDefault" id="AFD-At-9VK">
+                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Touch device icon to toggle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Yg-JT-D6P">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="4eE-yh-VI0" style="IBUITableViewCellStyleDefault" id="BB1-sg-feJ">
+                                        <rect key="frame" x="0.0" y="99" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Touch device icon or swipe row" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4eE-yh-VI0">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="2t3-n1-ywl" id="x9r-H8-JPL"/>
+                            <outlet property="delegate" destination="2t3-n1-ywl" id="S7a-9u-5c0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Device list action mode" id="6a6-UJ-oYt"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1953" y="-721"/>
+        </scene>
         <scene sceneID="mtj-qv-9Am">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OhS-0D-8bB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -354,7 +465,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Version x" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="WMj-19-BdG">
-                            <rect key="frame" x="0.0" y="510" width="320" height="30"/>
+                            <rect key="frame" x="0.0" y="554" width="320" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -459,10 +570,39 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Events" id="zqa-fz-b6N">
+                            <tableViewSection headerTitle="Actions and events" id="zqa-fz-b6N">
                                 <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SZ6-6h-yqP">
+                                        <rect key="frame" x="0.0" y="274" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Device list action mode" lineBreakMode="tailTruncation" minimumFontSize="10" id="qUO-jo-dIu">
+                                                    <rect key="frame" x="10" y="11" width="203" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="2a7-U1-yur">
+                                                    <rect key="frame" x="221" y="11" width="49" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="2t3-n1-ywl" kind="push" id="3VJ-Mt-rjQ"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wCg-S1-mug">
-                                        <rect key="frame" x="0.0" y="274" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="319" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -495,14 +635,14 @@
                             <tableViewSection headerTitle="General" id="jFU-dj-9Hu">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Rhe-XT-maK">
-                                        <rect key="frame" x="0.0" y="366" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="410" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Group devices" lineBreakMode="tailTruncation" minimumFontSize="10" id="Jdu-MM-59x">
-                                                    <rect key="frame" x="20" y="8" width="173" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="173" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -518,14 +658,14 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="epw-tn-Ifx">
-                                        <rect key="frame" x="0.0" y="411" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="455" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Refresh on tab switch" lineBreakMode="tailTruncation" minimumFontSize="10" id="639-Sl-6wQ">
-                                                    <rect key="frame" x="20" y="8" width="173" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="173" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -541,7 +681,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ipa-rv-iqx">
-                                        <rect key="frame" x="0.0" y="455" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="499" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -573,6 +713,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="Rhw-ph-b46"/>
                     <connections>
+                        <outlet property="deviceListActionsDetailLabel" destination="2a7-U1-yur" id="v68-g5-PxO"/>
                         <outlet property="groupDevicesDetailSwitch" destination="mcX-RS-chA" id="aHg-3T-82n"/>
                         <outlet property="groupDevicesHeaderLabel" destination="Jdu-MM-59x" id="foz-SF-4cc"/>
                         <outlet property="maxUpcomingEventsDetailLabel" destination="KWg-UD-TBb" id="M4V-Xx-AqO"/>
@@ -591,7 +732,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1922" y="-154"/>
+            <point key="canvasLocation" x="1920" y="-151"/>
         </scene>
         <scene sceneID="ZwA-vO-Roh">
             <objects>
@@ -1837,6 +1978,182 @@
         <image name="Tab_Scenario.png" width="48" height="32"/>
         <image name="Toolbar_Configuration.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="DataSourceDetailController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataSourceDetailController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNextUpdateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTimestampLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityValueLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DataSourceListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataSourceListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="DeviceDetailController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceDetailController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelSemiAutoButtonClick"/>
+                <relationship kind="action" name="dimSliderDrag"/>
+                <relationship kind="action" name="dimSliderTouchUpInside"/>
+                <relationship kind="action" name="dimSliderValueChanged"/>
+                <relationship kind="action" name="learnButtonClick"/>
+                <relationship kind="action" name="offButtonClick"/>
+                <relationship kind="action" name="onButtonClick"/>
+                <relationship kind="action" name="synchronizeButtonClick"/>
+                <relationship kind="outlet" name="cancelSemiAutoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dimLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dimLevelSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="entityCurrentPowerConsumptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityLastEventLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNextEventLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTotalPowerConsumptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="learnButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="offButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="onButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="synhronizeButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="DeviceListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="EventListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="eventDataSegmentedControlClick"/>
+                <relationship kind="outlet" name="eventDataSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MaxUpcomingEventsListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MaxUpcomingEventsListViewController.h"/>
+        </class>
+        <class className="NumericSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NumericSettingStdTableViewCell.h"/>
+        </class>
+        <class className="PasswordSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PasswordSettingStdTableViewCell.h"/>
+        </class>
+        <class className="QuickActionsModeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuickActionsModeViewController.h"/>
+        </class>
+        <class className="RefreshAfterCommandListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RefreshAfterCommandListViewController.h"/>
+        </class>
+        <class className="RefreshIntervalListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RefreshIntervalListViewController.h"/>
+        </class>
+        <class className="SKDataSourceBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDataSourceBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SKDataSourceStdTableViewCell" superclassName="SKDataSourceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDataSourceStdTableViewCell.h"/>
+        </class>
+        <class className="SKDeviceBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleButtonClick"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityStateToggleButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SKDeviceGroupStdTableViewCell" superclassName="SKDeviceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceGroupStdTableViewCell.h"/>
+        </class>
+        <class className="SKDeviceStdTableViewCell" superclassName="SKDeviceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceStdTableViewCell.h"/>
+        </class>
+        <class className="SKEventBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKEventBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityActionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTimestampLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SKEventTableViewCell" superclassName="SKEventBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKEventTableViewCell.h"/>
+        </class>
+        <class className="SKScenarioStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKScenarioStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ScenarioListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScenarioListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ServerSettingsListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ServerSettingsListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonClick:"/>
+            </relationships>
+        </class>
+        <class className="SettingsListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="deviceListActionsDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="groupDevicesDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="groupDevicesHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="maxUpcomingEventsDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="maxUpcomingEventsHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshAfterCommandDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshAfterCommandHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshIntervalDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshIntervalHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="reloadOnTabSwitchDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="reloadOnTabSwitchHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="serverAddressDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="serverAddressHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="showLearnButtonDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showLearnButtonHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SwitchSettingStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SwitchSettingStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="settingHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="TextSettingStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TextSettingStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="settingHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="UrlSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UrlSettingStdTableViewCell.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

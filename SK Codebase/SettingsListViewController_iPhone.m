@@ -28,6 +28,7 @@
 @synthesize showLearnButtonHeaderLabel;
 @synthesize showLearnButtonDetailSwitch;
 @synthesize versionLabel;
+@synthesize deviceListActionsDetailLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,6 +76,29 @@
     
     // Max upcoming events
     [self.maxUpcomingEventsDetailLabel setText:[NSString stringWithFormat:@"%i", [SettingsMgr getMaxUpcomingEvents]]];
+
+    NSInteger quickActionMode = [SettingsMgr quickActionMode];
+    
+    switch (quickActionMode) {
+        case QUICK_ACTION_MODE__DISABLED:
+            [self.deviceListActionsDetailLabel setText:(NSLocalizedStringFromTable(@"Disabled", @"Text", nil))];
+            break;
+            
+        case QUICK_ACTION_MODE__SWIPE:
+            [self.deviceListActionsDetailLabel setText:(NSLocalizedStringFromTable(@"Swipe", @"Text", nil))];
+            break;
+            
+        case QUICK_ACTION_MODE__TOGGLE:
+            [self.deviceListActionsDetailLabel setText:(NSLocalizedStringFromTable(@"Toggle", @"Text", nil))];
+            break;
+            
+        default:
+            [self.deviceListActionsDetailLabel setText:(NSLocalizedStringFromTable(@"Disabled", @"Text", nil))];
+            break;
+    }
+    // Max upcoming events
+    [self.maxUpcomingEventsDetailLabel setText:[NSString stringWithFormat:@"%i", [SettingsMgr getMaxUpcomingEvents]]];
+
     
     // Group devices
     [self.groupDevicesDetailSwitch setOn:[SettingsMgr groupDevices]];
@@ -127,7 +151,6 @@
     [self.showLearnButtonDetailSwitch addTarget:self 
                                            action:@selector(switchTouched:)
                                  forControlEvents:UIControlEventValueChanged];
-    
 }
 
 

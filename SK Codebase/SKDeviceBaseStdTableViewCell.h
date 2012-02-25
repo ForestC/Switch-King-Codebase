@@ -20,14 +20,19 @@
     Boolean swipeRequestsRestart;
     Boolean swipeLayerVisible;
     Boolean currentlyInCancelArea;
+    Boolean swipeEnabled;
 }
 
+// Is swipe enabled or not
+@property(nonatomic,assign) Boolean swipeEnabled;
 // Holds the name of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityNameLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityNameLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityInfoLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityInfoLabel;
 // Holds the entity icon
-@property(nonatomic,strong) IBOutlet UIImageView *entityIconImageView;
+@property(nonatomic,weak) IBOutlet UIImageView *entityIconImageView;
+// Holds a button for detecting toggling of state
+@property(nonatomic,weak) IBOutlet UIButton *entityStateToggleButton;
 // Holds the parent table view controller
 @property(nonatomic,strong) UITableViewController *tableViewController;
 // Holds the entity stored in the cell
@@ -44,5 +49,7 @@
 // Indicates whether the entity supports absolute dim
 - (Boolean)supportsAbsoluteDim;
 
+
+- (IBAction)toggleButtonClick;
 
 @end

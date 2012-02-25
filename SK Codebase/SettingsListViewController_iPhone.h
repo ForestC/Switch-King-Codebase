@@ -40,6 +40,10 @@
 
 @property(nonatomic,weak) IBOutlet UISwitch *reloadOnTabSwitchDetailSwitch;
 
+// Holds the info of the entity
+@property(nonatomic,weak) IBOutlet UILabel *deviceListActionsDetailLabel;
+
+
 @property(nonatomic,weak) IBOutlet UILabel *versionLabel;
 
 // Sets view data

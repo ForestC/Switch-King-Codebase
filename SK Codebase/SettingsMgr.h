@@ -95,8 +95,14 @@
 // Gets an indication whether swipe on device list is enabled or not
 + (Boolean)deviceListSwipeEnabled;
 
-// Sets an indication whether swipe on device list is enabled or not
-+ (void)setDeviceListSwipeEnabled:(Boolean) enabled;
+// Gets an indication whether swipe on device list is enabled or not
++ (Boolean)deviceListToggleEnabled;
+
+// Gets the quick action mode
++ (NSInteger)quickActionMode;
+
+// Gets the quick action mode
++ (void)setQuickActionMode:(NSInteger)mode;
 
 // Gets the refresh interval
 + (NSTimeInterval)getRefreshInterval;

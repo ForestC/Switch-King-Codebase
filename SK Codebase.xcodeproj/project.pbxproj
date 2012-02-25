@@ -130,6 +130,7 @@
 		5BB6257014E3027D0006E168 /* SwipeDimOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6256314E3027D0006E168 /* SwipeDimOff.png */; };
 		5BB6257314E309170006E168 /* SwipeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6257114E309160006E168 /* SwipeOn.png */; };
 		5BB6257414E309170006E168 /* SwipeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6257214E309160006E168 /* SwipeOff.png */; };
+		5BC8BD3E14F8E23500A0AB55 /* QuickActionsModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8BD3D14F8E23500A0AB55 /* QuickActionsModeViewController.m */; };
 		5BCA31BD14E86D3600052F61 /* Tab_Scenario@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA31BB14E86D3600052F61 /* Tab_Scenario@2x.png */; };
 		5BCA31BE14E86D3600052F61 /* Tab_Scenario.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */; };
 		5BCA31C114E9173D00052F61 /* SKGroupableEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA31C014E9173D00052F61 /* SKGroupableEntity.m */; };
@@ -339,6 +340,8 @@
 		5BB6256314E3027D0006E168 /* SwipeDimOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeDimOff.png; sourceTree = "<group>"; };
 		5BB6257114E309160006E168 /* SwipeOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeOn.png; sourceTree = "<group>"; };
 		5BB6257214E309160006E168 /* SwipeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeOff.png; sourceTree = "<group>"; };
+		5BC8BD3C14F8E23500A0AB55 /* QuickActionsModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickActionsModeViewController.h; sourceTree = "<group>"; };
+		5BC8BD3D14F8E23500A0AB55 /* QuickActionsModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickActionsModeViewController.m; sourceTree = "<group>"; };
 		5BCA31BB14E86D3600052F61 /* Tab_Scenario@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Scenario@2x.png"; sourceTree = "<group>"; };
 		5BCA31BC14E86D3600052F61 /* Tab_Scenario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Scenario.png; sourceTree = "<group>"; };
 		5BCA31BF14E9173D00052F61 /* SKGroupableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKGroupableEntity.h; sourceTree = "<group>"; };
@@ -712,6 +715,8 @@
 		5B639CAC14964A99002D7F8F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5BC8BD3C14F8E23500A0AB55 /* QuickActionsModeViewController.h */,
+				5BC8BD3D14F8E23500A0AB55 /* QuickActionsModeViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -995,6 +1000,7 @@
 				5BEC819E14E99F31006BA682 /* Base64Enc.m in Sources */,
 				5B71ACE414EAFA1F009352DD /* XMLSKLiveDaysLeftParser.m in Sources */,
 				5B71ACE714EAFCB4009352DD /* SKLiveDaysLeftReceiver.m in Sources */,
+				5BC8BD3E14F8E23500A0AB55 /* QuickActionsModeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,6 +52,10 @@
 
 #define DAYS_LEFT_NO_INFO 9876
 
+#define QUICK_ACTION_MODE__DISABLED 0
+#define QUICK_ACTION_MODE__SWIPE 1
+#define QUICK_ACTION_MODE__TOGGLE 2
+
 /*******************************************************************************
  Data source status values
  *******************************************************************************/

@@ -11,6 +11,7 @@
 #import "SKDeviceBaseStdTableViewCell.h"
 #import "SKDevice.h"
 #import "SKDeviceGroup.h"
+#import "SettingsMgr.h"
 
 @implementation SKDeviceBaseStdTableViewCell
 
@@ -24,6 +25,10 @@
 @synthesize tableViewController;
 // Holds the entity stored in the cell
 @synthesize entity;
+// Holds swipe enabled or not
+@synthesize swipeEnabled;
+// Holds a button for toggling state
+@synthesize entityStateToggleButton;
 
 /*******************************************************************************
  Init methods
@@ -90,6 +95,10 @@
 
 // Called when a pan gesture is detected
 - (void)panGesture:(UIPanGestureRecognizer *)sender {
+    
+    if(![self swipeEnabled])
+        return;
+    
 /*    if(
        [REUSE_IDENTIFIER__DEVICE_CELL_STD_DIRTY isEqualToString:self.reuseIdentifier] ||
        [REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY isEqualToString:self.reuseIdentifier]) {
@@ -270,6 +279,58 @@
 /*******************************************************************************
  Actions
  *******************************************************************************/
+
+
+- (IBAction)toggleButtonClick {
+    if([SettingsMgr deviceListToggleEnabled]) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if([self.entity isKindOfClass:[SKDeviceGroup class]]) {
+            SKDeviceGroup *group = (SKDeviceGroup*)entity;
+            
+            Boolean allOn = true;
+            
+            for(int i=0;i<group.devices.count;i++) {
+                SKDevice *d = (SKDevice *)[group.devices objectAtIndex:i];
+                
+                if(d.CurrentStateID != DEVICE_STATE_ID__ON)
+                    allOn = false;
+            }
+                        
+            EntityActionRequest *actionRequest = [EntityActionRequest alloc];
+            
+            actionRequest.entity = group;
+            actionRequest.reqActionDelay = 0;
+            
+            if(allOn) {
+                actionRequest.dimLevel = 0;
+                actionRequest.actionId = ACTION_ID__TURN_OFF;                
+            } else {
+                actionRequest.dimLevel = 100;
+                actionRequest.actionId = ACTION_ID__TURN_ON;                
+            }
+            
+            [appDelegate entityActionRequestFired:nil :actionRequest];            
+        } else {
+            EntityActionRequest *actionRequest = [EntityActionRequest alloc];
+            SKDevice *device = (SKDevice*)entity;
+            
+            actionRequest.entity = entity;
+            actionRequest.reqActionDelay = 0;
+            
+            if(device.CurrentStateID == DEVICE_STATE_ID__ON) {
+                actionRequest.dimLevel = 0;
+                actionRequest.actionId = ACTION_ID__TURN_OFF;                
+            } else {
+                actionRequest.dimLevel = 100;
+                actionRequest.actionId = ACTION_ID__TURN_ON;                
+            }
+            
+            [appDelegate entityActionRequestFired:nil :actionRequest];            
+        }
+    }
+}
+
 
 // Performs the requested action
 - (void)performRequestedAction {

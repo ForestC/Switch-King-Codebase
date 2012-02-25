@@ -249,11 +249,22 @@
             cell = [[SKDeviceStdTableViewCell alloc] initWithFrame:CGRectZero];
         }
         
-        ((SKDeviceStdTableViewCell *)cell).tableViewController = self;
-        ((SKDeviceStdTableViewCell *)cell).entity = cellEntity;
+        SKDeviceStdTableViewCell *typedCell =         ((SKDeviceStdTableViewCell *)cell);
+        
+        typedCell.tableViewController = self;
+        typedCell.entity = cellEntity;
 
         // Reset Swipe data
-        [((SKDeviceStdTableViewCell *)cell) setSwipeLayerHidden:true];
+        [typedCell setSwipeLayerHidden:true];
+        // Enable/disable swipe
+        [typedCell setSwipeEnabled:[SettingsMgr deviceListSwipeEnabled]];
+        
+        if([SettingsMgr deviceListToggleEnabled]) {
+            [typedCell.entityStateToggleButton setEnabled:true]; 
+        } else {
+            [typedCell.entityStateToggleButton setEnabled:false]; 
+        }
+
     } else if([cellEntity isKindOfClass:[SKDeviceGroup class]]) {
         if([entityStore deviceGroupIsDirty:cellEntity.ID]) {
             cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__DEVICE_GROUP_CELL_STD_DIRTY];
@@ -270,6 +281,14 @@
         
         // Reset Swipe data
         [((SKDeviceGroupStdTableViewCell *)cell) setSwipeLayerHidden:true];
+        // Enable/disable swipe
+        [((SKDeviceGroupStdTableViewCell *)cell) setSwipeEnabled:[SettingsMgr deviceListSwipeEnabled]];
+        
+        if([SettingsMgr deviceListToggleEnabled]) {
+            [((SKDeviceGroupStdTableViewCell *)cell).entityStateToggleButton setEnabled:true]; 
+        } else {
+            [((SKDeviceGroupStdTableViewCell *)cell).entityStateToggleButton setEnabled:false]; 
+        }
     } else {
         static NSString *cellIdentifier = @"Cell";
         
