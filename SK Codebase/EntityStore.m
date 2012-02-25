@@ -20,6 +20,7 @@
 #import "SKSystemSetting.h"
 #include "Constants.h"
 #import "SettingsMgr.h"
+#import "AppDelegate.h"
 
 @implementation EntityStore
 {
@@ -151,6 +152,10 @@
     } else if([entityClass class] == [SKSystemSetting class]) {
         [self systemSettingsUpdated:collection];        
     }
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate resumeRefreshTimer];
 }
 
 - (void)deviceUpdated:(SKDevice*)device {

@@ -164,6 +164,8 @@
     [appDelegate toggleAlertInfo:false
                                 :nil];
     
+    [appDelegate cancelRefreshTimer];
+    
     [self setViewData];
 }
 

@@ -28,6 +28,7 @@
 @synthesize alertInfoInView;
 @synthesize alertInfoText;
 @synthesize alertTimer;
+@synthesize refreshTimer;
 
 // Called when an entity action request has been fired
 - (void)entityActionRequestFired:(NSObject *) src : (EntityActionRequest *) req {
@@ -337,6 +338,37 @@
         
         [UIView commitAnimations];
     }
+}
+
+/*******************************************************************************
+ Refresh Timer
+ *******************************************************************************/
+
+// Cancels refresh timer
+- (void)cancelRefreshTimer {
+    if(refreshTimer != nil) {
+        [refreshTimer invalidate];
+        refreshTimer = nil;
+    }
+}
+
+// Resumes refresh timer
+- (void)resumeRefreshTimer {
+    [self cancelRefreshTimer];
+    
+    if([SettingsMgr getRefreshInterval] == AUTOMATIC_REFRESH__TURNED_OFF)
+        return;
+    
+    refreshTimer = [NSTimer scheduledTimerWithTimeInterval: [SettingsMgr getRefreshInterval] 
+                                                    target:self 
+                                                  selector:@selector(refreshTimerOnTick:) 
+                                                  userInfo:nil 
+                                                   repeats:YES];
+}
+
+// Triggered when automatic refresh is requested
+- (void)refreshTimerOnTick:(NSTimer *)theTimer {
+    [communicationMgr requestUpdateOfAllEntities];
 }
 
 /*******************************************************************************

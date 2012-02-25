@@ -27,6 +27,7 @@
     
     SwipeInfoViewController *swipeViewController;
     NSTimer *alertTimer;
+    NSTimer *refreshTimer;
     SKTabBarControllerDelegate_iPhone *tabBarDelegate;
     Boolean swipeInfoIsInView;
     CGRect originalAlertFrame;
@@ -60,6 +61,13 @@
 
 - (void)toggleSwipeInfo:(BOOL)viewHidden:(CGRect)viewFrame;
 
+// Cancels the refresh timer
+- (void)cancelRefreshTimer;
+
+// Resumes refresh timer
+- (void)resumeRefreshTimer;
+
+
 /*******************************************************************************
  Notification Methods
  *******************************************************************************/
@@ -77,5 +85,6 @@
 @property (nonatomic, copy) NSString *alertInfoText;
 @property (nonatomic, assign) Boolean alertInfoInView;
 @property (nonatomic, retain) NSTimer *alertTimer;
+@property (nonatomic, retain) NSTimer *refreshTimer;
 
 @end
