@@ -1130,7 +1130,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pOC-Iw-SJh">
                                     <rect key="frame" x="20" y="209" width="280" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1147,7 +1147,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WEc-s1-XrC">
                                     <rect key="frame" x="20" y="254" width="280" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1182,7 +1182,7 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h8Z-6U-1fc">
                                     <rect key="frame" x="20" y="98" width="280" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1199,7 +1199,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NMk-p1-h9c">
                                     <rect key="frame" x="20" y="143" width="280" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1223,7 +1223,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dMX-3t-byu">
                                     <rect key="frame" x="20" y="4" width="280" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="Learn">
@@ -1276,7 +1276,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fgg-eY-2AV">
                                     <rect key="frame" x="19" y="188" width="281" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1293,7 +1293,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7y1-KG-uMW">
                                     <rect key="frame" x="20" y="233" width="280" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1328,7 +1328,7 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WYG-Rs-igZ">
                                     <rect key="frame" x="19" y="98" width="281" height="61"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1342,7 +1342,7 @@
                                 </button>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" id="OWc-i6-Fy2">
                                     <rect key="frame" x="56" y="130" width="208" height="23"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <action selector="dimSliderDrag" destination="jur-xl-d1V" eventType="touchDragInside" id="4Dz-cC-IMs"/>
                                         <action selector="dimSliderDrag" destination="jur-xl-d1V" eventType="touchDragOutside" id="ADQ-iE-ADN"/>
@@ -1356,11 +1356,11 @@
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Button_TurnOn.png" id="yJ9-t9-A4B">
                                     <rect key="frame" x="269" y="131" width="20" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dim level" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="wGL-gZ-Og1">
                                     <rect key="frame" x="120" y="105" width="80" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
@@ -1374,7 +1374,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="D4H-kb-bw5">
                                     <rect key="frame" x="20" y="4" width="280" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="Learn">
@@ -1958,6 +1958,182 @@
         <image name="Tab_Scenario.png" width="48" height="32"/>
         <image name="Toolbar_Configuration.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="DataSourceDetailController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataSourceDetailController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNextUpdateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTimestampLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityValueLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DataSourceListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataSourceListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="DeviceDetailController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceDetailController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelSemiAutoButtonClick"/>
+                <relationship kind="action" name="dimSliderDrag"/>
+                <relationship kind="action" name="dimSliderTouchUpInside"/>
+                <relationship kind="action" name="dimSliderValueChanged"/>
+                <relationship kind="action" name="learnButtonClick"/>
+                <relationship kind="action" name="offButtonClick"/>
+                <relationship kind="action" name="onButtonClick"/>
+                <relationship kind="action" name="synchronizeButtonClick"/>
+                <relationship kind="outlet" name="cancelSemiAutoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dimLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dimLevelSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="entityCurrentPowerConsumptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityLastEventLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNextEventLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTotalPowerConsumptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="learnButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="offButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="onButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="synhronizeButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="DeviceListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="EventListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="eventDataSegmentedControlClick"/>
+                <relationship kind="outlet" name="eventDataSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MaxUpcomingEventsListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MaxUpcomingEventsListViewController.h"/>
+        </class>
+        <class className="NumericSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NumericSettingStdTableViewCell.h"/>
+        </class>
+        <class className="PasswordSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PasswordSettingStdTableViewCell.h"/>
+        </class>
+        <class className="QuickActionsModeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuickActionsModeViewController.h"/>
+        </class>
+        <class className="RefreshAfterCommandListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RefreshAfterCommandListViewController.h"/>
+        </class>
+        <class className="RefreshIntervalListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RefreshIntervalListViewController.h"/>
+        </class>
+        <class className="SKDataSourceBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDataSourceBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SKDataSourceStdTableViewCell" superclassName="SKDataSourceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDataSourceStdTableViewCell.h"/>
+        </class>
+        <class className="SKDeviceBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleButtonClick"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityStateToggleButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SKDeviceGroupStdTableViewCell" superclassName="SKDeviceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceGroupStdTableViewCell.h"/>
+        </class>
+        <class className="SKDeviceStdTableViewCell" superclassName="SKDeviceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceStdTableViewCell.h"/>
+        </class>
+        <class className="SKEventBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKEventBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityActionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTimestampLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SKEventTableViewCell" superclassName="SKEventBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKEventTableViewCell.h"/>
+        </class>
+        <class className="SKScenarioStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKScenarioStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ScenarioListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScenarioListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ServerSettingsListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ServerSettingsListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonClick:"/>
+            </relationships>
+        </class>
+        <class className="SettingsListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="deviceListActionsDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="groupDevicesDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="groupDevicesHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="maxUpcomingEventsDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="maxUpcomingEventsHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshAfterCommandDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshAfterCommandHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshIntervalDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshIntervalHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="reloadOnTabSwitchDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="reloadOnTabSwitchHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="serverAddressDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="serverAddressHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="showLearnButtonDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showLearnButtonHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SwitchSettingStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SwitchSettingStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="settingHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="TextSettingStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TextSettingStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="settingHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="UrlSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UrlSettingStdTableViewCell.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
