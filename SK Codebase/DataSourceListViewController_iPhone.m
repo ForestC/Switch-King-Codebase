@@ -301,6 +301,10 @@
         [dataSourceCell.entityNameLabel setText:dataSource.Name];
         [dataSourceCell.entityInfoLabel setText:[TextHelper getDataSourceValueText:dataSource]];
         dataSourceCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromDataSource: dataSource:@"DataSourceList_"]];
+        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            [dataSourceCell.entityTimestampLabel setText:[TextHelper getFormattedDateText:dataSource.UsedValueTimestamp:true]];
+        }
     } else if([cell isKindOfClass:[SKDataSourceGroupStdTableViewCell class]]) {
         SKDataSourceGroupStdTableViewCell *dataSourceGroupCell = (SKDataSourceGroupStdTableViewCell *)cell;
         SKDataSourceGroup *dataSourceGroup = (SKDataSourceGroup *)cellEntity;
