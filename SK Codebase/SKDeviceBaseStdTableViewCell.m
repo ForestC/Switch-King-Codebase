@@ -132,9 +132,17 @@
         verticalAmount = currentPosition.y - gestureStartPoint.y;
         horizontalAmount = currentPosition.x - gestureStartPoint.x;
         CGRect r = [self bounds];
-        CGFloat leftCancellationArea = SWIPE_MARGIN__CANCELLATION_AREA;
-        CGFloat rightCancellationArea = r.size.width - SWIPE_MARGIN__CANCELLATION_AREA;
-
+        CGFloat leftCancellationArea;
+        CGFloat rightCancellationArea;
+        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            leftCancellationArea = SWIPE_MARGIN__CANCELLATION_AREA__IPAD;
+            rightCancellationArea = r.size.width - SWIPE_MARGIN__CANCELLATION_AREA__IPAD;
+            
+        } else {
+            leftCancellationArea = SWIPE_MARGIN__CANCELLATION_AREA__IPHONE;
+            rightCancellationArea = r.size.width - SWIPE_MARGIN__CANCELLATION_AREA__IPHONE;
+        }
         
         if(
            currentPosition.y < -SWIPE_MARGIN__Y_MOVEMENT || 
@@ -188,17 +196,24 @@
             horizontalAmount = horizontalAmount/-1;
         }
         
-        CGFloat leftBoundary = SWIPE_MARGIN__PER_SIDE;
-        CGFloat rightBoundary = r.size.width - SWIPE_MARGIN__PER_SIDE;            
+        CGFloat margin;
+        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+            margin = SWIPE_MARGIN__PER_SIDE__IPAD;
+        else
+            margin = SWIPE_MARGIN__PER_SIDE__IPHONE;
+        
+        CGFloat leftBoundary = margin;
+        CGFloat rightBoundary = r.size.width - margin;            
         CGFloat xPos = currentPosition.x;
-        CGFloat span = r.size.width - (SWIPE_MARGIN__PER_SIDE * 2);
+        CGFloat span = r.size.width - (margin * 2);
         
         if(xPos < leftBoundary)
             xPos = leftBoundary;
         if(xPos > rightBoundary)
             xPos = rightBoundary;
         
-        CGFloat f = ((xPos - SWIPE_MARGIN__PER_SIDE)/span) * 10;
+        CGFloat f = ((xPos - margin)/span) * 10;
         NSInteger i = (f);
         i = i * 10;
         

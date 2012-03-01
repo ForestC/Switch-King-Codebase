@@ -120,8 +120,10 @@
  Swipe Params (Constants)
  *******************************************************************************/
 
-#define SWIPE_MARGIN__PER_SIDE 100
-#define SWIPE_MARGIN__CANCELLATION_AREA 30
+#define SWIPE_MARGIN__PER_SIDE__IPHONE 100
+#define SWIPE_MARGIN__PER_SIDE__IPAD 300
+#define SWIPE_MARGIN__CANCELLATION_AREA__IPHONE 30
+#define SWIPE_MARGIN__CANCELLATION_AREA__IPAD 90
 #define SWIPE_MARGIN__DETECTION_THRESHOLD 30
 //#define SWIPE_MARGIN__DETECTION_THRESHOLD 50
 //#define SWIPE_MARGIN__Y_MOVEMENT 20

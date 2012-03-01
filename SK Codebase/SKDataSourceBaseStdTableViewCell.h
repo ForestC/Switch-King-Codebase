@@ -12,13 +12,15 @@
 @interface SKDataSourceBaseStdTableViewCell : UITableViewCell
 
 // Holds the name of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityNameLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityNameLabel;
 // Holds the info of the entity
-@property(nonatomic,strong) IBOutlet UILabel *entityInfoLabel;
+@property(nonatomic,weak) IBOutlet UILabel *entityInfoLabel;
 // Holds the entity icon
-@property(nonatomic,strong) IBOutlet UIImageView *entityIconImageView;
+@property(nonatomic,weak) IBOutlet UIImageView *entityIconImageView;
 // Holds the parent table view controller
-@property(nonatomic,strong) UITableViewController *tableViewController;
+@property(nonatomic,weak) UITableViewController *tableViewController;
+// Holds the timestamp label
+@property(nonatomic,weak) IBOutlet UILabel *entityTimestampLabel;
 // Holds the entity stored in the cell
 @property(nonatomic,retain) SKEntity *entity;
 

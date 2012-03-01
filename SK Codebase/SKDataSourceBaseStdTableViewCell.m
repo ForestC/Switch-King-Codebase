@@ -20,6 +20,9 @@
 @synthesize tableViewController;
 // Holds the entity stored in the cell
 @synthesize entity;
+// Holds the timestamp label
+@synthesize entityTimestampLabel;
+
 
 /*******************************************************************************
  Init methods
