@@ -56,3 +56,6 @@
 "Dim" = "Dim";
 "Turned off" = "Inte aktiverat";
 "Swipe to send command\nHold group to expand or collapse" = "Svep för att skicka kommando\nHåll inne över grupper för att visa/dölja";
+"Disabled" = "Avstängt";
+"Swipe" = "Svep";
+"Toggle" = "Växla";

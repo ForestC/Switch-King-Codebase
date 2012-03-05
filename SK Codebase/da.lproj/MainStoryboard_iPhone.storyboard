@@ -164,8 +164,8 @@
                             <outlet property="delegate" destination="Frk-Il-cIK" id="Agh-dQ-FVg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Server settings" id="AEN-Gx-XeW">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="c2n-al-tiJ">
+                    <navigationItem key="navigationItem" title="Server indstillinger" id="AEN-Gx-XeW">
+                        <barButtonItem key="rightBarButtonItem" title="Klar" id="c2n-al-tiJ">
                             <connections>
                                 <action selector="doneButtonClick:" destination="Frk-Il-cIK" id="JJn-N9-o7L"/>
                             </connections>
@@ -360,7 +360,7 @@
                             <outlet property="delegate" destination="gPT-4c-seA" id="nLo-Wm-tWD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Devices" id="KfA-Mj-Jkf">
+                    <navigationItem key="navigationItem" title="Enheder" id="KfA-Mj-Jkf">
                         <barButtonItem key="leftBarButtonItem" image="Toolbar_Configuration.png" id="B1c-ZR-p34">
                             <connections>
                                 <segue destination="jS5-lh-cj2" kind="push" id="ahx-6h-eJg"/>
@@ -384,7 +384,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection footerTitle="Enables or disables command shortcuts in the device list." id="sQe-m5-OjO">
+                            <tableViewSection footerTitle="Aktiverer eller deaktiverer kommando genveje på enhedslisten." id="sQe-m5-OjO">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="85G-kG-dQ3" style="IBUITableViewCellStyleDefault" id="uYl-bE-jcJ">
                                         <rect key="frame" x="0.0" y="10" width="320" height="45"/>
@@ -393,7 +393,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Command shortcuts disabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="85G-kG-dQ3">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Kommando genveje deaktiveret" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="85G-kG-dQ3">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -412,7 +412,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Touch device icon to toggle state" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Yg-JT-D6P">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Berør enhedens ikon for at skifte tilstand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="5Yg-JT-D6P">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -431,7 +431,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Touch device icon or swipe row" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4eE-yh-VI0">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Berør enhedens ikon eller skubbe række" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="4eE-yh-VI0">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -451,7 +451,7 @@
                             <outlet property="delegate" destination="2t3-n1-ywl" id="S7a-9u-5c0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Device list command mode" id="6a6-UJ-oYt"/>
+                    <navigationItem key="navigationItem" title="Enhedslisten kommandotilstand" id="6a6-UJ-oYt"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1953" y="-721"/>
@@ -484,8 +484,8 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhD-q6-cOR">
-                                                    <rect key="frame" x="10" y="11" width="69" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Adresse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhD-q6-cOR">
+                                                    <rect key="frame" x="10" y="11" width="68" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -524,7 +524,7 @@
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Refresh interval" lineBreakMode="tailTruncation" minimumFontSize="10" id="Sct-Ro-9mF">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Opdaterings interval" lineBreakMode="tailTruncation" minimumFontSize="10" id="Sct-Ro-9mF">
                                                     <rect key="frame" x="10" y="11" width="203" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -546,7 +546,7 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Refresh after command" lineBreakMode="tailTruncation" minimumFontSize="10" id="zPJ-fY-oaL">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Opdater efter kommando" lineBreakMode="tailTruncation" minimumFontSize="10" id="zPJ-fY-oaL">
                                                     <rect key="frame" x="10" y="11" width="203" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -570,7 +570,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Commands and Events" id="zqa-fz-b6N">
+                            <tableViewSection headerTitle="Kommandoer og Events" id="zqa-fz-b6N">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SZ6-6h-yqP">
                                         <rect key="frame" x="0.0" y="274" width="320" height="45"/>
@@ -579,7 +579,7 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Device list command mode" lineBreakMode="tailTruncation" minimumFontSize="10" id="qUO-jo-dIu">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enhedslisten kommandotilstand" lineBreakMode="tailTruncation" minimumFontSize="10" id="qUO-jo-dIu">
                                                     <rect key="frame" x="10" y="11" width="203" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -587,7 +587,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="2a7-U1-yur">
-                                                    <rect key="frame" x="215" y="11" width="55" height="21"/>
+                                                    <rect key="frame" x="221" y="11" width="49" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -608,7 +608,7 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Events in event lists" lineBreakMode="tailTruncation" minimumFontSize="10" id="dhy-kD-kxV">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Events i event liste " lineBreakMode="tailTruncation" minimumFontSize="10" id="dhy-kD-kxV">
                                                     <rect key="frame" x="10" y="11" width="203" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -617,7 +617,7 @@
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="KWg-UD-TBb">
                                                     <rect key="frame" x="221" y="11" width="49" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -632,7 +632,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="General" id="jFU-dj-9Hu">
+                            <tableViewSection headerTitle="Generelt" id="jFU-dj-9Hu">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Rhe-XT-maK">
                                         <rect key="frame" x="0.0" y="410" width="320" height="45"/>
@@ -641,7 +641,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Group devices" lineBreakMode="tailTruncation" minimumFontSize="10" id="Jdu-MM-59x">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gruppe enheder" lineBreakMode="tailTruncation" minimumFontSize="10" id="Jdu-MM-59x">
                                                     <rect key="frame" x="20" y="11" width="173" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -664,7 +664,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Refresh on tab switch" lineBreakMode="tailTruncation" minimumFontSize="10" id="639-Sl-6wQ">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Opdater ved tab skifte" lineBreakMode="tailTruncation" minimumFontSize="10" id="639-Sl-6wQ">
                                                     <rect key="frame" x="20" y="11" width="173" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -687,7 +687,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Show Learn button" lineBreakMode="tailTruncation" minimumFontSize="10" id="edX-H8-co0">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vis Lær knap" lineBreakMode="tailTruncation" minimumFontSize="10" id="edX-H8-co0">
                                                     <rect key="frame" x="20" y="11" width="173" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -711,7 +711,7 @@
                             <outlet property="delegate" destination="jS5-lh-cj2" id="AgZ-A9-fVD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="Rhw-ph-b46"/>
+                    <navigationItem key="navigationItem" title="Indstillinger" id="Rhw-ph-b46"/>
                     <connections>
                         <outlet property="deviceListActionsDetailLabel" destination="2a7-U1-yur" id="v68-g5-PxO"/>
                         <outlet property="groupDevicesDetailSwitch" destination="mcX-RS-chA" id="aHg-3T-82n"/>
@@ -833,7 +833,7 @@
                             <outlet property="delegate" destination="bBp-yE-c6l" id="L8C-dA-24h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Data Sources" id="dee-sp-CTU">
+                    <navigationItem key="navigationItem" title="Datakilder" id="dee-sp-CTU">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="uY1-Wf-J3p"/>
                     </navigationItem>
                     <connections>
@@ -859,8 +859,8 @@
                                     <rect key="frame" x="9" y="8" width="302" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <segments>
-                                        <segment title="Coming up"/>
-                                        <segment title="History"/>
+                                        <segment title="Kommende"/>
+                                        <segment title="Historik"/>
                                     </segments>
                                     <connections>
                                         <action selector="eventDataSegmentedControlClick" destination="9Px-Ou-m9Q" eventType="valueChanged" id="QsP-qh-Zxv"/>
@@ -1014,8 +1014,8 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bhz-tj-kDe">
-                                                    <rect key="frame" x="10" y="11" width="46" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Værdi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bhz-tj-kDe">
+                                                    <rect key="frame" x="10" y="11" width="49" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1066,8 +1066,8 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Timestamp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QuY-eD-dGx">
-                                                    <rect key="frame" x="10" y="11" width="90" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Tidsstempel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QuY-eD-dGx">
+                                                    <rect key="frame" x="10" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1092,14 +1092,14 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Next update" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y2F-e5-zv1">
-                                                    <rect key="frame" x="10" y="11" width="98" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Næste opdatering" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y2F-e5-zv1">
+                                                    <rect key="frame" x="10" y="11" width="145" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VGX-BH-kiL">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="VGX-BH-kiL">
                                                     <rect key="frame" x="246" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1150,7 +1150,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="By schedule" image="Button_CancelSemiAuto.png">
+                                    <state key="normal" title="Efter skema" image="Button_CancelSemiAuto.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -1167,7 +1167,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Synchronize" image="Button_Synchronize.png">
+                                    <state key="normal" title="Synkroniser" image="Button_Synchronize.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -1202,7 +1202,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="On" image="Button_TurnOn.png">
+                                    <state key="normal" title="Til" image="Button_TurnOn.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -1219,7 +1219,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Off" image="Button_TurnOff.png">
+                                    <state key="normal" title="Fra" image="Button_TurnOff.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -1242,7 +1242,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Learn">
+                                    <state key="normal" title="Lær">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -1296,7 +1296,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="By schedule" image="Button_CancelSemiAuto.png">
+                                    <state key="normal" title="Efter skema" image="Button_CancelSemiAuto.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -1313,7 +1313,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Synchronize" image="Button_Synchronize.png">
+                                    <state key="normal" title="Synkroniser" image="Button_Synchronize.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -1393,7 +1393,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Learn">
+                                    <state key="normal" title="Lær">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -1449,7 +1449,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="10 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rlt-sc-dBu">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="10 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rlt-sc-dBu">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1468,7 +1468,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="15 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AcI-x9-gDa">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="15 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AcI-x9-gDa">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1487,7 +1487,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="30 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SCg-hf-vay">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="30 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SCg-hf-vay">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1506,7 +1506,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="60 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sdU-z1-B1g">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="60 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sdU-z1-B1g">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1525,7 +1525,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="No automatic refresh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Sy-wD-KXK">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" text="Ingen automatisk opdatering" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Sy-wD-KXK">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1545,7 +1545,7 @@
                             <outlet property="delegate" destination="xIV-Sc-H8S" id="Mmd-2t-Aoq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Refresh interval" id="INc-K3-NHO"/>
+                    <navigationItem key="navigationItem" title="Opdaterings interval" id="INc-K3-NHO"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2444" y="-534"/>
@@ -1645,7 +1645,7 @@
                             <outlet property="delegate" destination="q6S-sr-ikL" id="KSp-aS-cYv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Events in event lists" id="jZK-VX-fvu"/>
+                    <navigationItem key="navigationItem" title="Events i event liste" id="jZK-VX-fvu"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="3496" y="677"/>
@@ -1668,7 +1668,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="3 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yH7-vf-5cY">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="3 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yH7-vf-5cY">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1687,7 +1687,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="4 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gg8-Yo-WKY">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="4 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gg8-Yo-WKY">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1706,7 +1706,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="5 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c5E-DP-qRu">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="5 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c5E-DP-qRu">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1725,7 +1725,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="10 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9qR-dQ-a21">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="10 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9qR-dQ-a21">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1744,7 +1744,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="20 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nNz-8q-hMh">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="20 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nNz-8q-hMh">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1763,7 +1763,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="30 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lJd-QG-V5V">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="30 sekunder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lJd-QG-V5V">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1783,7 +1783,7 @@
                             <outlet property="delegate" destination="xSX-4h-A8a" id="Gr3-li-VhM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Refresh after command" id="eX4-7v-DGr"/>
+                    <navigationItem key="navigationItem" title="Opdater efter kommando" id="eX4-7v-DGr"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2444" y="35"/>
@@ -1811,7 +1811,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqB-hN-ZUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="0XO-s5-Tuq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Devices" image="Tab_Devices.png" id="BD0-2J-uUU"/>
+                    <tabBarItem key="tabBarItem" title="Enheder" image="Tab_Devices.png" id="BD0-2J-uUU"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="LvU-zY-6jE"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="cry-KJ-Syq">
@@ -1837,7 +1837,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btA-ZZ-b7q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="268-zO-dVu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Data Sources" image="Tab_DataSources.png" id="Rxj-5a-LXg"/>
+                    <tabBarItem key="tabBarItem" title="Datakilder" image="Tab_DataSources.png" id="Rxj-5a-LXg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="v4E-VV-pQ8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1911,7 +1911,7 @@
                             <outlet property="delegate" destination="Ude-9t-Sja" id="A9n-62-ubD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scenarios" id="0Tt-pD-Qyt">
+                    <navigationItem key="navigationItem" title="Scenarier" id="0Tt-pD-Qyt">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="afl-6K-cni"/>
                     </navigationItem>
                     <connections>
@@ -1943,7 +1943,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHQ-bC-6ZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="bNo-yS-jZm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scenarios" image="Tab_Scenario.png" id="Dki-uO-oxV"/>
+                    <tabBarItem key="tabBarItem" title="Scenarier" image="Tab_Scenario.png" id="Dki-uO-oxV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="uQT-6R-6E6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

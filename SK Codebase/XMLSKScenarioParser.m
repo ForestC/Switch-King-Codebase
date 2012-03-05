@@ -51,7 +51,14 @@
         }
         
         scenario = nil;
-    } else if([elementName isEqualToString:XML_ELEMENT_NAME__SCENARIO]) {        
+    } else if([elementName isEqualToString:XML_ELEMENT_NAME__SCENARIO]) {     
+        
+        if(scenario.ID == 1)        {
+            scenario.Name = NSLocalizedStringFromTable(@"(all by schedule)", @"Texts", nil);
+        } else if(scenario.ID == 2) {
+            scenario.Name = NSLocalizedStringFromTable(@"(all frozen)", @"Texts", nil);            
+        }
+        
         if(!expectsCollection) {
             if(entityStore != nil) {
                 [entityStore entityUpdated:self :scenario];
