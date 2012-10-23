@@ -43,5 +43,6 @@
 //------------------------------------------------------------
 // Misc properties
 @synthesize OnW;
+@synthesize TotalkWh;
 
 @end

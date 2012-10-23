@@ -31,7 +31,39 @@ static NSString *sMyLock1 = @"Lock1";
     
     notifyOnError = notifyOnCommunicationError;
     
+    [self addEntityObservers];
+    
     return self;
+}
+
+/*******************************************************************************
+ Notification methods
+ *******************************************************************************/
+
+// Adds entity observers to be able to listen to notifications
+- (void)addEntityObservers {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(allConnectionsToBeCancelledRequest:)
+                                                 name:NOTIFICATION_NAME__ALL_CONNECTIONS_TO_BE_CANCELLED
+                                               object:nil];    
+}
+
+- (void)dealloc {
+    NSLog(@"Dealloc");
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)allConnectionsToBeCancelledRequest:(NSNotification *) notification {
+    NSLog(@"Cancelling connection");
+    
+    if(connection != NULL) {
+        [connection cancel];
+        
+        NSLog(@"Connection cancelled");
+    } else {
+        NSLog(@"No connection to cancel");
+    }
 }
 
 -(void)sendRequest:(NSString *) url{
@@ -52,7 +84,7 @@ static NSString *sMyLock1 = @"Lock1";
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
    
     if([SettingsMgr useLive]) {
-        [request setValue:[NSString stringWithFormat:@"%i", [SettingsMgr getServerIdentity]] forHTTPHeaderField:@"SKSrvId"];
+        [request setValue:[NSString stringWithFormat:@"%@", [SettingsMgr getServerIdentity]] forHTTPHeaderField:@"SKSrvId"];
     }
    
     //NSString *auth = @"Basic VGVzdDpUZXN0Mg==";//  [NSString stringWithFormat:@"Basic %@", [Base64Encoding encodeBase64WithData:data]];
@@ -67,7 +99,7 @@ static NSString *sMyLock1 = @"Lock1";
     
     NSLog(@"Sending request to %@", URL);
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     [appDelegate requestNetworkActivityIndicator];
     

@@ -17,9 +17,12 @@
     NSMutableData *receivedData;
     AuthenticationDataContainer *authData;
     id<DataReceivedDelegate> receiverDelegate;
+    NSURLConnection *connection;
 }
 
 - (CommunicationBase *)initWithAuthenticationData:(AuthenticationDataContainer *) auth:(Boolean) notifyOnCommunicationError;
+
+- (void)addEntityObservers;
 
 - (void)sendRequest:(NSString *)url;
 

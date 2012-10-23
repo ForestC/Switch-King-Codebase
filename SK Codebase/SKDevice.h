@@ -44,5 +44,6 @@
 //------------------------------------------------------------
 // Misc properties
 @property (nonatomic, copy) NSString *OnW;
+@property (nonatomic, copy) NSString *TotalkWh;
 
 @end
