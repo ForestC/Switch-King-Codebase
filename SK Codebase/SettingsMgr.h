@@ -45,10 +45,10 @@
 + (void)setTargetPort:(NSInteger) targetPort;
 
 // Gets the server identity
-+ (NSInteger)getServerIdentity;
++ (NSString *)getServerIdentity;
 
 // Sets the server identity
-+ (void)setServerIdentity:(NSInteger) serverIdentity;
++ (void)setServerIdentity:(NSString *) serverIdentity;
 
 // Gets the stored authentication data
 + (AuthenticationDataContainer *)getAuthenticationData;

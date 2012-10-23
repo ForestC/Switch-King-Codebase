@@ -107,7 +107,7 @@
     } else if(cell.tag == CELL_TAG__SERVER_ADDRESS) {
         [SettingsMgr setTargetAddress:textField.text:true];
     } else if(cell.tag == CELL_TAG__SERVER_IDENTITY) {
-        [SettingsMgr setServerIdentity:[textField.text intValue]];
+        [SettingsMgr setServerIdentity:textField.text];
     } else if(cell.tag == CELL_TAG__SERVER_PORT) {
         [SettingsMgr setTargetPort:[textField.text intValue]];
     }
@@ -334,7 +334,7 @@
         [settingsCell.settingTextField setText:[NSString stringWithFormat:@"%d", [SettingsMgr getTargetPort]]];
         [settingsCell.settingTextField setPlaceholder:NSLocalizedStringFromTable(@"Port (default is 8800)", @"Texts", nil)];
     } else if(cell.tag == CELL_TAG__SERVER_IDENTITY) {
-        NSString *identifier = [NSString stringWithFormat:@"%d", [SettingsMgr getServerIdentity]];
+        NSString *identifier = [NSString stringWithFormat:@"%@", [SettingsMgr getServerIdentity]];
                                 
         if([identifier isEqualToString:@"0"])
             identifier = @"";   
@@ -343,7 +343,7 @@
         
         [settingsCell.settingHeaderLabel setText:NSLocalizedStringFromTable(@"Server ID", @"Texts", nil)];
         
-        [settingsCell.settingTextField setText:[NSString stringWithFormat:@"%d", [SettingsMgr getServerIdentity]]];
+        [settingsCell.settingTextField setText:[NSString stringWithFormat:@"%@", [SettingsMgr getServerIdentity]]];
         [settingsCell.settingTextField setPlaceholder:NSLocalizedStringFromTable(@"Unique for your server", @"Texts", nil)];        
     }
     

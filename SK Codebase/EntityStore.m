@@ -18,6 +18,7 @@
 #import "SKEvent.h"
 #import "SKScenario.h"
 #import "SKSystemSetting.h"
+#import "SKSystemMode.h"
 #include "Constants.h"
 #import "SettingsMgr.h"
 #import "AppDelegate.h"
@@ -39,6 +40,9 @@
     
     NSMutableArray *scenarioList;
     Boolean scenariosDirty;
+    
+    NSMutableArray *systemModeList;
+    Boolean systemModesDirty;
 }
 
 - (EntityStore *)init {
@@ -104,12 +108,16 @@
                 case ENTITY_TYPE__SCENARIO:
                     [self flagAllScenariosAsDirtyOrClean:true];
                     break; 
+                case ENTITY_TYPE__SYSTEM_MODE:
+                    [self flagAllSystemModesAsDirtyOrClean:true];
+                    break; 
                 case ENTITY_TYPE__ALL_ENTITIES:
                 {
                     [self flagAllDeviceEntitiesAsDirtyOrClean:true];
                     [self flagAllDataSourceEntitiesAsDirtyOrClean:true];
                     [self flagAllEventsAsDirtyOrClean:true];
                     [self flagAllScenariosAsDirtyOrClean:true];
+                    [self flagAllSystemModesAsDirtyOrClean:true];
                     
                     break;    
                 }
@@ -135,7 +143,9 @@
         [self scenarioUpdated:(SKScenario *)entity];
     } else if([entity isKindOfClass:[SKSystemSetting class]]) {
         [self systemSettingUpdated:(SKSystemSetting *)entity];
-    } 
+    } else if([entity isKindOfClass:[SKSystemMode class]]) {
+        [self systemModeUpdated:(SKSystemMode *)entity];
+    }
     
     NSLog(@"Updated id value :%i", entity.ID);
 }
@@ -151,6 +161,8 @@
         [self scenariosUpdated:collection];
     } else if([entityClass class] == [SKSystemSetting class]) {
         [self systemSettingsUpdated:collection];        
+    } else if([entityClass class] == [SKSystemMode class]) {
+        [self systemModesUpdated:collection];
     }
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -355,6 +367,55 @@
     
 }
 
+- (void)systemModeUpdated:(SKSystemMode*)systemMode {
+    if(systemModeList.count == 0) {
+        // If the system mode list is empty, create a new system mode...
+        [self systemModesUpdated:[NSMutableArray arrayWithObject:systemMode]];
+    } else {
+        NSUInteger idx = [systemModeList indexOfObjectPassingTest:
+                          ^ BOOL (SKSystemMode* mode, NSUInteger idx, BOOL *stop)
+                          {
+                              return mode.ID == systemMode.ID;
+                          }];
+        
+        if(idx == NSNotFound) {
+            NSLog(@"%@", @"SystemMode not found");
+        } else {
+            [systemModeList replaceObjectAtIndex:idx withObject:systemMode];
+            
+            // Indicate that this system mode is now clean
+            [self flagAllSystemModesAsDirtyOrClean: false];
+            
+            // Send a dictionary with devices to the receivers...
+            NSDictionary *notificationData = [NSDictionary dictionaryWithObject:systemModeList
+                                                                         forKey:@"SystemModes"];
+            
+            NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+            [notificationCenter postNotificationName:NOTIFICATION_NAME__SYSTEM_MODES_UPDATED
+                                              object:nil
+                                            userInfo:notificationData];        }        
+    }
+}
+
+- (void)systemModesUpdated:(NSMutableArray*)collection {
+    // Store the system modes internally
+    systemModeList = collection;
+    // Clear list of dirty object
+    systemModesDirty = false;
+    
+    //[self createDeviceGroupStructure:deviceList];
+    
+    // Send a dictionary with devices to the receivers...
+    NSDictionary* notificationData = [NSDictionary dictionaryWithObject:collection
+                                                                 forKey:@"SystemModes"];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__SYSTEM_MODES_UPDATED
+                                      object:nil
+                                    userInfo:notificationData];
+    
+}
+
 - (void)daysLeftOfLiveUsageUpdated:(NSInteger)daysLeft {
     NSDate *nextCheck = [NSDate date];
     
@@ -409,7 +470,9 @@
         [self flagAllEventsAsDirtyOrClean:isDirty];
     } else if([entity isKindOfClass:[SKScenario class]]) {
         [self flagAllScenariosAsDirtyOrClean:isDirty];
-    } 
+    } else if([entity isKindOfClass:[SKSystemMode class]]) {
+        [self flagAllSystemModesAsDirtyOrClean:isDirty];
+    }
 }
 
 // Flags a device as dirty or clean
@@ -513,6 +576,16 @@
                                     userInfo:nil];
 }
 
+// Flags ALL entities as dirty or clean
+- (void)flagAllSystemModesAsDirtyOrClean:(Boolean)isDirty {
+    systemModesDirty = isDirty;
+    
+    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_NAME__SYSTEM_MODES_DIRTIFICATION_UPDATED
+                                      object:nil
+                                    userInfo:nil];
+}
+
 
 // Indicates whether an entity is dirty or not
 - (Boolean)entityIsDirty:(SKEntity *)entity {
@@ -528,6 +601,8 @@
         return [self eventIsDirty:entity.ID];
     } else if([entity isKindOfClass:[SKScenario class]]) {
         return [self scenarioIsDirty:entity.ID];
+    } else if([entity isKindOfClass:[SKSystemMode class]]) {
+        return [self systemModeIsDirty:entity.ID];
     }
     
     return true;
@@ -621,9 +696,19 @@
     return scenariosDirty;
 }
 
+// Indicates whether a system mode is dirty or not
+- (Boolean)systemModeIsDirty:(NSInteger)systemModeId {
+    return systemModesDirty;
+}
+
 /*******************************************************************************
  ???????
  *******************************************************************************/
+
+// Gets the id of the active scenario
+- (NSInteger)getActiveSystemModeId {
+    return -1;
+}
 
 // Gets the id of the active scenario
 - (NSInteger)getActiveScenarioId {

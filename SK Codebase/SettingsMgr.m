@@ -22,6 +22,7 @@
                               @"YES", @"needServerVersionUpdate",
                               @"YES", @"reloadOnTS",
                               @"1", @"qaMode",
+                              @"0", @"serverIdentity",
                               nil];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
@@ -317,26 +318,26 @@
 }
 
 // Gets the server identity
-+ (NSInteger)getServerIdentity {
++ (NSString *)getServerIdentity {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = @"serverIdentity";
     
     // Get the result
-    NSInteger retrievedValue = [defaults integerForKey:key];
+    NSString *retrievedValue = [defaults stringForKey:key];
     
-    if(retrievedValue == 0)
-        return 0;
+    if(retrievedValue == NULL)
+        return @"";
     
     return retrievedValue;
 }
 
 // Sets the server identity
-+ (void)setServerIdentity:(NSInteger) serverIdentity {
++ (void)setServerIdentity:(NSString *) serverIdentity {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = @"serverIdentity";
     
     // set the value
-    [defaults setInteger:serverIdentity forKey:key];
+    [defaults setObject:serverIdentity forKey:key];
     
     // save it
     [defaults synchronize]; 

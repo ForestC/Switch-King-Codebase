@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xOC-gV-Vaz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xOC-gV-Vaz">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -1798,8 +1798,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
                     <connections>
-                        <segue destination="0XO-s5-Tuq" kind="relationship" relationship="viewControllers" id="EtL-fK-Pha"/>
                         <segue destination="bNo-yS-jZm" kind="relationship" relationship="viewControllers" id="H13-bx-eJH"/>
+                        <segue destination="0XO-s5-Tuq" kind="relationship" relationship="viewControllers" id="EtL-fK-Pha"/>
                         <segue destination="268-zO-dVu" kind="relationship" relationship="viewControllers" id="PlS-nX-mw2"/>
                         <segue destination="xMy-Jm-Ne4" kind="relationship" relationship="viewControllers" id="xoa-el-JIX"/>
                     </connections>
@@ -1854,7 +1854,7 @@
         <scene sceneID="FJs-pq-Ra1">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihk-LY-mfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Ude-9t-Sja" customClass="ScenarioListViewController_iPhone" sceneMemberID="viewController">
+                <tableViewController id="Ude-9t-Sja" customClass="CombinedModeListViewController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Tq7-W2-wnT">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1911,7 +1911,7 @@
                             <outlet property="delegate" destination="Ude-9t-Sja" id="A9n-62-ubD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scenario" id="0Tt-pD-Qyt">
+                    <navigationItem key="navigationItem" title="Läge" id="0Tt-pD-Qyt">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="afl-6K-cni"/>
                     </navigationItem>
                     <connections>
@@ -1943,7 +1943,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHQ-bC-6ZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="bNo-yS-jZm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scenario" image="Tab_Scenario.png" id="Dki-uO-oxV"/>
+                    <tabBarItem key="tabBarItem" title="Läge" image="Tab_Modes.png" id="Dki-uO-oxV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="uQT-6R-6E6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1971,9 +1971,186 @@
         <image name="Tab_ComingUp.png" width="48" height="32"/>
         <image name="Tab_DataSources.png" width="48" height="32"/>
         <image name="Tab_Devices.png" width="48" height="32"/>
-        <image name="Tab_Scenario.png" width="48" height="32"/>
+        <image name="Tab_Modes.png" width="48" height="32"/>
         <image name="Toolbar_Configuration.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="CombinedModeListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CombinedModeListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="DataSourceDetailController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataSourceDetailController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNextUpdateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTimestampLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityValueLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DataSourceListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataSourceListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="DeviceDetailController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceDetailController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelSemiAutoButtonClick"/>
+                <relationship kind="action" name="dimSliderDrag"/>
+                <relationship kind="action" name="dimSliderTouchUpInside"/>
+                <relationship kind="action" name="dimSliderValueChanged"/>
+                <relationship kind="action" name="learnButtonClick"/>
+                <relationship kind="action" name="offButtonClick"/>
+                <relationship kind="action" name="onButtonClick"/>
+                <relationship kind="action" name="synchronizeButtonClick"/>
+                <relationship kind="outlet" name="cancelSemiAutoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dimLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dimLevelSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="entityCurrentPowerConsumptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityLastEventLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNextEventLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTotalPowerConsumptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="learnButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="offButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="onButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="synhronizeButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="DeviceListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="EventListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="eventDataSegmentedControlClick"/>
+                <relationship kind="outlet" name="eventDataSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="refreshBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MaxUpcomingEventsListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MaxUpcomingEventsListViewController.h"/>
+        </class>
+        <class className="NumericSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NumericSettingStdTableViewCell.h"/>
+        </class>
+        <class className="PasswordSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PasswordSettingStdTableViewCell.h"/>
+        </class>
+        <class className="QuickActionsModeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuickActionsModeViewController.h"/>
+        </class>
+        <class className="RefreshAfterCommandListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RefreshAfterCommandListViewController.h"/>
+        </class>
+        <class className="RefreshIntervalListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RefreshIntervalListViewController.h"/>
+        </class>
+        <class className="SKDataSourceBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDataSourceBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTimestampLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SKDataSourceStdTableViewCell" superclassName="SKDataSourceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDataSourceStdTableViewCell.h"/>
+        </class>
+        <class className="SKDeviceBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleButtonClick"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityStateToggleButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SKDeviceGroupStdTableViewCell" superclassName="SKDeviceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceGroupStdTableViewCell.h"/>
+        </class>
+        <class className="SKDeviceStdTableViewCell" superclassName="SKDeviceBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKDeviceStdTableViewCell.h"/>
+        </class>
+        <class className="SKEventBaseStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKEventBaseStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityActionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityTimestampLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SKEventTableViewCell" superclassName="SKEventBaseStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKEventTableViewCell.h"/>
+        </class>
+        <class className="SKScenarioStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKScenarioStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entityIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="entityInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="entityNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ServerSettingsListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ServerSettingsListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonClick:"/>
+            </relationships>
+        </class>
+        <class className="SettingsListViewController_iPhone" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsListViewController_iPhone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="deviceListActionsDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="groupDevicesDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="groupDevicesHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="maxUpcomingEventsDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="maxUpcomingEventsHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshAfterCommandDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshAfterCommandHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshIntervalDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refreshIntervalHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="reloadOnTabSwitchDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="reloadOnTabSwitchHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="serverAddressDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="serverAddressHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="showLearnButtonDetailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showLearnButtonHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SwitchSettingStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SwitchSettingStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="settingHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="TextSettingStdTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TextSettingStdTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="settingHeaderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="UrlSettingStdTableViewCell" superclassName="TextSettingStdTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UrlSettingStdTableViewCell.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -112,6 +112,8 @@
 #define XML_ELEMENT_NAME__SCENARIO_ARRAY @"ArrayOfRESTScenario"
 #define XML_ELEMENT_NAME__SCENARIO @"RESTScenario"
 
+#define XML_ELEMENT_NAME__SYSTEM_MODE_ARRAY @"ArrayOfRESTSystemMode"
+#define XML_ELEMENT_NAME__SYSTEM_MODE @"RESTSystemMode"
 
 #define XML_VALUE__TRUE @"true"
 #define XML_VALUE__FALSE @"false"
@@ -174,10 +176,12 @@
 #define ENTITY_TYPE__DATA_SOURCE_GROUP 4
 #define ENTITY_TYPE__EVENTS 5
 #define ENTITY_TYPE__SCENARIO 6
+#define ENTITY_TYPE__SYSTEM_MODE 7
 #define ENTITY_TYPE__ALL_ENTITIES 1000
 
 #define ENTITY_TYPE_STRING__DEVICE @"Device"
 #define ENTITY_TYPE_STRING__SCENARIO @"Scenario"
+#define ENTITY_TYPE_STRING__SYSTEM_MODE @"SystemMode"
 
 /*******************************************************************************
  Notification names
@@ -200,6 +204,9 @@
 #define NOTIFICATION_NAME__SCENARIOS_UPDATED @"SCUpdated"
 #define NOTIFICATION_NAME__SCENARIOS_DIRTIFICATION_UPDATED @"SCDirtificationUpdated"
 
+#define NOTIFICATION_NAME__SYSTEM_MODES_UPDATED @"SMUpdated"
+#define NOTIFICATION_NAME__SYSTEM_MODES_DIRTIFICATION_UPDATED @"SMDirtificationUpdated"
+
 #define NOTIFICATION_NAME__EVENTS_UPDATED @"EvtsUpdated"
 #define NOTIFICATION_NAME__EVENTS_DIRTIFICATION_UPDATED @"EventsDirtificationUpdated"
 
@@ -209,6 +216,8 @@
 #define NOTIFICATION_NAME__SERVER_VERSION_UPDATED @"ServerVersionUpdated"
 
 #define NOTIFICATION_NAME__LIVE_DAYS_LEFT_UPDATED @"LiveDaysLeftUpdated"
+
+#define NOTIFICATION_NAME__ALL_CONNECTIONS_TO_BE_CANCELLED @"CancelAllConnections"
 
 #define ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY @"EntityReqData"
 #define ALERT_INFO_NOTIFICATION__ALERT_MSG_KEY @"Msg"

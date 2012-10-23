@@ -15,6 +15,7 @@
 #import "SKDataSourceGroup.h"
 #import "SKScenario.h"
 #import "SKSystemSetting.h"
+#import "SKSystemMode.h"
 
 @interface EntityStore : NSObject <SKDeviceStoreDelegate> {
     
@@ -40,6 +41,10 @@
 - (void)systemSettingUpdated:(SKSystemSetting*)setting;
 
 - (void)systemSettingsUpdated:(NSMutableArray*)collection;
+
+- (void)systemModeUpdated:(SKSystemMode*)setting;
+
+- (void)systemModesUpdated:(NSMutableArray*)collection;
 
 - (void)daysLeftOfLiveUsageUpdated:(NSInteger)daysLeft;
 
@@ -67,8 +72,11 @@
 // Flags ALL event entities as dirty or clean
 - (void)flagAllEventsAsDirtyOrClean:(Boolean)isDirty;
 
-// Flags ALL event entities as dirty or clean
+// Flags ALL scenario entities as dirty or clean
 - (void)flagAllScenariosAsDirtyOrClean:(Boolean)isDirty;
+
+// Flags ALL system mode entities as dirty or clean
+- (void)flagAllSystemModesAsDirtyOrClean:(Boolean)isDirty;
 
 // Indicates whether an entity is dirty or not
 - (Boolean)entityIsDirty:(SKEntity *)entity;
@@ -88,11 +96,17 @@
 // Indicates whether an event is dirty or not
 - (Boolean)eventIsDirty:(NSInteger)eventId;
 
-// Indicates whether an event is dirty or not
-- (Boolean)scenarioIsDirty:(NSInteger)eventId;
+// Indicates whether a scenario is dirty or not
+- (Boolean)scenarioIsDirty:(NSInteger)scenarioId;
+
+// Indicates whether a system mode is dirty or not
+- (Boolean)systemModeIsDirty:(NSInteger)systemModeId;
 
 // Gets the id of the active scenario
 - (NSInteger)getActiveScenarioId;
+
+// Gets the id of the active system mode
+- (NSInteger)getActiveSystemModeId;
 
 // Gets the device by a specific id
 - (SKDevice*)getDeviceById:(NSInteger)deviceId;
