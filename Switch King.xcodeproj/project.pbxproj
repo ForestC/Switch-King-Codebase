@@ -37,6 +37,11 @@
 		5B33272414ADB575002A263A /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272114ADB575002A263A /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B33272514ADB575002A263A /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272314ADB575002A263A /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B33272914ADD02A002A263A /* EntityHttpReqNotificationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B33272814ADD02A002A263A /* EntityHttpReqNotificationData.m */; };
+		5B35CCED163FF52A00327CD0 /* DataSourceGraphController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B35CCEC163FF52900327CD0 /* DataSourceGraphController_iPhone.m */; };
+		5B35CCF1163FF6C200327CD0 /* SKImageDataReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B35CCF0163FF6C200327CD0 /* SKImageDataReceiver.m */; };
+		5B35CCF41640133C00327CD0 /* EntityGraphRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B35CCF31640133C00327CD0 /* EntityGraphRequest.m */; };
+		5B35CCF71640152600327CD0 /* EntityGraphNotificationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B35CCF61640152600327CD0 /* EntityGraphNotificationData.m */; };
+		5B35CCFA1640167D00327CD0 /* GraphRequestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B35CCF91640167D00327CD0 /* GraphRequestGenerator.m */; };
 		5B38B4C114CD9407002A3275 /* MaxUpcomingEventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C014CD9407002A3275 /* MaxUpcomingEventsListViewController.m */; };
 		5B38B4C514CD942B002A3275 /* RefreshIntervalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C414CD942B002A3275 /* RefreshIntervalListViewController.m */; };
 		5B38B4C814CD944A002A3275 /* RefreshAfterCommandListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C714CD944A002A3275 /* RefreshAfterCommandListViewController.m */; };
@@ -119,6 +124,7 @@
 		5BA9693814E42C7300FAA66D /* SKNavigationControllerDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9693714E42C7300FAA66D /* SKNavigationControllerDelegate_iPhone.m */; };
 		5BA9693D14E4521000FAA66D /* AlertMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BA9693B14E4521000FAA66D /* AlertMessageView.xib */; };
 		5BA9694014E453D000FAA66D /* AlertMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9693F14E453CC00FAA66D /* AlertMessageView.m */; };
+		5BAD14EB1636E2D500A2CED4 /* Mode_Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAD14EA1636E2D500A2CED4 /* Mode_Selected.png */; };
 		5BAEB0A814D42EE700F1B2AE /* Button_CancelSemiAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */; };
 		5BAEB0A914D42EE700F1B2AE /* Button_Learn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */; };
 		5BAEB0AA14D42EE700F1B2AE /* Button_Synchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */; };
@@ -220,6 +226,16 @@
 		5B33272314ADB575002A263A /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		5B33272714ADD02A002A263A /* EntityHttpReqNotificationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityHttpReqNotificationData.h; sourceTree = "<group>"; };
 		5B33272814ADD02A002A263A /* EntityHttpReqNotificationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityHttpReqNotificationData.m; sourceTree = "<group>"; };
+		5B35CCEB163FF52900327CD0 /* DataSourceGraphController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceGraphController_iPhone.h; sourceTree = "<group>"; };
+		5B35CCEC163FF52900327CD0 /* DataSourceGraphController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceGraphController_iPhone.m; sourceTree = "<group>"; };
+		5B35CCEF163FF6C200327CD0 /* SKImageDataReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKImageDataReceiver.h; sourceTree = "<group>"; };
+		5B35CCF0163FF6C200327CD0 /* SKImageDataReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKImageDataReceiver.m; sourceTree = "<group>"; };
+		5B35CCF21640133C00327CD0 /* EntityGraphRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityGraphRequest.h; sourceTree = "<group>"; };
+		5B35CCF31640133C00327CD0 /* EntityGraphRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityGraphRequest.m; sourceTree = "<group>"; };
+		5B35CCF51640152600327CD0 /* EntityGraphNotificationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityGraphNotificationData.h; sourceTree = "<group>"; };
+		5B35CCF61640152600327CD0 /* EntityGraphNotificationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityGraphNotificationData.m; sourceTree = "<group>"; };
+		5B35CCF81640167D00327CD0 /* GraphRequestGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphRequestGenerator.h; sourceTree = "<group>"; };
+		5B35CCF91640167D00327CD0 /* GraphRequestGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphRequestGenerator.m; sourceTree = "<group>"; };
 		5B38B4BF14CD9407002A3275 /* MaxUpcomingEventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxUpcomingEventsListViewController.h; sourceTree = "<group>"; };
 		5B38B4C014CD9407002A3275 /* MaxUpcomingEventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxUpcomingEventsListViewController.m; sourceTree = "<group>"; };
 		5B38B4C314CD942B002A3275 /* RefreshIntervalListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshIntervalListViewController.h; sourceTree = "<group>"; };
@@ -347,6 +363,7 @@
 		5BA9693B14E4521000FAA66D /* AlertMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertMessageView.xib; sourceTree = "<group>"; };
 		5BA9693E14E453C800FAA66D /* AlertMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertMessageView.h; sourceTree = "<group>"; };
 		5BA9693F14E453CC00FAA66D /* AlertMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertMessageView.m; sourceTree = "<group>"; };
+		5BAD14EA1636E2D500A2CED4 /* Mode_Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mode_Selected.png; sourceTree = "<group>"; };
 		5BAEB0A114D42EE700F1B2AE /* Button_CancelSemiAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_CancelSemiAuto.png; sourceTree = "<group>"; };
 		5BAEB0A214D42EE700F1B2AE /* Button_Learn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Learn.png; sourceTree = "<group>"; };
 		5BAEB0A314D42EE700F1B2AE /* Button_Synchronize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Synchronize.png; sourceTree = "<group>"; };
@@ -531,6 +548,8 @@
 				5B55738C14FC1E0A009FA680 /* Default.png */,
 				5B3A25C71636CF2000CCA888 /* CombinedModeListViewController_iPhone.h */,
 				5B3A25C81636CF2000CCA888 /* CombinedModeListViewController_iPhone.m */,
+				5B35CCEB163FF52900327CD0 /* DataSourceGraphController_iPhone.h */,
+				5B35CCEC163FF52900327CD0 /* DataSourceGraphController_iPhone.m */,
 			);
 			name = SK;
 			path = "SK Codebase";
@@ -627,6 +646,8 @@
 				5B71ACE614EAFCB4009352DD /* SKLiveDaysLeftReceiver.m */,
 				5B3A25BA162C9AC800CCA888 /* SKSystemModeDataReceiver.h */,
 				5B3A25BB162C9AC800CCA888 /* SKSystemModeDataReceiver.m */,
+				5B35CCEF163FF6C200327CD0 /* SKImageDataReceiver.h */,
+				5B35CCF0163FF6C200327CD0 /* SKImageDataReceiver.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -666,6 +687,8 @@
 			children = (
 				5B33272714ADD02A002A263A /* EntityHttpReqNotificationData.h */,
 				5B33272814ADD02A002A263A /* EntityHttpReqNotificationData.m */,
+				5B35CCF51640152600327CD0 /* EntityGraphNotificationData.h */,
+				5B35CCF61640152600327CD0 /* EntityGraphNotificationData.m */,
 			);
 			name = NotificationData;
 			sourceTree = "<group>";
@@ -697,6 +720,7 @@
 		5B639C9314963B12002D7F8F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BAD14EA1636E2D500A2CED4 /* Mode_Selected.png */,
 				5B3A25B8162C99F900CCA888 /* Tab_Modes.png */,
 				5B3A25B5162C997900CCA888 /* Tab_Modes@2x.png */,
 				5BD8F043150113B3007C93FE /* Icon~ipad.png */,
@@ -850,6 +874,8 @@
 			children = (
 				5BFC371C14A360090062F6E7 /* EntityRequestGenerator.h */,
 				5BFC371D14A360090062F6E7 /* EntityRequestGenerator.m */,
+				5B35CCF81640167D00327CD0 /* GraphRequestGenerator.h */,
+				5B35CCF91640167D00327CD0 /* GraphRequestGenerator.m */,
 			);
 			name = RequestGenerators;
 			sourceTree = "<group>";
@@ -859,6 +885,8 @@
 			children = (
 				5BFC372014A363760062F6E7 /* EntityActionRequest.h */,
 				5BFC372114A363760062F6E7 /* EntityActionRequest.m */,
+				5B35CCF21640133C00327CD0 /* EntityGraphRequest.h */,
+				5B35CCF31640133C00327CD0 /* EntityGraphRequest.m */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -989,6 +1017,7 @@
 				5BD8F044150113B3007C93FE /* Icon~ipad.png in Resources */,
 				5B3A25B6162C997900CCA888 /* Tab_Modes@2x.png in Resources */,
 				5B3A25B9162C99F900CCA888 /* Tab_Modes.png in Resources */,
+				5BAD14EB1636E2D500A2CED4 /* Mode_Selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,6 +1104,11 @@
 				5B3A25CD1636D11900CCA888 /* SKSystemModeStdTableViewCell.m in Sources */,
 				5B3A25D01636D13300CCA888 /* SKModeCategoryStdTableViewCell.m in Sources */,
 				5B3A25D31636D15D00CCA888 /* SKModeBaseStdTableViewCell.m in Sources */,
+				5B35CCED163FF52A00327CD0 /* DataSourceGraphController_iPhone.m in Sources */,
+				5B35CCF1163FF6C200327CD0 /* SKImageDataReceiver.m in Sources */,
+				5B35CCF41640133C00327CD0 /* EntityGraphRequest.m in Sources */,
+				5B35CCF71640152600327CD0 /* EntityGraphNotificationData.m in Sources */,
+				5B35CCFA1640167D00327CD0 /* GraphRequestGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -584,13 +584,36 @@
 }
 
 // Indicates whether historic events are supported
-+ (Boolean)supportsHistoricEvents; {
++ (Boolean)supportsHistoricEvents {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = @"histEvt";    
     
     // Get the result
     Boolean retrievedValue = [defaults boolForKey:key];
     
+    return retrievedValue;
+}
+
+// Indicates whether system modes are supported
++ (void)setSupportsSystemModes:(Boolean)supportsSystemModes {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"sysMode";
+    
+    // set the value
+    [defaults setBool:supportsSystemModes forKey:key];
+    
+    // save it
+    [defaults synchronize];
+}
+
+// Indicates whether system modes are supported
++ (Boolean)supportsSystemModes {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = @"sysMode";
+        
+    // Get the result
+    Boolean retrievedValue = [defaults boolForKey:key];
+        
     return retrievedValue;
 }
 

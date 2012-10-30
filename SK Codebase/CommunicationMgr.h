@@ -12,6 +12,7 @@
 #import "DataReceivedDelegate.h"
 #import "EntityActionRequest.h"
 #import "EntityHttpReqNotificationData.h"
+#import "EntityGraphRequest.h"
 
 @interface CommunicationMgr : NSObject
 
@@ -29,9 +30,13 @@
 
 - (void)requestUpdateOfScenarios;
 
+- (void)requestUpdateOfSystemModes;
+
 - (void)requestUpdateOfLiveDaysLeft;
 
 - (void)requestUpdateOfAllEntities;
+
+- (void)requestEntityGraph:(EntityGraphRequest *)req;
 
 - (void)updateAllEntities;
 
@@ -46,6 +51,8 @@
 - (void)updateEventsComingUp;
 
 - (void)updateScenarios;
+
+- (void)updateSystemModes;
 
 - (void)updateSystemSettingServerVersion;
 

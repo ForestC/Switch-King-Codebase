@@ -27,6 +27,10 @@
 #import <netinet/in.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import "SKLiveDaysLeftReceiver.h"
+#import "SKSystemModeDataReceiver.h"
+#import "EntityGraphRequest.h"
+#import "GraphRequestGenerator.h"
+#import "SKImageDataReceiver.h"
 
 static NSString *sMyLock1 = @"Lock1";
 
@@ -163,6 +167,54 @@ static NSString *sMyLock1 = @"Lock1";
  Update Request methods
  *******************************************************************************/
 
+- (void)requestEntityGraph:(EntityGraphRequest *)req {
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Get the authentication data container
+    AuthenticationDataContainer *auth = [SettingsMgr getAuthenticationData];
+    // Create a communication base
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :true];
+    NSString *reqPath;
+    
+    reqPath = [GraphRequestGenerator getGraphRequestPath
+               :req.entity
+               :req.graphSize
+               :req.minutesBack];
+    
+    NSString *url = [[communicationBase getBaseUrl] stringByAppendingString:reqPath];
+    
+    EntityGraphNotificationData *graphNotificationData = [req toNotificationData];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    // Create a receiver and assign an entity store to the receiver
+    SKImageDataReceiver *receiver = [[SKImageDataReceiver alloc] initWithEntityId:req.entity.ID];
+    
+    // Set the receiver delegate
+    [communicationBase setReceiverDelegate:receiver];
+    
+    // Send the request
+    [communicationBase sendRequest:[communicationBase getLiveDaysLeftUrl]];
+    
+    if([CommunicationMgr hasConnectivity]) {
+        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:graphNotificationData
+                                                                     forKey:GRAPH_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        
+        [communicationBase sendRequest:url];
+        
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__GRAPH_UPDATE_REQUESTED
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__GRAPH_DIRTIFICATION_UPDATING
+                                          object:nil
+                                        userInfo:notificationData];
+    } else {
+        [CommunicationMgr notifyNoConnection:notificationCenter];
+    }    
+}
+
 - (void)requestEntityAction:(EntityActionRequest *)req {
     // Get the authentication data container
     AuthenticationDataContainer *auth = [SettingsMgr getAuthenticationData];
@@ -176,13 +228,15 @@ static NSString *sMyLock1 = @"Lock1";
     if(req.actionId == ACTION_ID__SYNCHRONIZE) {
         reqPath = [EntityRequestGenerator getDeviceSynchronizeRequestPath:req.entity];
     } else if(req.actionId == ACTION_ID__CHANGE_SCENARIO) {
-        reqPath = [EntityRequestGenerator getScenarioChangeRequestPath:req.entity];        
+        reqPath = [EntityRequestGenerator getScenarioChangeRequestPath:req.entity];
+    } else if(req.actionId == ACTION_ID__CHANGE_SYSTEM_MODE) {
+        reqPath = [EntityRequestGenerator getSystemModeChangeRequestPath:req.entity];
     } else {
         reqPath = [EntityRequestGenerator getDeviceActionRequestPath:req.entity 
                                                                     :req.actionId 
                                                                     :req.dimLevel];
-    }
-    
+    } 
+
     NSString *url = [[communicationBase getBaseUrl] stringByAppendingString:reqPath];
 
     EntityHttpReqNotificationData *reqNotificationData = [req toNotificationData];
@@ -193,6 +247,8 @@ static NSString *sMyLock1 = @"Lock1";
         reqNotificationData.reqDelay = [SettingsMgr getDeviceGroupUpdateDelay]; 
     } else if([req.entity isKindOfClass:[SKScenario class]]) {
         reqNotificationData.reqDelay = REFRESH_INTERVAL__SCENARIO_CHANGE; 
+    } else if([req.entity isKindOfClass:[SKSystemMode class]]) {
+        reqNotificationData.reqDelay = REFRESH_INTERVAL__SYSTEM_MODE_CHANGE;
     }
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -300,6 +356,27 @@ static NSString *sMyLock1 = @"Lock1";
     } 
 }
 
+- (void)requestUpdateOfSystemModes {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    EntityHttpReqNotificationData *reqNotificationData = [EntityHttpReqNotificationData alloc];
+    
+    reqNotificationData.entityType = ENTITY_TYPE__SYSTEM_MODE;
+    
+    if([CommunicationMgr hasConnectivity]) {
+        NSDictionary *notificationData = [NSDictionary dictionaryWithObject:reqNotificationData
+                                                                     forKey:ENTITY_REQ_NOTIFICATION__ENTITY_REQ_DATA_KEY];
+        
+        [notificationCenter postNotificationName:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING
+                                          object:nil
+                                        userInfo:notificationData];
+        
+        [self updateSystemModes];
+    } else {
+        [CommunicationMgr notifyNoConnection:notificationCenter];
+    }
+}
+
 - (void)requestUpdateOfLiveDaysLeft {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
@@ -345,6 +422,7 @@ static NSString *sMyLock1 = @"Lock1";
     [self updateDevices];
     [self updateDataSources];
     [self updateEventsComingUp];
+    [self updateSystemModes];
     [self updateScenarios];
 }
 
@@ -488,6 +566,30 @@ static NSString *sMyLock1 = @"Lock1";
     [communicationBase sendRequest:[communicationBase getScenarioListUrl]];
     
     NSLog(@"Request for all scenarios");
+}
+
+- (void)updateSystemModes {
+    NSLog(@"Updating system modes");
+    
+    // Get the app delegte
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Get the authentication data container
+    AuthenticationDataContainer * auth = [SettingsMgr getAuthenticationData];
+    
+    // Create a communication base
+    CommunicationBase *communicationBase = [[CommunicationBase alloc] initWithAuthenticationData:auth
+                                                                                                :true];
+    
+    // Create a receiver and assign an entity store to the receiver
+    SKSystemModeDataReceiver *receiver = [[SKSystemModeDataReceiver alloc] initWithEntityStore:appDelegate.entityStore];
+    
+    // Set the receiver delegate
+    [communicationBase setReceiverDelegate:receiver];
+    
+    // Send the request
+    [communicationBase sendRequest:[communicationBase getSystemModeListUrl]];
+    
+    NSLog(@"Request for all system modes");
 }
 
 - (void)updateSystemSettingServerVersion {

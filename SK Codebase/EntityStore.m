@@ -76,7 +76,7 @@
 {
     if ([[notification name] isEqualToString:NOTIFICATION_NAME__ENTITY_DIRTIFICATION_UPDATING]) {
         // Log
-        NSLog (@"EntityStore info about dirtification");
+        NSLog (@"EntityStore info about dirtificat	ion");
         // Get the dictionary
         NSDictionary *dict = [notification userInfo];
         
@@ -293,19 +293,20 @@
         [SettingsMgr setNeedServerVersionUpdate:false];
         
         Boolean validForHistoricEvents = false;
+        Boolean validForSystemMode = false;
         
         if(setting.Value != nil) {
-            NSRange notValidForHistoricEvents1 = [setting.Value rangeOfString:@"2.0.2"];
-            NSRange notValidForHistoricEvents2 = [setting.Value rangeOfString:@"1."];
+            BOOL v202 = [setting.Value rangeOfString:@"2.0.2" options:NSAnchoredSearch].location == 0;
+            BOOL v1xx = [setting.Value rangeOfString:@"1." options:NSAnchoredSearch].location == 0;
+            BOOL v2xx = [setting.Value rangeOfString:@"2." options:NSAnchoredSearch].location == 0;
+            //BOOL v3xx = [setting.Value rangeOfString:@"3." options:NSAnchoredSearch].location == 0;
             
-            if(notValidForHistoricEvents1.location == NSNotFound && notValidForHistoricEvents2.location == NSNotFound) {
-                validForHistoricEvents = true;
-            } else if(notValidForHistoricEvents1.location == 0 || notValidForHistoricEvents2.location == 0) {
-                validForHistoricEvents = false;
-            }
+            validForHistoricEvents = !(v1xx||v202);
+            validForSystemMode = !(v2xx||v1xx);
         }
         
         [SettingsMgr setSupportsHistoricEvents:validForHistoricEvents];
+        [SettingsMgr setSupportsSystemModes:validForSystemMode];
         
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         [notificationCenter postNotificationName:NOTIFICATION_NAME__SERVER_VERSION_UPDATED

@@ -70,6 +70,8 @@ static NSString *sMyLock1 = @"Lock1";
     @synchronized(sMyLock1) {    
     
     NSLog(@"SEND REQUEST");
+        
+    tgtUrl = url;
     
     // Get the app delegte
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -178,7 +180,7 @@ static NSString *sMyLock1 = @"Lock1";
     // Get the app delegte
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-        NSLog(@"Did finish from %@", tgtUrl);
+        NSLog(@"Did finish with %d bytes from %@", [receivedData length], tgtUrl);
     
     // NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     
@@ -300,5 +302,18 @@ static NSString *sMyLock1 = @"Lock1";
     NSString * url = [self getBaseUrl];
     return [url stringByAppendingString:@"/supportservices/licenses/daysleft"];    
 }
+
+// Gets the complete url to the system mode list
+- (NSString *)getSystemModeListUrl {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:@"/systemmodes"];
+}
+
+// Gets the complete url to the active system mode
+- (NSString *)getActiveSystemModeUrl {
+    NSString * url = [self getBaseUrl];
+    return [url stringByAppendingString:@"/systemmodes/active"];
+}
+
 
 @end

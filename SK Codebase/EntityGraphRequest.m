@@ -1,45 +1,43 @@
 //
-//  EntityActionRequest.m
-//  SK Codebase
+//  EntityGraphRequest.m
+//  Switch King
 //
-//  Created by Martin Videfors on 2011-12-22.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Martin Videfors on 2012-10-30.
+//
 //
 
-#import "EntityActionRequest.h"
-#import "SKDevice.h"
-#import "SKDeviceGroup.h"
-#import "SKDataSource.h"
-#import "SKScenario.h"
+#import "EntityGraphRequest.h"
+#import "Constants.h"
+#import "SKEntity.h"
 #import "SKEvent.h"
+#import "SKDevice.h"
+#import "SKScenario.h"
 #import "SKSystemMode.h"
-#include "Constants.h"
+#import "SKDataSource.h"
+#import "SKDeviceGroup.h"
 
-@implementation EntityActionRequest
+@implementation EntityGraphRequest
 
-@synthesize dimLevel;
 @synthesize entity;
-@synthesize actionId;
-@synthesize reqActionDelay;
+@synthesize graphSize;
+@synthesize minutesBack;
 
 // Creates a device action request for a device by using the supplied params
-+ (EntityActionRequest *)createByDeviceAction:(SKDevice *)device:(NSInteger) actionId:(NSInteger) dimLevel:(NSTimeInterval) delay {
++ (EntityGraphRequest *)createByDataSource:(SKDataSource *)dataSource:(CGSize) graphSize:(NSInteger) minutesBack; {
     
-    EntityActionRequest *r = [EntityActionRequest alloc];
+    EntityGraphRequest *r = [EntityGraphRequest alloc];
     
-    r.actionId = actionId;
-    r.dimLevel = dimLevel;
-    r.entity = device;
-    r.reqActionDelay = delay;
+    r.entity = dataSource;
+    r.graphSize = graphSize;
+    r.minutesBack = minutesBack;
     
     return r;
 }
 
-- (EntityHttpReqNotificationData *)toNotificationData {
-    EntityHttpReqNotificationData *data = [[EntityHttpReqNotificationData alloc] init];
+- (EntityGraphNotificationData *)toNotificationData {
+    EntityGraphNotificationData *data = [[EntityGraphNotificationData alloc] init];
     
     data.entityId = self.entity.ID;
-    data.reqDelay = self.reqActionDelay;
     
     if([self.entity isKindOfClass:[SKDevice class]]) {
         data.entityType = ENTITY_TYPE__DEVICE;
@@ -56,6 +54,6 @@
     }
     
     return data;
-}    
+}
 
 @end

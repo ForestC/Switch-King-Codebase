@@ -12,6 +12,7 @@
 #import "SKDataSource.h"
 #import "Constants.h"
 #import "SKScenario.h"
+#import "SKSystemMode.h"
 
 @implementation EntityRequestGenerator
 
@@ -38,6 +39,19 @@
         url = [NSString stringWithFormat:@"/commandqueue?operation=changescenario&target=%i&param1=&param2=&param3=", entity.ID];
     } else {
         NSLog(@"Invalid type for scenario request.");
+    }
+    
+    return url;
+}
+
+// Gets the url for a system mode change request
++ (NSString *)getSystemModeChangeRequestPath:(SKEntity *) entity {
+    NSString *url;
+    
+    if([entity isKindOfClass:[SKSystemMode class]]) {
+        url = [NSString stringWithFormat:@"/commandqueue?operation=changesystemmode&target=%i&param1=&param2=&param3=", entity.ID];
+    } else {
+        NSLog(@"Invalid type for system mode request.");
     }
     
     return url;

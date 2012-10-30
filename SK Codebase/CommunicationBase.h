@@ -56,6 +56,12 @@
 // Gets the complete url to the system setting containing version info
 - (NSString *)getSystemSettingVersionUrl;
 
+// Gets the complete url to the system mode list
+- (NSString *)getSystemModeListUrl;
+
+// Gets the complete url to the active system mode
+- (NSString *)getActiveSystemModeUrl;
+
 // Gets the complete url to the information about days left
 - (NSString *)getLiveDaysLeftUrl;
 

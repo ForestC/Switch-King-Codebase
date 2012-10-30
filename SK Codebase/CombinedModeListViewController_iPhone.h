@@ -12,6 +12,7 @@
 @interface CombinedModeListViewController_iPhone  : UITableViewController
 
 @property (atomic, retain) NSMutableArray *scenarios;
+@property (atomic, retain) NSMutableArray *systemModes;
 @property (nonatomic,strong) IBOutlet UIBarButtonItem *refreshBarButtonItem;
 
 // Adds entity observers to be able to listen to notifications
@@ -22,9 +23,13 @@
 
 - (void)handleUpdatedScenarios:(NSMutableArray *)scenariosData;
 
+- (void)handleUpdatedSystemModes:(NSMutableArray *)systemModesData;
+
 - (UITableViewCell *)dequeueOrCreateTableViewCell:(UITableView *)tableView :(SKEntity *)cellEntity;
 
 // Sets the table view cell data depending on the type of cell and entity
 - (void) setTableViewCellData:(UITableViewCell *)cell :(SKEntity *)cellEntity;
+
+- (NSInteger)getEntityTypeForSection:(NSInteger) section;
 
 @end

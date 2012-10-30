@@ -19,6 +19,8 @@
 #import "SKTabBarControllerDelegate_iPhone.h"
 #import "SKNavigationControllerDelegate_iPhone.h"
 #import "AlertMessageView.h"
+#import "SKSystemModeDataReceiver.h"
+#import "EntityGraphRequest.h"
 
 @implementation AppDelegate
 
@@ -54,11 +56,12 @@
     UITabBarController *v2 = (UITabBarController*)self.window.rootViewController;
     tabBarDelegate = [[SKTabBarControllerDelegate_iPhone alloc] init];
     v2.delegate = tabBarDelegate;
-   
+    
     // Create the entity store...
     entityStore = [[EntityStore alloc] init];
     // Create the communication manager...
     communicationMgr = [[CommunicationMgr alloc] init];
+    
     // Request update of all entities...
     [communicationMgr requestUpdateOfAllEntities];
     // Request update of Live days left

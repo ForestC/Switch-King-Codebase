@@ -17,6 +17,9 @@
 // Gets the url for a scenario change request
 + (NSString *)getScenarioChangeRequestPath:(SKEntity *) entity;
 
+// Gets the url for a system mode change request
++ (NSString *)getSystemModeChangeRequestPath:(SKEntity *) entity;
+
 // Gets the url for an action request
 + (NSString *)getDeviceActionRequestPath:(SKEntity *) entity:(NSInteger) actionId:(NSInteger) dimLevel;
 

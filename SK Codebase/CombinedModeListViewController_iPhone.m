@@ -12,9 +12,11 @@
 #import "Constants.h"
 #import "AppDelegate.h"
 #import "SKScenarioStdTableViewCell.h"
+#import "SKSystemModeStdTableViewCell.h"
 
 @implementation CombinedModeListViewController_iPhone
 @synthesize scenarios;
+@synthesize systemModes;
 @synthesize refreshBarButtonItem;
 
 - (id)init
@@ -63,7 +65,7 @@
 {    
     if ([[notification name] isEqualToString:NOTIFICATION_NAME__SCENARIOS_UPDATED]) {
         // Log
-        NSLog (@"ScenarioListViewController received info that scenarios are updated");
+        NSLog (@"CombinedModeListViewController received info that scenarios are updated");
         
         // Get the dictionary
         NSDictionary *dict = [notification userInfo];
@@ -72,13 +74,33 @@
         [self handleUpdatedScenarios:[dict valueForKey:@"Scenarios"]]; 
     } else if (
                [[notification name] isEqualToString:NOTIFICATION_NAME__SCENARIOS_DIRTIFICATION_UPDATED]) {
-        NSLog (@"ScenarioListViewController received info that a dirtification has been updated");
+        NSLog (@"CombinedModeListViewController received info that a dirtification has been updated");
         [[self tableView] reloadData];
-    }  
+    } else if ([[notification name] isEqualToString:NOTIFICATION_NAME__SYSTEM_MODES_UPDATED]) {
+        // Log
+        NSLog (@"CombinedModeListViewController received info that system modes are updated");
+        
+        // Get the dictionary
+        NSDictionary *dict = [notification userInfo];
+        
+        // Pass the entity data to the method
+        [self handleUpdatedSystemModes:[dict valueForKey:@"SystemModes"]];
+    } else if (
+               [[notification name] isEqualToString:NOTIFICATION_NAME__SYSTEM_MODES_DIRTIFICATION_UPDATED]) {
+        NSLog (@"CombinedModeListViewController received info that a dirtification has been updated");
+        [[self tableView] reloadData];
+    }
 }
 
 - (void)handleUpdatedScenarios:(NSMutableArray *)scenarioData {
     self.scenarios = [NSMutableArray arrayWithArray:scenarioData];
+    
+    // Forces reload of data
+    [self.tableView reloadData];
+}
+
+- (void)handleUpdatedSystemModes:(NSMutableArray *)systemModeData {
+    self.systemModes = [NSMutableArray arrayWithArray:systemModeData];
     
     // Forces reload of data
     [self.tableView reloadData];
@@ -94,7 +116,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(entityDataUpdated:)
                                                  name:NOTIFICATION_NAME__SCENARIOS_DIRTIFICATION_UPDATED
-                                               object:nil];    
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(entityDataUpdated:)
+                                                 name:NOTIFICATION_NAME__SYSTEM_MODES_UPDATED
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(entityDataUpdated:)
+                                                 name:NOTIFICATION_NAME__SYSTEM_MODES_DIRTIFICATION_UPDATED
+                                               object:nil];
 }
 
 /*******************************************************************************
@@ -104,23 +135,31 @@
 - (void)refreshRequested {
     // Get the app delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+
+    [appDelegate.communicationMgr requestUpdateOfSystemModes];
     [appDelegate.communicationMgr requestUpdateOfScenarios];
 }
 
 // Handles action
-- (void)performAction:(SKScenario *)targetedScenario {
+- (void)performAction:(SKEntity *)targetedEntity {
     // Get the app delegte
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     EntityActionRequest *actionRequest = [EntityActionRequest alloc];
     
-    actionRequest.actionId = ACTION_ID__CHANGE_SCENARIO;
-    actionRequest.entity = targetedScenario;
     actionRequest.reqActionDelay = 0;
+    
+    if([targetedEntity isKindOfClass:[SKScenario class]]) {
+        actionRequest.actionId = ACTION_ID__CHANGE_SCENARIO;
+        actionRequest.entity = targetedEntity;
+    } else {
+        actionRequest.actionId = ACTION_ID__CHANGE_SYSTEM_MODE;
+        actionRequest.entity = targetedEntity;
+    }
     
     [appDelegate entityActionRequestFired:nil :actionRequest];
 }
+
 
 /*******************************************************************************
  TableView Layout
@@ -144,6 +183,19 @@
         
         ((SKScenarioStdTableViewCell *)cell).tableViewController = self;
         ((SKScenarioStdTableViewCell *)cell).entity = cellEntity;
+    } else if([cellEntity isKindOfClass:[SKSystemMode class]]) {
+        if([entityStore systemModeIsDirty:cellEntity.ID]) {
+            cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__SYSTEM_MODE_CELL_STD_DIRTY];
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER__SYSTEM_MODE_CELL_STD];
+        }
+        
+        if (cell == nil) {
+            cell = [[SKSystemModeStdTableViewCell alloc] initWithFrame:CGRectZero];
+        }
+        
+        ((SKSystemModeStdTableViewCell *)cell).tableViewController = self;
+        ((SKSystemModeStdTableViewCell *)cell).entity = cellEntity;
     } else {
         static NSString *cellIdentifier = @"Cell";
         
@@ -157,25 +209,51 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Single section
+    if(scenarios.count == 0 && systemModes.count < 2)
+        return 0;
+    else if(scenarios.count > 0 && systemModes.count > 1)
+        return 2;
     return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSInteger entityType = [self getEntityTypeForSection:section];
+    
+    if(entityType == ENTITY_TYPE__SYSTEM_MODE)
+        return NSLocalizedStringFromTable(@"System mode", @"Texts", nil);
+    else if(entityType == ENTITY_TYPE__SCENARIO)
+        return NSLocalizedStringFromTable(@"Scenario", @"Texts", nil);
+    return NSLocalizedStringFromTable(@"Unknown", @"Texts", nil);
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return scenarios.count;
+    NSInteger entityType = [self getEntityTypeForSection:section];
+    
+    if(entityType == ENTITY_TYPE__SCENARIO)
+        return scenarios.count;
+    else if (entityType == ENTITY_TYPE__SYSTEM_MODE)
+        return systemModes.count;
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SKEntity *entity;
+    NSInteger entityType = [self getEntityTypeForSection:indexPath.section];
     
-    entity = (SKScenario *)[scenarios objectAtIndex:indexPath.row];
+    if(entityType == ENTITY_TYPE__SCENARIO)
+        entity = (SKScenario *)[scenarios objectAtIndex:indexPath.row];
+    else if (entityType == ENTITY_TYPE__SYSTEM_MODE)
+        entity = (SKSystemMode *)[systemModes objectAtIndex:indexPath.row];
     
     // Dequeue or create
     UITableViewCell *cell = [self dequeueOrCreateTableViewCell:tableView :entity];
     
     if([entity isKindOfClass:[SKScenario class]])
     {
+        cell.tag = indexPath.row;
+    } else if([entity isKindOfClass:[SKSystemMode class]]) {
         cell.tag = indexPath.row;
     } else {
         cell.tag = -1;
@@ -196,9 +274,20 @@
         [scenarioCell.entityNameLabel setText:scenario.Name];
         
         if([XML_VALUE__TRUE isEqualToString:scenario.Active]) {
-            scenarioCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [scenarioCell.entityIconImageView setHidden:false];
         } else {
-            scenarioCell.accessoryType = UITableViewCellAccessoryNone;
+            [scenarioCell.entityIconImageView setHidden:true];
+        }
+    } else if([cell isKindOfClass:[SKSystemModeStdTableViewCell class]]) {
+        SKSystemModeStdTableViewCell *systemModeCell = (SKSystemModeStdTableViewCell *)cell;
+        SKSystemMode *systemMode = (SKSystemMode *)cellEntity;
+        
+        [systemModeCell.entityNameLabel setText:systemMode.Name];
+        
+        if([XML_VALUE__TRUE isEqualToString:systemMode.Active]) {
+            [systemModeCell.entityIconImageView setHidden:false];
+        } else {
+            [systemModeCell.entityIconImageView setHidden:true];
         }
     }
 }
@@ -206,17 +295,40 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
+    NSInteger entityType = [self getEntityTypeForSection:indexPath.section];
+    
     if(cell.tag > -1) {
-        SKEntity *entity = (SKEntity *)[scenarios objectAtIndex:cell.tag];
+        if(entityType == ENTITY_TYPE__SCENARIO) {
+            SKEntity *entity = (SKEntity *)[scenarios objectAtIndex:cell.tag];
         
-        if([entity isKindOfClass:[SKScenario class]]) {
-            [self performAction:(SKScenario *)entity];
-        } 
+            if([entity isKindOfClass:[SKScenario class]]) {
+                [self performAction:(SKScenario *)entity];
+            }
+        } else if(entityType == ENTITY_TYPE__SYSTEM_MODE) {
+            SKEntity *entity = (SKEntity *)[systemModes objectAtIndex:cell.tag];
+            
+            if([entity isKindOfClass:[SKSystemMode class]]) {
+                [self performAction:(SKSystemMode *)entity];
+            }
+        }
     }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     NSLog(@"%@", @"SCROLL");
+}
+
+- (NSInteger)getEntityTypeForSection:(NSInteger) section {
+    if(systemModes.count > 1 && scenarios.count > 0) {
+        if(section == 0)
+            return ENTITY_TYPE__SYSTEM_MODE;
+        else
+            return ENTITY_TYPE__SCENARIO;
+    } else if(systemModes.count > 1 && scenarios.count == 0) {
+        return ENTITY_TYPE__UNKWNOWN;
+    } else {
+        return ENTITY_TYPE__SCENARIO;
+    }
 }
 
 #pragma mark - View lifecycle
@@ -243,4 +355,3 @@
 }
 
 @end
-

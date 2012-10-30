@@ -140,6 +140,12 @@
 // Indicates whether historic events are supported
 + (Boolean)supportsHistoricEvents;
 
+// Indicates whether system modes are supported
++ (void)setSupportsSystemModes:(Boolean)supportsSystemModes;
+
+// Indicates whether system modes are supported
++ (Boolean)supportsSystemModes;
+
 // Sets the server version
 + (void)setServerVersion:(NSString *)erverVersion;
 
