@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xOC-gV-Vaz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xOC-gV-Vaz">
     <dependencies>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
+        <!--Server Settings List View Controller i Phone - Server indstillinger-->
         <scene sceneID="Qau-Ie-uPd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aFq-cL-n4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Frk-Il-cIK" customClass="ServerSettingsListViewController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="HWc-rE-n1f">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -172,12 +171,13 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aFq-cL-n4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2444" y="-1151"/>
         </scene>
+        <!--Device List View Controller - Enheder-->
         <scene sceneID="IcR-Ng-Hld">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cHX-Pg-z70" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="gPT-4c-seA" customClass="DeviceListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="gRX-dw-xu0">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -239,7 +239,7 @@
                                 <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Group name" lineBreakMode="tailTruncation" minimumFontSize="10" id="GfL-dn-Ftw">
@@ -274,7 +274,7 @@
                                 <rect key="frame" x="0.0" y="135" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Device name" lineBreakMode="tailTruncation" minimumFontSize="10" id="Sq8-8o-oDd">
@@ -323,7 +323,7 @@
                                 <rect key="frame" x="0.0" y="179" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Device name" lineBreakMode="tailTruncation" minimumFontSize="10" id="gVk-Ix-hPA">
@@ -372,12 +372,13 @@
                         <outlet property="refreshBarButtonItem" destination="weK-AE-vs3" id="W0k-EG-EAe"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHX-Pg-z70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1304" y="-56"/>
         </scene>
+        <!--Quick Actions Mode View Controller - Enhedslisten kommandotilstand-->
         <scene sceneID="Yfq-GC-wdU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="47o-n3-I6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="2t3-n1-ywl" customClass="QuickActionsModeViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Akt-e1-mJb">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -453,12 +454,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Enhedslisten kommandotilstand" id="6a6-UJ-oYt"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="47o-n3-I6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1953" y="-721"/>
         </scene>
+        <!--Settings List View Controller i Phone - Indstillinger-->
         <scene sceneID="mtj-qv-9Am">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OhS-0D-8bB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="jS5-lh-cj2" customClass="SettingsListViewController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="zhQ-EP-ZxH">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -543,7 +545,7 @@
                                         <rect key="frame" x="0.0" y="183" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Opdater efter kommando" lineBreakMode="tailTruncation" minimumFontSize="10" id="zPJ-fY-oaL">
@@ -605,7 +607,7 @@
                                         <rect key="frame" x="0.0" y="319" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Events i event liste " lineBreakMode="tailTruncation" minimumFontSize="10" id="dhy-kD-kxV">
@@ -731,12 +733,13 @@
                         <outlet property="versionLabel" destination="WMj-19-BdG" id="RvV-dJ-Vce"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OhS-0D-8bB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1920" y="-151"/>
         </scene>
+        <!--Data Source List View Controller i Phone - Datakilder-->
         <scene sceneID="ZwA-vO-Roh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fO5-Jp-6Wo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="bBp-yE-c6l" customClass="DataSourceListViewController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="BAT-TU-E03">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -789,7 +792,7 @@
                                 <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Data source name" lineBreakMode="tailTruncation" minimumFontSize="10" id="ZIZ-1k-R0Q">
@@ -840,12 +843,13 @@
                         <outlet property="refreshBarButtonItem" destination="uY1-Wf-J3p" id="WjZ-zf-Urt"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fO5-Jp-6Wo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1830" y="574"/>
         </scene>
+        <!--Event List View Controller i Phone - Events-->
         <scene sceneID="jtf-fX-4Rj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CRJ-fI-fPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="9Px-Ou-m9Q" customClass="EventListViewController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="faj-GY-AIE">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -916,7 +920,7 @@
                                 <rect key="frame" x="0.0" y="119" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Action timestamp" lineBreakMode="tailTruncation" minimumFontSize="10" id="hv3-if-V9S">
@@ -968,12 +972,13 @@
                         <outlet property="refreshBarButtonItem" destination="oJ1-Ni-I1E" id="N36-Ms-B07"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CRJ-fI-fPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1830" y="1336"/>
         </scene>
+        <!--Data Source Detail Controller i Phone-->
         <scene sceneID="2fG-OX-B1u">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9g-oI-bue" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="DataSourceDetails" id="Lie-NI-VvZ" customClass="DataSourceDetailController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="i94-b5-68d">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -1129,12 +1134,13 @@
                         <outlet property="entityValueLabel" destination="gHZ-ix-sc9" id="OBI-IW-FcH"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9g-oI-bue" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2275" y="574"/>
         </scene>
+        <!--Device Detail Controller i Phone-->
         <scene sceneID="r6p-cX-eWg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hKg-U6-a0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="RelayDeviceDetails" id="zEs-zo-6Uc" customClass="DeviceDetailController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="LEW-YR-qAj">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -1275,12 +1281,13 @@
                         <outlet property="synhronizeButton" destination="WEc-s1-XrC" id="mHm-fk-s8e"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hKg-U6-a0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2642" y="574"/>
         </scene>
+        <!--Device Detail Controller i Phone-->
         <scene sceneID="Lzj-BQ-3t4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n9S-WP-OyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="DimmableDeviceDetails" id="jur-xl-d1V" customClass="DeviceDetailController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="d2I-cW-twh">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -1428,12 +1435,13 @@
                         <outlet property="synhronizeButton" destination="7y1-KG-uMW" id="LIP-un-9os"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n9S-WP-OyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3028" y="576"/>
         </scene>
+        <!--Refresh Interval List View Controller - Opdaterings interval-->
         <scene sceneID="IJB-39-gVj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HBO-UZ-D34" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="xIV-Sc-H8S" customClass="RefreshIntervalListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="As7-Pz-Xxh">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -1547,12 +1555,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Opdaterings interval" id="INc-K3-NHO"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HBO-UZ-D34" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2444" y="-534"/>
         </scene>
+        <!--Max Upcoming Events List View Controller - Events i event liste-->
         <scene sceneID="izo-Uu-mXw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LMO-O9-Hoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="q6S-sr-ikL" customClass="MaxUpcomingEventsListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ebu-Sp-2La">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -1647,12 +1656,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Events i event liste" id="jZK-VX-fvu"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LMO-O9-Hoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3496" y="677"/>
         </scene>
+        <!--Refresh After Command List View Controller - Opdater efter kommando-->
         <scene sceneID="g3c-gA-Zrq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JDY-T6-hJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="xSX-4h-A8a" customClass="RefreshAfterCommandListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Oxc-G4-5c8">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -1785,12 +1795,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Opdater efter kommando" id="eX4-7v-DGr"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDY-T6-hJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2444" y="35"/>
         </scene>
+        <!--Tab Bar Controller-->
         <scene sceneID="YIy-XP-oMX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7jt-be-HoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="xOC-gV-Vaz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1804,12 +1815,13 @@
                         <segue destination="xMy-Jm-Ne4" kind="relationship" relationship="viewControllers" id="xoa-el-JIX"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jt-be-HoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="390" y="258"/>
         </scene>
+        <!--Navigation Controller - Enheder-->
         <scene sceneID="lKF-pB-PUu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eqB-hN-ZUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="0XO-s5-Tuq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Enheder" image="Tab_Devices.png" id="BD0-2J-uUU"/>
                     <toolbarItems/>
@@ -1823,6 +1835,7 @@
                         <segue destination="gPT-4c-seA" kind="relationship" relationship="rootViewController" id="LA7-bX-BSQ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eqB-hN-ZUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Title" id="d6j-gP-R19"/>
                 <barButtonItem title="TTT" id="6g8-nY-Dct"/>
                 <navigationBar contentMode="scaleToFill" id="rNW-oH-wgA">
@@ -1833,9 +1846,9 @@
             </objects>
             <point key="canvasLocation" x="794" y="-64"/>
         </scene>
+        <!--Navigation Controller - Datakilder-->
         <scene sceneID="vxk-Ar-Mtn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="btA-ZZ-b7q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="268-zO-dVu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Datakilder" image="Tab_DataSources.png" id="Rxj-5a-LXg"/>
                     <toolbarItems/>
@@ -1848,12 +1861,13 @@
                         <segue destination="bBp-yE-c6l" kind="relationship" relationship="rootViewController" id="vRl-K6-bRL"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btA-ZZ-b7q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1320" y="574"/>
         </scene>
+        <!--Scenario List View Controller i Phone - Scenarier-->
         <scene sceneID="FJs-pq-Ra1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ihk-LY-mfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Ude-9t-Sja" customClass="ScenarioListViewController_iPhone" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Tq7-W2-wnT">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -1918,12 +1932,13 @@
                         <outlet property="refreshBarButtonItem" destination="afl-6K-cni" id="8TO-cr-FW0"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ihk-LY-mfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="1218"/>
         </scene>
+        <!--Navigation Controller - Events-->
         <scene sceneID="snW-Kf-bT4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KUs-fl-Y98" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="xMy-Jm-Ne4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="Tab_ComingUp.png" id="fda-OY-Vbn"/>
                     <toolbarItems/>
@@ -1936,12 +1951,13 @@
                         <segue destination="9Px-Ou-m9Q" kind="relationship" relationship="rootViewController" id="Jgb-JO-V63"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KUs-fl-Y98" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1320" y="1336"/>
         </scene>
+        <!--Navigation Controller - Scenarier-->
         <scene sceneID="aVh-bh-dV9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RHQ-bC-6ZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="bNo-yS-jZm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scenarier" image="Tab_Scenario.png" id="Dki-uO-oxV"/>
                     <toolbarItems/>
@@ -1954,8 +1970,101 @@
                         <segue destination="Ude-9t-Sja" kind="relationship" relationship="rootViewController" id="6Uy-52-F4p"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RHQ-bC-6ZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="477" y="874"/>
+        </scene>
+        <!--Data Source Graph Controller i Phone-->
+        <scene sceneID="dVv-4m-RId">
+            <objects>
+                <viewController storyboardIdentifier="DataSourceGraph" id="fjb-WU-SsV" customClass="DataSourceGraphController_iPhone" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wex-Jy-r5U">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="AYF-YI-qo4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="F6P-Kh-ulH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="7iT-au-Afa">
+                                            <rect key="frame" x="20" y="76" width="280" height="300"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" id="t1S-dB-jLH">
+                                            <rect key="frame" x="21" y="77" width="278" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Data source name" lineBreakMode="tailTruncation" minimumFontSize="10" id="cB8-1Z-idv">
+                                            <rect key="frame" x="76" y="20" width="234" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description" lineBreakMode="tailTruncation" minimumFontSize="10" id="zb7-1G-z4N">
+                                            <rect key="frame" x="76" y="47" width="224" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="DataSourceList_StatusError.png" id="l9R-uS-XYU">
+                                            <rect key="frame" x="20" y="20" width="48" height="48"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Q5N-eg-KsM">
+                                            <rect key="frame" x="21" y="77" width="278" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="Dgk-oi-SMI">
+                                            <rect key="frame" x="148" y="210" width="37" height="37"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </activityIndicatorView>
+                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ikke tilgængelig" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c6a-v6-wLP">
+                                            <rect key="frame" x="76" y="4180" width="328" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Xcf-gz-sgJ">
+                                            <rect key="frame" x="19" y="389" width="280" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <segments>
+                                                <segment title="4h"/>
+                                                <segment title="12h"/>
+                                                <segment title="24h"/>
+                                                <segment title="7 dgr"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="graphHistorySegmentTapped:" destination="fjb-WU-SsV" eventType="valueChanged" id="rEa-FP-cXz"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
+                                </view>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="Dgk-oi-SMI" id="l3Z-6L-ljm"/>
+                        <outlet property="entityGraphImageView" destination="Q5N-eg-KsM" id="OLt-YD-xqJ"/>
+                        <outlet property="entityGraphNotAvailableLabel" destination="c6a-v6-wLP" id="Fvt-MK-QU1"/>
+                        <outlet property="entityIconImageView" destination="l9R-uS-XYU" id="xYL-9r-cf6"/>
+                        <outlet property="entityInfoLabel" destination="zb7-1G-z4N" id="TPa-L6-lsM"/>
+                        <outlet property="entityNameLabel" destination="cB8-1Z-idv" id="sfE-XM-U0Z"/>
+                        <outlet property="graphHistorySegment" destination="Xcf-gz-sgJ" id="Ylh-Ar-lbr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Baw-x1-g00" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2275" y="1178"/>
         </scene>
     </scenes>
     <resources>

@@ -155,7 +155,12 @@ static NSString *sMyLock1 = @"Lock1";
         case ENTITY_TYPE__SCENARIO:
             NSLog(@"%@", @"Interpreted entity req notification as Scenario");
             [self updateScenarios];
-            break;            
+            break;
+            
+        case ENTITY_TYPE__SYSTEM_MODE:
+            NSLog(@"%@", @"Interpreted entity req notification as System Mode");
+            [self updateSystemModes];
+            break;
             
         default:
             NSLog(@"Missing or invalid entity type (%i) while interpreting entity req notification", reqNotData.entityType);
