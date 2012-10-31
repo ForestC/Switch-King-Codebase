@@ -28,10 +28,14 @@
 @property(nonatomic,weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 // Holds the info about the graph
 @property(nonatomic,weak) IBOutlet UILabel *entityGraphNotAvailableLabel;
+// Holds the stepper defining the historic data period
+@property(nonatomic,weak) IBOutlet UISegmentedControl *graphHistorySegment;
 
 // Sets data for the view
 - (void)setViewData;
 
 - (void)handleUpdatedGraph:(NSData *)graphData;
+
+- (IBAction)graphHistorySegmentTapped:(NSObject *)sender;
 
 @end

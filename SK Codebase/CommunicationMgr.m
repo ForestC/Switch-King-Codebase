@@ -168,8 +168,6 @@ static NSString *sMyLock1 = @"Lock1";
  *******************************************************************************/
 
 - (void)requestEntityGraph:(EntityGraphRequest *)req {
-    // Get the app delegte
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Get the authentication data container
     AuthenticationDataContainer *auth = [SettingsMgr getAuthenticationData];
     // Create a communication base
@@ -193,9 +191,6 @@ static NSString *sMyLock1 = @"Lock1";
     
     // Set the receiver delegate
     [communicationBase setReceiverDelegate:receiver];
-    
-    // Send the request
-    [communicationBase sendRequest:[communicationBase getLiveDaysLeftUrl]];
     
     if([CommunicationMgr hasConnectivity]) {
         NSDictionary *notificationData = [NSDictionary dictionaryWithObject:graphNotificationData

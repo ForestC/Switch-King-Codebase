@@ -13,7 +13,7 @@
 
 @property (atomic, retain) NSMutableArray *scenarios;
 @property (atomic, retain) NSMutableArray *systemModes;
-@property (nonatomic,strong) IBOutlet UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic,weak) IBOutlet UIBarButtonItem *refreshBarButtonItem;
 
 // Adds entity observers to be able to listen to notifications
 - (void)addEntityObservers;

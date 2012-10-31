@@ -25,6 +25,7 @@
 @synthesize entityIconImageView;
 @synthesize activityIndicatorView;
 @synthesize entityGraphNotAvailableLabel;
+@synthesize graphHistorySegment;
 
 - (id)init
 {
@@ -167,10 +168,34 @@
     // Create the communication manager...
     CommunicationMgr *communicationMgr = [[CommunicationMgr alloc] init];
     
-    EntityGraphRequest *req = [EntityGraphRequest createByDataSource:self.dataSource : self.entityGraphImageView.bounds.size :240];
+    NSInteger segment = self.graphHistorySegment.selectedSegmentIndex;
+    NSInteger minutesBack;
+    
+    switch (segment) {
+        case 0:
+            minutesBack = 60*4;
+            break;
+        case 1:
+            minutesBack = 60*12;
+            break;
+        case 2:
+            minutesBack = 60*24;
+            break;
+        case 3:
+            minutesBack = 60*24*7;
+            break;
+        default:
+            break;
+    }
+    
+    EntityGraphRequest *req = [EntityGraphRequest createByDataSource:self.dataSource : self.entityGraphImageView.bounds.size :minutesBack];
     
     // Request update of all entities...
     [communicationMgr requestEntityGraph:req];
+}
+
+- (IBAction)graphHistorySegmentTapped:(NSObject *)sender {
+    [self requestUpdateOfGraph];
 }
 
 #pragma mark - View lifecycle
@@ -185,7 +210,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return YES;
+    return FALSE;
 }
 
 @end

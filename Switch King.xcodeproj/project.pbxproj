@@ -923,7 +923,7 @@
 		5B024C9C148FA6B300ED3B6D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 5B024C9F148FA6B300ED3B6D /* Build configuration list for PBXProject "Switch King" */;
 			compatibilityVersion = "Xcode 3.2";
