@@ -11,6 +11,8 @@
 #import "TextHelper.h"
 #include "Constants.h"
 #import "ImagePathHelper.h"
+#import "SettingsMgr.h"
+#import "DataSourceGraphController_iPhone.h"
 
 @implementation DataSourceDetailController_iPhone
 
@@ -47,6 +49,10 @@
     [self setViewData];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 // Sets data for the view
 - (void)setViewData {
     [self.entityIconImageView setImage:[UIImage imageNamed:[ImagePathHelper getImageNameFromDataSource: dataSource:@"DataSourceList_"]]];
@@ -66,6 +72,23 @@
         else
             [self.entityNextUpdateLabel setText:[TextHelper getFormattedDateText:dataSource.NextRun:true]];
     }
+    
+    if(![SettingsMgr useLive]) {
+        UIImage *navImage = [UIImage imageNamed:@"Toolbar_Graph.png"];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:navImage
+                                                                                  style:UIBarButtonSystemItemDone
+                                                                                 target:self
+                                                                                 action:@selector(showGraph)];
+    }
+}
+
+- (void)showGraph {
+    DataSourceGraphController_iPhone *graphController = [self.storyboard instantiateViewControllerWithIdentifier:@"DataSourceGraph"];
+    
+    // Assign data source
+    [graphController setDataSource:dataSource];
+    
+    [self.navigationController pushViewController:graphController animated:true];
 }
 
 #pragma mark - View lifecycle

@@ -42,6 +42,8 @@
 		5B35CCF41640133C00327CD0 /* EntityGraphRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B35CCF31640133C00327CD0 /* EntityGraphRequest.m */; };
 		5B35CCF71640152600327CD0 /* EntityGraphNotificationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B35CCF61640152600327CD0 /* EntityGraphNotificationData.m */; };
 		5B35CCFA1640167D00327CD0 /* GraphRequestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B35CCF91640167D00327CD0 /* GraphRequestGenerator.m */; };
+		5B35CD06164031A600327CD0 /* Toolbar_Graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B35CD05164031A600327CD0 /* Toolbar_Graph.png */; };
+		5B35CD081640325400327CD0 /* Toolbar_Graph@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B35CD071640325400327CD0 /* Toolbar_Graph@2.png */; };
 		5B38B4C114CD9407002A3275 /* MaxUpcomingEventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C014CD9407002A3275 /* MaxUpcomingEventsListViewController.m */; };
 		5B38B4C514CD942B002A3275 /* RefreshIntervalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C414CD942B002A3275 /* RefreshIntervalListViewController.m */; };
 		5B38B4C814CD944A002A3275 /* RefreshAfterCommandListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38B4C714CD944A002A3275 /* RefreshAfterCommandListViewController.m */; };
@@ -236,6 +238,8 @@
 		5B35CCF61640152600327CD0 /* EntityGraphNotificationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityGraphNotificationData.m; sourceTree = "<group>"; };
 		5B35CCF81640167D00327CD0 /* GraphRequestGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphRequestGenerator.h; sourceTree = "<group>"; };
 		5B35CCF91640167D00327CD0 /* GraphRequestGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphRequestGenerator.m; sourceTree = "<group>"; };
+		5B35CD05164031A600327CD0 /* Toolbar_Graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Toolbar_Graph.png; sourceTree = "<group>"; };
+		5B35CD071640325400327CD0 /* Toolbar_Graph@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toolbar_Graph@2.png"; sourceTree = "<group>"; };
 		5B38B4BF14CD9407002A3275 /* MaxUpcomingEventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxUpcomingEventsListViewController.h; sourceTree = "<group>"; };
 		5B38B4C014CD9407002A3275 /* MaxUpcomingEventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxUpcomingEventsListViewController.m; sourceTree = "<group>"; };
 		5B38B4C314CD942B002A3275 /* RefreshIntervalListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshIntervalListViewController.h; sourceTree = "<group>"; };
@@ -721,6 +725,8 @@
 			isa = PBXGroup;
 			children = (
 				5BAD14EA1636E2D500A2CED4 /* Mode_Selected.png */,
+				5B35CD071640325400327CD0 /* Toolbar_Graph@2.png */,
+				5B35CD05164031A600327CD0 /* Toolbar_Graph.png */,
 				5B3A25B8162C99F900CCA888 /* Tab_Modes.png */,
 				5B3A25B5162C997900CCA888 /* Tab_Modes@2x.png */,
 				5BD8F043150113B3007C93FE /* Icon~ipad.png */,
@@ -1018,6 +1024,8 @@
 				5B3A25B6162C997900CCA888 /* Tab_Modes@2x.png in Resources */,
 				5B3A25B9162C99F900CCA888 /* Tab_Modes.png in Resources */,
 				5BAD14EB1636E2D500A2CED4 /* Mode_Selected.png in Resources */,
+				5B35CD06164031A600327CD0 /* Toolbar_Graph.png in Resources */,
+				5B35CD081640325400327CD0 /* Toolbar_Graph@2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -334,6 +334,8 @@
             
             [self.navigationController pushViewController:detailController animated:true];
             
+            
+            
             //            SKDataSource *dataSource = (SKDataSource *)entity;
             //            
             //            EntityActionRequest *r = [EntityActionRequest createBydataSourceAction:
