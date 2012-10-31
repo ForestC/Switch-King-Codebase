@@ -188,7 +188,12 @@
             break;
     }
     
-    EntityGraphRequest *req = [EntityGraphRequest createByDataSource:self.dataSource : self.entityGraphImageView.bounds.size :minutesBack];
+    CGSize size;
+    
+    size.width = self.entityGraphImageView.bounds.size.width;
+    size.height = self.entityGraphImageView.bounds.size.height;
+    
+    EntityGraphRequest *req = [EntityGraphRequest createByDataSource:self.dataSource : size :minutesBack];
     
     // Request update of all entities...
     [communicationMgr requestEntityGraph:req];
