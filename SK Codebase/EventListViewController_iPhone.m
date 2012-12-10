@@ -218,7 +218,10 @@
         NSString *entityType = evt.EntityType;
         
         if ([entityType isEqualToString:ENTITY_TYPE_STRING__SCENARIO]) {
-            
+            [eventCell.entityNameLabel setText:evt.ScenarioName];
+            [eventCell.entityActionLabel setText:@""];
+            [eventCell.entityTimestampLabel setText:[TextHelper getFormattedDateText:evt.EventDate:false]];
+            eventCell.entityIconImageView.image = [UIImage imageNamed:[ImagePathHelper getImageNameFromEvent: evt:@"EventList_"]];
         } else {
             [eventCell.entityNameLabel setText:evt.DeviceName];
             [eventCell.entityActionLabel setText:[TextHelper getEventInfoText:evt]];

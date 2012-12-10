@@ -142,6 +142,8 @@
         // Set all group entities.
         NSArray *tempGroups = [NSArray arrayWithArray:[tempGroupDictStore allValues]];
         
+        NSString *noneGroup;
+        
         groupsAndDevices = [[NSMutableArray alloc] initWithCapacity:tempGroups.count+devices.count];
         
         NSMutableArray *arr = [[NSMutableArray alloc] init];
@@ -149,13 +151,18 @@
         for (int i=0; i<tempGroups.count; i++) {
             NSString *name = ((SKDeviceGroup *)[tempGroups objectAtIndex:i]).Name;
             
-            if(name == nil)
-                name = @"ÖÖÖÖÖÖ";
-            
-            [arr addObject:(NSString*)name];
+            if(name == nil) {
+                noneGroup = @"ÖÖÖÖÖÖ";
+            } else {
+                [arr addObject:(NSString*)name];
+            }
         }
         
         [arr sortUsingSelector:@selector(stringCompare:)];
+        
+        if(noneGroup != nil && [noneGroup isEqualToString:@"ÖÖÖÖÖÖ"]) {
+            [arr addObject:noneGroup];
+        }
         
         for(int i=0;i<arr.count;i++) {
             for(int j=0;j<tempGroups.count;j++) {

@@ -14,6 +14,7 @@
 #import "CommunicationMgr.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 
 @implementation DataSourceGraphController_iPhone
 @synthesize dataSource;
@@ -165,8 +166,10 @@
 }
 
 - (void)requestUpdateOfGraph {
-    // Create the communication manager...
-    CommunicationMgr *communicationMgr = [[CommunicationMgr alloc] init];
+    // Get the app delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.communicationMgr requestUpdateOfSystemModes];
     
     NSInteger segment = self.graphHistorySegment.selectedSegmentIndex;
     NSInteger minutesBack;
@@ -196,7 +199,7 @@
     EntityGraphRequest *req = [EntityGraphRequest createByDataSource:self.dataSource : size :minutesBack];
     
     // Request update of all entities...
-    [communicationMgr requestEntityGraph:req];
+    [appDelegate.communicationMgr requestEntityGraph:req];
 }
 
 - (IBAction)graphHistorySegmentTapped:(NSObject *)sender {
