@@ -53,7 +53,7 @@
         systemMode = nil;
     } else if([elementName isEqualToString:XML_ELEMENT_NAME__SYSTEM_MODE]) {     
         
-        if(systemMode.ID == 1)        {
+        if(systemMode.ID == 1 && (systemMode.Name == nil || [systemMode.Name isEqualToString:@""])) {
             systemMode.Name = NSLocalizedStringFromTable(@"Default", @"Texts", nil);
         } 
         
