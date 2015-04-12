@@ -10,7 +10,7 @@
 
 @interface MessageViewController : UIViewController
 
-@property (assign, atomic) IBOutlet UITextView *infoTextView;
-@property (assign, atomic) IBOutlet UIImageView *infoTextImage;
+//@property (weak) IBOutlet UITextView *infoTextView;
+//@property (weak) IBOutlet UIImageView *infoTextImage;
 
 @end

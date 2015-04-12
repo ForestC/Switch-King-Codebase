@@ -1,13 +1,13 @@
 //
-//  InfoMessageView.h
+//  ScenariosListViewController_iPhone.h
 //  SK Codebase
 //
 //  Created by Martin Videfors on 2012-02-09.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface InfoMessageView : UIView
+@interface ScenariosListViewController_iPhone : UITableViewController
 
 @end
